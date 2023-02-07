@@ -3,20 +3,19 @@
 
 		<comHeader />
 
+		<div class="contentDiv">
 
-		<comSceneList />
+			<comSceneList />
 
-		<button @click="handle">内容-返回</button>
+			<button @click="handle">内容-返回</button>
 
+		</div>
 
 	</div>
 </template>
 
 <script setup>
-	import {
-		onLoad,
-		onShow
-	} from "@dcloudio/uni-app"
+	import { onLoad, onShow } from "@dcloudio/uni-app"
 	import comHeader from "@/components/comHeader/index.vue"
 	import comSceneList from "@/components/comSceneList/index.vue"
 
@@ -35,5 +34,9 @@
 	.content {
 		width: 100%;
 		height: 100%;
+		.contentDiv{
+			padding: 30rpx;
+
+		}
 	}
 </style>
