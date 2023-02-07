@@ -1,31 +1,39 @@
 <template>
-	<div>
-		{{ a }}
-		
-		
-		
-		
-		
-		<button @click="handleToContent">按钮</button>
+	<div class="content">
+
+		<comHeader />
+
+
+		<comSceneList />
+
+		<button @click="handle">内容-返回</button>
+
+
 	</div>
 </template>
 
 <script setup>
-	import { onLoad, onShow } from "@dcloudio/uni-app"
-	import a from '@/state/index.js'
-	
-	onShow(() => {})
-	
+	import {
+		onLoad,
+		onShow
+	} from "@dcloudio/uni-app"
+	import comHeader from "@/components/comSceneList/index.vue"
+	import comSceneList from "@/components/comSceneList/index.vue"
 
-	const handleToContent = () => {
-		a.value = 0
+
+	onShow(() => {})
+
+
+	const handle = () => {
 		uni.navigateBack({
-			delta:1
+			delta: 1
 		})
 	}
-	
 </script>
 
 <style scoped lang="less">
-
+	.content {
+		width: 100%;
+		height: 100%;
+	}
 </style>

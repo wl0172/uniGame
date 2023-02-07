@@ -1,6 +1,6 @@
 <template>
 	<div class="login_conter">
-		<p class="login_p">冒险者</p>
+		<p class="login_p">欢迎冒险者</p>
 		<div class="login_div">
 			<input v-model="sinupInfo.name" maxlength="30" placeholder="请输入账号"
 				oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')" />
@@ -19,14 +19,12 @@
 </template>
 
 <script setup>
-	import {
-		ref
-	} from 'vue'
+	import { ref } from "vue"
+	import apiRequest from "@/api/index.js"
 
 	let sinupInfo = ref({
 		name: '',
 		password: '',
-		// device: 
 	})
 
 	// 注册
@@ -37,10 +35,21 @@
 	}
 	// 登录
 	const handleLogin = () => {
-		console.log(sinupInfo.value, '======')
-		// uni.navigateTo({
-		// 	url: '/pages/content/index'
-		// })
+		if(sinupInfo.value.name && sinupInfo.value.password){
+			console.log(sinupInfo.value, '登录参数======')
+			// apiRequest.postLogin(sinupInfo.value).then((res) => {
+			// 	console.log(res)
+			// })
+			uni.navigateTo({
+				url: "/pages/content/index"
+			})
+		}else{
+			uni.showToast({
+				icon:'none',
+				title: '请输入正确的账号和密码！',
+				duration: 2000
+			})
+		}
 	}
 </script>
 
@@ -80,7 +89,7 @@
 		}
 		.login_button {
 			width: 100%;
-			border-radius: 0.7rem;
+			border-radius: 50rem;
 			padding: 0.7rem 0;
 			margin: 3rem auto 1rem auto;
 			background: linear-gradient(to right, #8ebcf5 0, #00e2fa 80%, #00e2fa 100%);

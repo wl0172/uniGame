@@ -1,5 +1,6 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [
 		// 登录
 		{
 			"path": "pages/login/index",
@@ -9,6 +10,7 @@
 					"bounce": "none" // 将回弹属性关掉
 				},
 				"navigationBarTextStyle": "black"
+				// "disableScroll": true
 			}
 		},
 		// 注册
@@ -20,6 +22,7 @@
 					"bounce": "none" // 将回弹属性关掉
 				},
 				"navigationBarTextStyle": "black"
+				// "disableScroll": true
 			}
 		},
 		// 内容
@@ -31,6 +34,7 @@
 					"bounce": "none" // 将回弹属性关掉
 				},
 				"navigationBarTextStyle": "black"
+				// "disableScroll": true
 			}
 		}
 	],

@@ -19,27 +19,41 @@
 			<div></div>
 			<div @click="handleBank">返回</div>
 		</div>
-		<div @click="handleSigUp" class="buttonHover login_button">注册</div>
+		<div @click="handleSigUp" class="login_button">注册</div>
 	</div>
 </template>
 
 <script setup>
-	import {
-		ref
-	} from 'vue'
-	import a from '@/state/index.js'
+	import { ref } from "vue"
+	import apiRequest from "@/api/index.js"
 
 	let sinupInfo = ref({
 		name: '',
 		password: '',
-		// device: 
+		phone_number: '',
+		email: '',
 	})
-
-
-	const handleToContent = () => {
-		uni.navigateTo({
-			url: '/pages/content/index'
+	
+	// 返回
+	const handleBank = () => {
+		uni.navigateBack({
+			delta: 1
 		})
+	}
+	// 注册
+	const handleSigUp = () => {
+		if(sinupInfo.value.name && sinupInfo.value.password && sinupInfo.value.phone_number && sinupInfo.value.email){
+			console.log(sinupInfo.value, '======')
+			// apiRequest.postLogin(sinupInfo.value).then((res) => {
+			// 	console.log(res)
+			// })
+		}else{
+			uni.showToast({
+				icon:'none',
+				title: '信息请填写完整正确！',
+				duration: 2000
+			})
+		}
 	}
 </script>
 
@@ -68,6 +82,7 @@
 				height: 3rem;
 				border-radius: 0.3rem;
 				outline: none;
+				text-align: left;
 			}
 		}
 		.login_a {
@@ -79,7 +94,7 @@
 		}
 		.login_button {
 			width: 100%;
-			border-radius: 0.7rem;
+			border-radius: 50rem;
 			padding: 0.7rem 0;
 			margin: 3rem auto 1rem auto;
 			background: linear-gradient(to right, #8ebcf5 0, #00e2fa 80%, #00e2fa 100%);

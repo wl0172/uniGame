@@ -1,7 +1,7 @@
 /**
  * 
  * */
-export default (path, data = {}, method, config = defauls) => {
+export default (path, data = {}, method) => {
 	
 	uni.showLoading({
 		title: "加载中",
@@ -17,12 +17,11 @@ export default (path, data = {}, method, config = defauls) => {
 				"Authorization": Authorization,
 				"Content-Type": 'application/json',
 			},
-			url: api + path,
+			url: 'http://117.78.26.78' + path,
 			method: method,
 			data,
 			success(response) {
 				uni.hideLoading();
-				console.log(response, '======')
 				// resolve()
 			},
 			fail(err) {

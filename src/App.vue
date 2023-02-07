@@ -1,4 +1,4 @@
-<script>
+<script>	
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
@@ -13,6 +13,7 @@
 </script>
 
 <style>
+	/*每个页面公共css */
 	uni-page-body{
 		width: 100%;
 		height: 100%;
@@ -20,6 +21,6 @@
 		display: flex;
 		align-items: center;
 		position: relative;
+		justify-content: center;
 	}
-	/*每个页面公共css */
 </style>
