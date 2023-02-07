@@ -17,7 +17,7 @@
 		onLoad,
 		onShow
 	} from "@dcloudio/uni-app"
-	import comHeader from "@/components/comSceneList/index.vue"
+	import comHeader from "@/components/comHeader/index.vue"
 	import comSceneList from "@/components/comSceneList/index.vue"
 
 
