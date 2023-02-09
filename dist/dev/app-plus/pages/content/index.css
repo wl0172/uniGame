@@ -1,0 +1,51 @@
+.comHeaderDiv[data-v-87c09459] {
+  width: auto;
+  height: var(--headerHeight);
+  background: #ffe1b7;
+  padding: 0 0.9375rem;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--headerMargin);
+}
+.comHeaderDiv .comHeaderDiv_addName[data-v-87c09459] {
+  color: red;
+}
+
+.comBattleDiv .comBattleDiv_battle[data-v-781aabaf] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.conSceneListLi[data-v-62f6a8ab] {
+  padding: 0.9375rem;
+  background: #ffffff;
+  color: #9d9d9d;
+  font-size: 0.875rem;
+  margin: 0 0 0.9375rem 0;
+  border-radius: 0.3125rem;
+  background: #edecee;
+}
+.conSceneListLi .conSceneListLi_title[data-v-62f6a8ab] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+  font-size: 1rem;
+  margin: 0 0 0.625rem 0;
+}
+.conSceneListLi .conSceneListLi_title .conSceneListLi_title_state[data-v-62f6a8ab] {
+  color: #4bbda3;
+}
+
+.content[data-v-148c4b58] {
+  width: 100%;
+  height: 100%;
+}
+.content .contentDiv[data-v-148c4b58] {
+  height: calc(100% - var(--conHeight));
+  overflow: auto;
+  padding: 0.9375rem;
+}

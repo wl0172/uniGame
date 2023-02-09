@@ -17,10 +17,6 @@
 	#app{
 		width: 100%;
 		height: 100%;
-		display: flex;
-		align-items: center;
-		position: relative;
-		justify-content: center;
 		background: #ffffff;
 	}
 </style>
