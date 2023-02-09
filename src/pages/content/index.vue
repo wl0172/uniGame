@@ -1,6 +1,6 @@
 <script setup>
 import { onLoad, onShow } from "@dcloudio/uni-app"
-import { ref, markRaw } from 'vue'
+import { ref, reactive, markRaw } from 'vue'
 import { headerHeight, conHeight, headerMargin } from '@/state/bangs.js'
 import ComHeader from "@/components/comHeader/index.vue"
 // 场景 - page
@@ -23,9 +23,13 @@ const pageArr = ref({
 	}]
 })
 
-console.log(pageArr.value.list, '======')
 
-
+let pageArrIndex = ref({
+	index: 0
+})
+let pageArrIndexKey = ref({
+	key: 'page_battle'
+})
 
 // 测试
 const handle = () => {
@@ -34,7 +38,12 @@ const handle = () => {
 	// 	title: '测试',
 	// 	duration: 5000	
 	// })
+	pageArrIndex.value.index = 1
+	pageArrIndexKey.value.key = 'page_sceneList'
+	
+
 }
+
 
 </script>
 
@@ -42,9 +51,10 @@ const handle = () => {
 	<div class="content">
 		<!-- header -->
 		<ComHeader :comHeight="conHeight" />
+		<!-- <view>{{  }}</view> -->
 		<!-- 内容 -->
 		<div class="contentDiv" :style="{ '--conHeight': (headerHeight + headerMargin) + 'px' }">
-			<component :is="pageArr.list[1].page_battle"></component>
+			<component :is="pageArr.list[pageArrIndex.index][pageArrIndexKey.key]" />
 			<button @click="handle">内容--测试</button>
 		</div>
 	</div>

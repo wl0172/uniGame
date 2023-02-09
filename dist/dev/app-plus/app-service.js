@@ -4222,19 +4222,27 @@ if (uni.restoreGlobal) {
           "page_menu": vue.markRaw(ComMenu)
         }]
       });
-      formatAppLog("log", "at pages/content/index.vue:26", pageArr.value.list, "======");
+      let pageArrIndex = vue.ref({
+        index: 0
+      });
+      let pageArrIndexKey = vue.ref({
+        key: "page_battle"
+      });
       const handle = () => {
+        pageArrIndex.value.index = 1;
+        pageArrIndexKey.value.key = "page_sceneList";
       };
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", { class: "content" }, [
           vue.createCommentVNode(" header "),
           vue.createVNode(ComHeader, { comHeight: vue.unref(conHeight) }, null, 8, ["comHeight"]),
+          vue.createCommentVNode(" <view>{{  }}</view> "),
           vue.createCommentVNode(" \u5185\u5BB9 "),
           vue.createElementVNode("div", {
             class: "contentDiv",
             style: vue.normalizeStyle({ "--conHeight": vue.unref(headerHeight) + vue.unref(headerMargin) + "px" })
           }, [
-            (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(pageArr.value.list[1].page_battle))),
+            (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(pageArr.value.list[vue.unref(pageArrIndex).index][vue.unref(pageArrIndexKey).key]))),
             vue.createElementVNode("button", { onClick: handle }, "\u5185\u5BB9--\u6D4B\u8BD5")
           ], 4)
         ]);
