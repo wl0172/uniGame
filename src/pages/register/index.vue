@@ -24,81 +24,86 @@
 </template>
 
 <script setup>
-	import { ref } from "vue"
-	import apiRequest from "@/api/index.js"
+import { ref } from "vue"
+import apiRequest from "@/api/index.js"
 
-	let sinupInfo = ref({
-		name: '',
-		password: '',
-		phone_number: '',
-		email: '',
+let sinupInfo = ref({
+	name: '',
+	password: '',
+	phone_number: '',
+	email: '',
+})
+
+// 返回
+const handleBank = () => {
+	uni.navigateBack({
+		delta: 1
 	})
-	
-	// 返回
-	const handleBank = () => {
-		uni.navigateBack({
-			delta: 1
+}
+// 注册
+const handleSigUp = () => {
+	if (sinupInfo.value.name && sinupInfo.value.password && sinupInfo.value.phone_number && sinupInfo.value.email) {
+		console.log(sinupInfo.value, '======')
+		// apiRequest.postLogin(sinupInfo.value).then((res) => {
+		// 	console.log(res)
+		// })
+	} else {
+		uni.showToast({
+			icon: 'none',
+			title: '信息请填写完整正确！',
+			duration: 2000
 		})
 	}
-	// 注册
-	const handleSigUp = () => {
-		if(sinupInfo.value.name && sinupInfo.value.password && sinupInfo.value.phone_number && sinupInfo.value.email){
-			console.log(sinupInfo.value, '======')
-			// apiRequest.postLogin(sinupInfo.value).then((res) => {
-			// 	console.log(res)
-			// })
-		}else{
-			uni.showToast({
-				icon:'none',
-				title: '信息请填写完整正确！',
-				duration: 2000
-			})
-		}
-	}
+}
 </script>
 
 <style scoped lang="less">
-	.login_conter {
-		width: 70%;
-		// height: 40%;
-		background: #ffffffcc;
-		text-align: center;
-		border-radius: 0.7rem;
-		color: black;
-		margin: 0 auto;
-		padding: 20rpx;
-		.login_p {
-			margin: 1rem;
-			font-size: 1rem;
-		}
-		.login_div {
-			margin: 0 0 1rem 0;
-			background: #e3e3e3;
-			border-radius: 50rem;
-			padding: 0 30rpx;
-			input {
-				width: 100%;
-				border: 0;
-				height: 3rem;
-				border-radius: 0.3rem;
-				outline: none;
-				text-align: left;
-			}
-		}
-		.login_a {
-			color: #7676cb;
-			width: auto;
-			margin: 0 auto;
-			text-align: right;
-			padding: 0 1.1rem;
-		}
-		.login_button {
+.login_conter {
+	width: 70%;
+	// height: 40%;
+	background: #ffffffcc;
+	text-align: center;
+	border-radius: 0.7rem;
+	color: black;
+	margin: 0 auto;
+	padding: 20rpx;
+
+	.login_p {
+		margin: 1rem;
+		font-size: 1rem;
+	}
+
+	.login_div {
+		margin: 0 0 1rem 0;
+		background: #e3e3e3;
+		border-radius: 50rem;
+		padding: 0 30rpx;
+
+		input {
 			width: 100%;
-			border-radius: 50rem;
-			padding: 0.7rem 0;
-			margin: 3rem auto 1rem auto;
-			background: linear-gradient(to right, #8ebcf5 0, #00e2fa 80%, #00e2fa 100%);
-			color: white;
+			border: 0;
+			height: 3rem;
+			border-radius: 0.3rem;
+			outline: none;
+			text-align: left;
 		}
 	}
+
+	.login_a {
+		color: #7676cb;
+		width: auto;
+		margin: 0 auto;
+		text-align: right;
+		padding: 0 1.1rem;
+	}
+
+	.login_button {
+		width: 100%;
+		border-radius: 50rem;
+		padding: 0.7rem 0;
+		margin: 3rem auto 1rem auto;
+		background: linear-gradient(to right, #8ebcf5 0, #00e2fa 80%, #00e2fa 100%);
+		color: white;
+	}
+}
 </style>
