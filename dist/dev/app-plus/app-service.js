@@ -43,169 +43,6 @@ if (uni.restoreGlobal) {
     !vue.isInSSRComponentSetup && vue.injectHook(lifecycle, hook, target);
   };
   const onShow = /* @__PURE__ */ createHook(ON_SHOW);
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
-  const _sfc_main$7 = {
-    __name: "index",
-    setup(__props) {
-      let sinupInfo = vue.ref({
-        name: "",
-        password: ""
-      });
-      const handleSignUp = () => {
-        uni.navigateTo({
-          url: "/pages/register/index"
-        });
-      };
-      const handleLogin = () => {
-        if (sinupInfo.value.name && sinupInfo.value.password) {
-          formatAppLog("log", "at pages/login/index.vue:19", sinupInfo.value, "\u767B\u5F55\u53C2\u6570======");
-          uni.redirectTo({
-            url: "/pages/content/index"
-          });
-        } else {
-          uni.showToast({
-            icon: "none",
-            title: "\u8BF7\u8F93\u5165\u6B63\u786E\u7684\u8D26\u53F7\u548C\u5BC6\u7801\uFF01",
-            duration: 2e3
-          });
-        }
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", { class: "pageCenter" }, [
-          vue.createElementVNode("div", { class: "login_conter" }, [
-            vue.createElementVNode("p", { class: "login_p" }, "\u6B22\u8FCE\u5192\u9669\u8005"),
-            vue.createElementVNode("div", { class: "login_div" }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.unref(sinupInfo).name = $event),
-                maxlength: "30",
-                placeholder: "\u8BF7\u8F93\u5165\u8D26\u53F7",
-                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
-              }, null, 512), [
-                [vue.vModelText, vue.unref(sinupInfo).name]
-              ])
-            ]),
-            vue.createElementVNode("div", { class: "login_div" }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.unref(sinupInfo).password = $event),
-                maxlength: "8",
-                placeholder: "\u8BF7\u8F93\u5165\u5BC6\u7801",
-                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
-              }, null, 512), [
-                [vue.vModelText, vue.unref(sinupInfo).password]
-              ])
-            ]),
-            vue.createElementVNode("div", { class: "login_a" }, [
-              vue.createCommentVNode(" \u5FD8\u8BB0\u5BC6\u7801? "),
-              vue.createCommentVNode(' <div @click="handleForgotPassword"></div> '),
-              vue.createElementVNode("div", { onClick: handleSignUp }, "\u6CE8\u518C")
-            ]),
-            vue.createElementVNode("div", {
-              onClick: handleLogin,
-              class: "login_button"
-            }, "\u767B\u5F55")
-          ])
-        ]);
-      };
-    }
-  };
-  const PagesLoginIndex = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-45258083"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/login/index.vue"]]);
-  const _sfc_main$6 = {
-    __name: "index",
-    setup(__props) {
-      let sinupInfo = vue.ref({
-        name: "",
-        password: "",
-        phone_number: "",
-        email: ""
-      });
-      const handleBank = () => {
-        uni.navigateBack({
-          delta: 1
-        });
-      };
-      const handleSigUp = () => {
-        if (sinupInfo.value.name && sinupInfo.value.password && sinupInfo.value.phone_number && sinupInfo.value.email) {
-          formatAppLog("log", "at pages/register/index.vue:21", sinupInfo.value, "======");
-          uni.redirectTo({
-            url: "/pages/login/index"
-          });
-        } else {
-          uni.showToast({
-            icon: "none",
-            title: "\u4FE1\u606F\u8BF7\u586B\u5199\u5B8C\u6574\u6B63\u786E\uFF01",
-            duration: 2e3
-          });
-        }
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", { class: "pageCenter" }, [
-          vue.createElementVNode("div", { class: "login_conter" }, [
-            vue.createElementVNode("p", { class: "login_p" }, "\u5192\u9669\u8005"),
-            vue.createElementVNode("div", {
-              class: "login_div",
-              draggable: "true"
-            }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.unref(sinupInfo).name = $event),
-                maxlength: "30",
-                placeholder: "\u8BF7\u8F93\u5165\u8D26\u53F7",
-                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
-              }, null, 512), [
-                [vue.vModelText, vue.unref(sinupInfo).name]
-              ])
-            ]),
-            vue.createElementVNode("div", {
-              class: "login_div",
-              draggable: "true"
-            }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.unref(sinupInfo).password = $event),
-                maxlength: "8",
-                placeholder: "\u8BF7\u8F93\u5165\u5BC6\u7801,\u6700\u5C118\u4F4D",
-                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
-              }, null, 512), [
-                [vue.vModelText, vue.unref(sinupInfo).password]
-              ])
-            ]),
-            vue.createElementVNode("div", { class: "login_div" }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                type: "number",
-                "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => vue.unref(sinupInfo).phone_number = $event),
-                maxlength: "11",
-                placeholder: "\u8BF7\u8F93\u5165\u624B\u673A\u53F7"
-              }, null, 512), [
-                [vue.vModelText, vue.unref(sinupInfo).phone_number]
-              ])
-            ]),
-            vue.createElementVNode("div", { class: "login_div" }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => vue.unref(sinupInfo).email = $event),
-                placeholder: "\u8BF7\u8F93\u5165\u90AE\u7BB1",
-                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
-              }, null, 512), [
-                [vue.vModelText, vue.unref(sinupInfo).email]
-              ])
-            ]),
-            vue.createElementVNode("div", { class: "login_a" }, [
-              vue.createElementVNode("div"),
-              vue.createElementVNode("div", { onClick: handleBank }, "\u8FD4\u56DE")
-            ]),
-            vue.createElementVNode("div", {
-              onClick: handleSigUp,
-              class: "login_button"
-            }, "\u6CE8\u518C")
-          ])
-        ]);
-      };
-    }
-  };
-  const PagesRegisterIndex = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-c5d9c666"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/register/index.vue"]]);
   const headerMargin = wx.getSystemInfoSync().statusBarHeight;
   wx.getSystemInfoSync().screenHeight;
   const headerHeight = 90;
@@ -4115,7 +3952,14 @@ if (uni.restoreGlobal) {
     WEEK: "GGGG-[W]WW",
     MONTH: "YYYY-MM"
   };
-  const _sfc_main$5 = {
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
+  const _sfc_main$7 = {
     __name: "index",
     props: {
       comHeight: {
@@ -4140,37 +3984,112 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
-  const _sfc_main$4 = {
+  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
+  const _imports_0 = "/static/1.png";
+  const _sfc_main$6 = {
     __name: "index",
     setup(__props) {
-      vue.ref("index");
+      const progressConfig = {
+        border_radius: 50,
+        stroke_width: 15,
+        active: false,
+        backgroundColor: "#e6e6e6"
+      };
+      let battleInfo = vue.ref({
+        monster: {
+          blood: 100,
+          name: "\u602A\u7269"
+        },
+        player: {
+          blood: 100,
+          name: "\u73A9\u5BB6"
+        }
+      });
+      setTimeout(() => {
+        let a = setInterval(() => {
+          if (battleInfo.value.monster.blood == 10) {
+            clearInterval(a);
+          } else {
+            battleInfo.value.monster.blood = battleInfo.value.monster.blood - 1;
+            battleInfo.value.player.blood = battleInfo.value.player.blood - 1;
+          }
+        }, 1e3);
+      }, 3e3);
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", { class: "comBattleDiv" }, [
           vue.createCommentVNode(" \u602A\u7269 - \u82F1\u96C4 "),
-          vue.createElementVNode("div", { class: "comBattleDiv_battle" }, [
-            vue.createElementVNode("div", { class: "comBattleDiv_battle" }, [
-              vue.createCommentVNode(' <progress :percent="pgList[0]" show-info stroke-width="3" /> '),
-              vue.createElementVNode("div", null, "\u602A\u7269")
+          vue.createElementVNode("div", { class: "comBattleDiv_battle_1" }, [
+            vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div" }, [
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood1" }, vue.toDisplayString(vue.unref(battleInfo).monster.blood), 1),
+              vue.createElementVNode("progress", {
+                style: { "margin": "0 0 auto 0" },
+                class: "comBattleDiv_battle_1_div_progress",
+                "border-radius": progressConfig.border_radius,
+                "stroke-width": progressConfig.stroke_width,
+                activeColor: "red",
+                backgroundColor: progressConfig.backgroundColor,
+                active: progressConfig.active,
+                percent: [vue.unref(battleInfo).monster.blood]
+              }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i" }, [
+                vue.createElementVNode("div", null, vue.toDisplayString(vue.unref(battleInfo).monster.name), 1),
+                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_img" }, [
+                  vue.createElementVNode("img", {
+                    src: "",
+                    alt: ""
+                  })
+                ])
+              ])
             ]),
-            vue.createElementVNode("div", null, "\u4EBA")
+            vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div" }, [
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood2" }, vue.toDisplayString(vue.unref(battleInfo).player.blood), 1),
+              vue.createElementVNode("progress", {
+                style: { "margin": "0 0 0 auto", "transform": "rotate(180deg)" },
+                class: "comBattleDiv_battle_1_div_progress",
+                "border-radius": progressConfig.border_radius,
+                "stroke-width": progressConfig.stroke_width,
+                activeColor: "red",
+                backgroundColor: progressConfig.backgroundColor,
+                active: progressConfig.active,
+                percent: [vue.unref(battleInfo).player.blood]
+              }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
+              vue.createElementVNode("div", {
+                class: "comBattleDiv_battle_1_div_i",
+                style: { "margin": "0 0 0 auto" }
+              }, [
+                vue.createElementVNode("div", null, vue.toDisplayString(vue.unref(battleInfo).player.name), 1),
+                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_img" }, [
+                  vue.createElementVNode("img", {
+                    src: "",
+                    alt: ""
+                  })
+                ])
+              ])
+            ])
           ]),
+          vue.createCommentVNode(" \u7EBF "),
+          vue.createElementVNode("div", { class: "aaaa" }),
           vue.createCommentVNode(" \u8840\u6761 - \u83DC\u5355 "),
           vue.createElementVNode("div", { class: "" }, [
-            vue.createElementVNode("div", null, "\u8840\u6761 - \u83DC\u5355"),
+            vue.createElementVNode("div", null, "\u4F53\u529B\u7ECF\u9A8C\u7B49\u7B49 - \u83DC\u5355"),
             vue.createElementVNode("div", null, "321")
           ]),
           vue.createCommentVNode(" \u6218\u6597txt "),
           vue.createElementVNode("div", { class: "" }, [
             vue.createElementVNode("div", null, "\u6218\u6597txt"),
             vue.createElementVNode("div", null, "321")
-          ])
+          ]),
+          vue.createElementVNode("image", {
+            style: { "width": "300rpx", "height": "500rpx" },
+            src: _imports_0,
+            alt: ""
+          })
         ]);
       };
     }
   };
-  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
-  const _sfc_main$3 = {
+  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
+  const _sfc_main$5 = {
     __name: "index",
     setup(__props) {
       const handleToNewMap = (item, index) => {
@@ -4197,8 +4116,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComSceneList = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-62f6a8ab"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comSceneList/index.vue"]]);
-  const _sfc_main$2 = {
+  const ComSceneList = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-62f6a8ab"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comSceneList/index.vue"]]);
+  const _sfc_main$4 = {
     __name: "index",
     setup(__props) {
       let a = vue.ref("index");
@@ -4207,8 +4126,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComMenu = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comMenu/index.vue"]]);
-  const _sfc_main$1 = {
+  const ComMenu = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comMenu/index.vue"]]);
+  const _sfc_main$3 = {
     __name: "index",
     setup(__props) {
       onShow(() => {
@@ -4249,10 +4168,166 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesContentIndex = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-148c4b58"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/content/index.vue"]]);
+  const PagesContentIndex = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-148c4b58"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/content/index.vue"]]);
+  const _sfc_main$2 = {
+    __name: "index",
+    setup(__props) {
+      let sinupInfo = vue.ref({
+        name: "",
+        password: ""
+      });
+      const handleSignUp = () => {
+        uni.navigateTo({
+          url: "/pages/register/index"
+        });
+      };
+      const handleLogin = () => {
+        if (sinupInfo.value.name && sinupInfo.value.password) {
+          formatAppLog("log", "at pages/login/index.vue:19", sinupInfo.value, "\u767B\u5F55\u53C2\u6570======");
+          uni.redirectTo({
+            url: "/pages/content/index"
+          });
+        } else {
+          uni.showToast({
+            icon: "none",
+            title: "\u8BF7\u8F93\u5165\u6B63\u786E\u7684\u8D26\u53F7\u548C\u5BC6\u7801\uFF01",
+            duration: 2e3
+          });
+        }
+      };
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", { class: "pageCenter" }, [
+          vue.createElementVNode("div", { class: "login_conter" }, [
+            vue.createElementVNode("p", { class: "login_p" }, "\u6B22\u8FCE\u5192\u9669\u8005"),
+            vue.createElementVNode("div", { class: "login_div" }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.unref(sinupInfo).name = $event),
+                maxlength: "30",
+                placeholder: "\u8BF7\u8F93\u5165\u8D26\u53F7",
+                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).name]
+              ])
+            ]),
+            vue.createElementVNode("div", { class: "login_div" }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.unref(sinupInfo).password = $event),
+                maxlength: "8",
+                placeholder: "\u8BF7\u8F93\u5165\u5BC6\u7801",
+                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).password]
+              ])
+            ]),
+            vue.createElementVNode("div", { class: "login_a" }, [
+              vue.createCommentVNode(" \u5FD8\u8BB0\u5BC6\u7801? "),
+              vue.createCommentVNode(' <div @click="handleForgotPassword"></div> '),
+              vue.createElementVNode("div", { onClick: handleSignUp }, "\u6CE8\u518C")
+            ]),
+            vue.createElementVNode("div", {
+              onClick: handleLogin,
+              class: "login_button"
+            }, "\u767B\u5F55")
+          ])
+        ]);
+      };
+    }
+  };
+  const PagesLoginIndex = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-45258083"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/login/index.vue"]]);
+  const _sfc_main$1 = {
+    __name: "index",
+    setup(__props) {
+      let sinupInfo = vue.ref({
+        name: "",
+        password: "",
+        phone_number: "",
+        email: ""
+      });
+      const handleBank = () => {
+        uni.navigateBack({
+          delta: 1
+        });
+      };
+      const handleSigUp = () => {
+        if (sinupInfo.value.name && sinupInfo.value.password && sinupInfo.value.phone_number && sinupInfo.value.email) {
+          formatAppLog("log", "at pages/register/index.vue:21", sinupInfo.value, "======");
+          uni.redirectTo({
+            url: "/pages/login/index"
+          });
+        } else {
+          uni.showToast({
+            icon: "none",
+            title: "\u4FE1\u606F\u8BF7\u586B\u5199\u5B8C\u6574\u6B63\u786E\uFF01",
+            duration: 2e3
+          });
+        }
+      };
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", { class: "pageCenter" }, [
+          vue.createElementVNode("div", { class: "login_conter" }, [
+            vue.createElementVNode("p", { class: "login_p" }, "\u5192\u9669\u8005"),
+            vue.createElementVNode("div", {
+              class: "login_div",
+              draggable: "true"
+            }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.unref(sinupInfo).name = $event),
+                maxlength: "30",
+                placeholder: "\u8BF7\u8F93\u5165\u8D26\u53F7",
+                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).name]
+              ])
+            ]),
+            vue.createElementVNode("div", {
+              class: "login_div",
+              draggable: "true"
+            }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.unref(sinupInfo).password = $event),
+                maxlength: "8",
+                placeholder: "\u8BF7\u8F93\u5165\u5BC6\u7801,\u6700\u5C118\u4F4D",
+                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).password]
+              ])
+            ]),
+            vue.createElementVNode("div", { class: "login_div" }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                type: "number",
+                "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => vue.unref(sinupInfo).phone_number = $event),
+                maxlength: "11",
+                placeholder: "\u8BF7\u8F93\u5165\u624B\u673A\u53F7"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).phone_number]
+              ])
+            ]),
+            vue.createElementVNode("div", { class: "login_div" }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => vue.unref(sinupInfo).email = $event),
+                placeholder: "\u8BF7\u8F93\u5165\u90AE\u7BB1",
+                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).email]
+              ])
+            ]),
+            vue.createElementVNode("div", { class: "login_a" }, [
+              vue.createElementVNode("div"),
+              vue.createElementVNode("div", { onClick: handleBank }, "\u8FD4\u56DE")
+            ]),
+            vue.createElementVNode("div", {
+              onClick: handleSigUp,
+              class: "login_button"
+            }, "\u6CE8\u518C")
+          ])
+        ]);
+      };
+    }
+  };
+  const PagesRegisterIndex = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-c5d9c666"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/register/index.vue"]]);
+  __definePage("pages/content/index", PagesContentIndex);
   __definePage("pages/login/index", PagesLoginIndex);
   __definePage("pages/register/index", PagesRegisterIndex);
-  __definePage("pages/content/index", PagesContentIndex);
   const _sfc_main = {
     onLaunch: function() {
       formatAppLog("log", "at App.vue:4", "App Launch");

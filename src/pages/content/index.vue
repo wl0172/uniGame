@@ -64,7 +64,6 @@ const handle = () => {
 .content {
 	width: 100%;
 	height: 100%;
-
 	.contentDiv {
 		height: calc(100vh - var(--conHeight));
 		overflow: auto;
