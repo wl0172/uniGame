@@ -49,6 +49,9 @@ const handleSigUp = () => {
 		// apiRequest.postLogin(sinupInfo.value).then((res) => {
 		// 	console.log(res)
 		// })
+		uni.redirectTo({
+			url: '/pages/login/index',
+		})
 	} else {
 		uni.showToast({
 			icon: 'none',

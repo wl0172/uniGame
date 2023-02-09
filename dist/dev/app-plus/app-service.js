@@ -50,7 +50,7 @@ if (uni.restoreGlobal) {
     }
     return target;
   };
-  const _sfc_main$6 = {
+  const _sfc_main$7 = {
     __name: "index",
     setup(__props) {
       let sinupInfo = vue.ref({
@@ -65,7 +65,7 @@ if (uni.restoreGlobal) {
       const handleLogin = () => {
         if (sinupInfo.value.name && sinupInfo.value.password) {
           formatAppLog("log", "at pages/login/index.vue:43", sinupInfo.value, "\u767B\u5F55\u53C2\u6570======");
-          uni.navigateTo({
+          uni.redirectTo({
             url: "/pages/content/index"
           });
         } else {
@@ -114,8 +114,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesLoginIndex = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-45258083"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/login/index.vue"]]);
-  const _sfc_main$5 = {
+  const PagesLoginIndex = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-45258083"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/login/index.vue"]]);
+  const _sfc_main$6 = {
     __name: "index",
     setup(__props) {
       let sinupInfo = vue.ref({
@@ -132,6 +132,9 @@ if (uni.restoreGlobal) {
       const handleSigUp = () => {
         if (sinupInfo.value.name && sinupInfo.value.password && sinupInfo.value.phone_number && sinupInfo.value.email) {
           formatAppLog("log", "at pages/register/index.vue:48", sinupInfo.value, "======");
+          uni.redirectTo({
+            url: "/pages/login/index"
+          });
         } else {
           uni.showToast({
             icon: "none",
@@ -202,8 +205,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesRegisterIndex = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-c5d9c666"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/register/index.vue"]]);
-  const headerMargin = wx.getSystemInfoSync().safeAreaInsets.bottom;
+  const PagesRegisterIndex = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-c5d9c666"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/register/index.vue"]]);
   //! moment.js
   //! version : 2.29.4
   //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -4106,31 +4108,33 @@ if (uni.restoreGlobal) {
     WEEK: "GGGG-[W]WW",
     MONTH: "YYYY-MM"
   };
-  const _sfc_main$4 = {
+  const _sfc_main$5 = {
     __name: "index",
     props: {
       comHeight: {
-        type: String
+        type: Object
       }
     },
     setup(__props) {
       const props = __props;
       let timeDate = vue.ref(new hooks().format("YYYY-MM-DD"));
       let addName = vue.ref("\u6052\u5317\u57CE\uFF08\u57CE\u95E8\uFF09");
-      let headerHeight = props.comHeight;
+      const headerHeight = props.comHeight.headerHeight + props.comHeight.headerMargin;
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", {
-          class: "comHeaderDiv",
-          style: vue.normalizeStyle({ "--headerHeight": vue.unref(headerHeight) + "rpx", "margin-top": vue.unref(headerMargin) + "px" })
+          class: "comHeaderD",
+          style: vue.normalizeStyle({ "--headerHeight": headerHeight + "rpx" })
         }, [
-          vue.createElementVNode("div", null, vue.toDisplayString(vue.unref(timeDate)), 1),
-          vue.createElementVNode("div", { class: "comHeaderDiv_addName" }, vue.toDisplayString(vue.unref(addName)), 1)
+          vue.createElementVNode("div", { class: "comHeaderDiv" }, [
+            vue.createElementVNode("div", null, vue.toDisplayString(vue.unref(timeDate)), 1),
+            vue.createElementVNode("div", { class: "comHeaderDiv_addName" }, vue.toDisplayString(vue.unref(addName)), 1)
+          ])
         ], 4);
       };
     }
   };
-  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
-  const _sfc_main$3 = {
+  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
+  const _sfc_main$4 = {
     __name: "index",
     setup(__props) {
       vue.ref("index");
@@ -4139,11 +4143,7 @@ if (uni.restoreGlobal) {
           vue.createCommentVNode(" \u602A\u7269 - \u82F1\u96C4 "),
           vue.createElementVNode("div", { class: "comBattleDiv_battle" }, [
             vue.createElementVNode("div", { class: "comBattleDiv_battle" }, [
-              vue.createElementVNode("progress", {
-                percent: _ctx.pgList[0],
-                "show-info": "",
-                "stroke-width": "3"
-              }, null, 8, ["percent"]),
+              vue.createCommentVNode(' <progress :percent="pgList[0]" show-info stroke-width="3" /> '),
               vue.createElementVNode("div", null, "\u602A\u7269")
             ]),
             vue.createElementVNode("div", null, "\u4EBA")
@@ -4162,8 +4162,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
-  const _sfc_main$2 = {
+  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
+  const _sfc_main$3 = {
     __name: "index",
     setup(__props) {
       const handleToNewMap = (item, index) => {
@@ -4190,36 +4190,60 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComSceneList = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-62f6a8ab"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comSceneList/index.vue"]]);
+  const ComSceneList = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-62f6a8ab"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comSceneList/index.vue"]]);
+  const _sfc_main$2 = {
+    __name: "index",
+    setup(__props) {
+      let a = vue.ref("index");
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", null, vue.toDisplayString(vue.unref(a)), 1);
+      };
+    }
+  };
+  const ComMenu = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comMenu/index.vue"]]);
+  const headerMargin = wx.getSystemInfoSync().statusBarHeight;
+  wx.getSystemInfoSync().screenHeight;
   const _sfc_main$1 = {
     __name: "index",
     setup(__props) {
+      const headerHeight = 90;
+      const conHeight = {
+        headerHeight,
+        headerMargin: headerMargin * 2
+      };
       onShow(() => {
       });
-      let conHeight = "100";
+      const pageArr = vue.ref({
+        list: [{
+          "0": vue.markRaw(ComBattle)
+        }, {
+          "1": vue.markRaw(ComSceneList)
+        }, {
+          "2": vue.markRaw(ComMenu)
+        }]
+      });
+      formatAppLog("log", "at pages/content/index.vue:58", pageArr.value.list, "======");
       const handle = () => {
-        uni.navigateBack({
-          delta: 1
-        });
       };
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", {
-          class: "content",
-          style: vue.normalizeStyle({ "--conHeight": vue.unref(conHeight) + "px", "padding-bottom": vue.unref(headerMargin) + "px" })
-        }, [
+        return vue.openBlock(), vue.createElementBlock("div", { class: "content" }, [
           vue.createCommentVNode(" header "),
-          vue.createVNode(ComHeader, { comHeight: vue.unref(conHeight) }, null, 8, ["comHeight"]),
+          vue.createVNode(ComHeader, { comHeight: conHeight }),
           vue.createCommentVNode(" \u5185\u5BB9 "),
-          vue.createElementVNode("div", { class: "contentDiv" }, [
-            vue.createCommentVNode(" 0.0.1 - \u9ED8\u8BA4\u573A\u666F "),
-            vue.createVNode(ComBattle),
-            vue.createCommentVNode(" 0.0.2 - \u9ED8\u8BA4\u573A\u666F "),
-            vue.createCommentVNode(" 0.0.3 - \u9ED8\u8BA4\u573A\u666F "),
+          vue.createElementVNode("div", {
+            class: "contentDiv",
+            style: vue.normalizeStyle({ "--conHeight": headerHeight + vue.unref(headerMargin) + "px" })
+          }, [
+            vue.createCommentVNode(" 0.0.1 - \u9ED8\u8BA4\u6218\u6597\u573A\u666F "),
+            vue.createCommentVNode(" <ComBattle /> "),
             vue.createCommentVNode(" \u573A\u666F\u5217\u8868 "),
-            vue.createVNode(ComSceneList),
-            vue.createElementVNode("button", { onClick: handle }, "\u5185\u5BB9-\u8FD4\u56DE-\u6D4B\u8BD5")
-          ])
-        ], 4);
+            vue.createCommentVNode(" <ComSceneList /> "),
+            vue.createCommentVNode(" \u57CE\u9547 "),
+            vue.createCommentVNode(" <ComMenu /> "),
+            (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(pageArr.value.list[1]["1"]))),
+            vue.createElementVNode("button", { onClick: handle }, "\u5185\u5BB9--\u6D4B\u8BD5")
+          ], 4)
+        ]);
       };
     }
   };

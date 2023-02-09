@@ -44,7 +44,7 @@
 			// apiRequest.postLogin(sinupInfo.value).then((res) => {
 			// 	console.log(res)
 			// })
-			uni.navigateTo({
+			uni.redirectTo({
 				url: "/pages/content/index"
 			})
 		} else {

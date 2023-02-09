@@ -1,4 +1,12 @@
-// 获取刘海屏数据
-const headerMargin = wx.getSystemInfoSync().safeAreaInsets.bottom;
+// 状态栏高度 单位px
+const headerMargin = wx.getSystemInfoSync().statusBarHeight
 
-export default headerMargin
+// 屏幕高度 单位px
+const mainHeight = wx.getSystemInfoSync().screenHeight
+
+// wx.getSystemInfoSync().
+
+export {
+	headerMargin,
+	mainHeight
+}

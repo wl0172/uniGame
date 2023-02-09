@@ -5,7 +5,7 @@
 		<div class="comBattleDiv_battle">
 			
 			<div class="comBattleDiv_battle">
-				<progress :percent="pgList[0]" show-info stroke-width="3" />
+				<!-- <progress :percent="pgList[0]" show-info stroke-width="3" /> -->
 				<div>怪物</div>
 			</div>
 			

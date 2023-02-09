@@ -1,46 +1,52 @@
 
 <!-- 头部时间 - 地点 -->
 <template>
-	<div 
-		class="comHeaderDiv" 
-		:style="{ '--headerHeight': headerHeight + 'rpx','margin-top': headerMargin + 'px' }"
-	>
-		<div>{{ timeDate }}</div>
-		<div class="comHeaderDiv_addName">{{ addName }}</div>
+	<div class="comHeaderD" :style="{ '--headerHeight': headerHeight + 'rpx' }" >
+		<div class="comHeaderDiv" >
+			<div>{{ timeDate }}</div>
+			<div class="comHeaderDiv_addName">{{ addName }}</div>
+		</div>
 	</div>
 </template>
 
 <script setup>
 import { ref } from "vue"
 import monent from "moment"
-import headerMargin from '@/state/bangs.js'
 
 let timeDate = ref(new monent().format('YYYY-MM-DD'))
 let addName = ref('恒北城（城门）')
 // 接收父组件传参
 const props = defineProps({
 	comHeight: {
-		type: String
+		type: Object
 	},
 })
-let headerHeight = props.comHeight
+const headerHeight = props.comHeight.headerHeight + props.comHeight.headerMargin
 
 
 </script>
 
 <style scoped lang="less">
-.comHeaderDiv {
-	width: auto;
+.comHeaderD{
+	width: 100%;
 	height: var(--headerHeight);
 	background: #ffe1b7;
-	padding: 0 30rpx;
-	font-size: 28rpx;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-top: var(--headerMargin);
-	.comHeaderDiv_addName {
-		color: red;
-	}
+	position: relative;
+	.comHeaderDiv {
+		width: calc( 100% - 60rpx );
+		height: 100rpx;
+		line-height: 100rpx;
+		background: #ffe1b7;
+		padding: 0 30rpx;
+		font-size: 28rpx;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		position: absolute;
+		bottom: 0;
+		.comHeaderDiv_addName {
+			color: red;
+		}
+	}	
 }
 </style>
