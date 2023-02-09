@@ -64,7 +64,7 @@ if (uni.restoreGlobal) {
       };
       const handleLogin = () => {
         if (sinupInfo.value.name && sinupInfo.value.password) {
-          formatAppLog("log", "at pages/login/index.vue:43", sinupInfo.value, "\u767B\u5F55\u53C2\u6570======");
+          formatAppLog("log", "at pages/login/index.vue:19", sinupInfo.value, "\u767B\u5F55\u53C2\u6570======");
           uni.redirectTo({
             url: "/pages/content/index"
           });
@@ -131,7 +131,7 @@ if (uni.restoreGlobal) {
       };
       const handleSigUp = () => {
         if (sinupInfo.value.name && sinupInfo.value.password && sinupInfo.value.phone_number && sinupInfo.value.email) {
-          formatAppLog("log", "at pages/register/index.vue:48", sinupInfo.value, "======");
+          formatAppLog("log", "at pages/register/index.vue:21", sinupInfo.value, "======");
           uni.redirectTo({
             url: "/pages/login/index"
           });
@@ -206,6 +206,13 @@ if (uni.restoreGlobal) {
     }
   };
   const PagesRegisterIndex = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-c5d9c666"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/register/index.vue"]]);
+  const headerMargin = wx.getSystemInfoSync().statusBarHeight;
+  wx.getSystemInfoSync().screenHeight;
+  const headerHeight = 90;
+  const conHeight = {
+    headerHeight,
+    headerMargin: headerMargin * 2
+  };
   //! moment.js
   //! version : 2.29.4
   //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -4119,11 +4126,11 @@ if (uni.restoreGlobal) {
       const props = __props;
       let timeDate = vue.ref(new hooks().format("YYYY-MM-DD"));
       let addName = vue.ref("\u6052\u5317\u57CE\uFF08\u57CE\u95E8\uFF09");
-      const headerHeight = props.comHeight.headerHeight + props.comHeight.headerMargin;
+      const headerHeight2 = props.comHeight.headerHeight + props.comHeight.headerMargin;
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", {
           class: "comHeaderD",
-          style: vue.normalizeStyle({ "--headerHeight": headerHeight + "rpx" })
+          style: vue.normalizeStyle({ "--headerHeight": headerHeight2 + "rpx" })
         }, [
           vue.createElementVNode("div", { class: "comHeaderDiv" }, [
             vue.createElementVNode("div", null, vue.toDisplayString(vue.unref(timeDate)), 1),
@@ -4201,46 +4208,33 @@ if (uni.restoreGlobal) {
     }
   };
   const ComMenu = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comMenu/index.vue"]]);
-  const headerMargin = wx.getSystemInfoSync().statusBarHeight;
-  wx.getSystemInfoSync().screenHeight;
   const _sfc_main$1 = {
     __name: "index",
     setup(__props) {
-      const headerHeight = 90;
-      const conHeight = {
-        headerHeight,
-        headerMargin: headerMargin * 2
-      };
       onShow(() => {
       });
       const pageArr = vue.ref({
         list: [{
-          "0": vue.markRaw(ComBattle)
+          "page_battle": vue.markRaw(ComBattle)
         }, {
-          "1": vue.markRaw(ComSceneList)
+          "page_sceneList": vue.markRaw(ComSceneList)
         }, {
-          "2": vue.markRaw(ComMenu)
+          "page_menu": vue.markRaw(ComMenu)
         }]
       });
-      formatAppLog("log", "at pages/content/index.vue:58", pageArr.value.list, "======");
+      formatAppLog("log", "at pages/content/index.vue:26", pageArr.value.list, "======");
       const handle = () => {
       };
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", { class: "content" }, [
           vue.createCommentVNode(" header "),
-          vue.createVNode(ComHeader, { comHeight: conHeight }),
+          vue.createVNode(ComHeader, { comHeight: vue.unref(conHeight) }, null, 8, ["comHeight"]),
           vue.createCommentVNode(" \u5185\u5BB9 "),
           vue.createElementVNode("div", {
             class: "contentDiv",
-            style: vue.normalizeStyle({ "--conHeight": headerHeight + vue.unref(headerMargin) + "px" })
+            style: vue.normalizeStyle({ "--conHeight": vue.unref(headerHeight) + vue.unref(headerMargin) + "px" })
           }, [
-            vue.createCommentVNode(" 0.0.1 - \u9ED8\u8BA4\u6218\u6597\u573A\u666F "),
-            vue.createCommentVNode(" <ComBattle /> "),
-            vue.createCommentVNode(" \u573A\u666F\u5217\u8868 "),
-            vue.createCommentVNode(" <ComSceneList /> "),
-            vue.createCommentVNode(" \u57CE\u9547 "),
-            vue.createCommentVNode(" <ComMenu /> "),
-            (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(pageArr.value.list[1]["1"]))),
+            (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(pageArr.value.list[1].page_battle))),
             vue.createElementVNode("button", { onClick: handle }, "\u5185\u5BB9--\u6D4B\u8BD5")
           ], 4)
         ]);

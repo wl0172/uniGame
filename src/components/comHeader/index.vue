@@ -1,14 +1,4 @@
 
-<!-- 头部时间 - 地点 -->
-<template>
-	<div class="comHeaderD" :style="{ '--headerHeight': headerHeight + 'rpx' }" >
-		<div class="comHeaderDiv" >
-			<div>{{ timeDate }}</div>
-			<div class="comHeaderDiv_addName">{{ addName }}</div>
-		</div>
-	</div>
-</template>
-
 <script setup>
 import { ref } from "vue"
 import monent from "moment"
@@ -26,14 +16,25 @@ const headerHeight = props.comHeight.headerHeight + props.comHeight.headerMargin
 
 </script>
 
+<!-- 头部时间 - 地点 -->
+<template>
+	<div class="comHeaderD" :style="{ '--headerHeight': headerHeight + 'rpx' }">
+		<div class="comHeaderDiv">
+			<div>{{ timeDate }}</div>
+			<div class="comHeaderDiv_addName">{{ addName }}</div>
+		</div>
+	</div>
+</template>
+
 <style scoped lang="less">
-.comHeaderD{
+.comHeaderD {
 	width: 100%;
 	height: var(--headerHeight);
 	background: #ffe1b7;
 	position: relative;
+
 	.comHeaderDiv {
-		width: calc( 100% - 60rpx );
+		width: calc(100% - 60rpx);
 		height: 100rpx;
 		line-height: 100rpx;
 		background: #ffe1b7;
@@ -44,9 +45,10 @@ const headerHeight = props.comHeight.headerHeight + props.comHeight.headerMargin
 		justify-content: space-between;
 		position: absolute;
 		bottom: 0;
+
 		.comHeaderDiv_addName {
 			color: red;
 		}
-	}	
+	}
 }
 </style>

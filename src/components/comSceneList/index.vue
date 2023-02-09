@@ -1,18 +1,3 @@
-<template>
-	<div 
-		class="conSceneListLi" 
-		v-for="(item, index) in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" 
-		:key="index" @click="handleToNewMap(item, index)"
-	>
-		<div class="conSceneListLi_title">
-			<div>{{ item }}</div>
-			<div class="conSceneListLi_title_state">服务中</div>
-		</div>
-		<div class="conSceneListLi_txt">服务内容：xxxxxx</div>
-		<div class="conSceneListLi_tiem">开图时间：xxxxxx</div>
-	</div>
-</template>
-
 <script setup>
 import { ref } from "vue"
 
@@ -26,6 +11,18 @@ const handleToNewMap = (item, index) => {
 
 </script>
 
+<template>
+	<div class="conSceneListLi" v-for="(item, index) in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" :key="index"
+		@click="handleToNewMap(item, index)">
+		<div class="conSceneListLi_title">
+			<div>{{ item }}</div>
+			<div class="conSceneListLi_title_state">服务中</div>
+		</div>
+		<div class="conSceneListLi_txt">服务内容：xxxxxx</div>
+		<div class="conSceneListLi_tiem">开图时间：xxxxxx</div>
+	</div>
+</template>
+
 <style scoped lang="less">
 .conSceneListLi {
 	padding: 30rpx;
@@ -35,6 +32,7 @@ const handleToNewMap = (item, index) => {
 	margin: 0 0 30rpx 0;
 	border-radius: 10rpx;
 	background: #edecee;
+
 	.conSceneListLi_title {
 		display: flex;
 		align-items: center;
