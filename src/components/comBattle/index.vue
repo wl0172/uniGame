@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue"
+import ComLine from "@/components/comLine/index.vue"
 
 // 进度条配置
 const progressConfig = {
@@ -51,10 +52,10 @@ setTimeout(()=>{
 					activeColor="red"
 					:backgroundColor="progressConfig.backgroundColor"
 					:active="progressConfig.active"
-					:percent="[battleInfo.monster.blood]"
+					:percent="battleInfo.monster.blood"
 				/>
 				<div class="comBattleDiv_battle_1_div_i">
-					<div>{{ battleInfo.monster.name }}</div>
+					<div class="comBattleDiv_battle_1_div_i_name">{{ battleInfo.monster.name }}</div>
 					<div class="comBattleDiv_battle_1_div_img">
 						<img src="" alt="">
 					</div>
@@ -71,10 +72,10 @@ setTimeout(()=>{
 					activeColor="red"
 					:backgroundColor="progressConfig.backgroundColor"
 					:active="progressConfig.active"
-					:percent="[battleInfo.player.blood]"
+					:percent="battleInfo.player.blood"
 				/>
 				<div class="comBattleDiv_battle_1_div_i" style="margin: 0 0 0 auto;">
-					<div>{{ battleInfo.player.name }}</div>
+					<div class="comBattleDiv_battle_1_div_i_name">{{ battleInfo.player.name }}</div>
 					<div class="comBattleDiv_battle_1_div_img">
 						<img src="" alt="">
 					</div>
@@ -84,22 +85,22 @@ setTimeout(()=>{
 		</div>
 		
 		<!-- 线 -->
-		<div class="aaaa"></div>
+		<ComLine />
 		
 		<!-- 血条 - 菜单 -->
-		<div class="">
+		<!-- <div class="">
 			<div>体力经验等等 - 菜单</div>
 			<div>321</div>
-		</div>
+		</div> -->
 
 		<!-- 战斗txt -->
-		<div class="">
+		<!-- <div class="">
 			<div>战斗txt</div>
 			<div>321</div>
-		</div>
+		</div> -->
 		
 		
-		<image style="width: 300rpx;height: 500rpx;" src="@/static/1.png" alt="" />
+		<image style="width: 500rpx;height: 700rpx;margin: 100rpx auto;" src="@/static/1.png" alt="" />
 
 
 	</div>
@@ -139,22 +140,18 @@ setTimeout(()=>{
 			}
 			.comBattleDiv_battle_1_div_i{
 				width: 90%;
+				.comBattleDiv_battle_1_div_i_name{
+					margin: 30rpx 0;
+				}
 				.comBattleDiv_battle_1_div_img{
 					width: 100rpx;
 					height: 100rpx;
 					background: red;
-					margin: 0 auto;
+					margin: 0 auto 30rpx auto;
 				}
 			}
 		}
 	}
 }
 
-
-
-.aaaa{
-	width: 100%;
-	height: 10rpx;
-	background: #f5f5f5f5;
-}
 </style>

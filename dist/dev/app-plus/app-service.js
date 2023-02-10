@@ -3959,7 +3959,7 @@ if (uni.restoreGlobal) {
     }
     return target;
   };
-  const _sfc_main$7 = {
+  const _sfc_main$8 = {
     __name: "index",
     props: {
       comHeight: {
@@ -3984,8 +3984,24 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
+  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
   const _imports_0 = "/static/1.png";
+  const _sfc_main$7 = {
+    __name: "index",
+    setup(__props) {
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+          vue.createCommentVNode(" \u7EBF "),
+          vue.createElementVNode("div", { class: "comLine" }, [
+            vue.createElementVNode("div", { class: "comLine_line" }),
+            vue.createElementVNode("div", { class: "comLine_txt" }, "Player"),
+            vue.createElementVNode("div", { class: "comLine_line" })
+          ])
+        ], 2112);
+      };
+    }
+  };
+  const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
   const _sfc_main$6 = {
     __name: "index",
     setup(__props) {
@@ -4029,10 +4045,10 @@ if (uni.restoreGlobal) {
                 activeColor: "red",
                 backgroundColor: progressConfig.backgroundColor,
                 active: progressConfig.active,
-                percent: [vue.unref(battleInfo).monster.blood]
+                percent: vue.unref(battleInfo).monster.blood
               }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
               vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i" }, [
-                vue.createElementVNode("div", null, vue.toDisplayString(vue.unref(battleInfo).monster.name), 1),
+                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i_name" }, vue.toDisplayString(vue.unref(battleInfo).monster.name), 1),
                 vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_img" }, [
                   vue.createElementVNode("img", {
                     src: "",
@@ -4051,13 +4067,13 @@ if (uni.restoreGlobal) {
                 activeColor: "red",
                 backgroundColor: progressConfig.backgroundColor,
                 active: progressConfig.active,
-                percent: [vue.unref(battleInfo).player.blood]
+                percent: vue.unref(battleInfo).player.blood
               }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
               vue.createElementVNode("div", {
                 class: "comBattleDiv_battle_1_div_i",
                 style: { "margin": "0 0 0 auto" }
               }, [
-                vue.createElementVNode("div", null, vue.toDisplayString(vue.unref(battleInfo).player.name), 1),
+                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i_name" }, vue.toDisplayString(vue.unref(battleInfo).player.name), 1),
                 vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_img" }, [
                   vue.createElementVNode("img", {
                     src: "",
@@ -4068,19 +4084,13 @@ if (uni.restoreGlobal) {
             ])
           ]),
           vue.createCommentVNode(" \u7EBF "),
-          vue.createElementVNode("div", { class: "aaaa" }),
+          vue.createVNode(ComLine),
           vue.createCommentVNode(" \u8840\u6761 - \u83DC\u5355 "),
-          vue.createElementVNode("div", { class: "" }, [
-            vue.createElementVNode("div", null, "\u4F53\u529B\u7ECF\u9A8C\u7B49\u7B49 - \u83DC\u5355"),
-            vue.createElementVNode("div", null, "321")
-          ]),
+          vue.createCommentVNode(' <div class="">\n			<div>\u4F53\u529B\u7ECF\u9A8C\u7B49\u7B49 - \u83DC\u5355</div>\n			<div>321</div>\n		</div> '),
           vue.createCommentVNode(" \u6218\u6597txt "),
-          vue.createElementVNode("div", { class: "" }, [
-            vue.createElementVNode("div", null, "\u6218\u6597txt"),
-            vue.createElementVNode("div", null, "321")
-          ]),
+          vue.createCommentVNode(' <div class="">\n			<div>\u6218\u6597txt</div>\n			<div>321</div>\n		</div> '),
           vue.createElementVNode("image", {
-            style: { "width": "300rpx", "height": "500rpx" },
+            style: { "width": "500rpx", "height": "700rpx", "margin": "100rpx auto" },
             src: _imports_0,
             alt: ""
           })
