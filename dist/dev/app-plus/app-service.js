@@ -3985,7 +3985,6 @@ if (uni.restoreGlobal) {
     }
   };
   const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
-  const _imports_0 = "/static/1.png";
   const _sfc_main$7 = {
     __name: "index",
     setup(__props) {
@@ -4002,6 +4001,13 @@ if (uni.restoreGlobal) {
     }
   };
   const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
+  const useInfo = vue.ref({
+    dataToken: ""
+  });
+  const pageSwitch = vue.ref({
+    index: "0",
+    key: "page_battle"
+  });
   const _sfc_main$6 = {
     __name: "index",
     setup(__props) {
@@ -4009,18 +4015,24 @@ if (uni.restoreGlobal) {
         border_radius: 50,
         stroke_width: 15,
         active: false,
-        backgroundColor: "#e6e6e6"
+        backgroundColor: "#e6e6e670"
       };
       let battleInfo = vue.ref({
         monster: {
           blood: 100,
-          name: "\u602A\u7269"
+          name: "\u602A\u7269",
+          img: "../../../static/1.png"
         },
         player: {
           blood: 100,
-          name: "\u73A9\u5BB6"
+          name: "\u73A9\u5BB6",
+          img: "../../../static/1.png"
         }
       });
+      const handleToMap = () => {
+        pageSwitch.value.index = 1;
+        pageSwitch.value.key = "page_sceneList";
+      };
       setTimeout(() => {
         let a = setInterval(() => {
           if (battleInfo.value.monster.blood == 10) {
@@ -4036,7 +4048,15 @@ if (uni.restoreGlobal) {
           vue.createCommentVNode(" \u602A\u7269 - \u82F1\u96C4 "),
           vue.createElementVNode("div", { class: "comBattleDiv_battle_1" }, [
             vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div" }, [
-              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood1" }, vue.toDisplayString(vue.unref(battleInfo).monster.blood), 1),
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i" }, [
+                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_img" }, [
+                  vue.createElementVNode("image", {
+                    src: "/static/1.png",
+                    alt: ""
+                  })
+                ])
+              ]),
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i_name" }, vue.toDisplayString(vue.unref(battleInfo).monster.name), 1),
               vue.createElementVNode("progress", {
                 style: { "margin": "0 0 auto 0" },
                 class: "comBattleDiv_battle_1_div_progress",
@@ -4047,18 +4067,24 @@ if (uni.restoreGlobal) {
                 active: progressConfig.active,
                 percent: vue.unref(battleInfo).monster.blood
               }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
-              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i" }, [
-                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i_name" }, vue.toDisplayString(vue.unref(battleInfo).monster.name), 1),
-                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_img" }, [
-                  vue.createElementVNode("img", {
-                    src: "",
-                    alt: ""
-                  })
-                ])
-              ])
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood1" }, vue.toDisplayString(vue.unref(battleInfo).monster.blood), 1)
             ]),
             vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div" }, [
-              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood2" }, vue.toDisplayString(vue.unref(battleInfo).player.blood), 1),
+              vue.createElementVNode("div", {
+                class: "comBattleDiv_battle_1_div_i",
+                style: { "margin": "0 0 0 auto" }
+              }, [
+                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_img" }, [
+                  vue.createElementVNode("image", {
+                    src: vue.unref(battleInfo).player.img,
+                    alt: ""
+                  }, null, 8, ["src"])
+                ])
+              ]),
+              vue.createElementVNode("div", {
+                class: "comBattleDiv_battle_1_div_i_name",
+                style: { "float": "right" }
+              }, vue.toDisplayString(vue.unref(battleInfo).monster.name), 1),
               vue.createElementVNode("progress", {
                 style: { "margin": "0 0 0 auto", "transform": "rotate(180deg)" },
                 class: "comBattleDiv_battle_1_div_progress",
@@ -4069,31 +4095,25 @@ if (uni.restoreGlobal) {
                 active: progressConfig.active,
                 percent: vue.unref(battleInfo).player.blood
               }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
-              vue.createElementVNode("div", {
-                class: "comBattleDiv_battle_1_div_i",
-                style: { "margin": "0 0 0 auto" }
-              }, [
-                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i_name" }, vue.toDisplayString(vue.unref(battleInfo).player.name), 1),
-                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_img" }, [
-                  vue.createElementVNode("img", {
-                    src: "",
-                    alt: ""
-                  })
-                ])
-              ])
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood2" }, vue.toDisplayString(vue.unref(battleInfo).player.blood), 1)
             ])
           ]),
           vue.createCommentVNode(" \u7EBF "),
           vue.createVNode(ComLine),
-          vue.createCommentVNode(" \u8840\u6761 - \u83DC\u5355 "),
-          vue.createCommentVNode(' <div class="">\n			<div>\u4F53\u529B\u7ECF\u9A8C\u7B49\u7B49 - \u83DC\u5355</div>\n			<div>321</div>\n		</div> '),
+          vue.createCommentVNode(" \u6218\u6597txt - \u7B49 "),
+          vue.createElementVNode("div", { class: "comBattleDiv_battle_2" }, [
+            (vue.openBlock(), vue.createElementBlock(vue.Fragment, null, vue.renderList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], (item, index) => {
+              return vue.createElementVNode("div", null, "12312321312");
+            }), 64))
+          ]),
+          vue.createCommentVNode(" \u7EBF "),
+          vue.createCommentVNode(" <ComLine /> "),
           vue.createCommentVNode(" \u6218\u6597txt "),
-          vue.createCommentVNode(' <div class="">\n			<div>\u6218\u6597txt</div>\n			<div>321</div>\n		</div> '),
-          vue.createElementVNode("image", {
-            style: { "width": "500rpx", "height": "700rpx", "margin": "100rpx auto" },
-            src: _imports_0,
-            alt: ""
-          })
+          vue.createElementVNode("div", { class: "comBattleDiv_battle_3" }, [
+            vue.createElementVNode("div", null, "\u63A2\u7D22"),
+            vue.createElementVNode("div", { onClick: handleToMap }, "\u5730\u56FE"),
+            vue.createElementVNode("div", null, "\u80CC\u5305")
+          ])
         ]);
       };
     }
@@ -4107,9 +4127,11 @@ if (uni.restoreGlobal) {
           icon: "none",
           title: item + "\u53BB\u65B0\u573A\u666F======"
         });
+        pageSwitch.value.index = 0;
+        pageSwitch.value.key = "page_battle";
       };
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, vue.renderList([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], (item, index) => {
+        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, vue.renderList([1, 2, 3], (item, index) => {
           return vue.createElementVNode("div", {
             class: "conSceneListLi",
             key: index,
@@ -4151,28 +4173,20 @@ if (uni.restoreGlobal) {
           "page_menu": vue.markRaw(ComMenu)
         }]
       });
-      let pageArrIndex = vue.ref({
-        index: 0
+      vue.watch(pageSwitch.value, (newValue, oldValue) => {
+        pageSwitch.value.index = newValue.index;
+        pageSwitch.key = newValue.key;
       });
-      let pageArrIndexKey = vue.ref({
-        key: "page_battle"
-      });
-      const handle = () => {
-        pageArrIndex.value.index = 1;
-        pageArrIndexKey.value.key = "page_sceneList";
-      };
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", { class: "content" }, [
-          vue.createCommentVNode(" header "),
+          vue.createCommentVNode(" \u5218\u6D77\u5C4Fheader - \u76EE\u524D\u5360\u4F4D "),
           vue.createVNode(ComHeader, { comHeight: vue.unref(conHeight) }, null, 8, ["comHeight"]),
-          vue.createCommentVNode(" <view>{{  }}</view> "),
           vue.createCommentVNode(" \u5185\u5BB9 "),
           vue.createElementVNode("div", {
             class: "contentDiv",
-            style: vue.normalizeStyle({ "--conHeight": vue.unref(headerHeight) + vue.unref(headerMargin) + "px" })
+            style: vue.normalizeStyle({ "--conHeight": vue.unref(headerMargin) + (vue.unref(headerHeight) / 2 + 3) + "px" })
           }, [
-            (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(pageArr.value.list[vue.unref(pageArrIndex).index][vue.unref(pageArrIndexKey).key]))),
-            vue.createElementVNode("button", { onClick: handle }, "\u5185\u5BB9--\u6D4B\u8BD5")
+            (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(pageArr.value.list[vue.unref(pageSwitch).index][vue.unref(pageSwitch).key])))
           ], 4)
         ]);
       };
@@ -4195,7 +4209,10 @@ if (uni.restoreGlobal) {
         if (sinupInfo.value.name && sinupInfo.value.password) {
           formatAppLog("log", "at pages/login/index.vue:19", sinupInfo.value, "\u767B\u5F55\u53C2\u6570======");
           uni.redirectTo({
-            url: "/pages/content/index"
+            url: "/pages/content/index",
+            success: function(res) {
+              uni.setStorageSync("token", "tokentokentokentokentokentoken");
+            }
           });
         } else {
           uni.showToast({
@@ -4338,15 +4355,24 @@ if (uni.restoreGlobal) {
   __definePage("pages/content/index", PagesContentIndex);
   __definePage("pages/login/index", PagesLoginIndex);
   __definePage("pages/register/index", PagesRegisterIndex);
+  const pageAddress = () => {
+    useInfo.value.dataToken = uni.getStorageSync("token");
+    if (!useInfo.value.dataToken) {
+      uni.redirectTo({
+        url: "/pages/login/index"
+      });
+    }
+  };
   const _sfc_main = {
     onLaunch: function() {
-      formatAppLog("log", "at App.vue:4", "App Launch");
+      formatAppLog("log", "at App.vue:5", "App Launch");
     },
     onShow: function() {
-      formatAppLog("log", "at App.vue:7", "App Show");
+      formatAppLog("log", "at App.vue:8", "App Show");
+      pageAddress();
     },
     onHide: function() {
-      formatAppLog("log", "at App.vue:10", "App Hide");
+      formatAppLog("log", "at App.vue:12", "App Hide");
     }
   };
   const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/App.vue"]]);

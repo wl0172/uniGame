@@ -1,12 +1,14 @@
 <script setup>
 import { onLoad, onShow } from "@dcloudio/uni-app"
-import { ref, reactive, markRaw } from 'vue'
+import { ref, reactive, markRaw, watch } from 'vue'
 import { headerHeight, conHeight, headerMargin } from '@/state/bangs.js'
 import ComHeader from "@/components/comHeader/index.vue"
 // 场景 - page
 import ComBattle from "@/components/comBattle/index.vue"
 import ComSceneList from "@/components/comSceneList/index.vue"
 import ComMenu from "@/components/comMenu/index.vue"
+
+import { pageSwitch } from '@/state/index.js'
 
 onShow(() => { })
 
@@ -23,14 +25,6 @@ const pageArr = ref({
 	}]
 })
 
-
-let pageArrIndex = ref({
-	index: 0
-})
-let pageArrIndexKey = ref({
-	key: 'page_battle'
-})
-
 // 测试
 const handle = () => {
 	// uni.showToast({
@@ -38,24 +32,30 @@ const handle = () => {
 	// 	title: '测试',
 	// 	duration: 5000	
 	// })
-	pageArrIndex.value.index = 1
-	pageArrIndexKey.value.key = 'page_sceneList'
-	
-
+	// pageSwitch.value.index = 1
+	// pageSwitch.value.key = 'page_sceneList'
 }
+
+
+watch(pageSwitch.value, (newValue, oldValue) => {
+	pageSwitch.value.index = newValue.index
+	pageSwitch.key = newValue.key
+})
+
+
+
+
 
 
 </script>
 
 <template>
 	<div class="content">
-		<!-- header -->
+		<!-- 刘海屏header - 目前占位 -->
 		<ComHeader :comHeight="conHeight" />
-		<!-- <view>{{  }}</view> -->
 		<!-- 内容 -->
-		<div class="contentDiv" :style="{ '--conHeight': (headerHeight + headerMargin) + 'px' }">
-			<component :is="pageArr.list[pageArrIndex.index][pageArrIndexKey.key]" />
-			<button @click="handle">内容--测试</button>
+		<div class="contentDiv" :style="{ '--conHeight': ((headerMargin + (headerHeight/2+3))) + 'px' }">
+			<component :is="pageArr.list[pageSwitch.index][pageSwitch.key]" />
 		</div>
 	</div>
 </template>
@@ -63,11 +63,18 @@ const handle = () => {
 <style scoped lang="less">
 .content {
 	width: 100%;
-	height: 100%;
+	height: 100vh;
+	// background-image: url('@/static/3.png');
+	
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	
 	.contentDiv {
 		height: calc(100vh - var(--conHeight));
 		overflow: auto;
-		padding: 30rpx;
+		// padding: 30rpx 0;
 	}
 }
 </style>

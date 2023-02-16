@@ -18,6 +18,7 @@ import { ref } from "vue"
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	margin: 30rpx 0;
 	.comLine_line{
 		width: 45%;
 		height: 1rpx;

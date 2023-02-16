@@ -59,6 +59,8 @@
     "@dcloudio/uni-cli-shared": "3.0.0-3061820230117001",
     "@dcloudio/uni-stacktracey": "3.0.0-3061820230117001",
     "@dcloudio/vite-plugin-uni": "3.0.0-3061820230117001",
-    "vite": "3.2.4"
+    "style-resources-loader": "^1.5.0",
+    "vite": "3.2.4",
+    "vue-cli-plugin-style-resources-loader": "^0.1.5"
   }
 }

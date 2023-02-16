@@ -21,7 +21,10 @@ const handleLogin = () => {
 		// 	console.log(res)
 		// })
 		uni.redirectTo({
-			url: "/pages/content/index"
+			url: "/pages/content/index",
+			success:function(res){
+				uni.setStorageSync('token', 'tokentokentokentokentokentoken');
+			}
 		})
 	} else {
 		uni.showToast({

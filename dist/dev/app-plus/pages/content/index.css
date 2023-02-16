@@ -1,14 +1,297 @@
+/**
+  旋转
+  div{
+    font-size: 1.5rem;
+    width:1.5rem;
+    height: 1.5rem;
+    animation: load 1.7s infinite ease, round 1.7s infinite ease;
+  }
+*/
+@keyframes load-87c09459 {
+0% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+}
+20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+}
+38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+}
+100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+}
+@keyframes round-87c09459 {
+0% {
+    transform: rotate(0deg);
+    /* 开始旋转 div 元素 */
+}
+100% {
+    transform: rotate(360deg);
+    /* 结束旋转 div 元素 */
+}
+}
+/**
+  抖动
+  div{
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+  }
+*/
+@keyframes shake-87c09459 {
+10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+}
+20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+}
+30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+}
+40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+}
+}
+/**
+  左右抖动
+  div{
+    animation: wiggle 2s linear infinite;
+  }
+*/
+@keyframes wiggle-87c09459 {
+0%,
+  7% {
+    transform: rotateZ(0);
+}
+15% {
+    transform: rotateZ(-15deg);
+}
+20% {
+    transform: rotateZ(10deg);
+}
+25% {
+    transform: rotateZ(-10deg);
+}
+30% {
+    transform: rotateZ(6deg);
+}
+35% {
+    transform: rotateZ(-4deg);
+}
+40%,
+  100% {
+    transform: rotateZ(0);
+}
+}
+/**
+  文字抖动
+  div{
+    animation: shake-joggle 10s infinite ease-in-out;
+  }
+*/
+@keyframes shake-joggle-87c09459 {
+2% {
+    transform: translate(6px, -2px) rotate(3.5deg);
+}
+4% {
+    transform: translate(5px, 8px) rotate(-0.5deg);
+}
+6% {
+    transform: translate(6px, -3px) rotate(-2.5deg);
+}
+8% {
+    transform: translate(4px, -2px) rotate(1.5deg);
+}
+10% {
+    transform: translate(-6px, 8px) rotate(-1.5deg);
+}
+12% {
+    transform: translate(-5px, 5px) rotate(1.5deg);
+}
+14% {
+    transform: translate(4px, 10px) rotate(3.5deg);
+}
+16% {
+    transform: translate(0px, 4px) rotate(1.5deg);
+}
+18% {
+    transform: translate(-1px, -6px) rotate(-0.5deg);
+}
+20% {
+    transform: translate(6px, -9px) rotate(2.5deg);
+}
+22% {
+    transform: translate(1px, -5px) rotate(-1.5deg);
+}
+24% {
+    transform: translate(-9px, 6px) rotate(-0.5deg);
+}
+26% {
+    transform: translate(8px, -2px) rotate(-1.5deg);
+}
+28% {
+    transform: translate(2px, -3px) rotate(-2.5deg);
+}
+30% {
+    transform: translate(9px, -7px) rotate(-0.5deg);
+}
+32% {
+    transform: translate(8px, -6px) rotate(-2.5deg);
+}
+34% {
+    transform: translate(-5px, 1px) rotate(3.5deg);
+}
+36% {
+    transform: translate(0px, -5px) rotate(2.5deg);
+}
+38% {
+    transform: translate(2px, 7px) rotate(-1.5deg);
+}
+40% {
+    transform: translate(6px, 3px) rotate(-1.5deg);
+}
+42% {
+    transform: translate(1px, -5px) rotate(-1.5deg);
+}
+44% {
+    transform: translate(10px, -4px) rotate(-0.5deg);
+}
+46% {
+    transform: translate(-2px, 2px) rotate(3.5deg);
+}
+48% {
+    transform: translate(3px, 4px) rotate(-0.5deg);
+}
+50% {
+    transform: translate(8px, 1px) rotate(-1.5deg);
+}
+52% {
+    transform: translate(7px, 4px) rotate(-1.5deg);
+}
+54% {
+    transform: translate(10px, 8px) rotate(-1.5deg);
+}
+56% {
+    transform: translate(-3px, 0px) rotate(-0.5deg);
+}
+58% {
+    transform: translate(0px, -1px) rotate(1.5deg);
+}
+60% {
+    transform: translate(6px, 9px) rotate(-1.5deg);
+}
+62% {
+    transform: translate(-9px, 8px) rotate(0.5deg);
+}
+64% {
+    transform: translate(-6px, 10px) rotate(0.5deg);
+}
+66% {
+    transform: translate(7px, 0px) rotate(0.5deg);
+}
+68% {
+    transform: translate(3px, 8px) rotate(-0.5deg);
+}
+70% {
+    transform: translate(-2px, -9px) rotate(1.5deg);
+}
+72% {
+    transform: translate(-6px, 2px) rotate(1.5deg);
+}
+74% {
+    transform: translate(-2px, 10px) rotate(-1.5deg);
+}
+76% {
+    transform: translate(2px, 8px) rotate(2.5deg);
+}
+78% {
+    transform: translate(6px, -2px) rotate(-0.5deg);
+}
+80% {
+    transform: translate(6px, 8px) rotate(0.5deg);
+}
+82% {
+    transform: translate(10px, 9px) rotate(3.5deg);
+}
+84% {
+    transform: translate(-3px, -1px) rotate(3.5deg);
+}
+86% {
+    transform: translate(1px, 8px) rotate(-2.5deg);
+}
+88% {
+    transform: translate(-5px, -9px) rotate(2.5deg);
+}
+90% {
+    transform: translate(2px, 8px) rotate(0.5deg);
+}
+92% {
+    transform: translate(0px, -1px) rotate(1.5deg);
+}
+94% {
+    transform: translate(-8px, -1px) rotate(0.5deg);
+}
+96% {
+    transform: translate(-3px, 8px) rotate(-1.5deg);
+}
+98% {
+    transform: translate(4px, 8px) rotate(0.5deg);
+}
+0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+}
+}
+/**
+ * 放大缩小后
+ * <div class="animated pulse">Example</div>
+ * .pulse {
+			-webkit-animation-name: pulse;
+			animation-name: pulse;
+		}
+
+		.animated {
+			-webkit-animation-duration: 1s;
+			animation-duration: 1s;
+			-webkit-animation-fill-mode: both;
+			animation-fill-mode: both;
+		}
+ * */
+@keyframes pulse-87c09459 {
+from {
+    transform: scale3d(1, 1, 1);
+}
+50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+}
+to {
+    transform: scale3d(1, 1, 1);
+}
+}
 .comHeaderD[data-v-87c09459] {
   width: 100%;
   height: var(--headerHeight);
   background: #ffe1b7;
   position: relative;
+  opacity: 0;
+  z-index: -1;
 }
 .comHeaderD .comHeaderDiv[data-v-87c09459] {
   width: calc(100% - 1.875rem);
   height: 3.125rem;
   line-height: 3.125rem;
-  background: #ffe1b7;
   padding: 0 0.9375rem;
   font-size: 0.875rem;
   display: flex;
@@ -21,12 +304,295 @@
   color: red;
 }
 
+/**
+  旋转
+  div{
+    font-size: 1.5rem;
+    width:1.5rem;
+    height: 1.5rem;
+    animation: load 1.7s infinite ease, round 1.7s infinite ease;
+  }
+*/
+@keyframes load-7b7834fe {
+0% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+}
+20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+}
+38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+}
+100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+}
+@keyframes round-7b7834fe {
+0% {
+    transform: rotate(0deg);
+    /* 开始旋转 div 元素 */
+}
+100% {
+    transform: rotate(360deg);
+    /* 结束旋转 div 元素 */
+}
+}
+/**
+  抖动
+  div{
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+  }
+*/
+@keyframes shake-7b7834fe {
+10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+}
+20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+}
+30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+}
+40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+}
+}
+/**
+  左右抖动
+  div{
+    animation: wiggle 2s linear infinite;
+  }
+*/
+@keyframes wiggle-7b7834fe {
+0%,
+  7% {
+    transform: rotateZ(0);
+}
+15% {
+    transform: rotateZ(-15deg);
+}
+20% {
+    transform: rotateZ(10deg);
+}
+25% {
+    transform: rotateZ(-10deg);
+}
+30% {
+    transform: rotateZ(6deg);
+}
+35% {
+    transform: rotateZ(-4deg);
+}
+40%,
+  100% {
+    transform: rotateZ(0);
+}
+}
+/**
+  文字抖动
+  div{
+    animation: shake-joggle 10s infinite ease-in-out;
+  }
+*/
+@keyframes shake-joggle-7b7834fe {
+2% {
+    transform: translate(6px, -2px) rotate(3.5deg);
+}
+4% {
+    transform: translate(5px, 8px) rotate(-0.5deg);
+}
+6% {
+    transform: translate(6px, -3px) rotate(-2.5deg);
+}
+8% {
+    transform: translate(4px, -2px) rotate(1.5deg);
+}
+10% {
+    transform: translate(-6px, 8px) rotate(-1.5deg);
+}
+12% {
+    transform: translate(-5px, 5px) rotate(1.5deg);
+}
+14% {
+    transform: translate(4px, 10px) rotate(3.5deg);
+}
+16% {
+    transform: translate(0px, 4px) rotate(1.5deg);
+}
+18% {
+    transform: translate(-1px, -6px) rotate(-0.5deg);
+}
+20% {
+    transform: translate(6px, -9px) rotate(2.5deg);
+}
+22% {
+    transform: translate(1px, -5px) rotate(-1.5deg);
+}
+24% {
+    transform: translate(-9px, 6px) rotate(-0.5deg);
+}
+26% {
+    transform: translate(8px, -2px) rotate(-1.5deg);
+}
+28% {
+    transform: translate(2px, -3px) rotate(-2.5deg);
+}
+30% {
+    transform: translate(9px, -7px) rotate(-0.5deg);
+}
+32% {
+    transform: translate(8px, -6px) rotate(-2.5deg);
+}
+34% {
+    transform: translate(-5px, 1px) rotate(3.5deg);
+}
+36% {
+    transform: translate(0px, -5px) rotate(2.5deg);
+}
+38% {
+    transform: translate(2px, 7px) rotate(-1.5deg);
+}
+40% {
+    transform: translate(6px, 3px) rotate(-1.5deg);
+}
+42% {
+    transform: translate(1px, -5px) rotate(-1.5deg);
+}
+44% {
+    transform: translate(10px, -4px) rotate(-0.5deg);
+}
+46% {
+    transform: translate(-2px, 2px) rotate(3.5deg);
+}
+48% {
+    transform: translate(3px, 4px) rotate(-0.5deg);
+}
+50% {
+    transform: translate(8px, 1px) rotate(-1.5deg);
+}
+52% {
+    transform: translate(7px, 4px) rotate(-1.5deg);
+}
+54% {
+    transform: translate(10px, 8px) rotate(-1.5deg);
+}
+56% {
+    transform: translate(-3px, 0px) rotate(-0.5deg);
+}
+58% {
+    transform: translate(0px, -1px) rotate(1.5deg);
+}
+60% {
+    transform: translate(6px, 9px) rotate(-1.5deg);
+}
+62% {
+    transform: translate(-9px, 8px) rotate(0.5deg);
+}
+64% {
+    transform: translate(-6px, 10px) rotate(0.5deg);
+}
+66% {
+    transform: translate(7px, 0px) rotate(0.5deg);
+}
+68% {
+    transform: translate(3px, 8px) rotate(-0.5deg);
+}
+70% {
+    transform: translate(-2px, -9px) rotate(1.5deg);
+}
+72% {
+    transform: translate(-6px, 2px) rotate(1.5deg);
+}
+74% {
+    transform: translate(-2px, 10px) rotate(-1.5deg);
+}
+76% {
+    transform: translate(2px, 8px) rotate(2.5deg);
+}
+78% {
+    transform: translate(6px, -2px) rotate(-0.5deg);
+}
+80% {
+    transform: translate(6px, 8px) rotate(0.5deg);
+}
+82% {
+    transform: translate(10px, 9px) rotate(3.5deg);
+}
+84% {
+    transform: translate(-3px, -1px) rotate(3.5deg);
+}
+86% {
+    transform: translate(1px, 8px) rotate(-2.5deg);
+}
+88% {
+    transform: translate(-5px, -9px) rotate(2.5deg);
+}
+90% {
+    transform: translate(2px, 8px) rotate(0.5deg);
+}
+92% {
+    transform: translate(0px, -1px) rotate(1.5deg);
+}
+94% {
+    transform: translate(-8px, -1px) rotate(0.5deg);
+}
+96% {
+    transform: translate(-3px, 8px) rotate(-1.5deg);
+}
+98% {
+    transform: translate(4px, 8px) rotate(0.5deg);
+}
+0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+}
+}
+/**
+ * 放大缩小后
+ * <div class="animated pulse">Example</div>
+ * .pulse {
+			-webkit-animation-name: pulse;
+			animation-name: pulse;
+		}
+
+		.animated {
+			-webkit-animation-duration: 1s;
+			animation-duration: 1s;
+			-webkit-animation-fill-mode: both;
+			animation-fill-mode: both;
+		}
+ * */
+@keyframes pulse-7b7834fe {
+from {
+    transform: scale3d(1, 1, 1);
+}
+50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+}
+to {
+    transform: scale3d(1, 1, 1);
+}
+}
 .comLine[data-v-7b7834fe] {
   width: 100%;
   height: 0.3125rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0.9375rem 0;
 }
 .comLine .comLine_line[data-v-7b7834fe] {
   width: 45%;
@@ -38,32 +604,326 @@
   font-size: 0.75rem;
 }
 
+/**
+  旋转
+  div{
+    font-size: 1.5rem;
+    width:1.5rem;
+    height: 1.5rem;
+    animation: load 1.7s infinite ease, round 1.7s infinite ease;
+  }
+*/
+@keyframes load-781aabaf {
+0% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+}
+20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+}
+38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+}
+100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+}
+@keyframes round-781aabaf {
+0% {
+    transform: rotate(0deg);
+    /* 开始旋转 div 元素 */
+}
+100% {
+    transform: rotate(360deg);
+    /* 结束旋转 div 元素 */
+}
+}
+/**
+  抖动
+  div{
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+  }
+*/
+@keyframes shake-781aabaf {
+10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+}
+20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+}
+30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+}
+40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+}
+}
+/**
+  左右抖动
+  div{
+    animation: wiggle 2s linear infinite;
+  }
+*/
+@keyframes wiggle-781aabaf {
+0%,
+  7% {
+    transform: rotateZ(0);
+}
+15% {
+    transform: rotateZ(-15deg);
+}
+20% {
+    transform: rotateZ(10deg);
+}
+25% {
+    transform: rotateZ(-10deg);
+}
+30% {
+    transform: rotateZ(6deg);
+}
+35% {
+    transform: rotateZ(-4deg);
+}
+40%,
+  100% {
+    transform: rotateZ(0);
+}
+}
+/**
+  文字抖动
+  div{
+    animation: shake-joggle 10s infinite ease-in-out;
+  }
+*/
+@keyframes shake-joggle-781aabaf {
+2% {
+    transform: translate(6px, -2px) rotate(3.5deg);
+}
+4% {
+    transform: translate(5px, 8px) rotate(-0.5deg);
+}
+6% {
+    transform: translate(6px, -3px) rotate(-2.5deg);
+}
+8% {
+    transform: translate(4px, -2px) rotate(1.5deg);
+}
+10% {
+    transform: translate(-6px, 8px) rotate(-1.5deg);
+}
+12% {
+    transform: translate(-5px, 5px) rotate(1.5deg);
+}
+14% {
+    transform: translate(4px, 10px) rotate(3.5deg);
+}
+16% {
+    transform: translate(0px, 4px) rotate(1.5deg);
+}
+18% {
+    transform: translate(-1px, -6px) rotate(-0.5deg);
+}
+20% {
+    transform: translate(6px, -9px) rotate(2.5deg);
+}
+22% {
+    transform: translate(1px, -5px) rotate(-1.5deg);
+}
+24% {
+    transform: translate(-9px, 6px) rotate(-0.5deg);
+}
+26% {
+    transform: translate(8px, -2px) rotate(-1.5deg);
+}
+28% {
+    transform: translate(2px, -3px) rotate(-2.5deg);
+}
+30% {
+    transform: translate(9px, -7px) rotate(-0.5deg);
+}
+32% {
+    transform: translate(8px, -6px) rotate(-2.5deg);
+}
+34% {
+    transform: translate(-5px, 1px) rotate(3.5deg);
+}
+36% {
+    transform: translate(0px, -5px) rotate(2.5deg);
+}
+38% {
+    transform: translate(2px, 7px) rotate(-1.5deg);
+}
+40% {
+    transform: translate(6px, 3px) rotate(-1.5deg);
+}
+42% {
+    transform: translate(1px, -5px) rotate(-1.5deg);
+}
+44% {
+    transform: translate(10px, -4px) rotate(-0.5deg);
+}
+46% {
+    transform: translate(-2px, 2px) rotate(3.5deg);
+}
+48% {
+    transform: translate(3px, 4px) rotate(-0.5deg);
+}
+50% {
+    transform: translate(8px, 1px) rotate(-1.5deg);
+}
+52% {
+    transform: translate(7px, 4px) rotate(-1.5deg);
+}
+54% {
+    transform: translate(10px, 8px) rotate(-1.5deg);
+}
+56% {
+    transform: translate(-3px, 0px) rotate(-0.5deg);
+}
+58% {
+    transform: translate(0px, -1px) rotate(1.5deg);
+}
+60% {
+    transform: translate(6px, 9px) rotate(-1.5deg);
+}
+62% {
+    transform: translate(-9px, 8px) rotate(0.5deg);
+}
+64% {
+    transform: translate(-6px, 10px) rotate(0.5deg);
+}
+66% {
+    transform: translate(7px, 0px) rotate(0.5deg);
+}
+68% {
+    transform: translate(3px, 8px) rotate(-0.5deg);
+}
+70% {
+    transform: translate(-2px, -9px) rotate(1.5deg);
+}
+72% {
+    transform: translate(-6px, 2px) rotate(1.5deg);
+}
+74% {
+    transform: translate(-2px, 10px) rotate(-1.5deg);
+}
+76% {
+    transform: translate(2px, 8px) rotate(2.5deg);
+}
+78% {
+    transform: translate(6px, -2px) rotate(-0.5deg);
+}
+80% {
+    transform: translate(6px, 8px) rotate(0.5deg);
+}
+82% {
+    transform: translate(10px, 9px) rotate(3.5deg);
+}
+84% {
+    transform: translate(-3px, -1px) rotate(3.5deg);
+}
+86% {
+    transform: translate(1px, 8px) rotate(-2.5deg);
+}
+88% {
+    transform: translate(-5px, -9px) rotate(2.5deg);
+}
+90% {
+    transform: translate(2px, 8px) rotate(0.5deg);
+}
+92% {
+    transform: translate(0px, -1px) rotate(1.5deg);
+}
+94% {
+    transform: translate(-8px, -1px) rotate(0.5deg);
+}
+96% {
+    transform: translate(-3px, 8px) rotate(-1.5deg);
+}
+98% {
+    transform: translate(4px, 8px) rotate(0.5deg);
+}
+0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+}
+}
+/**
+ * 放大缩小后
+ * <div class="animated pulse">Example</div>
+ * .pulse {
+			-webkit-animation-name: pulse;
+			animation-name: pulse;
+		}
+
+		.animated {
+			-webkit-animation-duration: 1s;
+			animation-duration: 1s;
+			-webkit-animation-fill-mode: both;
+			animation-fill-mode: both;
+		}
+ * */
+@keyframes pulse-781aabaf {
+from {
+    transform: scale3d(1, 1, 1);
+}
+50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+}
+to {
+    transform: scale3d(1, 1, 1);
+}
+}
+.comBattleDiv[data-v-781aabaf] {
+  height: -webkit-fill-available;
+  position: relative;
+  padding: 3.75rem 0 0 0;
+}
 .comBattleDiv .comBattleDiv_battle_1[data-v-781aabaf] {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.comBattleDiv .comBattleDiv_battle_1 .comBattleDiv_battle_1_div[data-v-781aabaf] {
-  flex: 1;
-  text-align: center;
-  position: relative;
-}
-.comBattleDiv .comBattleDiv_battle_1 .comBattleDiv_battle_1_div .comBattleDiv_battle_1_div_blood1[data-v-781aabaf] {
+.comBattleDiv .comBattleDiv_battle_1 .comBattleDiv_battle_1_div_blood1[data-v-781aabaf] {
   width: 90%;
   position: absolute;
   left: 0;
   z-index: 999;
   font-size: 12px;
   color: #ffffff;
+  bottom: 0;
 }
-.comBattleDiv .comBattleDiv_battle_1 .comBattleDiv_battle_1_div .comBattleDiv_battle_1_div_blood2[data-v-781aabaf] {
+.comBattleDiv .comBattleDiv_battle_1 .comBattleDiv_battle_1_div_blood2[data-v-781aabaf] {
   width: 90%;
   position: absolute;
   right: 0;
   z-index: 999;
   font-size: 12px;
   color: #ffffff;
+  bottom: 0;
+}
+.comBattleDiv .comBattleDiv_battle_1 .comBattleDiv_battle_1_div[data-v-781aabaf] {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+.comBattleDiv .comBattleDiv_battle_1 .comBattleDiv_battle_1_div .comBattleDiv_battle_1_div_i_name[data-v-781aabaf] {
+  width: 90%;
+  font-size: 0.75rem;
+  margin: 0 0 0.625rem 0;
 }
 .comBattleDiv .comBattleDiv_battle_1 .comBattleDiv_battle_1_div .comBattleDiv_battle_1_div_progress[data-v-781aabaf] {
   width: 90%;
@@ -73,16 +933,327 @@
 .comBattleDiv .comBattleDiv_battle_1 .comBattleDiv_battle_1_div .comBattleDiv_battle_1_div_i[data-v-781aabaf] {
   width: 90%;
 }
-.comBattleDiv .comBattleDiv_battle_1 .comBattleDiv_battle_1_div .comBattleDiv_battle_1_div_i .comBattleDiv_battle_1_div_i_name[data-v-781aabaf] {
-  margin: 0.9375rem 0;
-}
 .comBattleDiv .comBattleDiv_battle_1 .comBattleDiv_battle_1_div .comBattleDiv_battle_1_div_i .comBattleDiv_battle_1_div_img[data-v-781aabaf] {
-  width: 3.125rem;
-  height: 3.125rem;
+  width: 6.25rem;
+  height: 6.25rem;
+  margin: 0 auto 2.8125rem auto;
+  overflow: hidden;
+  background: #ff00004f;
+}
+.comBattleDiv .comBattleDiv_battle_1 .comBattleDiv_battle_1_div .comBattleDiv_battle_1_div_i .comBattleDiv_battle_1_div_img uni-image[data-v-781aabaf] {
+  width: 100%;
+  height: 100%;
+}
+.comBattleDiv .comBattleDiv_battle_2[data-v-781aabaf] {
+  background: #ff000036;
+  width: auto;
+  height: calc(100% - 19.6875rem);
+  overflow: auto;
+  padding: 0.9375rem;
+  font-size: 0.75rem;
+}
+.comBattleDiv .comBattleDiv_battle_3[data-v-781aabaf] {
+  width: 100%;
+  height: 3.75rem;
+  background: #ff000036;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.comBattleDiv .comBattleDiv_battle_3 div[data-v-781aabaf] {
+  width: 17%;
+  height: 2.3125rem;
   background: red;
-  margin: 0 auto 0.9375rem auto;
+  line-height: 2.3125rem;
+  text-align: center;
+  border-radius: 0.3125rem;
+  color: #ffffff;
 }
 
+/**
+  旋转
+  div{
+    font-size: 1.5rem;
+    width:1.5rem;
+    height: 1.5rem;
+    animation: load 1.7s infinite ease, round 1.7s infinite ease;
+  }
+*/
+@keyframes load-62f6a8ab {
+0% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+}
+20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+}
+38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+}
+100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+}
+@keyframes round-62f6a8ab {
+0% {
+    transform: rotate(0deg);
+    /* 开始旋转 div 元素 */
+}
+100% {
+    transform: rotate(360deg);
+    /* 结束旋转 div 元素 */
+}
+}
+/**
+  抖动
+  div{
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+  }
+*/
+@keyframes shake-62f6a8ab {
+10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+}
+20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+}
+30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+}
+40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+}
+}
+/**
+  左右抖动
+  div{
+    animation: wiggle 2s linear infinite;
+  }
+*/
+@keyframes wiggle-62f6a8ab {
+0%,
+  7% {
+    transform: rotateZ(0);
+}
+15% {
+    transform: rotateZ(-15deg);
+}
+20% {
+    transform: rotateZ(10deg);
+}
+25% {
+    transform: rotateZ(-10deg);
+}
+30% {
+    transform: rotateZ(6deg);
+}
+35% {
+    transform: rotateZ(-4deg);
+}
+40%,
+  100% {
+    transform: rotateZ(0);
+}
+}
+/**
+  文字抖动
+  div{
+    animation: shake-joggle 10s infinite ease-in-out;
+  }
+*/
+@keyframes shake-joggle-62f6a8ab {
+2% {
+    transform: translate(6px, -2px) rotate(3.5deg);
+}
+4% {
+    transform: translate(5px, 8px) rotate(-0.5deg);
+}
+6% {
+    transform: translate(6px, -3px) rotate(-2.5deg);
+}
+8% {
+    transform: translate(4px, -2px) rotate(1.5deg);
+}
+10% {
+    transform: translate(-6px, 8px) rotate(-1.5deg);
+}
+12% {
+    transform: translate(-5px, 5px) rotate(1.5deg);
+}
+14% {
+    transform: translate(4px, 10px) rotate(3.5deg);
+}
+16% {
+    transform: translate(0px, 4px) rotate(1.5deg);
+}
+18% {
+    transform: translate(-1px, -6px) rotate(-0.5deg);
+}
+20% {
+    transform: translate(6px, -9px) rotate(2.5deg);
+}
+22% {
+    transform: translate(1px, -5px) rotate(-1.5deg);
+}
+24% {
+    transform: translate(-9px, 6px) rotate(-0.5deg);
+}
+26% {
+    transform: translate(8px, -2px) rotate(-1.5deg);
+}
+28% {
+    transform: translate(2px, -3px) rotate(-2.5deg);
+}
+30% {
+    transform: translate(9px, -7px) rotate(-0.5deg);
+}
+32% {
+    transform: translate(8px, -6px) rotate(-2.5deg);
+}
+34% {
+    transform: translate(-5px, 1px) rotate(3.5deg);
+}
+36% {
+    transform: translate(0px, -5px) rotate(2.5deg);
+}
+38% {
+    transform: translate(2px, 7px) rotate(-1.5deg);
+}
+40% {
+    transform: translate(6px, 3px) rotate(-1.5deg);
+}
+42% {
+    transform: translate(1px, -5px) rotate(-1.5deg);
+}
+44% {
+    transform: translate(10px, -4px) rotate(-0.5deg);
+}
+46% {
+    transform: translate(-2px, 2px) rotate(3.5deg);
+}
+48% {
+    transform: translate(3px, 4px) rotate(-0.5deg);
+}
+50% {
+    transform: translate(8px, 1px) rotate(-1.5deg);
+}
+52% {
+    transform: translate(7px, 4px) rotate(-1.5deg);
+}
+54% {
+    transform: translate(10px, 8px) rotate(-1.5deg);
+}
+56% {
+    transform: translate(-3px, 0px) rotate(-0.5deg);
+}
+58% {
+    transform: translate(0px, -1px) rotate(1.5deg);
+}
+60% {
+    transform: translate(6px, 9px) rotate(-1.5deg);
+}
+62% {
+    transform: translate(-9px, 8px) rotate(0.5deg);
+}
+64% {
+    transform: translate(-6px, 10px) rotate(0.5deg);
+}
+66% {
+    transform: translate(7px, 0px) rotate(0.5deg);
+}
+68% {
+    transform: translate(3px, 8px) rotate(-0.5deg);
+}
+70% {
+    transform: translate(-2px, -9px) rotate(1.5deg);
+}
+72% {
+    transform: translate(-6px, 2px) rotate(1.5deg);
+}
+74% {
+    transform: translate(-2px, 10px) rotate(-1.5deg);
+}
+76% {
+    transform: translate(2px, 8px) rotate(2.5deg);
+}
+78% {
+    transform: translate(6px, -2px) rotate(-0.5deg);
+}
+80% {
+    transform: translate(6px, 8px) rotate(0.5deg);
+}
+82% {
+    transform: translate(10px, 9px) rotate(3.5deg);
+}
+84% {
+    transform: translate(-3px, -1px) rotate(3.5deg);
+}
+86% {
+    transform: translate(1px, 8px) rotate(-2.5deg);
+}
+88% {
+    transform: translate(-5px, -9px) rotate(2.5deg);
+}
+90% {
+    transform: translate(2px, 8px) rotate(0.5deg);
+}
+92% {
+    transform: translate(0px, -1px) rotate(1.5deg);
+}
+94% {
+    transform: translate(-8px, -1px) rotate(0.5deg);
+}
+96% {
+    transform: translate(-3px, 8px) rotate(-1.5deg);
+}
+98% {
+    transform: translate(4px, 8px) rotate(0.5deg);
+}
+0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+}
+}
+/**
+ * 放大缩小后
+ * <div class="animated pulse">Example</div>
+ * .pulse {
+			-webkit-animation-name: pulse;
+			animation-name: pulse;
+		}
+
+		.animated {
+			-webkit-animation-duration: 1s;
+			animation-duration: 1s;
+			-webkit-animation-fill-mode: both;
+			animation-fill-mode: both;
+		}
+ * */
+@keyframes pulse-62f6a8ab {
+from {
+    transform: scale3d(1, 1, 1);
+}
+50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+}
+to {
+    transform: scale3d(1, 1, 1);
+}
+}
 .conSceneListLi[data-v-62f6a8ab] {
   padding: 0.9375rem;
   background: #ffffff;
@@ -104,12 +1275,297 @@
   color: #4bbda3;
 }
 
+/**
+  旋转
+  div{
+    font-size: 1.5rem;
+    width:1.5rem;
+    height: 1.5rem;
+    animation: load 1.7s infinite ease, round 1.7s infinite ease;
+  }
+*/
+@keyframes load-148c4b58 {
+0% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+}
+20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+}
+38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+}
+100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+}
+@keyframes round-148c4b58 {
+0% {
+    transform: rotate(0deg);
+    /* 开始旋转 div 元素 */
+}
+100% {
+    transform: rotate(360deg);
+    /* 结束旋转 div 元素 */
+}
+}
+/**
+  抖动
+  div{
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+  }
+*/
+@keyframes shake-148c4b58 {
+10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+}
+20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+}
+30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+}
+40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+}
+}
+/**
+  左右抖动
+  div{
+    animation: wiggle 2s linear infinite;
+  }
+*/
+@keyframes wiggle-148c4b58 {
+0%,
+  7% {
+    transform: rotateZ(0);
+}
+15% {
+    transform: rotateZ(-15deg);
+}
+20% {
+    transform: rotateZ(10deg);
+}
+25% {
+    transform: rotateZ(-10deg);
+}
+30% {
+    transform: rotateZ(6deg);
+}
+35% {
+    transform: rotateZ(-4deg);
+}
+40%,
+  100% {
+    transform: rotateZ(0);
+}
+}
+/**
+  文字抖动
+  div{
+    animation: shake-joggle 10s infinite ease-in-out;
+  }
+*/
+@keyframes shake-joggle-148c4b58 {
+2% {
+    transform: translate(6px, -2px) rotate(3.5deg);
+}
+4% {
+    transform: translate(5px, 8px) rotate(-0.5deg);
+}
+6% {
+    transform: translate(6px, -3px) rotate(-2.5deg);
+}
+8% {
+    transform: translate(4px, -2px) rotate(1.5deg);
+}
+10% {
+    transform: translate(-6px, 8px) rotate(-1.5deg);
+}
+12% {
+    transform: translate(-5px, 5px) rotate(1.5deg);
+}
+14% {
+    transform: translate(4px, 10px) rotate(3.5deg);
+}
+16% {
+    transform: translate(0px, 4px) rotate(1.5deg);
+}
+18% {
+    transform: translate(-1px, -6px) rotate(-0.5deg);
+}
+20% {
+    transform: translate(6px, -9px) rotate(2.5deg);
+}
+22% {
+    transform: translate(1px, -5px) rotate(-1.5deg);
+}
+24% {
+    transform: translate(-9px, 6px) rotate(-0.5deg);
+}
+26% {
+    transform: translate(8px, -2px) rotate(-1.5deg);
+}
+28% {
+    transform: translate(2px, -3px) rotate(-2.5deg);
+}
+30% {
+    transform: translate(9px, -7px) rotate(-0.5deg);
+}
+32% {
+    transform: translate(8px, -6px) rotate(-2.5deg);
+}
+34% {
+    transform: translate(-5px, 1px) rotate(3.5deg);
+}
+36% {
+    transform: translate(0px, -5px) rotate(2.5deg);
+}
+38% {
+    transform: translate(2px, 7px) rotate(-1.5deg);
+}
+40% {
+    transform: translate(6px, 3px) rotate(-1.5deg);
+}
+42% {
+    transform: translate(1px, -5px) rotate(-1.5deg);
+}
+44% {
+    transform: translate(10px, -4px) rotate(-0.5deg);
+}
+46% {
+    transform: translate(-2px, 2px) rotate(3.5deg);
+}
+48% {
+    transform: translate(3px, 4px) rotate(-0.5deg);
+}
+50% {
+    transform: translate(8px, 1px) rotate(-1.5deg);
+}
+52% {
+    transform: translate(7px, 4px) rotate(-1.5deg);
+}
+54% {
+    transform: translate(10px, 8px) rotate(-1.5deg);
+}
+56% {
+    transform: translate(-3px, 0px) rotate(-0.5deg);
+}
+58% {
+    transform: translate(0px, -1px) rotate(1.5deg);
+}
+60% {
+    transform: translate(6px, 9px) rotate(-1.5deg);
+}
+62% {
+    transform: translate(-9px, 8px) rotate(0.5deg);
+}
+64% {
+    transform: translate(-6px, 10px) rotate(0.5deg);
+}
+66% {
+    transform: translate(7px, 0px) rotate(0.5deg);
+}
+68% {
+    transform: translate(3px, 8px) rotate(-0.5deg);
+}
+70% {
+    transform: translate(-2px, -9px) rotate(1.5deg);
+}
+72% {
+    transform: translate(-6px, 2px) rotate(1.5deg);
+}
+74% {
+    transform: translate(-2px, 10px) rotate(-1.5deg);
+}
+76% {
+    transform: translate(2px, 8px) rotate(2.5deg);
+}
+78% {
+    transform: translate(6px, -2px) rotate(-0.5deg);
+}
+80% {
+    transform: translate(6px, 8px) rotate(0.5deg);
+}
+82% {
+    transform: translate(10px, 9px) rotate(3.5deg);
+}
+84% {
+    transform: translate(-3px, -1px) rotate(3.5deg);
+}
+86% {
+    transform: translate(1px, 8px) rotate(-2.5deg);
+}
+88% {
+    transform: translate(-5px, -9px) rotate(2.5deg);
+}
+90% {
+    transform: translate(2px, 8px) rotate(0.5deg);
+}
+92% {
+    transform: translate(0px, -1px) rotate(1.5deg);
+}
+94% {
+    transform: translate(-8px, -1px) rotate(0.5deg);
+}
+96% {
+    transform: translate(-3px, 8px) rotate(-1.5deg);
+}
+98% {
+    transform: translate(4px, 8px) rotate(0.5deg);
+}
+0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+}
+}
+/**
+ * 放大缩小后
+ * <div class="animated pulse">Example</div>
+ * .pulse {
+			-webkit-animation-name: pulse;
+			animation-name: pulse;
+		}
+
+		.animated {
+			-webkit-animation-duration: 1s;
+			animation-duration: 1s;
+			-webkit-animation-fill-mode: both;
+			animation-fill-mode: both;
+		}
+ * */
+@keyframes pulse-148c4b58 {
+from {
+    transform: scale3d(1, 1, 1);
+}
+50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+}
+to {
+    transform: scale3d(1, 1, 1);
+}
+}
 .content[data-v-148c4b58] {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
 .content .contentDiv[data-v-148c4b58] {
   height: calc(100vh - var(--conHeight));
   overflow: auto;
-  padding: 0.9375rem;
 }

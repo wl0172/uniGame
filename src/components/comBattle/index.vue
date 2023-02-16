@@ -1,26 +1,34 @@
 <script setup>
 import { ref } from "vue"
 import ComLine from "@/components/comLine/index.vue"
+import { pageSwitch } from '@/state/index.js'
 
 // 进度条配置
 const progressConfig = {
 	border_radius: 50,
 	stroke_width: 15,
 	active: false,
-	backgroundColor: '#e6e6e6'
+	backgroundColor: '#e6e6e670'
 }
 let battleInfo = ref({
 	// 怪物
 	monster: {
 		blood: 100,
 		name: '怪物',
+		img: '../../../static/1.png'
 	},
 	// 玩家
 	player: {
 		blood: 100,
 		name: '玩家',
+		img: '../../../static/1.png'
 	}
 })
+
+const handleToMap = () => {
+	pageSwitch.value.index = 1
+	pageSwitch.value.key = 'page_sceneList'
+}
 
 setTimeout(()=>{
 	let a = setInterval(()=>{
@@ -43,7 +51,12 @@ setTimeout(()=>{
 		<div class="comBattleDiv_battle_1">
 
 			<div class="comBattleDiv_battle_1_div">
-				<div class="comBattleDiv_battle_1_div_blood1">{{ battleInfo.monster.blood }}</div>
+				<div class="comBattleDiv_battle_1_div_i">
+					<div class="comBattleDiv_battle_1_div_img">
+						<image src="../../static/1.png" alt="" />
+					</div>
+				</div>
+				<div class="comBattleDiv_battle_1_div_i_name">{{ battleInfo.monster.name }}</div>
 				<progress 
 					style="margin: 0 0 auto 0"
 					class="comBattleDiv_battle_1_div_progress" 
@@ -54,16 +67,16 @@ setTimeout(()=>{
 					:active="progressConfig.active"
 					:percent="battleInfo.monster.blood"
 				/>
-				<div class="comBattleDiv_battle_1_div_i">
-					<div class="comBattleDiv_battle_1_div_i_name">{{ battleInfo.monster.name }}</div>
-					<div class="comBattleDiv_battle_1_div_img">
-						<img src="" alt="">
-					</div>
-				</div>
+				<div class="comBattleDiv_battle_1_div_blood1">{{ battleInfo.monster.blood }}</div>
 			</div>
 
 			<div class="comBattleDiv_battle_1_div">
-				<div class="comBattleDiv_battle_1_div_blood2">{{ battleInfo.player.blood }}</div>
+				<div class="comBattleDiv_battle_1_div_i" style="margin: 0 0 0 auto;">
+					<div class="comBattleDiv_battle_1_div_img">
+						<image :src="battleInfo.player.img" alt="" />
+					</div>
+				</div>
+				<div class="comBattleDiv_battle_1_div_i_name" style="float: right;">{{ battleInfo.monster.name }}</div>
 				<progress 
 					style="margin: 0 0 0 auto;transform:rotate(180deg)"
 					class="comBattleDiv_battle_1_div_progress" 
@@ -74,33 +87,29 @@ setTimeout(()=>{
 					:active="progressConfig.active"
 					:percent="battleInfo.player.blood"
 				/>
-				<div class="comBattleDiv_battle_1_div_i" style="margin: 0 0 0 auto;">
-					<div class="comBattleDiv_battle_1_div_i_name">{{ battleInfo.player.name }}</div>
-					<div class="comBattleDiv_battle_1_div_img">
-						<img src="" alt="">
-					</div>
-				</div>
+				<div class="comBattleDiv_battle_1_div_blood2">{{ battleInfo.player.blood }}</div>
 			</div>
-
 		</div>
 		
 		<!-- 线 -->
 		<ComLine />
 		
-		<!-- 血条 - 菜单 -->
-		<!-- <div class="">
-			<div>体力经验等等 - 菜单</div>
-			<div>321</div>
-		</div> -->
+		<!-- 战斗txt - 等 -->
+		<div class="comBattleDiv_battle_2">
+			
+			<div v-for="(item, index) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]">12312321312</div>
+			
+		</div>
+		
+		<!-- 线 -->
+		<!-- <ComLine /> -->
 
 		<!-- 战斗txt -->
-		<!-- <div class="">
-			<div>战斗txt</div>
-			<div>321</div>
-		</div> -->
-		
-		
-		<image style="width: 500rpx;height: 700rpx;margin: 100rpx auto;" src="@/static/1.png" alt="" />
+		<div class="comBattleDiv_battle_3">
+			<div>探索</div>
+			<div @click="handleToMap">地图</div>
+			<div>背包</div>
+		</div>
 
 
 	</div>
@@ -108,30 +117,41 @@ setTimeout(()=>{
 
 <style scoped lang="less">
 .comBattleDiv {
+	height: -webkit-fill-available;
+	position: relative;
+	// 1
+	padding: 120rpx 0 0 0;
 	.comBattleDiv_battle_1 {
 		width: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		.comBattleDiv_battle_1_div_blood1{
+			width: 90%;
+			position: absolute;
+			left: 0;
+			z-index: 999;
+			font-size: 12px;
+			color: #ffffff;
+			bottom: 0;
+		}
+		.comBattleDiv_battle_1_div_blood2{
+			width: 90%;
+			position: absolute;
+			right: 0;
+			z-index: 999;
+			font-size: 12px;
+			color: #ffffff;
+			bottom: 0;
+		}
 		.comBattleDiv_battle_1_div{
 			flex: 1;
 			text-align: center;
 			position: relative;
-			.comBattleDiv_battle_1_div_blood1{
+			.comBattleDiv_battle_1_div_i_name{
 				width: 90%;
-				position: absolute;
-				left: 0;
-				z-index: 999;
-				font-size: 12px;
-				color: #ffffff;
-			}
-			.comBattleDiv_battle_1_div_blood2{
-				width: 90%;
-				position: absolute;
-				right: 0;
-				z-index: 999;
-				font-size: 12px;
-				color: #ffffff;
+				font-size: 24rpx;
+				margin: 0 0 20rpx 0;
 			}
 			.comBattleDiv_battle_1_div_progress{
 				width: 90%;
@@ -140,16 +160,47 @@ setTimeout(()=>{
 			}
 			.comBattleDiv_battle_1_div_i{
 				width: 90%;
-				.comBattleDiv_battle_1_div_i_name{
-					margin: 30rpx 0;
-				}
 				.comBattleDiv_battle_1_div_img{
-					width: 100rpx;
-					height: 100rpx;
-					background: red;
-					margin: 0 auto 30rpx auto;
+					width: 200rpx;
+					height: 200rpx;
+					margin: 0 auto 90rpx auto;
+					overflow: hidden;
+					background: #ff00004f;
+					image{
+						width: 100%;
+						height: 100%;
+					}
 				}
 			}
+		}
+	}
+	// 2
+	.comBattleDiv_battle_2{
+		background: #ff000036;
+		width: auto;
+		height: calc( 100% - 630rpx );
+		overflow: auto;
+		padding: 30rpx;
+		font-size: 24rpx;
+	}
+	// 3
+	.comBattleDiv_battle_3{
+		width: 100%;
+		height: 120rpx;
+		background: #ff000036;
+		position: absolute;
+		bottom: 0;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		div{
+			width: 17%;
+			height: 74rpx;
+			background: red;
+			line-height: 74rpx;
+			text-align: center;
+			border-radius: 10rpx;
+			color: #ffffff;
 		}
 	}
 }

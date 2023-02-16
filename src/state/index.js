@@ -1,6 +1,17 @@
 import { ref } from 'vue'
 
-let a = ref({})
+// 角色信息
+const useInfo = ref({
+	dataToken: "",
+})
 
+// 页面下标 - 场景下标
+const pageSwitch = ref({
+	index: '0',
+	key: 'page_battle'
+})
 
-export default a
+export {
+	useInfo,
+	pageSwitch,
+}

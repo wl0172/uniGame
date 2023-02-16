@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue"
+import { pageSwitch } from '@/state/index.js'
 
 // 去新场景
 const handleToNewMap = (item, index) => {
@@ -7,12 +8,14 @@ const handleToNewMap = (item, index) => {
 		icon: 'none',
 		title: item + '去新场景======'
 	})
+	pageSwitch.value.index = 0
+	pageSwitch.value.key = 'page_battle'
 }
 
 </script>
 
 <template>
-	<div class="conSceneListLi" v-for="(item, index) in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" :key="index"
+	<div class="conSceneListLi" v-for="(item, index) in [1, 2, 3]" :key="index"
 		@click="handleToNewMap(item, index)">
 		<div class="conSceneListLi_title">
 			<div>{{ item }}</div>

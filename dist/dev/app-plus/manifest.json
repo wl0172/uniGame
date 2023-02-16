@@ -42,6 +42,13 @@
     "nvueStyleCompiler": "uni-app",
     "compilerVersion": 3,
     "distribute": {
+      "splashscreen": {
+        "androidStyle": "common",
+        "alwaysShowBeforeRender": false,
+        "waiting": false,
+        "autoclose": false,
+        "delay": 0
+      },
       "google": {
         "permissions": [
           "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
@@ -78,7 +85,7 @@
       "style": "dark",
       "background": "#F8F8F8"
     },
-    "arguments": "{\"name\":\"内容页\",\"path\":\"pages/content/index\",\"query\":\"\"}",
+    "arguments": "{\"name\":\"内容页\",\"path\":\"pages/login/index\",\"query\":\"\"}",
     "uniStatistics": {
       "enable": false
     },

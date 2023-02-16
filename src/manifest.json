@@ -47,6 +47,13 @@
             /* SDK配置 */
             "sdkConfigs" : {
                 "ad" : {}
+            },
+            "splashscreen" : {
+                "androidStyle" : "common",
+								"alwaysShowBeforeRender": false,
+								"waiting": false,
+								"autoclose": false,
+								"delay": 0
             }
         }
     },

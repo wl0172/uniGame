@@ -32,12 +32,12 @@ const headerHeight = props.comHeight.headerHeight + props.comHeight.headerMargin
 	height: var(--headerHeight);
 	background: #ffe1b7;
 	position: relative;
-
+	opacity: 0;
+	z-index: -1;
 	.comHeaderDiv {
 		width: calc(100% - 60rpx);
 		height: 100rpx;
 		line-height: 100rpx;
-		background: #ffe1b7;
 		padding: 0 30rpx;
 		font-size: 28rpx;
 		display: flex;
