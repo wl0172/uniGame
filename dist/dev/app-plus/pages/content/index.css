@@ -1195,9 +1195,18 @@ to {
 .comKnapsackDiv .comKnapsackDiv_left[data-v-8fc46dda] {
   width: 30%;
 }
+.comKnapsackDiv .comKnapsackDiv_left .comKnapsackDiv_left_list[data-v-8fc46dda] {
+  height: 3.125rem;
+  overflow: auto;
+  line-height: 3.125rem;
+  text-align: center;
+  border-bottom: 0.03125rem solid #d6d6d6;
+}
 .comKnapsackDiv .comKnapsackDiv_right[data-v-8fc46dda] {
   width: 70%;
   overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 /**

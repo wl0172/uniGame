@@ -4046,16 +4046,12 @@ if (uni.restoreGlobal) {
         return vue.openBlock(), vue.createElementBlock("div", { class: "comKnapsackDiv" }, [
           vue.createCommentVNode(" \u5DE6\u4FA7- \u83DC\u5355 "),
           vue.createElementVNode("div", { class: "comKnapsackDiv_left" }, [
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123")
+            (vue.openBlock(), vue.createElementBlock(vue.Fragment, null, vue.renderList([1, 1, 1, 1, 1], (item, index) => {
+              return vue.createElementVNode("div", {
+                class: "comKnapsackDiv_left_list",
+                key: item
+              }, " 123 ");
+            }), 64))
           ]),
           vue.createCommentVNode(" \u53F3\u4FA7 - \u8BE6\u60C5 "),
           vue.createElementVNode("div", { class: "comKnapsackDiv_right" }, [

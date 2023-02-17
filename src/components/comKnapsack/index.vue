@@ -10,18 +10,12 @@ let a = ref('index')
 
 		<!-- 左侧- 菜单 -->
 		<div class="comKnapsackDiv_left">
-			<div>123</div>
-			<div>123</div>
-			<div>123</div>
-			<div>123</div>
-			<div>123</div>
-
-			<div>123</div>
-			<div>123</div>
-			<div>123</div>
-			<div>123</div>
-			<div>123</div>
-
+			<div class="comKnapsackDiv_left_list" 
+				v-for="(item, index) in [1,1,1,1,1]" 
+				:key="item"
+			>
+				123
+			</div>
 		</div>
 		<!-- 右侧 - 详情 -->
 		<div class="comKnapsackDiv_right">
@@ -192,10 +186,19 @@ let a = ref('index')
 	overflow: hidden;
 	.comKnapsackDiv_left{
 		width: 30%;
+		.comKnapsackDiv_left_list{
+			height: 100rpx;
+			overflow: auto;
+			line-height: 100rpx;
+			text-align: center;
+			border-bottom: 1rpx solid #d6d6d6;
+		}
 	}
 	.comKnapsackDiv_right{
 		width: 70%;
 		overflow: auto;
+		display: flex;
+    flex-wrap: wrap;
 	}
 }
 </style>
