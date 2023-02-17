@@ -320,6 +320,8 @@ to {
   margin: 0 auto;
   text-align: right;
   padding: 0 1.1rem;
+  display: flex;
+  justify-content: space-between;
 }
 .pageCenter .login_conter .login_button[data-v-45258083] {
   width: 100%;

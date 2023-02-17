@@ -1,14 +1,34 @@
 <script setup>
+import { hiddenPopup } from '@/state/index.js'
 import { ref } from "vue"
 let a = ref('我是popup')
+
+// // 接收父组件传参
+// const props = defineProps({
+// 	hiddenPopup: {
+// 		type: Boolean
+// 	},
+// })
+
+// 关闭弹窗
+const handleDiv = () => {
+	hiddenPopup.value.show = false
+}
+
+// 弹窗内点击
+const handleDivConter = () => {
+	console.log('------')
+}
+
+
 
 </script>
 
 <template>
 	
-	<div class="comPopupDiv">
-		<div class="comPopupDiv_conter">
-			{{ a }}
+	<div class="comPopupDiv" v-if="hiddenPopup.show" @click.stop="handleDiv">
+		<div class="comPopupDiv_conter" @click.stop="handleDivConter">
+			<slot></slot>
 		</div>
 	</div>
 	
@@ -24,8 +44,13 @@ let a = ref('我是popup')
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	z-index: 9999;
 	.comPopupDiv_conter{
-		
+		width: 90%;
+    height: 70%;
+    background: #fff;
+    border-radius: 20rpx;
+		overflow: auto;
 	}
 }
 </style>

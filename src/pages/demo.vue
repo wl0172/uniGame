@@ -4,6 +4,12 @@ import ComPopup from '@/components/comPopup/index.vue'
 
 let a = ref('index')
 
+// uni.showToast({
+// 	icon: 'none',
+// 	title: '测试',
+// 	duration: 5000	
+// })
+
 </script>
 
 <template>

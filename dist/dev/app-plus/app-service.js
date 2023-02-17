@@ -3959,7 +3959,7 @@ if (uni.restoreGlobal) {
     }
     return target;
   };
-  const _sfc_main$8 = {
+  const _sfc_main$a = {
     __name: "index",
     props: {
       comHeight: {
@@ -3984,8 +3984,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
-  const _sfc_main$7 = {
+  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
+  const _sfc_main$9 = {
     __name: "index",
     setup(__props) {
       return (_ctx, _cache) => {
@@ -4000,7 +4000,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
+  const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
   const useInfo = vue.ref({
     dataToken: ""
   });
@@ -4008,6 +4008,203 @@ if (uni.restoreGlobal) {
     index: "0",
     key: "page_battle"
   });
+  const hiddenPopup = vue.ref({
+    show: true
+  });
+  const _sfc_main$8 = {
+    __name: "index",
+    setup(__props) {
+      vue.ref("\u6211\u662Fpopup");
+      const handleDiv = () => {
+        hiddenPopup.value.show = false;
+      };
+      const handleDivConter = () => {
+        formatAppLog("log", "at components/comPopup/index.vue:20", "------");
+      };
+      return (_ctx, _cache) => {
+        return vue.unref(hiddenPopup).show ? (vue.openBlock(), vue.createElementBlock("div", {
+          key: 0,
+          class: "comPopupDiv",
+          onClick: vue.withModifiers(handleDiv, ["stop"])
+        }, [
+          vue.createElementVNode("div", {
+            class: "comPopupDiv_conter",
+            onClick: vue.withModifiers(handleDivConter, ["stop"])
+          }, [
+            vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
+          ], 8, ["onClick"])
+        ], 8, ["onClick"])) : vue.createCommentVNode("v-if", true);
+      };
+    }
+  };
+  const ComPopup = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-4a3567c6"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comPopup/index.vue"]]);
+  const _sfc_main$7 = {
+    __name: "index",
+    setup(__props) {
+      vue.ref("index");
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", { class: "comKnapsackDiv" }, [
+          vue.createCommentVNode(" \u5DE6\u4FA7- \u83DC\u5355 "),
+          vue.createElementVNode("div", { class: "comKnapsackDiv_left" }, [
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123")
+          ]),
+          vue.createCommentVNode(" \u53F3\u4FA7 - \u8BE6\u60C5 "),
+          vue.createElementVNode("div", { class: "comKnapsackDiv_right" }, [
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123"),
+            vue.createElementVNode("div", null, "123")
+          ])
+        ]);
+      };
+    }
+  };
+  const ComKnapsack = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-8fc46dda"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comKnapsack/index.vue"]]);
   const _sfc_main$6 = {
     __name: "index",
     setup(__props) {
@@ -4033,6 +4230,9 @@ if (uni.restoreGlobal) {
         pageSwitch.value.index = 1;
         pageSwitch.value.key = "page_sceneList";
       };
+      const hiddenOpenKnapsack = () => {
+        hiddenPopup.value.show = true;
+      };
       setTimeout(() => {
         let a = setInterval(() => {
           if (battleInfo.value.monster.blood == 10) {
@@ -4044,77 +4244,87 @@ if (uni.restoreGlobal) {
         }, 1e3);
       }, 3e3);
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", { class: "comBattleDiv" }, [
-          vue.createCommentVNode(" \u602A\u7269 - \u82F1\u96C4 "),
-          vue.createElementVNode("div", { class: "comBattleDiv_battle_1" }, [
-            vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div" }, [
-              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i" }, [
-                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_img" }, [
-                  vue.createElementVNode("image", {
-                    src: "/static/1.png",
-                    alt: ""
-                  })
-                ])
-              ]),
-              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i_name" }, vue.toDisplayString(vue.unref(battleInfo).monster.name), 1),
-              vue.createElementVNode("progress", {
-                style: { "margin": "0 0 auto 0" },
-                class: "comBattleDiv_battle_1_div_progress",
-                "border-radius": progressConfig.border_radius,
-                "stroke-width": progressConfig.stroke_width,
-                activeColor: "red",
-                backgroundColor: progressConfig.backgroundColor,
-                active: progressConfig.active,
-                percent: vue.unref(battleInfo).monster.blood
-              }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
-              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood1" }, vue.toDisplayString(vue.unref(battleInfo).monster.blood), 1)
+        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+          vue.createVNode(ComPopup, {
+            hiddenPopup: vue.unref(hiddenPopup).show
+          }, {
+            default: vue.withCtx(() => [
+              vue.createVNode(ComKnapsack)
             ]),
-            vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div" }, [
-              vue.createElementVNode("div", {
-                class: "comBattleDiv_battle_1_div_i",
-                style: { "margin": "0 0 0 auto" }
-              }, [
-                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_img" }, [
-                  vue.createElementVNode("image", {
-                    src: vue.unref(battleInfo).player.img,
-                    alt: ""
-                  }, null, 8, ["src"])
-                ])
+            _: 1
+          }, 8, ["hiddenPopup"]),
+          vue.createElementVNode("div", { class: "comBattleDiv" }, [
+            vue.createCommentVNode(" \u602A\u7269 - \u82F1\u96C4 "),
+            vue.createElementVNode("div", { class: "comBattleDiv_battle_1" }, [
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div" }, [
+                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i" }, [
+                  vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_img" }, [
+                    vue.createElementVNode("image", {
+                      src: "/static/1.png",
+                      alt: ""
+                    })
+                  ])
+                ]),
+                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i_name" }, vue.toDisplayString(vue.unref(battleInfo).monster.name), 1),
+                vue.createElementVNode("progress", {
+                  style: { "margin": "0 0 auto 0" },
+                  class: "comBattleDiv_battle_1_div_progress",
+                  "border-radius": progressConfig.border_radius,
+                  "stroke-width": progressConfig.stroke_width,
+                  activeColor: "#FCC4B9",
+                  backgroundColor: progressConfig.backgroundColor,
+                  active: progressConfig.active,
+                  percent: vue.unref(battleInfo).monster.blood
+                }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
+                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood1" }, vue.toDisplayString(vue.unref(battleInfo).monster.blood), 1)
               ]),
-              vue.createElementVNode("div", {
-                class: "comBattleDiv_battle_1_div_i_name",
-                style: { "float": "right" }
-              }, vue.toDisplayString(vue.unref(battleInfo).monster.name), 1),
-              vue.createElementVNode("progress", {
-                style: { "margin": "0 0 0 auto", "transform": "rotate(180deg)" },
-                class: "comBattleDiv_battle_1_div_progress",
-                "border-radius": progressConfig.border_radius,
-                "stroke-width": progressConfig.stroke_width,
-                activeColor: "red",
-                backgroundColor: progressConfig.backgroundColor,
-                active: progressConfig.active,
-                percent: vue.unref(battleInfo).player.blood
-              }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
-              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood2" }, vue.toDisplayString(vue.unref(battleInfo).player.blood), 1)
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div" }, [
+                vue.createElementVNode("div", {
+                  class: "comBattleDiv_battle_1_div_i",
+                  style: { "margin": "0 0 0 auto" }
+                }, [
+                  vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_img" }, [
+                    vue.createElementVNode("image", {
+                      src: vue.unref(battleInfo).player.img,
+                      alt: ""
+                    }, null, 8, ["src"])
+                  ])
+                ]),
+                vue.createElementVNode("div", {
+                  class: "comBattleDiv_battle_1_div_i_name",
+                  style: { "float": "right" }
+                }, vue.toDisplayString(vue.unref(battleInfo).monster.name), 1),
+                vue.createElementVNode("progress", {
+                  style: { "margin": "0 0 0 auto", "transform": "rotate(180deg)" },
+                  class: "comBattleDiv_battle_1_div_progress",
+                  "border-radius": progressConfig.border_radius,
+                  "stroke-width": progressConfig.stroke_width,
+                  activeColor: "#FCC4B9",
+                  backgroundColor: progressConfig.backgroundColor,
+                  active: progressConfig.active,
+                  percent: vue.unref(battleInfo).player.blood
+                }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
+                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood2" }, vue.toDisplayString(vue.unref(battleInfo).player.blood), 1)
+              ])
+            ]),
+            vue.createCommentVNode(" \u7EBF "),
+            vue.createVNode(ComLine),
+            vue.createCommentVNode(" \u6218\u6597txt - \u7B49 "),
+            vue.createElementVNode("div", { class: "comBattleDiv_battle_2" }, [
+              (vue.openBlock(), vue.createElementBlock(vue.Fragment, null, vue.renderList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], (item, index) => {
+                return vue.createElementVNode("div", null, "12312321312");
+              }), 64))
+            ]),
+            vue.createCommentVNode(" \u7EBF "),
+            vue.createCommentVNode(" <ComLine /> "),
+            vue.createCommentVNode(" \u6218\u6597txt "),
+            vue.createElementVNode("div", { class: "comBattleDiv_battle_3" }, [
+              vue.createElementVNode("div", null, "\u63A2\u7D22"),
+              vue.createElementVNode("div", { onClick: handleToMap }, "\u5730\u56FE"),
+              vue.createElementVNode("div", { onClick: hiddenOpenKnapsack }, "\u80CC\u5305")
             ])
-          ]),
-          vue.createCommentVNode(" \u7EBF "),
-          vue.createVNode(ComLine),
-          vue.createCommentVNode(" \u6218\u6597txt - \u7B49 "),
-          vue.createElementVNode("div", { class: "comBattleDiv_battle_2" }, [
-            (vue.openBlock(), vue.createElementBlock(vue.Fragment, null, vue.renderList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], (item, index) => {
-              return vue.createElementVNode("div", null, "12312321312");
-            }), 64))
-          ]),
-          vue.createCommentVNode(" \u7EBF "),
-          vue.createCommentVNode(" <ComLine /> "),
-          vue.createCommentVNode(" \u6218\u6597txt "),
-          vue.createElementVNode("div", { class: "comBattleDiv_battle_3" }, [
-            vue.createElementVNode("div", null, "\u63A2\u7D22"),
-            vue.createElementVNode("div", { onClick: handleToMap }, "\u5730\u56FE"),
-            vue.createElementVNode("div", null, "\u80CC\u5305")
           ])
-        ]);
+        ], 64);
       };
     }
   };
@@ -4248,8 +4458,13 @@ if (uni.restoreGlobal) {
             ]),
             vue.createElementVNode("div", { class: "login_a" }, [
               vue.createCommentVNode(" \u5FD8\u8BB0\u5BC6\u7801? "),
-              vue.createCommentVNode(' <div @click="handleForgotPassword"></div> '),
-              vue.createElementVNode("div", { onClick: handleSignUp }, "\u6CE8\u518C")
+              vue.createElementVNode("div", {
+                onClick: _cache[2] || (_cache[2] = (...args) => _ctx.handleForgotPassword && _ctx.handleForgotPassword(...args))
+              }),
+              vue.createElementVNode("div", {
+                onClick: handleSignUp,
+                style: { "width": "30%" }
+              }, "\u6CE8\u518C")
             ]),
             vue.createElementVNode("div", {
               onClick: handleLogin,

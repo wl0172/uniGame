@@ -50,8 +50,8 @@ const handleLogin = () => {
 			</div>
 			<div class="login_a">
 				<!-- 忘记密码? -->
-				<!-- <div @click="handleForgotPassword"></div> -->
-				<div @click="handleSignUp">注册</div>
+				<div @click="handleForgotPassword"></div>
+				<div @click="handleSignUp" style="width: 30%">注册</div>
 			</div>
 			<div @click="handleLogin" class="login_button">登录</div>
 		</div>
@@ -102,6 +102,8 @@ const handleLogin = () => {
 			margin: 0 auto;
 			text-align: right;
 			padding: 0 1.1rem;
+			display: flex;
+			justify-content: space-between;
 		}
 
 		.login_button {

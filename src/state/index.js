@@ -11,7 +11,13 @@ const pageSwitch = ref({
 	key: 'page_battle'
 })
 
+// 弹窗显示 - 隐藏
+const hiddenPopup = ref({
+	show: true,
+})
+
 export {
 	useInfo,
 	pageSwitch,
+	hiddenPopup,
 }

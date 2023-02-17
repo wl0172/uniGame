@@ -1,7 +1,13 @@
 <script setup>
 import { ref } from "vue"
+// 线
 import ComLine from "@/components/comLine/index.vue"
-import { pageSwitch } from '@/state/index.js'
+// 弹窗
+import ComPopup from "@/components/comPopup/index.vue"
+// 背包
+import ComKnapsack from "@/components/comKnapsack/index.vue"
+
+import { pageSwitch, hiddenPopup } from '@/state/index.js'
 
 // 进度条配置
 const progressConfig = {
@@ -10,6 +16,7 @@ const progressConfig = {
 	active: false,
 	backgroundColor: '#e6e6e670'
 }
+// 怪物 - 角色
 let battleInfo = ref({
 	// 怪物
 	monster: {
@@ -25,10 +32,19 @@ let battleInfo = ref({
 	}
 })
 
+// 打开地图 - 列表
 const handleToMap = () => {
 	pageSwitch.value.index = 1
 	pageSwitch.value.key = 'page_sceneList'
 }
+// 打开背包
+const hiddenOpenKnapsack = () => {
+	hiddenPopup.value.show = true
+}
+
+
+
+
 
 setTimeout(()=>{
 	let a = setInterval(()=>{
@@ -45,6 +61,9 @@ setTimeout(()=>{
 </script>
 
 <template>
+	<ComPopup :hiddenPopup="hiddenPopup.show">
+		<ComKnapsack />
+	</ComPopup>
 	<div class="comBattleDiv">
 			
 		<!-- 怪物 - 英雄 -->
@@ -62,7 +81,7 @@ setTimeout(()=>{
 					class="comBattleDiv_battle_1_div_progress" 
 					:border-radius="progressConfig.border_radius"
 					:stroke-width="progressConfig.stroke_width"
-					activeColor="red"
+					activeColor="#FCC4B9"
 					:backgroundColor="progressConfig.backgroundColor"
 					:active="progressConfig.active"
 					:percent="battleInfo.monster.blood"
@@ -82,7 +101,7 @@ setTimeout(()=>{
 					class="comBattleDiv_battle_1_div_progress" 
 					:border-radius="progressConfig.border_radius"
 					:stroke-width="progressConfig.stroke_width"
-					activeColor="red"
+					activeColor="#FCC4B9"
 					:backgroundColor="progressConfig.backgroundColor"
 					:active="progressConfig.active"
 					:percent="battleInfo.player.blood"
@@ -108,7 +127,7 @@ setTimeout(()=>{
 		<div class="comBattleDiv_battle_3">
 			<div>探索</div>
 			<div @click="handleToMap">地图</div>
-			<div>背包</div>
+			<div @click="hiddenOpenKnapsack">背包</div>
 		</div>
 
 
@@ -176,7 +195,7 @@ setTimeout(()=>{
 	}
 	// 2
 	.comBattleDiv_battle_2{
-		background: #ff000036;
+		background: #432b724d;
 		width: auto;
 		height: calc( 100% - 630rpx );
 		overflow: auto;

@@ -14,27 +14,16 @@ onShow(() => { })
 
 const pageArr = ref({
 	list: [{
-		// 0.0.1~3 - 默认战斗场景
+		// 0.0.1 ~ 3 - 默认战斗场景
 		"page_battle": markRaw(ComBattle),
 	}, {
-		// 场景列表
+		// 场景列表??
 		'page_sceneList': markRaw(ComSceneList),
 	}, {
 		// 城镇 - 菜单
 		'page_menu': markRaw(ComMenu)
 	}]
 })
-
-// 测试
-const handle = () => {
-	// uni.showToast({
-	// 	icon: 'none',
-	// 	title: '测试',
-	// 	duration: 5000	
-	// })
-	// pageSwitch.value.index = 1
-	// pageSwitch.value.key = 'page_sceneList'
-}
 
 
 watch(pageSwitch.value, (newValue, oldValue) => {
