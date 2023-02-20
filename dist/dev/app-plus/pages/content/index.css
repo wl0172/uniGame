@@ -1194,6 +1194,9 @@ to {
 }
 .comKnapsackDiv .comKnapsackDiv_left[data-v-8fc46dda] {
   width: 30%;
+  overflow: auto;
+  position: relative;
+  border-right: 0.03125rem solid #d6d6d6;
 }
 .comKnapsackDiv .comKnapsackDiv_left .comKnapsackDiv_left_list[data-v-8fc46dda] {
   height: 3.125rem;
@@ -1203,10 +1206,48 @@ to {
   border-bottom: 0.03125rem solid #d6d6d6;
 }
 .comKnapsackDiv .comKnapsackDiv_right[data-v-8fc46dda] {
-  width: 70%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.comKnapsackDiv .comKnapsackDiv_right .comKnapsackDiv_right_top[data-v-8fc46dda] {
+  width: 100%;
+  height: 65%;
+  padding: 0.4375rem 0 0 0;
   overflow: auto;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  justify-content: center;
+}
+.comKnapsackDiv .comKnapsackDiv_right .comKnapsackDiv_right_top .comKnapsackDiv_right_list[data-v-8fc46dda] {
+  width: 100%;
+  height: 4.6875rem;
+  margin: 0 0 0.3125rem 0;
+}
+.comKnapsackDiv .comKnapsackDiv_right .comKnapsackDiv_right_top .comKnapsackDiv_right_list .comKnapsackDiv_right_li[data-v-8fc46dda] {
+  width: 90%;
+  height: 100%;
+  background: red;
+  margin: 0 auto;
+}
+.comKnapsackDiv .comKnapsackDiv_right .comKnapsackDiv_right_txt[data-v-8fc46dda] {
+  width: 100%;
+  height: 20%;
+  background: red;
+}
+.comKnapsackDiv .comKnapsackDiv_right .comKnapsackDiv_right_butlist[data-v-8fc46dda] {
+  width: 100%;
+  height: calc(15% - 7px);
+  background: red;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.comKnapsackDiv .comKnapsackDiv_right .comKnapsackDiv_right_butlist .comKnapsackDiv_right_button[data-v-8fc46dda] {
+  color: #ffffff;
+  padding: 0.4375rem;
+  background: black;
+  border-radius: 0.4375rem;
 }
 
 /**

@@ -3,38 +3,19 @@ import { onLoad, onShow } from "@dcloudio/uni-app"
 import { ref, reactive, markRaw, watch } from 'vue'
 import { headerHeight, conHeight, headerMargin } from '@/state/bangs.js'
 import ComHeader from "@/components/comHeader/index.vue"
-// 场景 - page
-import ComBattle from "@/components/comBattle/index.vue"
-import ComSceneList from "@/components/comSceneList/index.vue"
-import ComMenu from "@/components/comMenu/index.vue"
 
-import { pageSwitch } from '@/state/index.js'
+// 全局状态
+import { pageArr,pageSwitch } from '@/state/index.js'
 
 onShow(() => { })
 
-const pageArr = ref({
-	list: [{
-		// 0.0.1 ~ 3 - 默认战斗场景
-		"page_battle": markRaw(ComBattle),
-	}, {
-		// 场景列表??
-		'page_sceneList': markRaw(ComSceneList),
-	}, {
-		// 城镇 - 菜单
-		'page_menu': markRaw(ComMenu)
-	}]
-})
 
 
+// 监听页面组件变化
 watch(pageSwitch.value, (newValue, oldValue) => {
 	pageSwitch.value.index = newValue.index
 	pageSwitch.key = newValue.key
 })
-
-
-
-
-
 
 </script>
 
@@ -54,12 +35,10 @@ watch(pageSwitch.value, (newValue, oldValue) => {
 	width: 100%;
 	height: 100vh;
 	// background-image: url('@/static/3.png');
-	
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 100% 100%;
-	
 	.contentDiv {
 		height: calc(100vh - var(--conHeight));
 		overflow: auto;

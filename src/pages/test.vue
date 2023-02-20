@@ -6,9 +6,7 @@ let a = ref('index')
 
 <template>
 	
-	<div>
-		{{ a }}
-	</div>
+	<div>{{ a }}</div>
 	
 </template>
 

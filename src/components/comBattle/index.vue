@@ -32,6 +32,12 @@ let battleInfo = ref({
 	}
 })
 
+const handleSeachItem = () => {
+	uni.showToast({
+		icon: 'none',
+		title: '探索'
+	})
+}
 // 打开地图 - 列表
 const handleToMap = () => {
 	pageSwitch.value.index = 1
@@ -119,13 +125,10 @@ setTimeout(()=>{
 			<div v-for="(item, index) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]">12312321312</div>
 			
 		</div>
-		
-		<!-- 线 -->
-		<!-- <ComLine /> -->
 
 		<!-- 战斗txt -->
 		<div class="comBattleDiv_battle_3">
-			<div>探索</div>
+			<div @click="handleSeachItem">探索</div>
 			<div @click="handleToMap">地图</div>
 			<div @click="hiddenOpenKnapsack">背包</div>
 		</div>

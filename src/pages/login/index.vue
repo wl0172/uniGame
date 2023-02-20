@@ -48,12 +48,12 @@ const handleLogin = () => {
 				<input v-model="sinupInfo.password" maxlength="8" placeholder="请输入密码"
 					oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')" />
 			</div>
-			<div class="login_a">
+			<div class="login_a login_div">
 				<!-- 忘记密码? -->
 				<div @click="handleForgotPassword"></div>
-				<div @click="handleSignUp" style="width: 30%">注册</div>
+				<div @click="handleSignUp">注册</div>
 			</div>
-			<div @click="handleLogin" class="login_button">登录</div>
+			<div @click="handleLogin" class="login_button login_div">登录</div>
 		</div>
 	</div>
 </template>
@@ -65,27 +65,27 @@ const handleLogin = () => {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
 	.login_conter {
 		width: 80%;
 		text-align: center;
 		border-radius: 0.7rem;
 		color: black;
 		margin: 0 auto;
-		padding: 80rpx 20rpx;
-		background: #f5f5f5f5;
+		padding: 40rpx 20rpx 40rpx 20rpx;
+		background: #9ca8b8;
 
 		.login_p {
-			margin: 1rem;
-			font-size: 1rem;
+			margin: 1rem auto 2rem auto;
+			font-size: 1.5rem;
+			color: #81ffc1;
 		}
 
 		.login_div {
-			margin: 0 0 1rem 0;
 			background: #e3e3e3;
 			border-radius: 50rem;
 			padding: 0 30rpx;
-
+			width: 77%;
+			margin: 0 auto 50rpx auto;
 			input {
 				width: 100%;
 				border: 0;
@@ -104,10 +104,10 @@ const handleLogin = () => {
 			padding: 0 1.1rem;
 			display: flex;
 			justify-content: space-between;
+			background: #ffffff00;
 		}
 
 		.login_button {
-			width: 100%;
 			height: 100rpx;
 			line-height: 100rpx;
 			border-radius: 50rem;

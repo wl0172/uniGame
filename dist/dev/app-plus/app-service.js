@@ -4001,25 +4001,12 @@ if (uni.restoreGlobal) {
     }
   };
   const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
-  const useInfo = vue.ref({
-    dataToken: ""
-  });
-  const pageSwitch = vue.ref({
-    index: "0",
-    key: "page_battle"
-  });
-  const hiddenPopup = vue.ref({
-    show: true
-  });
   const _sfc_main$8 = {
     __name: "index",
     setup(__props) {
       vue.ref("\u6211\u662Fpopup");
       const handleDiv = () => {
         hiddenPopup.value.show = false;
-      };
-      const handleDivConter = () => {
-        formatAppLog("log", "at components/comPopup/index.vue:20", "------");
       };
       return (_ctx, _cache) => {
         return vue.unref(hiddenPopup).show ? (vue.openBlock(), vue.createElementBlock("div", {
@@ -4029,10 +4016,11 @@ if (uni.restoreGlobal) {
         }, [
           vue.createElementVNode("div", {
             class: "comPopupDiv_conter",
-            onClick: vue.withModifiers(handleDivConter, ["stop"])
+            onClick: _cache[0] || (_cache[0] = vue.withModifiers(() => {
+            }, ["stop"]))
           }, [
             vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
-          ], 8, ["onClick"])
+          ])
         ], 8, ["onClick"])) : vue.createCommentVNode("v-if", true);
       };
     }
@@ -4041,160 +4029,65 @@ if (uni.restoreGlobal) {
   const _sfc_main$7 = {
     __name: "index",
     setup(__props) {
-      vue.ref("index");
+      let introduce = vue.ref({
+        txt: ""
+      });
+      let leftMent = vue.ref({
+        arr: [{
+          inde: 1,
+          name: "\u6D88\u8017\u54C1"
+        }, {
+          inde: 2,
+          name: "\u88C5\u5907"
+        }]
+      });
+      const handleLeftMent = (item) => {
+        formatAppLog("log", "at components/comKnapsack/index.vue:21", "\u5DE6\u4FA7\u83DC\u5355======", item);
+        uni.showToast({
+          icon: "none",
+          title: item.name
+        });
+      };
+      const handleRightIn = (item) => {
+        formatAppLog("log", "at components/comKnapsack/index.vue:30", "\u53F3\u4FA7\u83DC\u5355======list-li", item);
+        introduce.value.txt = item;
+        uni.showToast({
+          icon: "none",
+          title: item
+        });
+      };
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", { class: "comKnapsackDiv" }, [
           vue.createCommentVNode(" \u5DE6\u4FA7- \u83DC\u5355 "),
           vue.createElementVNode("div", { class: "comKnapsackDiv_left" }, [
-            (vue.openBlock(), vue.createElementBlock(vue.Fragment, null, vue.renderList([1, 1, 1, 1, 1], (item, index) => {
-              return vue.createElementVNode("div", {
+            (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(leftMent).arr, (item, index) => {
+              return vue.openBlock(), vue.createElementBlock("div", {
                 class: "comKnapsackDiv_left_list",
-                key: item
-              }, " 123 ");
-            }), 64))
+                key: item,
+                onClick: vue.withModifiers(($event) => handleLeftMent(item), ["stop"])
+              }, vue.toDisplayString(item.name), 9, ["onClick"]);
+            }), 128))
           ]),
           vue.createCommentVNode(" \u53F3\u4FA7 - \u8BE6\u60C5 "),
           vue.createElementVNode("div", { class: "comKnapsackDiv_right" }, [
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123"),
-            vue.createElementVNode("div", null, "123")
+            vue.createElementVNode("div", { class: "comKnapsackDiv_right_top" }, [
+              vue.createCommentVNode(" \u7269\u54C1\u5217\u8868 "),
+              (vue.openBlock(), vue.createElementBlock(vue.Fragment, null, vue.renderList([1, 2, 3], (item, index) => {
+                return vue.createElementVNode("div", {
+                  class: "comKnapsackDiv_right_list",
+                  onClick: vue.withModifiers(($event) => handleRightIn(item), ["stop"])
+                }, [
+                  vue.createElementVNode("div", { class: "comKnapsackDiv_right_li" })
+                ], 8, ["onClick"]);
+              }), 64))
+            ]),
+            vue.createCommentVNode(" \u7269\u54C1\u4ECB\u7ECD "),
+            vue.createElementVNode("div", { class: "comKnapsackDiv_right_txt" }, vue.toDisplayString(vue.unref(introduce).txt), 1),
+            vue.createCommentVNode(" \u64CD\u4F5C "),
+            vue.createElementVNode("div", { class: "comKnapsackDiv_right_butlist" }, [
+              vue.createElementVNode("div", { class: "comKnapsackDiv_right_button" }, "\u88C5\u5907"),
+              vue.createElementVNode("div", { class: "comKnapsackDiv_right_button" }, "\u88C5\u5907")
+            ])
           ])
         ]);
       };
@@ -4222,6 +4115,12 @@ if (uni.restoreGlobal) {
           img: "../../../static/1.png"
         }
       });
+      const handleSeachItem = () => {
+        uni.showToast({
+          icon: "none",
+          title: "\u63A2\u7D22"
+        });
+      };
       const handleToMap = () => {
         pageSwitch.value.index = 1;
         pageSwitch.value.key = "page_sceneList";
@@ -4311,11 +4210,9 @@ if (uni.restoreGlobal) {
                 return vue.createElementVNode("div", null, "12312321312");
               }), 64))
             ]),
-            vue.createCommentVNode(" \u7EBF "),
-            vue.createCommentVNode(" <ComLine /> "),
             vue.createCommentVNode(" \u6218\u6597txt "),
             vue.createElementVNode("div", { class: "comBattleDiv_battle_3" }, [
-              vue.createElementVNode("div", null, "\u63A2\u7D22"),
+              vue.createElementVNode("div", { onClick: handleSeachItem }, "\u63A2\u7D22"),
               vue.createElementVNode("div", { onClick: handleToMap }, "\u5730\u56FE"),
               vue.createElementVNode("div", { onClick: hiddenOpenKnapsack }, "\u80CC\u5305")
             ])
@@ -4365,19 +4262,29 @@ if (uni.restoreGlobal) {
     }
   };
   const ComMenu = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comMenu/index.vue"]]);
+  const useInfo = vue.ref({
+    dataToken: ""
+  });
+  const pageSwitch = vue.ref({
+    index: "0",
+    key: "page_battle"
+  });
+  const hiddenPopup = vue.ref({
+    show: true
+  });
+  const pageArr = vue.ref({
+    list: [{
+      "page_battle": vue.markRaw(ComBattle)
+    }, {
+      "page_sceneList": vue.markRaw(ComSceneList)
+    }, {
+      "page_menu": vue.markRaw(ComMenu)
+    }]
+  });
   const _sfc_main$3 = {
     __name: "index",
     setup(__props) {
       onShow(() => {
-      });
-      const pageArr = vue.ref({
-        list: [{
-          "page_battle": vue.markRaw(ComBattle)
-        }, {
-          "page_sceneList": vue.markRaw(ComSceneList)
-        }, {
-          "page_menu": vue.markRaw(ComMenu)
-        }]
       });
       vue.watch(pageSwitch.value, (newValue, oldValue) => {
         pageSwitch.value.index = newValue.index;
@@ -4392,7 +4299,7 @@ if (uni.restoreGlobal) {
             class: "contentDiv",
             style: vue.normalizeStyle({ "--conHeight": vue.unref(headerMargin) + (vue.unref(headerHeight) / 2 + 3) + "px" })
           }, [
-            (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(pageArr.value.list[vue.unref(pageSwitch).index][vue.unref(pageSwitch).key])))
+            (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(vue.unref(pageArr).list[vue.unref(pageSwitch).index][vue.unref(pageSwitch).key])))
           ], 4)
         ]);
       };
@@ -4452,19 +4359,16 @@ if (uni.restoreGlobal) {
                 [vue.vModelText, vue.unref(sinupInfo).password]
               ])
             ]),
-            vue.createElementVNode("div", { class: "login_a" }, [
+            vue.createElementVNode("div", { class: "login_a login_div" }, [
               vue.createCommentVNode(" \u5FD8\u8BB0\u5BC6\u7801? "),
               vue.createElementVNode("div", {
                 onClick: _cache[2] || (_cache[2] = (...args) => _ctx.handleForgotPassword && _ctx.handleForgotPassword(...args))
               }),
-              vue.createElementVNode("div", {
-                onClick: handleSignUp,
-                style: { "width": "30%" }
-              }, "\u6CE8\u518C")
+              vue.createElementVNode("div", { onClick: handleSignUp }, "\u6CE8\u518C")
             ]),
             vue.createElementVNode("div", {
               onClick: handleLogin,
-              class: "login_button"
+              class: "login_button login_div"
             }, "\u767B\u5F55")
           ])
         ]);
@@ -4549,13 +4453,13 @@ if (uni.restoreGlobal) {
                 [vue.vModelText, vue.unref(sinupInfo).email]
               ])
             ]),
-            vue.createElementVNode("div", { class: "login_a" }, [
+            vue.createElementVNode("div", { class: "login_a login_div" }, [
               vue.createElementVNode("div"),
               vue.createElementVNode("div", { onClick: handleBank }, "\u8FD4\u56DE")
             ]),
             vue.createElementVNode("div", {
               onClick: handleSigUp,
-              class: "login_button"
+              class: "login_button login_div"
             }, "\u6CE8\u518C")
           ])
         ]);

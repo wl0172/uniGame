@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue"
+// 组件
 import ComPopup from '@/components/comPopup/index.vue'
 
 let a = ref('index')
@@ -18,6 +19,7 @@ let a = ref('index')
 		<div>{{ a }}1234</div>
 		<text>1234</text>
 		
+		<!--  -->
 		<ComPopup />
 		
 	</div>

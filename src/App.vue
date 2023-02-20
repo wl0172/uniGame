@@ -19,6 +19,6 @@
 	#app{
 		width: 100%;
 		height: 100vh;
-		background: #FCF5E2;
+		background: linear-gradient(190deg, #c1cbd7, #e0e5df);
 	}
 </style>

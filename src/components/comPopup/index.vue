@@ -16,9 +16,9 @@ const handleDiv = () => {
 }
 
 // 弹窗内点击
-const handleDivConter = () => {
-	console.log('------')
-}
+// const handleDivConter = (e) => {
+// 	console.log(e, 'popup------弹窗内点击------')
+// }
 
 
 
@@ -27,7 +27,7 @@ const handleDivConter = () => {
 <template>
 	
 	<div class="comPopupDiv" v-if="hiddenPopup.show" @click.stop="handleDiv">
-		<div class="comPopupDiv_conter" @click.stop="handleDivConter">
+		<div class="comPopupDiv_conter" @click.stop>
 			<slot></slot>
 		</div>
 	</div>

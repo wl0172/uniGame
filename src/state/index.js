@@ -1,4 +1,9 @@
-import { ref } from 'vue'
+import { ref, reactive, markRaw, watch } from 'vue'
+
+// 场景 - 页面 - page
+import ComBattle from "@/components/comBattle/index.vue"
+import ComSceneList from "@/components/comSceneList/index.vue"
+import ComMenu from "@/components/comMenu/index.vue"
 
 // 角色信息
 const useInfo = ref({
@@ -16,7 +21,24 @@ const hiddenPopup = ref({
 	show: true,
 })
 
+
+// 所有页面配置
+const pageArr = ref({
+	list: [{
+		// 0.0.1 ~ 3 - 默认战斗场景
+		"page_battle": markRaw(ComBattle),
+	}, {
+		// 场景列表??
+		'page_sceneList': markRaw(ComSceneList),
+	}, {
+		// 城镇 - 菜单
+		'page_menu': markRaw(ComMenu)
+	}]
+})
+
+
 export {
+	pageArr,
 	useInfo,
 	pageSwitch,
 	hiddenPopup,
