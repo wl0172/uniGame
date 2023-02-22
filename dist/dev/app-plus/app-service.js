@@ -46,10 +46,6 @@ if (uni.restoreGlobal) {
   const headerMargin = wx.getSystemInfoSync().statusBarHeight;
   wx.getSystemInfoSync().screenHeight;
   const headerHeight = 90;
-  const conHeight = {
-    headerHeight,
-    headerMargin: headerMargin * 2
-  };
   //! moment.js
   //! version : 2.29.4
   //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -3961,30 +3957,33 @@ if (uni.restoreGlobal) {
   };
   const _sfc_main$a = {
     __name: "index",
-    props: {
-      comHeight: {
-        type: Object
-      }
-    },
     setup(__props) {
-      const props = __props;
-      let timeDate = vue.ref(new hooks().format("YYYY-MM-DD"));
-      let addName = vue.ref("\u6052\u5317\u57CE\uFF08\u57CE\u95E8\uFF09");
-      const headerHeight2 = props.comHeight.headerHeight + props.comHeight.headerMargin;
+      let canvasSty = vue.ref({
+        weight: "",
+        height: ""
+      });
+      wx.getSystemInfo({
+        success(res) {
+          canvasSty.value.weight = res.windowWidth, canvasSty.value.height = res.windowHeight;
+        }
+      });
+      const drawStars = () => {
+        wx.createCanvasContext("canvasId");
+      };
+      drawStars();
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", {
-          class: "comHeaderD",
-          style: vue.normalizeStyle({ "--headerHeight": headerHeight2 + "rpx" })
-        }, [
-          vue.createElementVNode("div", { class: "comHeaderDiv" }, [
-            vue.createElementVNode("div", null, vue.toDisplayString(vue.unref(timeDate)), 1),
-            vue.createElementVNode("div", { class: "comHeaderDiv_addName" }, vue.toDisplayString(vue.unref(addName)), 1)
-          ])
-        ], 4);
+        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+          vue.createCommentVNode(" canvas "),
+          vue.createElementVNode("canvas", {
+            type: "2d",
+            id: "canvasId",
+            style: vue.normalizeStyle({ "width": vue.unref(canvasSty).width + "px", "height": vue.unref(canvasSty).height + "px" })
+          }, null, 4)
+        ], 2112);
       };
     }
   };
-  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
+  const ComCanvas = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-028a9e72"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comCanvas/index.vue"]]);
   const _sfc_main$9 = {
     __name: "index",
     setup(__props) {
@@ -4270,7 +4269,7 @@ if (uni.restoreGlobal) {
     key: "page_battle"
   });
   const hiddenPopup = vue.ref({
-    show: true
+    show: false
   });
   const pageArr = vue.ref({
     list: [{
@@ -4293,14 +4292,16 @@ if (uni.restoreGlobal) {
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", { class: "content" }, [
           vue.createCommentVNode(" \u5218\u6D77\u5C4Fheader - \u76EE\u524D\u5360\u4F4D "),
-          vue.createVNode(ComHeader, { comHeight: vue.unref(conHeight) }, null, 8, ["comHeight"]),
+          vue.createCommentVNode(' <ComHeader :comHeight="conHeight" /> '),
           vue.createCommentVNode(" \u5185\u5BB9 "),
           vue.createElementVNode("div", {
             class: "contentDiv",
             style: vue.normalizeStyle({ "--conHeight": vue.unref(headerMargin) + (vue.unref(headerHeight) / 2 + 3) + "px" })
           }, [
             (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(vue.unref(pageArr).list[vue.unref(pageSwitch).index][vue.unref(pageSwitch).key])))
-          ], 4)
+          ], 4),
+          vue.createCommentVNode("  "),
+          vue.createVNode(ComCanvas)
         ]);
       };
     }

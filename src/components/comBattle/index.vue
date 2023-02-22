@@ -210,7 +210,7 @@ setTimeout(()=>{
 		width: 100%;
 		height: 120rpx;
 		background: #ff000036;
-		position: absolute;
+		position: fixed;
 		bottom: 0;
 		display: flex;
 		align-items: center;

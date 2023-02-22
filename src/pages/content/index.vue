@@ -1,15 +1,14 @@
 <script setup>
 import { onLoad, onShow } from "@dcloudio/uni-app"
-import { ref, reactive, markRaw, watch } from 'vue'
+import { ref, reactive, markRaw,onMounted, watch } from 'vue'
 import { headerHeight, conHeight, headerMargin } from '@/state/bangs.js'
 import ComHeader from "@/components/comHeader/index.vue"
 
+import ComCanvas from "@/components/comCanvas/index.vue"
 // 全局状态
 import { pageArr,pageSwitch } from '@/state/index.js'
 
-onShow(() => { })
-
-
+onShow(() => {})
 
 // 监听页面组件变化
 watch(pageSwitch.value, (newValue, oldValue) => {
@@ -22,11 +21,13 @@ watch(pageSwitch.value, (newValue, oldValue) => {
 <template>
 	<div class="content">
 		<!-- 刘海屏header - 目前占位 -->
-		<ComHeader :comHeight="conHeight" />
+		<!-- <ComHeader :comHeight="conHeight" /> -->
 		<!-- 内容 -->
 		<div class="contentDiv" :style="{ '--conHeight': ((headerMargin + (headerHeight/2+3))) + 'px' }">
 			<component :is="pageArr.list[pageSwitch.index][pageSwitch.key]" />
 		</div>
+		<!--  -->
+		<ComCanvas />
 	</div>
 </template>
 

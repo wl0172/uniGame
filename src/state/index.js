@@ -18,7 +18,7 @@ const pageSwitch = ref({
 
 // 弹窗显示 - 隐藏
 const hiddenPopup = ref({
-	show: true,
+	show: false,
 })
 
 
