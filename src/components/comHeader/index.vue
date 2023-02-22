@@ -4,7 +4,7 @@ import { ref } from "vue"
 import monent from "moment"
 
 let timeDate = ref(new monent().format('YYYY-MM-DD'))
-let addName = ref('恒北城（城门）')
+let addName = ref('A城（城门）')
 // 接收父组件传参
 const props = defineProps({
 	comHeight: {
@@ -12,6 +12,9 @@ const props = defineProps({
 	},
 })
 const headerHeight = props.comHeight.headerHeight + props.comHeight.headerMargin
+
+
+console.log('header','======')
 
 
 </script>
@@ -30,9 +33,8 @@ const headerHeight = props.comHeight.headerHeight + props.comHeight.headerMargin
 .comHeaderD {
 	width: 100%;
 	height: var(--headerHeight);
-	background: #ffe1b7;
+	background: #ffe1b700;
 	position: relative;
-	opacity: 0;
 	z-index: -1;
 	.comHeaderDiv {
 		width: calc(100% - 60rpx);

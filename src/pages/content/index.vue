@@ -4,17 +4,15 @@ import { ref, reactive, markRaw,onMounted, watch } from 'vue'
 import { headerHeight, conHeight, headerMargin } from '@/state/bangs.js'
 import ComHeader from "@/components/comHeader/index.vue"
 
-// 全局状态
+// 全局场景切换
 import { pageArr,pageSwitch } from '@/state/index.js'
-
-onShow(() => {})
 
 // 监听页面组件变化
 watch(pageSwitch.value, (newValue, oldValue) => {
 	pageSwitch.value.index = newValue.index
 	pageSwitch.key = newValue.key
 })
-
+console.log('主页','======')
 
 </script>
 

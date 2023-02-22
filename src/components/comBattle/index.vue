@@ -131,6 +131,8 @@ setTimeout(()=>{
 			<div @click="handleSeachItem">探索</div>
 			<div @click="handleToMap">地图</div>
 			<div @click="hiddenOpenKnapsack">背包</div>
+			<div>11</div>
+			<div>11</div>
 		</div>
 
 
@@ -141,6 +143,7 @@ setTimeout(()=>{
 .comBattleDiv {
 	height: -webkit-fill-available;
 	position: relative;
+	background: #ff00001a;
 	// 1
 	padding: 120rpx 0 0 0;
 	.comBattleDiv_battle_1 {
@@ -200,29 +203,31 @@ setTimeout(()=>{
 	.comBattleDiv_battle_2{
 		background: #432b724d;
 		width: auto;
-		height: calc( 100% - 630rpx );
+		height: calc( 100% - 710rpx );
 		overflow: auto;
 		padding: 30rpx;
 		font-size: 24rpx;
 	}
 	// 3
 	.comBattleDiv_battle_3{
-		width: 100%;
-		height: 120rpx;
-		background: #ff000036;
-		position: fixed;
-		bottom: 0;
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
+    width: auto;
+    height: 200rpx;
+    background: #ff000036;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-wrap: wrap;
 		div{
-			width: 17%;
+			width: 200rpx;
 			height: 74rpx;
 			background: red;
 			line-height: 74rpx;
 			text-align: center;
 			border-radius: 10rpx;
 			color: #ffffff;
+			mask-origin: 0 20rpx 0 0;
 		}
 	}
 }

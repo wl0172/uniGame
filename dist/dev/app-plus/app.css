@@ -1231,6 +1231,7 @@ to {
 .comBattleDiv[data-v-781aabaf] {
   height: -webkit-fill-available;
   position: relative;
+  background: #ff00001a;
   padding: 3.75rem 0 0 0;
 }
 .comBattleDiv .comBattleDiv_battle_1[data-v-781aabaf] {
@@ -1289,29 +1290,32 @@ to {
 .comBattleDiv .comBattleDiv_battle_2[data-v-781aabaf] {
   background: #432b724d;
   width: auto;
-  height: calc(100% - 19.6875rem);
+  height: calc(100% - 22.1875rem);
   overflow: auto;
   padding: 0.9375rem;
   font-size: 0.75rem;
 }
 .comBattleDiv .comBattleDiv_battle_3[data-v-781aabaf] {
-  width: 100%;
-  height: 3.75rem;
+  width: auto;
+  height: 6.25rem;
   background: #ff000036;
   position: fixed;
   bottom: 0;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: end;
+  flex-wrap: wrap;
 }
 .comBattleDiv .comBattleDiv_battle_3 div[data-v-781aabaf] {
-  width: 17%;
+  width: 6.25rem;
   height: 2.3125rem;
   background: red;
   line-height: 2.3125rem;
   text-align: center;
   border-radius: 0.3125rem;
   color: #ffffff;
+  -webkit-mask-origin: 0 0.625rem 0 0;
+          mask-origin: 0 0.625rem 0 0;
 }
 
 /**
