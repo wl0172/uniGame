@@ -18,7 +18,7 @@ const pageArr = ref({
 		'page_menu': markRaw(ComMenu)
 	}]
 })
-// 页面下标 - 场景下标
+// 页面下标 - 场景key - 默认 0 - 战斗场景 page_battle
 const pageSwitch = ref({
 	index: '0',
 	key: 'page_battle'
