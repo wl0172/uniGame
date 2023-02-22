@@ -4,7 +4,6 @@ import { ref, reactive, markRaw,onMounted, watch } from 'vue'
 import { headerHeight, conHeight, headerMargin } from '@/state/bangs.js'
 import ComHeader from "@/components/comHeader/index.vue"
 
-import ComCanvas from "@/components/comCanvas/index.vue"
 // 全局状态
 import { pageArr,pageSwitch } from '@/state/index.js'
 
@@ -16,34 +15,45 @@ watch(pageSwitch.value, (newValue, oldValue) => {
 	pageSwitch.key = newValue.key
 })
 
+
 </script>
 
 <template>
 	<div class="content">
 		<!-- 刘海屏header - 目前占位 -->
-		<!-- <ComHeader :comHeight="conHeight" /> -->
+		<ComHeader :comHeight="conHeight" />
 		<!-- 内容 -->
 		<div class="contentDiv" :style="{ '--conHeight': ((headerMargin + (headerHeight/2+3))) + 'px' }">
 			<component :is="pageArr.list[pageSwitch.index][pageSwitch.key]" />
 		</div>
-		<!--  -->
-		<ComCanvas />
 	</div>
+	<!-- 背景图 -->
+	<image class="bg" src="../../static/3.png" mode=""></image>
 </template>
 
 <style scoped lang="less">
 .content {
 	width: 100%;
 	height: 100vh;
-	// background-image: url('@/static/3.png');
+	z-index: 99;
+	position: relative;
+	.contentDiv {
+		height: calc(100vh - var(--conHeight));
+		overflow: auto;
+	}
+}
+.bg{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('@/static/3.png');
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 100% 100%;
-	.contentDiv {
-		height: calc(100vh - var(--conHeight));
-		overflow: auto;
-		// padding: 30rpx 0;
-	}
+	opacity: .5;
+	z-index: 0;
 }
 </style>

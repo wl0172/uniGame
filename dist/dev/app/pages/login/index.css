@@ -7,7 +7,7 @@
     animation: load 1.7s infinite ease, round 1.7s infinite ease;
   }
 */
-@keyframes load-c5d9c666 {
+@keyframes load-45258083 {
 0% {
     box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
 }
@@ -29,7 +29,7 @@
     box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
 }
 }
-@keyframes round-c5d9c666 {
+@keyframes round-45258083 {
 0% {
     transform: rotate(0deg);
     /* 开始旋转 div 元素 */
@@ -45,7 +45,7 @@
     animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
   }
 */
-@keyframes shake-c5d9c666 {
+@keyframes shake-45258083 {
 10%,
   90% {
     transform: translate3d(-1px, 0, 0);
@@ -70,7 +70,7 @@
     animation: wiggle 2s linear infinite;
   }
 */
-@keyframes wiggle-c5d9c666 {
+@keyframes wiggle-45258083 {
 0%,
   7% {
     transform: rotateZ(0);
@@ -101,7 +101,7 @@
     animation: shake-joggle 10s infinite ease-in-out;
   }
 */
-@keyframes shake-joggle-c5d9c666 {
+@keyframes shake-joggle-45258083 {
 2% {
     transform: translate(6px, -2px) rotate(3.5deg);
 }
@@ -269,7 +269,7 @@
 			animation-fill-mode: both;
 		}
  * */
-@keyframes pulse-c5d9c666 {
+@keyframes pulse-45258083 {
 from {
     transform: scale3d(1, 1, 1);
 }
@@ -280,36 +280,35 @@ to {
     transform: scale3d(1, 1, 1);
 }
 }
-.pageCenter[data-v-c5d9c666] {
+.pageCenter[data-v-45258083] {
   width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
-.pageCenter .login_conter[data-v-c5d9c666] {
+.pageCenter .login_conter[data-v-45258083] {
   width: 80%;
   text-align: center;
-  border-radius: 0.3rem;
+  border-radius: 0.7rem;
   color: black;
   margin: 0 auto;
   padding: 1.25rem 0.625rem 1.25rem 0.625rem;
   background: #9ca8b8;
 }
-.pageCenter .login_conter .login_p[data-v-c5d9c666] {
+.pageCenter .login_conter .login_p[data-v-45258083] {
   margin: 1rem auto 2rem auto;
   font-size: 1.5rem;
   color: #81ffc1;
 }
-.pageCenter .login_conter .login_div[data-v-c5d9c666] {
+.pageCenter .login_conter .login_div[data-v-45258083] {
   background: #e3e3e3;
-  border-radius: 0.3rem;
+  border-radius: 50rem;
   padding: 0 0.9375rem;
   width: 77%;
   margin: 0 auto 1.5625rem auto;
 }
-.pageCenter .login_conter .login_div uni-input[data-v-c5d9c666] {
+.pageCenter .login_conter .login_div uni-input[data-v-45258083] {
   width: 100%;
   border: 0;
   height: 3rem;
@@ -317,30 +316,25 @@ to {
   outline: none;
   text-align: left;
 }
-.pageCenter .login_conter .login_a[data-v-c5d9c666] {
+.pageCenter .login_conter .login_a[data-v-45258083] {
   color: #7676cb;
   width: auto;
-  margin: 0.9375rem auto;
+  margin: 0 auto;
   text-align: right;
   padding: 0 1.1rem;
   display: flex;
   justify-content: space-between;
   background: #ffffff00;
 }
-.pageCenter .login_conter .login_button[data-v-c5d9c666] {
-  margin: 0 auto;
-  display: flex;
-  background: #ffffff00;
-  justify-content: space-around;
-}
-.pageCenter .login_conter .login_button .login_button_txt[data-v-c5d9c666] {
-  width: 37%;
-  height: 2.3125rem;
-  line-height: 2.3125rem;
-  border-radius: 0.3rem;
-  color: black;
+.pageCenter .login_conter .login_button[data-v-45258083] {
+  height: 3.125rem;
+  line-height: 3.125rem;
+  border-radius: 50rem;
+  margin: 3rem auto 1rem auto;
   background: linear-gradient(to right, #8ebcf5 0, #00e2fa 80%, #00e2fa 100%);
+  color: white;
+  box-shadow: 0px 0px 0.0625rem 0.0625rem rgba(55, 114, 203, 0.2),  0px 0px 0.1875rem 0.03125rem #4379d0,  0 -15px 0.0625rem 0.0625rem rgba(55, 114, 203, 0.1) inset;
 }
-.pageCenter .login_conter .login_button .login_button_txt[data-v-c5d9c666]:active {
+.pageCenter .login_conter .login_button[data-v-45258083]:active {
   opacity: 0.7;
 }

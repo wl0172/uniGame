@@ -43,102 +43,6 @@ if (uni.restoreGlobal) {
     !vue.isInSSRComponentSetup && vue.injectHook(lifecycle, hook, target);
   };
   const onShow = /* @__PURE__ */ createHook(ON_SHOW);
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
-  const _sfc_main$a = {
-    __name: "index",
-    props: {
-      loginState: Number
-    },
-    setup(__props) {
-      const props = __props;
-      formatAppLog("log", "at components/comLogin/index.vue:17", props, "==");
-      let sinupInfo = vue.ref({
-        name: "",
-        password: ""
-      });
-      const handleSignUp = () => {
-        formatAppLog("log", "at components/comLogin/index.vue:28", a, "===");
-      };
-      const handleLogin = () => {
-        if (sinupInfo.value.name && sinupInfo.value.password) {
-          formatAppLog("log", "at components/comLogin/index.vue:33", sinupInfo.value, "\u767B\u5F55\u53C2\u6570======");
-          uni.redirectTo({
-            url: "/pages/content/index",
-            success: function(res) {
-              uni.setStorageSync("token", "tokentokentokentokentokentoken");
-            }
-          });
-        } else {
-          uni.showToast({
-            icon: "none",
-            title: "\u8BF7\u8F93\u5165\u6B63\u786E\u7684\u8D26\u53F7\u548C\u5BC6\u7801\uFF01",
-            duration: 2e3
-          });
-        }
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", { class: "pageCenter" }, [
-          vue.createElementVNode("div", { class: "login_conter" }, [
-            vue.createElementVNode("p", { class: "login_p" }, "\u6B22\u8FCE\u5192\u9669\u8005"),
-            vue.createElementVNode("div", { class: "login_div" }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.unref(sinupInfo).name = $event),
-                maxlength: "30",
-                placeholder: "\u8BF7\u8F93\u5165\u8D26\u53F7",
-                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
-              }, null, 512), [
-                [vue.vModelText, vue.unref(sinupInfo).name]
-              ])
-            ]),
-            vue.createElementVNode("div", { class: "login_div" }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.unref(sinupInfo).password = $event),
-                maxlength: "8",
-                placeholder: "\u8BF7\u8F93\u5165\u5BC6\u7801",
-                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
-              }, null, 512), [
-                [vue.vModelText, vue.unref(sinupInfo).password]
-              ])
-            ]),
-            vue.createElementVNode("div", { class: "login_button login_div" }, [
-              vue.createElementVNode("div", {
-                class: "login_button_txt",
-                onClick: handleSignUp
-              }, "\u6CE8\u518C"),
-              vue.createElementVNode("div", {
-                class: "login_button_txt",
-                onClick: handleLogin
-              }, "\u767B\u5F55")
-            ])
-          ])
-        ]);
-      };
-    }
-  };
-  const ComLogin = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-09a7ee4f"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLogin/index.vue"]]);
-  let loginState = vue.ref({
-    isState: 0
-  });
-  const _sfc_main$9 = {
-    __name: "index",
-    setup(__props) {
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", { class: "loginOrRegisterDiv" }, [
-          vue.createVNode(ComLogin, {
-            loginState: vue.unref(loginState).isState
-          }, null, 8, ["loginState"]),
-          vue.createElementVNode("div", { class: "loginOrRegisterDiv_version" }, "version")
-        ]);
-      };
-    }
-  };
-  const PagesLoginOrRegisterIndex = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-c05689fd"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/loginOrRegister/index.vue"]]);
   const headerMargin = wx.getSystemInfoSync().statusBarHeight;
   wx.getSystemInfoSync().screenHeight;
   const headerHeight = 90;
@@ -160,8 +64,8 @@ if (uni.restoreGlobal) {
   function isObject(input) {
     return input != null && Object.prototype.toString.call(input) === "[object Object]";
   }
-  function hasOwnProp(a2, b) {
-    return Object.prototype.hasOwnProperty.call(a2, b);
+  function hasOwnProp(a, b) {
+    return Object.prototype.hasOwnProperty.call(a, b);
   }
   function isObjectEmpty(obj) {
     if (Object.getOwnPropertyNames) {
@@ -192,19 +96,19 @@ if (uni.restoreGlobal) {
     }
     return res;
   }
-  function extend(a2, b) {
+  function extend(a, b) {
     for (var i in b) {
       if (hasOwnProp(b, i)) {
-        a2[i] = b[i];
+        a[i] = b[i];
       }
     }
     if (hasOwnProp(b, "toString")) {
-      a2.toString = b.toString;
+      a.toString = b.toString;
     }
     if (hasOwnProp(b, "valueOf")) {
-      a2.valueOf = b.valueOf;
+      a.valueOf = b.valueOf;
     }
-    return a2;
+    return a;
   }
   function createUTC(input, format2, locale2, strict) {
     return createLocalOrUTC(input, format2, locale2, strict, true).utc();
@@ -616,8 +520,8 @@ if (uni.restoreGlobal) {
         units.push({ unit: u, priority: priorities[u] });
       }
     }
-    units.sort(function(a2, b) {
-      return a2.priority - b.priority;
+    units.sort(function(a, b) {
+      return a.priority - b.priority;
     });
     return units;
   }
@@ -954,8 +858,8 @@ if (uni.restoreGlobal) {
     }
   }
   function computeMonthsParse() {
-    function cmpLenRev(a2, b) {
-      return b.length - a2.length;
+    function cmpLenRev(a, b) {
+      return b.length - a.length;
     }
     var shortPieces = [], longPieces = [], mixedPieces = [], i, mom;
     for (i = 0; i < 12; i++) {
@@ -1393,8 +1297,8 @@ if (uni.restoreGlobal) {
     }
   }
   function computeWeekdaysParse() {
-    function cmpLenRev(a2, b) {
-      return b.length - a2.length;
+    function cmpLenRev(a, b) {
+      return b.length - a.length;
     }
     var minPieces = [], shortPieces = [], longPieces = [], mixedPieces = [], i, mom, minp, shortp, longp;
     for (i = 0; i < 7; i++) {
@@ -1708,9 +1612,9 @@ if (uni.restoreGlobal) {
     return keys(locales);
   }
   function checkOverflow(m) {
-    var overflow, a2 = m._a;
-    if (a2 && getParsingFlags(m).overflow === -2) {
-      overflow = a2[MONTH] < 0 || a2[MONTH] > 11 ? MONTH : a2[DATE] < 1 || a2[DATE] > daysInMonth(a2[YEAR], a2[MONTH]) ? DATE : a2[HOUR] < 0 || a2[HOUR] > 24 || a2[HOUR] === 24 && (a2[MINUTE] !== 0 || a2[SECOND] !== 0 || a2[MILLISECOND] !== 0) ? HOUR : a2[MINUTE] < 0 || a2[MINUTE] > 59 ? MINUTE : a2[SECOND] < 0 || a2[SECOND] > 59 ? SECOND : a2[MILLISECOND] < 0 || a2[MILLISECOND] > 999 ? MILLISECOND : -1;
+    var overflow, a = m._a;
+    if (a && getParsingFlags(m).overflow === -2) {
+      overflow = a[MONTH] < 0 || a[MONTH] > 11 ? MONTH : a[DATE] < 1 || a[DATE] > daysInMonth(a[YEAR], a[MONTH]) ? DATE : a[HOUR] < 0 || a[HOUR] > 24 || a[HOUR] === 24 && (a[MINUTE] !== 0 || a[SECOND] !== 0 || a[MILLISECOND] !== 0) ? HOUR : a[MINUTE] < 0 || a[MINUTE] > 59 ? MINUTE : a[SECOND] < 0 || a[SECOND] > 59 ? SECOND : a[MILLISECOND] < 0 || a[MILLISECOND] > 999 ? MILLISECOND : -1;
       if (getParsingFlags(m)._overflowDayOfYear && (overflow < YEAR || overflow > DATE)) {
         overflow = DATE;
       }
@@ -1908,9 +1812,9 @@ if (uni.restoreGlobal) {
       config._d = new Date(config._i + (config._useUTC ? " UTC" : ""));
     }
   );
-  function defaults(a2, b, c) {
-    if (a2 != null) {
-      return a2;
+  function defaults(a, b, c) {
+    if (a != null) {
+      return a;
     }
     if (b != null) {
       return b;
@@ -2805,16 +2709,16 @@ if (uni.restoreGlobal) {
     }
     return asFloat ? output : absFloor(output);
   }
-  function monthDiff(a2, b) {
-    if (a2.date() < b.date()) {
-      return -monthDiff(b, a2);
+  function monthDiff(a, b) {
+    if (a.date() < b.date()) {
+      return -monthDiff(b, a);
     }
-    var wholeMonthDiff = (b.year() - a2.year()) * 12 + (b.month() - a2.month()), anchor = a2.clone().add(wholeMonthDiff, "months"), anchor2, adjust;
+    var wholeMonthDiff = (b.year() - a.year()) * 12 + (b.month() - a.month()), anchor = a.clone().add(wholeMonthDiff, "months"), anchor2, adjust;
     if (b - anchor < 0) {
-      anchor2 = a2.clone().add(wholeMonthDiff - 1, "months");
+      anchor2 = a.clone().add(wholeMonthDiff - 1, "months");
       adjust = (b - anchor) / (anchor - anchor2);
     } else {
-      anchor2 = a2.clone().add(wholeMonthDiff + 1, "months");
+      anchor2 = a.clone().add(wholeMonthDiff + 1, "months");
       adjust = (b - anchor) / (anchor2 - anchor);
     }
     return -(wholeMonthDiff + adjust) || 0;
@@ -3872,15 +3776,15 @@ if (uni.restoreGlobal) {
     return locale2.relativeTime(number || 1, !!withoutSuffix, string, isFuture);
   }
   function relativeTime$1(posNegDuration, withoutSuffix, thresholds2, locale2) {
-    var duration = createDuration(posNegDuration).abs(), seconds2 = round(duration.as("s")), minutes2 = round(duration.as("m")), hours2 = round(duration.as("h")), days2 = round(duration.as("d")), months2 = round(duration.as("M")), weeks2 = round(duration.as("w")), years2 = round(duration.as("y")), a2 = seconds2 <= thresholds2.ss && ["s", seconds2] || seconds2 < thresholds2.s && ["ss", seconds2] || minutes2 <= 1 && ["m"] || minutes2 < thresholds2.m && ["mm", minutes2] || hours2 <= 1 && ["h"] || hours2 < thresholds2.h && ["hh", hours2] || days2 <= 1 && ["d"] || days2 < thresholds2.d && ["dd", days2];
+    var duration = createDuration(posNegDuration).abs(), seconds2 = round(duration.as("s")), minutes2 = round(duration.as("m")), hours2 = round(duration.as("h")), days2 = round(duration.as("d")), months2 = round(duration.as("M")), weeks2 = round(duration.as("w")), years2 = round(duration.as("y")), a = seconds2 <= thresholds2.ss && ["s", seconds2] || seconds2 < thresholds2.s && ["ss", seconds2] || minutes2 <= 1 && ["m"] || minutes2 < thresholds2.m && ["mm", minutes2] || hours2 <= 1 && ["h"] || hours2 < thresholds2.h && ["hh", hours2] || days2 <= 1 && ["d"] || days2 < thresholds2.d && ["dd", days2];
     if (thresholds2.w != null) {
-      a2 = a2 || weeks2 <= 1 && ["w"] || weeks2 < thresholds2.w && ["ww", weeks2];
+      a = a || weeks2 <= 1 && ["w"] || weeks2 < thresholds2.w && ["ww", weeks2];
     }
-    a2 = a2 || months2 <= 1 && ["M"] || months2 < thresholds2.M && ["MM", months2] || years2 <= 1 && ["y"] || ["yy", years2];
-    a2[2] = withoutSuffix;
-    a2[3] = +posNegDuration > 0;
-    a2[4] = locale2;
-    return substituteTimeAgo.apply(null, a2);
+    a = a || months2 <= 1 && ["M"] || months2 < thresholds2.M && ["MM", months2] || years2 <= 1 && ["y"] || ["yy", years2];
+    a[2] = withoutSuffix;
+    a[3] = +posNegDuration > 0;
+    a[4] = locale2;
+    return substituteTimeAgo.apply(null, a);
   }
   function getSetRelativeTimeRounding(roundingFunction) {
     if (roundingFunction === void 0) {
@@ -4044,7 +3948,14 @@ if (uni.restoreGlobal) {
     WEEK: "GGGG-[W]WW",
     MONTH: "YYYY-MM"
   };
-  const _sfc_main$8 = {
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
+  const _sfc_main$a = {
     __name: "index",
     setup(__props) {
       let canvasSty = vue.ref({
@@ -4072,8 +3983,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComCanvas = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-028a9e72"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comCanvas/index.vue"]]);
-  const _sfc_main$7 = {
+  const ComCanvas = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-028a9e72"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comCanvas/index.vue"]]);
+  const _sfc_main$9 = {
     __name: "index",
     setup(__props) {
       return (_ctx, _cache) => {
@@ -4088,8 +3999,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
-  const _sfc_main$6 = {
+  const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
+  const _sfc_main$8 = {
     __name: "index",
     setup(__props) {
       vue.ref("\u6211\u662Fpopup");
@@ -4113,8 +4024,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComPopup = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-4a3567c6"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comPopup/index.vue"]]);
-  const _sfc_main$5 = {
+  const ComPopup = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-4a3567c6"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comPopup/index.vue"]]);
+  const _sfc_main$7 = {
     __name: "index",
     setup(__props) {
       let introduce = vue.ref({
@@ -4181,8 +4092,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComKnapsack = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-8fc46dda"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comKnapsack/index.vue"]]);
-  const _sfc_main$4 = {
+  const ComKnapsack = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-8fc46dda"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comKnapsack/index.vue"]]);
+  const _sfc_main$6 = {
     __name: "index",
     setup(__props) {
       const progressConfig = {
@@ -4217,9 +4128,9 @@ if (uni.restoreGlobal) {
         hiddenPopup.value.show = true;
       };
       setTimeout(() => {
-        let a2 = setInterval(() => {
+        let a = setInterval(() => {
           if (battleInfo.value.monster.blood == 10) {
-            clearInterval(a2);
+            clearInterval(a);
           } else {
             battleInfo.value.monster.blood = battleInfo.value.monster.blood - 1;
             battleInfo.value.player.blood = battleInfo.value.player.blood - 1;
@@ -4309,8 +4220,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
-  const _sfc_main$3 = {
+  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
+  const _sfc_main$5 = {
     __name: "index",
     setup(__props) {
       const handleToNewMap = (item, index) => {
@@ -4339,17 +4250,17 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComSceneList = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-62f6a8ab"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comSceneList/index.vue"]]);
-  const _sfc_main$2 = {
+  const ComSceneList = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-62f6a8ab"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comSceneList/index.vue"]]);
+  const _sfc_main$4 = {
     __name: "index",
     setup(__props) {
-      let a2 = vue.ref("index");
+      let a = vue.ref("index");
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", null, vue.toDisplayString(vue.unref(a2)), 1);
+        return vue.openBlock(), vue.createElementBlock("div", null, vue.toDisplayString(vue.unref(a)), 1);
       };
     }
   };
-  const ComMenu = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comMenu/index.vue"]]);
+  const ComMenu = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comMenu/index.vue"]]);
   const pageArr = vue.ref({
     list: [{
       "page_battle": vue.markRaw(ComBattle)
@@ -4369,7 +4280,7 @@ if (uni.restoreGlobal) {
   const hiddenPopup = vue.ref({
     show: false
   });
-  const _sfc_main$1 = {
+  const _sfc_main$3 = {
     __name: "index",
     setup(__props) {
       onShow(() => {
@@ -4395,14 +4306,176 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesContentIndex = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-148c4b58"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/content/index.vue"]]);
-  __definePage("pages/loginOrRegister/index", PagesLoginOrRegisterIndex);
+  const PagesContentIndex = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-148c4b58"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/content/index.vue"]]);
+  const _sfc_main$2 = {
+    __name: "index",
+    setup(__props) {
+      let sinupInfo = vue.ref({
+        name: "",
+        password: ""
+      });
+      const handleSignUp = () => {
+        uni.navigateTo({
+          url: "/pages/register/index"
+        });
+      };
+      const handleLogin = () => {
+        if (sinupInfo.value.name && sinupInfo.value.password) {
+          formatAppLog("log", "at pages/login/index.vue:19", sinupInfo.value, "\u767B\u5F55\u53C2\u6570======");
+          uni.redirectTo({
+            url: "/pages/content/index",
+            success: function(res) {
+              uni.setStorageSync("token", "tokentokentokentokentokentoken");
+            }
+          });
+        } else {
+          uni.showToast({
+            icon: "none",
+            title: "\u8BF7\u8F93\u5165\u6B63\u786E\u7684\u8D26\u53F7\u548C\u5BC6\u7801\uFF01",
+            duration: 2e3
+          });
+        }
+      };
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", { class: "pageCenter" }, [
+          vue.createElementVNode("div", { class: "login_conter" }, [
+            vue.createElementVNode("p", { class: "login_p" }, "\u6B22\u8FCE\u5192\u9669\u8005"),
+            vue.createElementVNode("div", { class: "login_div" }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.unref(sinupInfo).name = $event),
+                maxlength: "30",
+                placeholder: "\u8BF7\u8F93\u5165\u8D26\u53F7",
+                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).name]
+              ])
+            ]),
+            vue.createElementVNode("div", { class: "login_div" }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.unref(sinupInfo).password = $event),
+                maxlength: "8",
+                placeholder: "\u8BF7\u8F93\u5165\u5BC6\u7801",
+                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).password]
+              ])
+            ]),
+            vue.createElementVNode("div", { class: "login_a login_div" }, [
+              vue.createCommentVNode(" \u5FD8\u8BB0\u5BC6\u7801? "),
+              vue.createElementVNode("div", {
+                onClick: _cache[2] || (_cache[2] = (...args) => _ctx.handleForgotPassword && _ctx.handleForgotPassword(...args))
+              }),
+              vue.createElementVNode("div", { onClick: handleSignUp }, "\u6CE8\u518C")
+            ]),
+            vue.createElementVNode("div", {
+              onClick: handleLogin,
+              class: "login_button login_div"
+            }, "\u767B\u5F55")
+          ])
+        ]);
+      };
+    }
+  };
+  const PagesLoginIndex = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-45258083"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/login/index.vue"]]);
+  const _sfc_main$1 = {
+    __name: "index",
+    setup(__props) {
+      let sinupInfo = vue.ref({
+        name: "",
+        password: "",
+        phone_number: "",
+        email: ""
+      });
+      const handleBank = () => {
+        uni.navigateBack({
+          delta: 1
+        });
+      };
+      const handleSigUp = () => {
+        if (sinupInfo.value.name && sinupInfo.value.password && sinupInfo.value.phone_number && sinupInfo.value.email) {
+          formatAppLog("log", "at pages/register/index.vue:21", sinupInfo.value, "======");
+          uni.redirectTo({
+            url: "/pages/login/index"
+          });
+        } else {
+          uni.showToast({
+            icon: "none",
+            title: "\u4FE1\u606F\u8BF7\u586B\u5199\u5B8C\u6574\u6B63\u786E\uFF01",
+            duration: 2e3
+          });
+        }
+      };
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", { class: "pageCenter" }, [
+          vue.createElementVNode("div", { class: "login_conter" }, [
+            vue.createElementVNode("p", { class: "login_p" }, "\u5192\u9669\u8005"),
+            vue.createElementVNode("div", {
+              class: "login_div",
+              draggable: "true"
+            }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.unref(sinupInfo).name = $event),
+                maxlength: "30",
+                placeholder: "\u8BF7\u8F93\u5165\u8D26\u53F7",
+                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).name]
+              ])
+            ]),
+            vue.createElementVNode("div", {
+              class: "login_div",
+              draggable: "true"
+            }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.unref(sinupInfo).password = $event),
+                maxlength: "8",
+                placeholder: "\u8BF7\u8F93\u5165\u5BC6\u7801,\u6700\u5C118\u4F4D",
+                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).password]
+              ])
+            ]),
+            vue.createElementVNode("div", { class: "login_div" }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                type: "number",
+                "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => vue.unref(sinupInfo).phone_number = $event),
+                maxlength: "11",
+                placeholder: "\u8BF7\u8F93\u5165\u624B\u673A\u53F7"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).phone_number]
+              ])
+            ]),
+            vue.createElementVNode("div", { class: "login_div" }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => vue.unref(sinupInfo).email = $event),
+                placeholder: "\u8BF7\u8F93\u5165\u90AE\u7BB1",
+                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).email]
+              ])
+            ]),
+            vue.createElementVNode("div", { class: "login_a login_div" }, [
+              vue.createElementVNode("div"),
+              vue.createElementVNode("div", { onClick: handleBank }, "\u8FD4\u56DE")
+            ]),
+            vue.createElementVNode("div", {
+              onClick: handleSigUp,
+              class: "login_button login_div"
+            }, "\u6CE8\u518C")
+          ])
+        ]);
+      };
+    }
+  };
+  const PagesRegisterIndex = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-c5d9c666"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/register/index.vue"]]);
   __definePage("pages/content/index", PagesContentIndex);
+  __definePage("pages/login/index", PagesLoginIndex);
+  __definePage("pages/register/index", PagesRegisterIndex);
   const pageAddress = () => {
     useInfo.value.dataToken = uni.getStorageSync("token");
-    if (useInfo.value.dataToken) {
+    if (!useInfo.value.dataToken) {
       uni.redirectTo({
-        url: "/pages/content/index"
+        url: "/pages/login/index"
       });
     }
   };

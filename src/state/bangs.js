@@ -1,3 +1,7 @@
+/**
+ * 刘海适配
+ */
+
 // 状态栏高度 单位px
 const headerMargin = wx.getSystemInfoSync().statusBarHeight
 

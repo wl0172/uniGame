@@ -1,6 +1,14 @@
 <script setup>
-import { ref } from "vue"
+import {
+	ref,
+	reactive,
+	markRaw,
+	onMounted,
+	watch,
+	watchEffect
+} from 'vue'
 import apiRequest from "@/api/index.js"
+import loginState from '@/state/action/loginOrRegister.js'
 
 let sinupInfo = ref({
 	name: '',
@@ -9,9 +17,7 @@ let sinupInfo = ref({
 
 // 注册
 const handleSignUp = () => {
-	uni.navigateTo({
-		url: '/pages/register/index'
-	})
+	loginState.value.isState = 0
 }
 // 登录
 const handleLogin = () => {
@@ -22,7 +28,7 @@ const handleLogin = () => {
 		// })
 		uni.redirectTo({
 			url: "/pages/content/index",
-			success:function(res){
+			success: function (res) {
 				uni.setStorageSync('token', 'tokentokentokentokentokentoken');
 			}
 		})
@@ -48,12 +54,10 @@ const handleLogin = () => {
 				<input v-model="sinupInfo.password" maxlength="8" placeholder="请输入密码"
 					oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')" />
 			</div>
-			<div class="login_a login_div">
-				<!-- 忘记密码? -->
-				<div @click="handleForgotPassword"></div>
-				<div @click="handleSignUp">注册</div>
+			<div class="login_button login_div">
+				<div class="login_button_txt" @click="handleSignUp">注册</div>
+				<div class="login_button_txt" @click="handleLogin">登录</div>
 			</div>
-			<div @click="handleLogin" class="login_button login_div">登录</div>
 		</div>
 	</div>
 </template>
@@ -65,27 +69,29 @@ const handleLogin = () => {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	position: relative;
 	.login_conter {
 		width: 80%;
 		text-align: center;
-		border-radius: 0.7rem;
+		border-radius: 0.3rem;
 		color: black;
 		margin: 0 auto;
 		padding: 40rpx 20rpx 40rpx 20rpx;
 		background: #9ca8b8;
 
 		.login_p {
-			margin: 1rem auto 2rem auto;
+			margin: 0 auto 2rem auto;
 			font-size: 1.5rem;
 			color: #81ffc1;
 		}
 
 		.login_div {
 			background: #e3e3e3;
-			border-radius: 50rem;
+			border-radius: .3rem;
 			padding: 0 30rpx;
 			width: 77%;
 			margin: 0 auto 50rpx auto;
+
 			input {
 				width: 100%;
 				border: 0;
@@ -96,34 +102,28 @@ const handleLogin = () => {
 			}
 		}
 
-		.login_a {
-			color: #7676cb;
-			width: auto;
-			margin: 0 auto;
-			text-align: right;
-			padding: 0 1.1rem;
-			display: flex;
-			justify-content: space-between;
-			background: #ffffff00;
-		}
-
 		.login_button {
-			height: 100rpx;
-			line-height: 100rpx;
-			border-radius: 50rem;
-			margin: 3rem auto 1rem auto;
-			background: linear-gradient(to right, #8ebcf5 0, #00e2fa 80%, #00e2fa 100%);
-			color: white;
-			box-shadow:
-				0px 0px 2rpx 2rpx rgba(55, 114, 203, 0.2),
-				/*下面深蓝色立体阴影*/
-				0px 0px 6rpx 1rpx #4379d0,
-				/*内部暗色阴影*/
-				0 -15px 2rpx 2rpx rgba(55, 114, 203, 0.10) inset;
-		}
+			margin: 0 auto;
+			display: flex;
+			background: #ffffff00;
+			justify-content: space-around;
 
-		.login_button:active {
-			opacity: .7;
+			.login_button_txt {
+				width: 37%;
+				height: 74rpx;
+				line-height: 74rpx;
+				border-radius: .3rem;
+				color: black;
+				background: linear-gradient(to right, #8ebcf5 0, #00e2fa 80%, #00e2fa 100%);
+			}
+
+			.login_button_txt:nth-child(1) {
+				// color: #004686;
+			}
+
+			.login_button_txt:active {
+				opacity: .7;
+			}
 		}
 	}
 }

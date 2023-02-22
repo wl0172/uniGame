@@ -286,24 +286,29 @@ to {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+.pageCenter .pageCenter_version[data-v-45258083] {
+  position: absolute;
+  bottom: 1.5625rem;
 }
 .pageCenter .login_conter[data-v-45258083] {
   width: 80%;
   text-align: center;
-  border-radius: 0.7rem;
+  border-radius: 0.3rem;
   color: black;
   margin: 0 auto;
   padding: 1.25rem 0.625rem 1.25rem 0.625rem;
   background: #9ca8b8;
 }
 .pageCenter .login_conter .login_p[data-v-45258083] {
-  margin: 1rem auto 2rem auto;
+  margin: 0 auto 2rem auto;
   font-size: 1.5rem;
   color: #81ffc1;
 }
 .pageCenter .login_conter .login_div[data-v-45258083] {
   background: #e3e3e3;
-  border-radius: 50rem;
+  border-radius: 0.3rem;
   padding: 0 0.9375rem;
   width: 77%;
   margin: 0 auto 1.5625rem auto;
@@ -316,25 +321,20 @@ to {
   outline: none;
   text-align: left;
 }
-.pageCenter .login_conter .login_a[data-v-45258083] {
-  color: #7676cb;
-  width: auto;
-  margin: 0 auto;
-  text-align: right;
-  padding: 0 1.1rem;
-  display: flex;
-  justify-content: space-between;
-  background: #ffffff00;
-}
 .pageCenter .login_conter .login_button[data-v-45258083] {
-  height: 3.125rem;
-  line-height: 3.125rem;
-  border-radius: 50rem;
-  margin: 3rem auto 1rem auto;
-  background: linear-gradient(to right, #8ebcf5 0, #00e2fa 80%, #00e2fa 100%);
-  color: white;
-  box-shadow: 0px 0px 0.0625rem 0.0625rem rgba(55, 114, 203, 0.2),  0px 0px 0.1875rem 0.03125rem #4379d0,  0 -15px 0.0625rem 0.0625rem rgba(55, 114, 203, 0.1) inset;
+  margin: 0 auto;
+  display: flex;
+  background: #ffffff00;
+  justify-content: space-around;
 }
-.pageCenter .login_conter .login_button[data-v-45258083]:active {
+.pageCenter .login_conter .login_button .login_button_txt[data-v-45258083] {
+  width: 37%;
+  height: 2.3125rem;
+  line-height: 2.3125rem;
+  border-radius: 0.3rem;
+  color: black;
+  background: linear-gradient(to right, #8ebcf5 0, #00e2fa 80%, #00e2fa 100%);
+}
+.pageCenter .login_conter .login_button .login_button_txt[data-v-45258083]:active {
   opacity: 0.7;
 }

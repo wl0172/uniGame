@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue"
 import apiRequest from "@/api/index.js"
+import loginState from '@/state/action/loginOrRegister.js'
 
 let sinupInfo = ref({
 	name: '',
@@ -11,20 +12,16 @@ let sinupInfo = ref({
 
 // 返回
 const handleBank = () => {
-	uni.navigateBack({
-		delta: 1
-	})
+	loginState.value.isState = 1
 }
 // 注册
 const handleSigUp = () => {
 	if (sinupInfo.value.name && sinupInfo.value.password && sinupInfo.value.phone_number && sinupInfo.value.email) {
-		console.log(sinupInfo.value, '======')
+		console.log(sinupInfo.value, '注册======')
 		// apiRequest.postLogin(sinupInfo.value).then((res) => {
 		// 	console.log(res)
 		// })
-		uni.redirectTo({
-			url: '/pages/login/index',
-		})
+		loginState.value.isState = 1
 	} else {
 		uni.showToast({
 			icon: 'none',
@@ -57,7 +54,9 @@ const handleSigUp = () => {
 				<div></div>
 				<div @click="handleBank">返回</div>
 			</div>
-			<div @click="handleSigUp" class="login_button login_div">注册</div>
+			<div @click="handleSigUp" class="login_button login_div">
+				<div class="login_button_txt">注册</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -69,11 +68,11 @@ const handleSigUp = () => {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
+	position: relative;
 	.login_conter {
 		width: 80%;
 		text-align: center;
-		border-radius: 0.7rem;
+		border-radius: 0.3rem;
 		color: black;
 		margin: 0 auto;
 		padding: 40rpx 20rpx 40rpx 20rpx;
@@ -87,7 +86,7 @@ const handleSigUp = () => {
 
 		.login_div {
 			background: #e3e3e3;
-			border-radius: 50rem;
+			border-radius: .3rem;
 			padding: 0 30rpx;
 			width: 77%;
 			margin: 0 auto 50rpx auto;
@@ -104,31 +103,32 @@ const handleSigUp = () => {
 		.login_a {
 			color: #7676cb;
 			width: auto;
-			margin: 0 auto;
+			margin: 30rpx auto;
 			text-align: right;
 			padding: 0 1.1rem;
 			display: flex;
 			justify-content: space-between;
 			background: #ffffff00;
 		}
-
 		.login_button {
-			height: 100rpx;
-			line-height: 100rpx;
-			border-radius: 50rem;
-			margin: 3rem auto 1rem auto;
-			background: linear-gradient(to right, #8ebcf5 0, #00e2fa 80%, #00e2fa 100%);
-			color: white;
-			box-shadow:
-				0px 0px 2rpx 2rpx rgba(55, 114, 203, 0.2),
-				/*下面深蓝色立体阴影*/
-				0px 0px 6rpx 1rpx #4379d0,
-				/*内部暗色阴影*/
-				0 -15px 2rpx 2rpx rgba(55, 114, 203, 0.10) inset;
-		}
-
-		.login_button:active {
-			opacity: .7;
+			margin: 0 auto;
+			display: flex;
+			background: #ffffff00;
+			justify-content: space-around;
+			.login_button_txt{
+				width: 37%;
+				height: 74rpx;
+				line-height: 74rpx;
+				border-radius: .3rem;
+				color: black;
+				background: linear-gradient(to right, #8ebcf5 0, #00e2fa 80%, #00e2fa 100%);
+			}
+			.login_button_txt:nth-child(1){
+				// color: #004686;
+			}
+			.login_button_txt:active {
+				opacity: .7;
+			}
 		}
 	}
 }

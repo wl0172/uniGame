@@ -1,5 +1,5 @@
 <script>
-	import pageAddress from "@/utils/index.js"
+	import pageAddress from "@/state/pageState/index.js"
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
