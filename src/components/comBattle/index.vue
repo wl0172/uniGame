@@ -47,6 +47,11 @@ const handleToMap = () => {
 const hiddenOpenKnapsack = () => {
 	hiddenPopup.value.show = true
 }
+// 商店
+const handleToShop = () => {
+	pageSwitch.value.index = 2
+	pageSwitch.value.key = 'page_comShop'
+}
 
 
 
@@ -131,8 +136,8 @@ setTimeout(()=>{
 			<div @click="handleSeachItem">探索</div>
 			<div @click="handleToMap">地图</div>
 			<div @click="hiddenOpenKnapsack">背包</div>
-			<div>11</div>
-			<div>11</div>
+			<div @click="handleToShop">商店</div>
+			<div>xxxx</div>
 		</div>
 
 
@@ -217,7 +222,7 @@ setTimeout(()=>{
     bottom: 0;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     flex-wrap: wrap;
 		div{
 			width: 200rpx;

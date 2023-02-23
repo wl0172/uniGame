@@ -26,7 +26,7 @@ console.log('主页','======')
 		</div>
 	</div>
 	<!-- 背景图 -->
-	<image class="bg" src="../../static/3.png" mode=""></image>
+	<div class="bg"></div>
 </template>
 
 <style scoped lang="less">

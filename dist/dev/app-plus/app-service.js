@@ -31,6 +31,57 @@ if (uni.restoreGlobal) {
 }
 (function(vue) {
   "use strict";
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
+  const _sfc_main$d = {
+    __name: "index",
+    setup(__props) {
+      vue.onMounted(() => {
+        var context = uni.createCanvasContext("firstCanvas");
+        context.setStrokeStyle("#ff0000");
+        context.setLineWidth(2);
+        context.moveTo(160, 100);
+        context.arc(100, 100, 60, 0, 2 * Math.PI, true);
+        context.moveTo(140, 100);
+        context.arc(100, 100, 40, 0, Math.PI, false);
+        context.moveTo(85, 80);
+        context.arc(80, 80, 5, 0, 2 * Math.PI, true);
+        context.moveTo(125, 80);
+        context.arc(120, 80, 5, 0, 2 * Math.PI, true);
+        context.stroke();
+        context.draw();
+      });
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("view", null, [
+          vue.createElementVNode("canvas", {
+            style: { "width": "300px", "height": "200px" },
+            "canvas-id": "firstCanvas",
+            id: "firstCanvas"
+          })
+        ]);
+      };
+    }
+  };
+  const ComCanvas = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comCanvas/index.vue"]]);
+  const _sfc_main$c = {
+    __name: "demo",
+    setup(__props) {
+      let a = vue.ref("index");
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", null, [
+          vue.createElementVNode("div", null, vue.toDisplayString(vue.unref(a)) + "1234", 1),
+          vue.createElementVNode("text", null, "1234"),
+          vue.createVNode(ComCanvas)
+        ]);
+      };
+    }
+  };
+  const PagesDemo = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-eff989ce"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/demo.vue"]]);
   function formatAppLog(type, filename, ...args) {
     if (uni.__log__) {
       uni.__log__(type, filename, ...args);
@@ -41,13 +92,6 @@ if (uni.restoreGlobal) {
   let loginState = vue.ref({
     isState: 1
   });
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
   const _sfc_main$b = {
     __name: "index",
     setup(__props) {
@@ -4307,6 +4351,10 @@ if (uni.restoreGlobal) {
       const hiddenOpenKnapsack = () => {
         hiddenPopup.value.show = true;
       };
+      const handleToShop = () => {
+        pageSwitch.value.index = 2;
+        pageSwitch.value.key = "page_comShop";
+      };
       setTimeout(() => {
         let a = setInterval(() => {
           if (battleInfo.value.monster.blood == 10) {
@@ -4394,8 +4442,8 @@ if (uni.restoreGlobal) {
               vue.createElementVNode("div", { onClick: handleSeachItem }, "\u63A2\u7D22"),
               vue.createElementVNode("div", { onClick: handleToMap }, "\u5730\u56FE"),
               vue.createElementVNode("div", { onClick: hiddenOpenKnapsack }, "\u80CC\u5305"),
-              vue.createElementVNode("div", null, "11"),
-              vue.createElementVNode("div", null, "11")
+              vue.createElementVNode("div", { onClick: handleToShop }, "\u5546\u5E97"),
+              vue.createElementVNode("div", null, "xxxx")
             ])
           ])
         ], 64);
@@ -4436,27 +4484,91 @@ if (uni.restoreGlobal) {
   const _sfc_main$2 = {
     __name: "index",
     setup(__props) {
-      let a = vue.ref("index");
+      let shopArr = vue.ref(40);
+      const handleShowToast = () => {
+        uni.showToast({
+          icon: "none",
+          title: "\u6781\u54C1\u836F\u6C34"
+        });
+      };
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", null, vue.toDisplayString(vue.unref(a)), 1);
+        return vue.openBlock(), vue.createElementBlock("div", { class: "comShopD" }, [
+          vue.createElementVNode("div", { class: "comShopDiv" }, [
+            vue.createElementVNode("div", {
+              onClick: _cache[0] || (_cache[0] = (...args) => _ctx.handle && _ctx.handle(...args))
+            }, "11"),
+            vue.createCommentVNode(" npc "),
+            vue.createElementVNode("div", { class: "comShopDiv_npc" }, [
+              vue.createElementVNode("div", { class: "comShopDiv_npc_top" }, [
+                vue.createElementVNode("div", { class: "comShopDiv_npc_top_image" }, [
+                  vue.createElementVNode("image", {
+                    src: "/static/2.png",
+                    mode: ""
+                  })
+                ]),
+                vue.createElementVNode("div", { class: "comShopDiv_npc_top_txt" }, [
+                  vue.createElementVNode("div", null, "xxxxxxxx\u7684\u5546\u5E97"),
+                  vue.createElementVNode("div", null, "xxxxxxxx\u7684\u4E00\u53E5\u8BDD")
+                ])
+              ]),
+              vue.createElementVNode("div", { class: "comShopDiv_npc_tab" }, [
+                (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(shopArr), (item, index) => {
+                  return vue.openBlock(), vue.createElementBlock("div", { class: "comShopDiv_npc_tab_li" }, [
+                    vue.createElementVNode("image", {
+                      onClick: handleShowToast,
+                      src: "/static/1.png",
+                      mode: ""
+                    })
+                  ]);
+                }), 256))
+              ])
+            ]),
+            vue.createCommentVNode(" me "),
+            vue.createElementVNode("div", { class: "comShopDiv_npc" }, [
+              vue.createElementVNode("div", { class: "comShopDiv_npc_top" }, [
+                vue.createElementVNode("div", { class: "comShopDiv_npc_top_image" }, [
+                  vue.createElementVNode("image", {
+                    src: "/static/2.png",
+                    mode: ""
+                  })
+                ]),
+                vue.createElementVNode("div", { class: "comShopDiv_npc_top_txt" }, [
+                  vue.createElementVNode("div", null, "xxxxxxxx\u7684\u5546\u5E97"),
+                  vue.createElementVNode("div", null, "xxxxxxxx\u7684\u4E00\u53E5\u8BDD")
+                ])
+              ]),
+              vue.createElementVNode("div", { class: "comShopDiv_npc_tab" }, [
+                (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(shopArr), (item, index) => {
+                  return vue.openBlock(), vue.createElementBlock("div", { class: "comShopDiv_npc_tab_li" }, [
+                    vue.createElementVNode("image", {
+                      onClick: handleShowToast,
+                      src: "/static/1.png",
+                      mode: ""
+                    })
+                  ]);
+                }), 256))
+              ])
+            ])
+          ])
+        ]);
       };
     }
   };
-  const ComMenu = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comMenu/index.vue"]]);
+  const ComShop = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-83658b6a"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comShop/index.vue"]]);
   const pageArr = vue.ref({
     list: [{
       "page_battle": vue.markRaw(ComBattle)
     }, {
       "page_sceneList": vue.markRaw(ComSceneList)
     }, {
-      "page_menu": vue.markRaw(ComMenu)
+      "page_comShop": vue.markRaw(ComShop)
     }]
   });
   const pageSwitch = vue.ref({
     index: "0",
     key: "page_battle"
   });
-  const useInfo = vue.ref({
+  vue.ref({
     dataToken: ""
   });
   const hiddenPopup = vue.ref({
@@ -4484,33 +4596,21 @@ if (uni.restoreGlobal) {
             ], 4)
           ]),
           vue.createCommentVNode(" \u80CC\u666F\u56FE "),
-          vue.createElementVNode("image", {
-            class: "bg",
-            src: "/static/3.png",
-            mode: ""
-          })
+          vue.createElementVNode("div", { class: "bg" })
         ], 64);
       };
     }
   };
   const PagesContentIndex = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-148c4b58"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/content/index.vue"]]);
+  __definePage("pages/demo", PagesDemo);
   __definePage("pages/loginOrRegister/index", PagesLoginOrRegisterIndex);
   __definePage("pages/content/index", PagesContentIndex);
-  const pageAddress = () => {
-    useInfo.value.dataToken = uni.getStorageSync("token");
-    if (!useInfo.value.dataToken) {
-      uni.redirectTo({
-        url: "/pages/loginOrRegister/index"
-      });
-    }
-  };
   const _sfc_main = {
     onLaunch: function() {
       formatAppLog("log", "at App.vue:5", "App Launch");
     },
     onShow: function() {
       formatAppLog("log", "at App.vue:8", "App Show");
-      pageAddress();
     },
     onHide: function() {
       formatAppLog("log", "at App.vue:12", "App Hide");

@@ -1,49 +1,31 @@
 <script setup>
-import { onLoad, onShow } from "@dcloudio/uni-app"
-import { ref, reactive, markRaw,onMounted, watch } from 'vue'
+import { onMounted } from 'vue'
 
-let canvasSty = ref({
-	weight: '',
-	height: ''
-})
-
-wx.getSystemInfo({
-	success(res){
-		canvasSty.value.weight = res.windowWidth,
-		canvasSty.value.height = res.windowHeight
-	}
-})
-
-const drawStars = () => {
+onMounted(()=>{
+	var context = uni.createCanvasContext('firstCanvas')
+	// context.setStrokeStyle("#000")
+	// context.setLineWidth(5)
+	// context.rect(0, 0, 100, 100)
+	// context.stroke()
 	
-	let ctx = wx.createCanvasContext('canvasId')
-		
-		
-}
+	context.setStrokeStyle("#ff0000")
+	context.setLineWidth(2)
+	context.moveTo(160, 100)
+	context.arc(100, 100, 60, 0, 2 * Math.PI, true)
+	context.moveTo(140, 100)
+	context.arc(100, 100, 40, 0, Math.PI, false)
+	context.moveTo(85, 80)
+	context.arc(80, 80, 5, 0, 2 * Math.PI, true)
+	context.moveTo(125, 80)
+	context.arc(120, 80, 5, 0, 2 * Math.PI, true)
+	context.stroke()
+	context.draw()
+})
 
-drawStars()
-			
 </script>
 
 <template>
-	<!-- canvas -->
-	<canvas type="2d" id="canvasId" :style="{'width':canvasSty.width+'px','height':canvasSty.height+'px'}" ></canvas>
+	<view>
+		<canvas style="width: 300px; height: 200px;" canvas-id="firstCanvas" id="firstCanvas"></canvas>
+	</view>
 </template>
-
-<style scoped lang="less">
-	uni-canvas {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
-
-	#canvas {
-		position: absolute;
-		top: 0;
-		left: 0;
-		background: red;
-		z-index: 99999999;
-	}
-</style>

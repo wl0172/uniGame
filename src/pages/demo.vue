@@ -1,7 +1,9 @@
 <script setup>
 import { ref } from "vue"
 // 组件
-import ComPopup from '@/components/comPopup/index.vue'
+import ComCanvas from '@/components/comCanvas/index.vue'
+
+
 
 let a = ref('index')
 
@@ -16,11 +18,12 @@ let a = ref('index')
 <template>
 	
 	<div>
+
+
 		<div>{{ a }}1234</div>
 		<text>1234</text>
-		
-		<!--  -->
-		<ComPopup />
+
+		<ComCanvas />
 		
 	</div>
 	
@@ -28,6 +31,7 @@ let a = ref('index')
 
 <style scoped lang="less">
 div{
-	color: @txtColor;
+	// color: @txtColor;
+	color: black;
 }
 </style>
