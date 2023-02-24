@@ -48,7 +48,7 @@ watch([pageSwitch.value, pageSwitchMenu.value], ([newValue1, oldValue1],[newValu
 		</ComPopup>
 	</div>
 	<!-- 背景图 -->
-	<!-- <div class="bg"></div> -->
+	<div class="bg"></div>
 </template>
 
 <style scoped lang="less">

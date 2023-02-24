@@ -4465,7 +4465,7 @@ if (uni.restoreGlobal) {
     }]
   });
   const pageSwitch = vue.ref({
-    index: "0",
+    index: 0,
     key: "page_battle"
   });
   const pageArrMenu = vue.ref({
@@ -4478,11 +4478,11 @@ if (uni.restoreGlobal) {
     }]
   });
   const pageSwitchMenu = vue.ref({
-    index: 1,
-    key: "ComShop"
+    index: 0,
+    key: "ComKnapsack"
   });
   const hiddenPopup = vue.ref({
-    show: true,
+    show: false,
     width: 100,
     height: 100
   });
@@ -4548,8 +4548,8 @@ if (uni.restoreGlobal) {
             }, 8, ["hiddenPopup"])
           ]),
           vue.createCommentVNode(" \u80CC\u666F\u56FE "),
-          vue.createCommentVNode(' <div class="bg"></div> ')
-        ], 2112);
+          vue.createElementVNode("div", { class: "bg" })
+        ], 64);
       };
     }
   };

@@ -23,7 +23,7 @@ const pageArr = ref({
 	}]
 })
 const pageSwitch = ref({
-	index: '0',
+	index: 0,
 	key: 'page_battle'
 })
 
@@ -39,13 +39,13 @@ const pageArrMenu = ref({
 	}]
 })
 const pageSwitchMenu = ref({
-	index: 1,
-	key: 'ComShop'
+	index: 0,
+	key: 'ComKnapsack'
 })
 
 // 弹窗显示 - 隐藏
 const hiddenPopup = ref({
-	show: true,
+	show: false,
 	width: 100,
 	height: 100
 })
