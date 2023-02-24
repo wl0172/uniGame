@@ -3,12 +3,18 @@ import { hiddenPopup } from '@/state/index.js'
 import { ref } from "vue"
 let a = ref('我是popup')
 
-// // 接收父组件传参
-// const props = defineProps({
-// 	hiddenPopup: {
-// 		type: Boolean
-// 	},
-// })
+// 接收父组件传参
+const props = defineProps({
+	popupWidth: {
+		type: Number
+	},
+	popupHeight: {
+		type: Number
+	},
+})
+
+
+console.log(props, '我是popup======')
 
 // 关闭弹窗
 const handleDiv = () => {

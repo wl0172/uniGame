@@ -1,10 +1,19 @@
 
 <script setup>
-import { ref } from "vue"
+import { ref, watch } from "vue"
 import monent from "moment"
+// 全局场景切换
+import { pageArr,pageSwitch } from '@/state/index.js'
 
 let timeDate = ref(new monent().format('YYYY-MM-DD'))
-let addName = ref('A城（城门）')
+let addName = ref({
+	name: pageArr.value.list[0].name
+})
+// 监听页面组件变化
+watch(pageSwitch.value, (newValue, oldValue) => {
+	addName.value.name = pageArr.value.list[newValue.index].name
+})
+
 // 接收父组件传参
 const props = defineProps({
 	comHeight: {
@@ -13,10 +22,6 @@ const props = defineProps({
 })
 const headerHeight = props.comHeight.headerHeight + props.comHeight.headerMargin
 
-
-console.log('header','======')
-
-
 </script>
 
 <!-- 头部时间 - 地点 -->
@@ -24,7 +29,7 @@ console.log('header','======')
 	<div class="comHeaderD" :style="{ '--headerHeight': headerHeight + 'rpx' }">
 		<div class="comHeaderDiv">
 			<div>{{ timeDate }}</div>
-			<div class="comHeaderDiv_addName">{{ addName }}</div>
+			<div class="comHeaderDiv_addName">{{ addName.name }}</div>
 		</div>
 	</div>
 </template>

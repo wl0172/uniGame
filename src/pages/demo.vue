@@ -21,7 +21,7 @@ let a = ref('index')
 
 
 		<div>{{ a }}1234</div>
-		<text>1234</text>
+		<text>123456</text>
 
 		<ComCanvas />
 		

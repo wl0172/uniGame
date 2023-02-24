@@ -7,7 +7,8 @@ import ComPopup from "@/components/comPopup/index.vue"
 // 背包
 import ComKnapsack from "@/components/comKnapsack/index.vue"
 
-import { pageSwitch, hiddenPopup } from '@/state/index.js'
+// 全局的属性
+import { hiddenPopup } from '@/state/index.js'
 
 // 进度条配置
 const progressConfig = {
@@ -32,31 +33,49 @@ let battleInfo = ref({
 	}
 })
 
+// 探索
 const handleSeachItem = () => {
 	uni.showToast({
 		icon: 'none',
 		title: '探索'
 	})
 }
-// 打开地图 - 列表
+// 打开地图
 const handleToMap = () => {
-	pageSwitch.value.index = 1
-	pageSwitch.value.key = 'page_sceneList'
+	uni.navigateTo({
+		url: '/pages/canvasMap/index',
+	})
 }
 // 打开背包
-const hiddenOpenKnapsack = () => {
+const handleOpenKnapsack = () => {
 	hiddenPopup.value.show = true
 }
-// 商店
+// 战斗中 - 打开消耗品
+// const = hiddenOpenKnapsackFight = () => {}
+
+// 打开商店
 const handleToShop = () => {
-	pageSwitch.value.index = 2
-	pageSwitch.value.key = 'page_comShop'
+	uni.showToast({
+		icon: 'none',
+		title: '打开商店'
+	})
 }
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+// 假的掉血机制
 setTimeout(()=>{
 	let a = setInterval(()=>{
 		if(battleInfo.value.monster.blood == 10){
@@ -72,9 +91,6 @@ setTimeout(()=>{
 </script>
 
 <template>
-	<ComPopup :hiddenPopup="hiddenPopup.show">
-		<ComKnapsack />
-	</ComPopup>
 	<div class="comBattleDiv">
 			
 		<!-- 怪物 - 英雄 -->
@@ -126,18 +142,15 @@ setTimeout(()=>{
 		
 		<!-- 战斗txt - 等 -->
 		<div class="comBattleDiv_battle_2">
-			
 			<div v-for="(item, index) in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]">12312321312</div>
-			
 		</div>
 
-		<!-- 战斗txt -->
+		<!-- 操作button -->
 		<div class="comBattleDiv_battle_3">
 			<div @click="handleSeachItem">探索</div>
 			<div @click="handleToMap">地图</div>
-			<div @click="hiddenOpenKnapsack">背包</div>
+			<div @click="handleOpenKnapsack">背包</div>
 			<div @click="handleToShop">商店</div>
-			<div>xxxx</div>
 		</div>
 
 
