@@ -1,6 +1,6 @@
 {
-    "name" : "",
-    "appid" : "",
+    "name" : "迷你冒险者",
+    "appid" : "__UNI__2E2F2E5",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -41,9 +41,20 @@
                 ]
             },
             /* ios打包配置 */
-            "ios" : {},
+            "ios" : {
+                "dSYMs" : false
+            },
             /* SDK配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {
+                "ad" : {}
+            },
+            "splashscreen" : {
+                "androidStyle" : "common",
+								"alwaysShowBeforeRender": false,
+								"waiting": false,
+								"autoclose": false,
+								"delay": 0
+            }
         }
     },
     /* 快应用特有相关 */
@@ -65,8 +76,8 @@
     "mp-toutiao" : {
         "usingComponents" : true
     },
-    "uniStatistics": {  
-        "enable": false
+    "uniStatistics" : {
+        "enable" : false
     },
     "vueVersion" : "3"
 }
