@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from "vue"
+// 全局的属性
+import { pageSwitchMenu, hiddenPopup } from '@/state/index.js'
+
 let shopArr = ref(40)
 
 const handleShowToast = () => {
@@ -7,6 +10,10 @@ const handleShowToast = () => {
 		icon: 'none',
 		title: '极品药水'
 	})
+}
+
+const handle = () => {
+	hiddenPopup.value.show = false
 }
 
 </script>

@@ -8,7 +8,7 @@ import ComPopup from "@/components/comPopup/index.vue"
 import ComKnapsack from "@/components/comKnapsack/index.vue"
 
 // 全局的属性
-import { hiddenPopup } from '@/state/index.js'
+import { pageSwitchMenu, hiddenPopup } from '@/state/index.js'
 
 // 进度条配置
 const progressConfig = {
@@ -49,16 +49,21 @@ const handleToMap = () => {
 // 打开背包
 const handleOpenKnapsack = () => {
 	hiddenPopup.value.show = true
+	hiddenPopup.value.width = 90
+	hiddenPopup.value.height = 70
+	pageSwitchMenu.value.index = 0
+	pageSwitchMenu.value.key = 'ComKnapsack'
 }
 // 战斗中 - 打开消耗品
 // const = hiddenOpenKnapsackFight = () => {}
 
 // 打开商店
 const handleToShop = () => {
-	uni.showToast({
-		icon: 'none',
-		title: '打开商店'
-	})
+	hiddenPopup.value.show = true
+	hiddenPopup.value.width = 100
+	hiddenPopup.value.height = 100
+	pageSwitchMenu.value.index = 1
+	pageSwitchMenu.value.key = 'ComShop'
 }
 
 

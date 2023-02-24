@@ -8,30 +8,28 @@ import ComHeader from "@/components/comHeader/index.vue"
 import ComPopup from "@/components/comPopup/index.vue"
 
 // 全局属性 - 场景 - 切换
-import { pageArr,pageSwitch, hiddenPopup } from '@/state/index.js'
-
-// 场景 - 二级页
-// import { pageArr, pageSwitch, hiddenPopup } from '@/state/index.js'
-
-
-// 背包
-import ComKnapsack from '@/components/comKnapsack/index.vue'
-// 商店
-import ComShop from '@/components/comShop/index.vue'
+import { 
+	pageArr,
+	pageSwitch,
+	pageArrMenu,
+	pageSwitchMenu,
+	hiddenPopup,
+} from '@/state/index.js'
 
 
 
 
-let popupInfo = ref({
-	popupWidth: 100,
-	popupHeight: 100
-})
+// uni.showToast({
+// 	icon: 'none',
+// 	title: '打开商店'
+// })
 
 // 监听页面组件变化
-watch([pageSwitch.value, hiddenPopup.value], (newValue, oldValue) => {
-	// console.log(newValue, '  主场景watch======')
-	pageSwitch.value.index = newValue[0].index
-	pageSwitch.key = newValue[0].key
+watch([pageSwitch.value, pageSwitchMenu.value], ([newValue1, oldValue1],[newValue2, oldValue2]) => {
+	// console.log(newValue1, '  主场景watch,newValue1======')
+	// console.log(newValue2, '  主场景watch,newValue2======')
+	// pageSwitch.value.index = newValue1[0].index
+	// pageSwitch.key = newValue1[0].key
 })
 
 </script>
@@ -46,7 +44,7 @@ watch([pageSwitch.value, hiddenPopup.value], (newValue, oldValue) => {
 		</div>
 		<!-- 操作面板 - 以弹窗形式 -->
 		<ComPopup :hiddenPopup="hiddenPopup.show">
-			<component :is="ComKnapsack" />
+			<component :is="pageArrMenu.list[pageSwitchMenu.index][pageSwitchMenu.key]" />
 		</ComPopup>
 	</div>
 	<!-- 背景图 -->

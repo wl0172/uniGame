@@ -31,57 +31,6 @@ if (uni.restoreGlobal) {
 }
 (function(vue) {
   "use strict";
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
-  const _sfc_main$d = {
-    __name: "index",
-    setup(__props) {
-      vue.onMounted(() => {
-        var context = uni.createCanvasContext("firstCanvas");
-        context.setStrokeStyle("#ff0000");
-        context.setLineWidth(2);
-        context.moveTo(160, 100);
-        context.arc(100, 100, 60, 0, 2 * Math.PI, true);
-        context.moveTo(140, 100);
-        context.arc(100, 100, 40, 0, Math.PI, false);
-        context.moveTo(85, 80);
-        context.arc(80, 80, 5, 0, 2 * Math.PI, true);
-        context.moveTo(125, 80);
-        context.arc(120, 80, 5, 0, 2 * Math.PI, true);
-        context.stroke();
-        context.draw();
-      });
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("view", null, [
-          vue.createElementVNode("canvas", {
-            style: { "width": "300px", "height": "200px" },
-            "canvas-id": "firstCanvas",
-            id: "firstCanvas"
-          })
-        ]);
-      };
-    }
-  };
-  const ComCanvas = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comCanvas/index.vue"]]);
-  const _sfc_main$c = {
-    __name: "demo",
-    setup(__props) {
-      let a = vue.ref("index");
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", null, [
-          vue.createElementVNode("div", null, vue.toDisplayString(vue.unref(a)) + "1234", 1),
-          vue.createElementVNode("text", null, "1234"),
-          vue.createVNode(ComCanvas)
-        ]);
-      };
-    }
-  };
-  const PagesDemo = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-eff989ce"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/demo.vue"]]);
   function formatAppLog(type, filename, ...args) {
     if (uni.__log__) {
       uni.__log__(type, filename, ...args);
@@ -92,6 +41,13 @@ if (uni.restoreGlobal) {
   let loginState = vue.ref({
     isState: 1
   });
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
   const _sfc_main$b = {
     __name: "index",
     setup(__props) {
@@ -4183,33 +4139,6 @@ if (uni.restoreGlobal) {
   };
   const _sfc_main$8 = {
     __name: "index",
-    props: {
-      comHeight: {
-        type: Object
-      }
-    },
-    setup(__props) {
-      const props = __props;
-      let timeDate = vue.ref(new hooks().format("YYYY-MM-DD"));
-      let addName = vue.ref("A\u57CE\uFF08\u57CE\u95E8\uFF09");
-      const headerHeight2 = props.comHeight.headerHeight + props.comHeight.headerMargin;
-      formatAppLog("log", "at components/comHeader/index.vue:17", "header", "======");
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", {
-          class: "comHeaderD",
-          style: vue.normalizeStyle({ "--headerHeight": headerHeight2 + "rpx" })
-        }, [
-          vue.createElementVNode("div", { class: "comHeaderDiv" }, [
-            vue.createElementVNode("div", null, vue.toDisplayString(vue.unref(timeDate)), 1),
-            vue.createElementVNode("div", { class: "comHeaderDiv_addName" }, vue.toDisplayString(vue.unref(addName)), 1)
-          ])
-        ], 4);
-      };
-    }
-  };
-  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
-  const _sfc_main$7 = {
-    __name: "index",
     setup(__props) {
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
@@ -4223,11 +4152,10 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
-  const _sfc_main$6 = {
+  const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
+  const _sfc_main$7 = {
     __name: "index",
     setup(__props) {
-      vue.ref("\u6211\u662Fpopup");
       const handleDiv = () => {
         hiddenPopup.value.show = false;
       };
@@ -4239,17 +4167,18 @@ if (uni.restoreGlobal) {
         }, [
           vue.createElementVNode("div", {
             class: "comPopupDiv_conter",
+            style: vue.normalizeStyle({ "--width": vue.unref(hiddenPopup).width + "%", "--height": vue.unref(hiddenPopup).height + "%" }),
             onClick: _cache[0] || (_cache[0] = vue.withModifiers(() => {
             }, ["stop"]))
           }, [
             vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
-          ])
+          ], 4)
         ], 8, ["onClick"])) : vue.createCommentVNode("v-if", true);
       };
     }
   };
-  const ComPopup = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-4a3567c6"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comPopup/index.vue"]]);
-  const _sfc_main$5 = {
+  const ComPopup = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-4a3567c6"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comPopup/index.vue"]]);
+  const _sfc_main$6 = {
     __name: "index",
     setup(__props) {
       let introduce = vue.ref({
@@ -4316,8 +4245,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComKnapsack = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-8fc46dda"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comKnapsack/index.vue"]]);
-  const _sfc_main$4 = {
+  const ComKnapsack = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-8fc46dda"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comKnapsack/index.vue"]]);
+  const _sfc_main$5 = {
     __name: "index",
     setup(__props) {
       const progressConfig = {
@@ -4345,15 +4274,23 @@ if (uni.restoreGlobal) {
         });
       };
       const handleToMap = () => {
-        pageSwitch.value.index = 1;
-        pageSwitch.value.key = "page_sceneList";
+        uni.navigateTo({
+          url: "/pages/canvasMap/index"
+        });
       };
-      const hiddenOpenKnapsack = () => {
+      const handleOpenKnapsack = () => {
         hiddenPopup.value.show = true;
+        hiddenPopup.value.width = 90;
+        hiddenPopup.value.height = 70;
+        pageSwitchMenu.value.index = 0;
+        pageSwitchMenu.value.key = "ComKnapsack";
       };
       const handleToShop = () => {
-        pageSwitch.value.index = 2;
-        pageSwitch.value.key = "page_comShop";
+        hiddenPopup.value.show = true;
+        hiddenPopup.value.width = 100;
+        hiddenPopup.value.height = 100;
+        pageSwitchMenu.value.index = 1;
+        pageSwitchMenu.value.key = "ComShop";
       };
       setTimeout(() => {
         let a = setInterval(() => {
@@ -4366,122 +4303,81 @@ if (uni.restoreGlobal) {
         }, 1e3);
       }, 3e3);
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createVNode(ComPopup, {
-            hiddenPopup: vue.unref(hiddenPopup).show
-          }, {
-            default: vue.withCtx(() => [
-              vue.createVNode(ComKnapsack)
-            ]),
-            _: 1
-          }, 8, ["hiddenPopup"]),
-          vue.createElementVNode("div", { class: "comBattleDiv" }, [
-            vue.createCommentVNode(" \u602A\u7269 - \u82F1\u96C4 "),
-            vue.createElementVNode("div", { class: "comBattleDiv_battle_1" }, [
-              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div" }, [
-                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i" }, [
-                  vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_img" }, [
-                    vue.createElementVNode("image", {
-                      src: "/static/1.png",
-                      alt: ""
-                    })
-                  ])
-                ]),
-                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i_name" }, vue.toDisplayString(vue.unref(battleInfo).monster.name), 1),
-                vue.createElementVNode("progress", {
-                  style: { "margin": "0 0 auto 0" },
-                  class: "comBattleDiv_battle_1_div_progress",
-                  "border-radius": progressConfig.border_radius,
-                  "stroke-width": progressConfig.stroke_width,
-                  activeColor: "#FCC4B9",
-                  backgroundColor: progressConfig.backgroundColor,
-                  active: progressConfig.active,
-                  percent: vue.unref(battleInfo).monster.blood
-                }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
-                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood1" }, vue.toDisplayString(vue.unref(battleInfo).monster.blood), 1)
+        return vue.openBlock(), vue.createElementBlock("div", { class: "comBattleDiv" }, [
+          vue.createCommentVNode(" \u602A\u7269 - \u82F1\u96C4 "),
+          vue.createElementVNode("div", { class: "comBattleDiv_battle_1" }, [
+            vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div" }, [
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i" }, [
+                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_img" }, [
+                  vue.createElementVNode("image", {
+                    src: "/static/1.png",
+                    alt: ""
+                  })
+                ])
               ]),
-              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div" }, [
-                vue.createElementVNode("div", {
-                  class: "comBattleDiv_battle_1_div_i",
-                  style: { "margin": "0 0 0 auto" }
-                }, [
-                  vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_img" }, [
-                    vue.createElementVNode("image", {
-                      src: vue.unref(battleInfo).player.img,
-                      alt: ""
-                    }, null, 8, ["src"])
-                  ])
-                ]),
-                vue.createElementVNode("div", {
-                  class: "comBattleDiv_battle_1_div_i_name",
-                  style: { "float": "right" }
-                }, vue.toDisplayString(vue.unref(battleInfo).monster.name), 1),
-                vue.createElementVNode("progress", {
-                  style: { "margin": "0 0 0 auto", "transform": "rotate(180deg)" },
-                  class: "comBattleDiv_battle_1_div_progress",
-                  "border-radius": progressConfig.border_radius,
-                  "stroke-width": progressConfig.stroke_width,
-                  activeColor: "#FCC4B9",
-                  backgroundColor: progressConfig.backgroundColor,
-                  active: progressConfig.active,
-                  percent: vue.unref(battleInfo).player.blood
-                }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
-                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood2" }, vue.toDisplayString(vue.unref(battleInfo).player.blood), 1)
-              ])
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i_name" }, vue.toDisplayString(vue.unref(battleInfo).monster.name), 1),
+              vue.createElementVNode("progress", {
+                style: { "margin": "0 0 auto 0" },
+                class: "comBattleDiv_battle_1_div_progress",
+                "border-radius": progressConfig.border_radius,
+                "stroke-width": progressConfig.stroke_width,
+                activeColor: "#FCC4B9",
+                backgroundColor: progressConfig.backgroundColor,
+                active: progressConfig.active,
+                percent: vue.unref(battleInfo).monster.blood
+              }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood1" }, vue.toDisplayString(vue.unref(battleInfo).monster.blood), 1)
             ]),
-            vue.createCommentVNode(" \u7EBF "),
-            vue.createVNode(ComLine),
-            vue.createCommentVNode(" \u6218\u6597txt - \u7B49 "),
-            vue.createElementVNode("div", { class: "comBattleDiv_battle_2" }, [
-              (vue.openBlock(), vue.createElementBlock(vue.Fragment, null, vue.renderList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], (item, index) => {
-                return vue.createElementVNode("div", null, "12312321312");
-              }), 64))
-            ]),
-            vue.createCommentVNode(" \u6218\u6597txt "),
-            vue.createElementVNode("div", { class: "comBattleDiv_battle_3" }, [
-              vue.createElementVNode("div", { onClick: handleSeachItem }, "\u63A2\u7D22"),
-              vue.createElementVNode("div", { onClick: handleToMap }, "\u5730\u56FE"),
-              vue.createElementVNode("div", { onClick: hiddenOpenKnapsack }, "\u80CC\u5305"),
-              vue.createElementVNode("div", { onClick: handleToShop }, "\u5546\u5E97"),
-              vue.createElementVNode("div", null, "xxxx")
+            vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div" }, [
+              vue.createElementVNode("div", {
+                class: "comBattleDiv_battle_1_div_i",
+                style: { "margin": "0 0 0 auto" }
+              }, [
+                vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_img" }, [
+                  vue.createElementVNode("image", {
+                    src: vue.unref(battleInfo).player.img,
+                    alt: ""
+                  }, null, 8, ["src"])
+                ])
+              ]),
+              vue.createElementVNode("div", {
+                class: "comBattleDiv_battle_1_div_i_name",
+                style: { "float": "right" }
+              }, vue.toDisplayString(vue.unref(battleInfo).monster.name), 1),
+              vue.createElementVNode("progress", {
+                style: { "margin": "0 0 0 auto", "transform": "rotate(180deg)" },
+                class: "comBattleDiv_battle_1_div_progress",
+                "border-radius": progressConfig.border_radius,
+                "stroke-width": progressConfig.stroke_width,
+                activeColor: "#FCC4B9",
+                backgroundColor: progressConfig.backgroundColor,
+                active: progressConfig.active,
+                percent: vue.unref(battleInfo).player.blood
+              }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood2" }, vue.toDisplayString(vue.unref(battleInfo).player.blood), 1)
             ])
+          ]),
+          vue.createCommentVNode(" \u7EBF "),
+          vue.createVNode(ComLine),
+          vue.createCommentVNode(" \u6218\u6597txt - \u7B49 "),
+          vue.createElementVNode("div", { class: "comBattleDiv_battle_2" }, [
+            (vue.openBlock(), vue.createElementBlock(vue.Fragment, null, vue.renderList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], (item, index) => {
+              return vue.createElementVNode("div", null, "12312321312");
+            }), 64))
+          ]),
+          vue.createCommentVNode(" \u64CD\u4F5Cbutton "),
+          vue.createElementVNode("div", { class: "comBattleDiv_battle_3" }, [
+            vue.createElementVNode("div", { onClick: handleSeachItem }, "\u63A2\u7D22"),
+            vue.createElementVNode("div", { onClick: handleToMap }, "\u5730\u56FE"),
+            vue.createElementVNode("div", { onClick: handleOpenKnapsack }, "\u80CC\u5305"),
+            vue.createElementVNode("div", { onClick: handleToShop }, "\u5546\u5E97")
           ])
-        ], 64);
+        ]);
       };
     }
   };
-  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
-  const _sfc_main$3 = {
-    __name: "index",
-    setup(__props) {
-      const handleToNewMap = (item, index) => {
-        uni.showToast({
-          icon: "none",
-          title: item + "\u53BB\u65B0\u573A\u666F======"
-        });
-        pageSwitch.value.index = 0;
-        pageSwitch.value.key = "page_battle";
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, vue.renderList([1, 2, 3], (item, index) => {
-          return vue.createElementVNode("div", {
-            class: "conSceneListLi",
-            key: index,
-            onClick: ($event) => handleToNewMap(item)
-          }, [
-            vue.createElementVNode("div", { class: "conSceneListLi_title" }, [
-              vue.createElementVNode("div", null, vue.toDisplayString(item), 1),
-              vue.createElementVNode("div", { class: "conSceneListLi_title_state" }, "\u670D\u52A1\u4E2D")
-            ]),
-            vue.createElementVNode("div", { class: "conSceneListLi_txt" }, "\u670D\u52A1\u5185\u5BB9\uFF1Axxxxxx"),
-            vue.createElementVNode("div", { class: "conSceneListLi_tiem" }, "\u5F00\u56FE\u65F6\u95F4\uFF1Axxxxxx")
-          ], 8, ["onClick"]);
-        }), 64);
-      };
-    }
-  };
-  const ComSceneList = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-62f6a8ab"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comSceneList/index.vue"]]);
-  const _sfc_main$2 = {
+  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
+  const _sfc_main$4 = {
     __name: "index",
     setup(__props) {
       let shopArr = vue.ref(40);
@@ -4491,12 +4387,13 @@ if (uni.restoreGlobal) {
           title: "\u6781\u54C1\u836F\u6C34"
         });
       };
+      const handle = () => {
+        hiddenPopup.value.show = false;
+      };
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", { class: "comShopD" }, [
           vue.createElementVNode("div", { class: "comShopDiv" }, [
-            vue.createElementVNode("div", {
-              onClick: _cache[0] || (_cache[0] = (...args) => _ctx.handle && _ctx.handle(...args))
-            }, "11"),
+            vue.createElementVNode("div", { onClick: handle }, "11"),
             vue.createCommentVNode(" npc "),
             vue.createElementVNode("div", { class: "comShopDiv_npc" }, [
               vue.createElementVNode("div", { class: "comShopDiv_npc_top" }, [
@@ -4554,57 +4451,149 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComShop = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-83658b6a"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comShop/index.vue"]]);
+  const ComShop = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-83658b6a"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comShop/index.vue"]]);
   const pageArr = vue.ref({
     list: [{
-      "page_battle": vue.markRaw(ComBattle)
+      "page_battle": vue.markRaw(ComBattle),
+      "name": "A\u57CE\uFF08\u57CE\u95E8\uFF09"
     }, {
-      "page_sceneList": vue.markRaw(ComSceneList)
+      "page_battle": vue.markRaw(ComBattle),
+      "name": "\u5BC2\u9759\u68EE\u6797"
     }, {
-      "page_comShop": vue.markRaw(ComShop)
+      "page_battle": vue.markRaw(ComBattle),
+      "name": "\u519C\u573A\u9547"
     }]
   });
   const pageSwitch = vue.ref({
     index: "0",
     key: "page_battle"
   });
+  const pageArrMenu = vue.ref({
+    list: [{
+      "ComKnapsack": vue.markRaw(ComKnapsack),
+      "name": "\u80CC\u5305"
+    }, {
+      "ComShop": vue.markRaw(ComShop),
+      "name": "\u5546\u5E97"
+    }]
+  });
+  const pageSwitchMenu = vue.ref({
+    index: 1,
+    key: "ComShop"
+  });
+  const hiddenPopup = vue.ref({
+    show: true,
+    width: 100,
+    height: 100
+  });
   vue.ref({
     dataToken: ""
   });
-  const hiddenPopup = vue.ref({
-    show: false
-  });
-  const _sfc_main$1 = {
+  const _sfc_main$3 = {
+    __name: "index",
+    props: {
+      comHeight: {
+        type: Object
+      }
+    },
+    setup(__props) {
+      const props = __props;
+      let timeDate = vue.ref(new hooks().format("YYYY-MM-DD"));
+      let addName = vue.ref({
+        name: pageArr.value.list[0].name
+      });
+      vue.watch(pageSwitch.value, (newValue, oldValue) => {
+        addName.value.name = pageArr.value.list[newValue.index].name;
+      });
+      const headerHeight2 = props.comHeight.headerHeight + props.comHeight.headerMargin;
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", {
+          class: "comHeaderD",
+          style: vue.normalizeStyle({ "--headerHeight": headerHeight2 + "rpx" })
+        }, [
+          vue.createElementVNode("div", { class: "comHeaderDiv" }, [
+            vue.createElementVNode("div", null, vue.toDisplayString(vue.unref(timeDate)), 1),
+            vue.createElementVNode("div", { class: "comHeaderDiv_addName" }, vue.toDisplayString(vue.unref(addName).name), 1)
+          ])
+        ], 4);
+      };
+    }
+  };
+  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
+  const _sfc_main$2 = {
     __name: "index",
     setup(__props) {
-      vue.watch(pageSwitch.value, (newValue, oldValue) => {
-        pageSwitch.value.index = newValue.index;
-        pageSwitch.key = newValue.key;
+      vue.watch([pageSwitch.value, pageSwitchMenu.value], ([newValue1, oldValue1], [newValue2, oldValue2]) => {
       });
-      formatAppLog("log", "at pages/content/index.vue:15", "\u4E3B\u9875", "======");
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
           vue.createElementVNode("div", { class: "content" }, [
-            vue.createCommentVNode(" \u5218\u6D77\u5C4Fheader - \u76EE\u524D\u5360\u4F4D "),
+            vue.createCommentVNode(" \u5218\u6D77\u5C4Fheader - \u76EE\u524D\u5360\u4F4D - \u663E\u793A\u573A\u666Fname "),
             vue.createVNode(ComHeader, { comHeight: vue.unref(conHeight) }, null, 8, ["comHeight"]),
-            vue.createCommentVNode(" \u5185\u5BB9 "),
+            vue.createCommentVNode(" \u4E3B\u573A\u666F "),
             vue.createElementVNode("div", {
               class: "contentDiv",
               style: vue.normalizeStyle({ "--conHeight": vue.unref(headerMargin) + (vue.unref(headerHeight) / 2 + 3) + "px" })
             }, [
               (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(vue.unref(pageArr).list[vue.unref(pageSwitch).index][vue.unref(pageSwitch).key])))
-            ], 4)
+            ], 4),
+            vue.createCommentVNode(" \u64CD\u4F5C\u9762\u677F - \u4EE5\u5F39\u7A97\u5F62\u5F0F "),
+            vue.createVNode(ComPopup, {
+              hiddenPopup: vue.unref(hiddenPopup).show
+            }, {
+              default: vue.withCtx(() => [
+                (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(vue.unref(pageArrMenu).list[vue.unref(pageSwitchMenu).index][vue.unref(pageSwitchMenu).key])))
+              ]),
+              _: 1
+            }, 8, ["hiddenPopup"])
           ]),
           vue.createCommentVNode(" \u80CC\u666F\u56FE "),
-          vue.createElementVNode("div", { class: "bg" })
-        ], 64);
+          vue.createCommentVNode(' <div class="bg"></div> ')
+        ], 2112);
       };
     }
   };
-  const PagesContentIndex = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-148c4b58"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/content/index.vue"]]);
-  __definePage("pages/demo", PagesDemo);
+  const PagesContentIndex = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-148c4b58"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/content/index.vue"]]);
+  const _sfc_main$1 = {
+    __name: "index",
+    setup(__props) {
+      const handleToNewMap = (item, index) => {
+        uni.showToast({
+          icon: "none",
+          title: `\u53BB\u65B0\u573A\u666F======${item.name}`
+        });
+        pageSwitch.value.index = index;
+        pageSwitch.value.key = Object.keys(item)[0];
+        uni.navigateBack({
+          delta: 1
+        });
+      };
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", { class: "conSceneList" }, [
+          vue.createElementVNode("div", { class: "conSceneListL" }, [
+            (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(pageArr).list, (item, index) => {
+              return vue.openBlock(), vue.createElementBlock("div", {
+                class: "conSceneListLi",
+                key: index,
+                onClick: ($event) => handleToNewMap(item, index)
+              }, [
+                vue.createElementVNode("div", { class: "conSceneListLi_title" }, [
+                  vue.createElementVNode("div", null, vue.toDisplayString(item.name), 1),
+                  vue.createElementVNode("div", { class: "conSceneListLi_title_state" }, "\u670D\u52A1\u4E2D")
+                ]),
+                vue.createElementVNode("div", { class: "conSceneListLi_txt" }, "\u670D\u52A1\u5185\u5BB9\uFF1Axxxxxx"),
+                vue.createElementVNode("div", { class: "conSceneListLi_tiem" }, "\u5F00\u56FE\u65F6\u95F4\uFF1Axxxxxx")
+              ], 8, ["onClick"]);
+            }), 128))
+          ])
+        ]);
+      };
+    }
+  };
+  const PagesCanvasMapIndex = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-419b8f55"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/canvasMap/index.vue"]]);
   __definePage("pages/loginOrRegister/index", PagesLoginOrRegisterIndex);
   __definePage("pages/content/index", PagesContentIndex);
+  __definePage("pages/canvasMap/index", PagesCanvasMapIndex);
   const _sfc_main = {
     onLaunch: function() {
       formatAppLog("log", "at App.vue:5", "App Launch");

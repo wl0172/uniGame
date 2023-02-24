@@ -1,20 +1,6 @@
 <script setup>
-import { hiddenPopup } from '@/state/index.js'
 import { ref } from "vue"
-let a = ref('我是popup')
-
-// 接收父组件传参
-const props = defineProps({
-	popupWidth: {
-		type: Number
-	},
-	popupHeight: {
-		type: Number
-	},
-})
-
-
-console.log(props, '我是popup======')
+import { hiddenPopup } from '@/state/index.js'
 
 // 关闭弹窗
 const handleDiv = () => {
@@ -27,13 +13,15 @@ const handleDiv = () => {
 // }
 
 
-
 </script>
 
 <template>
 	
 	<div class="comPopupDiv" v-if="hiddenPopup.show" @click.stop="handleDiv">
-		<div class="comPopupDiv_conter" @click.stop>
+		<div 
+			class="comPopupDiv_conter" 
+			:style="{ '--width': hiddenPopup.width + '%','--height': hiddenPopup.height + '%' }" 
+			@click.stop>
 			<slot></slot>
 		</div>
 	</div>
@@ -52,8 +40,8 @@ const handleDiv = () => {
 	justify-content: center;
 	z-index: 9999;
 	.comPopupDiv_conter{
-		width: 90%;
-    height: 70%;
+		width: var(--width);
+		height: var(--height);
     background: #fff;
     border-radius: 20rpx;
 		overflow: auto;
