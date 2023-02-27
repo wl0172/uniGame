@@ -15,10 +15,10 @@ const pageArr = ref({
 		"page_battle": markRaw(ComBattle),
 		"name": 'A城（城门）'
 	}, {
-		"page_battle": markRaw(ComBattle),
+		"page_jijingsengling": markRaw(ComBattle),
 		"name": '寂静森林'
 	}, {
-		"page_battle": markRaw(ComBattle),
+		"page_nongchangzheng": markRaw(ComBattle),
 		"name": '农场镇'
 	}]
 })
@@ -56,15 +56,30 @@ const hiddenPopup = ref({
 const useInfo = ref({
 	dataToken: "",
 })
+// 怪物 - 角色
+const battleInfo = ref({
+	player: { // 角色
+		blood: 100,
+		name: '玩家',
+		img: '../../../static/1.png',
+		isFight: false, // 是否在战斗
+	},
+	monster: { // 怪物
+		blood: 100,
+		name: '怪物',
+		img: '../../../static/1.png'
+	}
+})
 
 export {
-	pageArr,
-	pageSwitch,
+	pageArr,// 所有的场景地址 - map
+	pageSwitch,// 所有的场景switch
 	
-	pageArrMenu,
-	pageSwitchMenu,
+	pageArrMenu,// 所有的场景 - 操作页
+	pageSwitchMenu,// 所有的场景switchMenu
 	
-	useInfo,
+	useInfo,// 用户信息
+	battleInfo,//战斗 - 角色 + 怪物 = 信息
 	
-	hiddenPopup
+	hiddenPopup// 全局弹窗
 }

@@ -50,10 +50,10 @@
             },
             "splashscreen" : {
                 "androidStyle" : "common",
-								"alwaysShowBeforeRender": false,
-								"waiting": false,
-								"autoclose": false,
-								"delay": 0
+                "alwaysShowBeforeRender" : false,
+                "waiting" : false,
+                "autoclose" : false,
+                "delay" : 0
             }
         }
     },
