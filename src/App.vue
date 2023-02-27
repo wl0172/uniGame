@@ -6,7 +6,7 @@
 		},
 		onShow: function() {
 			console.log('App Show')
-			// pageAddress()
+			pageAddress()
 		},
 		onHide: function() {
 			console.log('App Hide')
