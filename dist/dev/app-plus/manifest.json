@@ -7,7 +7,7 @@
   "id": "__UNI__2E2F2E5",
   "name": "迷你冒险者",
   "version": {
-    "name": "1.0.0",
+    "name": "0.0.7",
     "code": "100"
   },
   "description": "",
@@ -27,9 +27,8 @@
       "concatenate": true
     },
     "splashscreen": {
-      "target": "id:1",
-      "autoclose": true,
-      "waiting": true,
+      "autoclose": false,
+      "waiting": false,
       "delay": 0
     },
     "popGesture": "close",
@@ -37,6 +36,9 @@
       "render": "always",
       "id": "1",
       "kernel": "WKWebview"
+    },
+    "compatible": {
+      "ignoreVersion": true
     },
     "usingComponents": true,
     "nvueStyleCompiler": "uni-app",
@@ -47,7 +49,11 @@
         "alwaysShowBeforeRender": false,
         "waiting": false,
         "autoclose": false,
-        "delay": 0
+        "delay": 0,
+        "android": {
+          "hdpi": "",
+          "xhdpi": ""
+        }
       },
       "google": {
         "permissions": [
@@ -85,7 +91,6 @@
       "style": "dark",
       "background": "#F8F8F8"
     },
-    "arguments": "{\"name\":\"内容页\",\"path\":\"pages/loginOrRegister/index\",\"query\":\"\"}",
     "uniStatistics": {
       "enable": false
     },

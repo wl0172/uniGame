@@ -1,16 +1,12 @@
 <script>
 	import pageAddress from "@/state/pageState/index.js"
 	export default {
-		onLaunch: function() {
-			console.log('App Launch')
-		},
+		onLaunch: function() {},
 		onShow: function() {
-			console.log('App Show')
+			// 判断有无token
 			pageAddress()
 		},
-		onHide: function() {
-			console.log('App Hide')
-		},
+		onHide: function() {},
 	}
 </script>
 
@@ -19,6 +15,7 @@
 	#app{
 		width: 100%;
 		height: 100vh;
-		background: linear-gradient(190deg, #c1cbd7, #e0e5df);
+		overflow: hidden;
+		background: #fff5e1;
 	}
 </style>

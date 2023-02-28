@@ -25,12 +25,12 @@ import {
 // })
 
 // 监听页面组件变化
-watch([pageSwitch.value, pageSwitchMenu.value], ([newValue1, oldValue1],[newValue2, oldValue2]) => {
-	// console.log(newValue1, '  主场景watch,newValue1======')
-	// console.log(newValue2, '  主场景watch,newValue2======')
-	// pageSwitch.value.index = newValue1[0].index
-	// pageSwitch.key = newValue1[0].key
-})
+// watch([pageSwitch.value, pageSwitchMenu.value], ([newValue1, oldValue1],[newValue2, oldValue2]) => {
+// 	console.log(newValue1, '  主场景watch,newValue1======')
+// 	console.log(newValue2, '  主场景watch,newValue2======')
+// 	pageSwitch.value.index = newValue1[0].index
+// 	pageSwitch.key = newValue1[0].key
+// })
 
 </script>
 

@@ -38,196 +38,6 @@ if (uni.restoreGlobal) {
       console[type].apply(console, [...args, filename]);
     }
   }
-  let loginState = vue.ref({
-    isState: 1
-  });
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
-  const _sfc_main$b = {
-    __name: "index",
-    setup(__props) {
-      let sinupInfo = vue.ref({
-        name: "",
-        password: ""
-      });
-      const handleSignUp = () => {
-        loginState.value.isState = 0;
-      };
-      const handleLogin = () => {
-        if (sinupInfo.value.name && sinupInfo.value.password) {
-          formatAppLog("log", "at components/comLogin/index.vue:25", sinupInfo.value, "\u767B\u5F55\u53C2\u6570======");
-          uni.redirectTo({
-            url: "/pages/content/index",
-            success: function(res) {
-              uni.setStorageSync("token", "tokentokentokentokentokentoken");
-            }
-          });
-        } else {
-          uni.showToast({
-            icon: "none",
-            title: "\u8BF7\u8F93\u5165\u6B63\u786E\u7684\u8D26\u53F7\u548C\u5BC6\u7801\uFF01",
-            duration: 2e3
-          });
-        }
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", { class: "pageCenter" }, [
-          vue.createElementVNode("div", { class: "login_conter" }, [
-            vue.createElementVNode("p", { class: "login_p" }, "\u6B22\u8FCE\u5192\u9669\u8005"),
-            vue.createElementVNode("div", { class: "login_div" }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.unref(sinupInfo).name = $event),
-                maxlength: "30",
-                placeholder: "\u8BF7\u8F93\u5165\u8D26\u53F7",
-                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
-              }, null, 512), [
-                [vue.vModelText, vue.unref(sinupInfo).name]
-              ])
-            ]),
-            vue.createElementVNode("div", { class: "login_div" }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.unref(sinupInfo).password = $event),
-                maxlength: "8",
-                placeholder: "\u8BF7\u8F93\u5165\u5BC6\u7801",
-                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
-              }, null, 512), [
-                [vue.vModelText, vue.unref(sinupInfo).password]
-              ])
-            ]),
-            vue.createElementVNode("div", { class: "login_button login_div" }, [
-              vue.createElementVNode("div", {
-                class: "login_button_txt",
-                onClick: handleSignUp
-              }, "\u6CE8\u518C"),
-              vue.createElementVNode("div", {
-                class: "login_button_txt",
-                onClick: handleLogin
-              }, "\u767B\u5F55")
-            ])
-          ])
-        ]);
-      };
-    }
-  };
-  const ComLogin = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-09a7ee4f"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLogin/index.vue"]]);
-  const _sfc_main$a = {
-    __name: "index",
-    setup(__props) {
-      let sinupInfo = vue.ref({
-        name: "",
-        password: "",
-        phone_number: "",
-        email: ""
-      });
-      const handleBank = () => {
-        loginState.value.isState = 1;
-      };
-      const handleSigUp = () => {
-        if (sinupInfo.value.name && sinupInfo.value.password && sinupInfo.value.phone_number && sinupInfo.value.email) {
-          formatAppLog("log", "at components/comRegister/index.vue:20", sinupInfo.value, "\u6CE8\u518C======");
-          loginState.value.isState = 1;
-        } else {
-          uni.showToast({
-            icon: "none",
-            title: "\u4FE1\u606F\u8BF7\u586B\u5199\u5B8C\u6574\u6B63\u786E\uFF01",
-            duration: 2e3
-          });
-        }
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", { class: "pageCenter" }, [
-          vue.createElementVNode("div", { class: "login_conter" }, [
-            vue.createElementVNode("p", { class: "login_p" }, "\u5192\u9669\u8005"),
-            vue.createElementVNode("div", {
-              class: "login_div",
-              draggable: "true"
-            }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.unref(sinupInfo).name = $event),
-                maxlength: "30",
-                placeholder: "\u8BF7\u8F93\u5165\u8D26\u53F7",
-                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
-              }, null, 512), [
-                [vue.vModelText, vue.unref(sinupInfo).name]
-              ])
-            ]),
-            vue.createElementVNode("div", {
-              class: "login_div",
-              draggable: "true"
-            }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.unref(sinupInfo).password = $event),
-                maxlength: "8",
-                placeholder: "\u8BF7\u8F93\u5165\u5BC6\u7801,\u6700\u5C118\u4F4D",
-                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
-              }, null, 512), [
-                [vue.vModelText, vue.unref(sinupInfo).password]
-              ])
-            ]),
-            vue.createElementVNode("div", { class: "login_div" }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                type: "number",
-                "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => vue.unref(sinupInfo).phone_number = $event),
-                maxlength: "11",
-                placeholder: "\u8BF7\u8F93\u5165\u624B\u673A\u53F7"
-              }, null, 512), [
-                [vue.vModelText, vue.unref(sinupInfo).phone_number]
-              ])
-            ]),
-            vue.createElementVNode("div", { class: "login_div" }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => vue.unref(sinupInfo).email = $event),
-                placeholder: "\u8BF7\u8F93\u5165\u90AE\u7BB1",
-                oninput: "value=value.replace(/[\\u4E00-\\u9FA5]/g,'')"
-              }, null, 512), [
-                [vue.vModelText, vue.unref(sinupInfo).email]
-              ])
-            ]),
-            vue.createElementVNode("div", { class: "login_a login_div" }, [
-              vue.createElementVNode("div"),
-              vue.createElementVNode("div", { onClick: handleBank }, "\u8FD4\u56DE")
-            ]),
-            vue.createElementVNode("div", {
-              onClick: handleSigUp,
-              class: "login_button login_div"
-            }, [
-              vue.createElementVNode("div", { class: "login_button_txt" }, "\u6CE8\u518C")
-            ])
-          ])
-        ]);
-      };
-    }
-  };
-  const ComRegister = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-c6c9028a"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comRegister/index.vue"]]);
-  const _sfc_main$9 = {
-    __name: "index",
-    setup(__props) {
-      let val = vue.ref({
-        isState: 1
-      });
-      vue.watch(loginState.value, (newValue, oldValue) => {
-        val.value.isState = newValue.isState;
-      });
-      return (_ctx, _cache) => {
-        var _a;
-        return vue.openBlock(), vue.createElementBlock("div", { class: "loginOrRegisterDiv" }, [
-          vue.createCommentVNode(" \u767B\u5F55 "),
-          ((_a = vue.unref(val)) == null ? void 0 : _a.isState) ? (vue.openBlock(), vue.createBlock(ComLogin, { key: 0 })) : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
-            vue.createCommentVNode(" \u6CE8\u518C "),
-            vue.createVNode(ComRegister)
-          ], 2112)),
-          vue.createCommentVNode(" \u7248\u672C\u53F7 "),
-          vue.createElementVNode("div", { class: "loginOrRegisterDiv_version" }, "version")
-        ]);
-      };
-    }
-  };
-  const PagesLoginOrRegisterIndex = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-c05689fd"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/loginOrRegister/index.vue"]]);
   const headerMargin = wx.getSystemInfoSync().statusBarHeight;
   wx.getSystemInfoSync().screenHeight;
   const headerHeight = 90;
@@ -4137,7 +3947,61 @@ if (uni.restoreGlobal) {
     WEEK: "GGGG-[W]WW",
     MONTH: "YYYY-MM"
   };
-  const _sfc_main$8 = {
+  const request = (path = "", method = "GET", contentType = "application/json", data = {}) => {
+    const token2 = uni.getStorageSync("token");
+    const Authorization = token2 ? `Bearer ${token2}` : "";
+    return new Promise((resolve, reject) => {
+      uni.request({
+        header: {
+          "Authorization": Authorization,
+          "Content-Type": contentType,
+          "Accept": contentType
+        },
+        url: "http://117.78.26.78" + path,
+        method,
+        data,
+        success(response) {
+          if (response.statusCode == 200) {
+            resolve(response.data);
+          } else {
+            formatAppLog("log", "at api/request.js:32", response, "response======");
+            uni.showToast({
+              icon: "none",
+              title: response.data.message || path,
+              duration: 1500
+            });
+          }
+        },
+        fail(err) {
+          uni.showToast({
+            icon: "none",
+            title: "\u8BF7\u6C42\u5931\u8D25\u4E86\uFF0C\u8BF7\u7A0D\u540E\u91CD\u8BD5\uFF01",
+            duration: 1500
+          });
+          reject(err);
+        },
+        complete() {
+        }
+      });
+    });
+  };
+  function postLogin(params) {
+    return request(`/auth/login`, "POST", "application/json", params);
+  }
+  function postRegister(params) {
+    return request(`/auth/signup`, "POST", "application/json", params);
+  }
+  function getUserInfo(params) {
+    return request(`/user/info`, "GET", "application/json", params);
+  }
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
+  const _sfc_main$b = {
     __name: "index",
     setup(__props) {
       return (_ctx, _cache) => {
@@ -4152,8 +4016,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
-  const _sfc_main$7 = {
+  const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
+  const _sfc_main$a = {
     __name: "index",
     setup(__props) {
       const handleDiv = () => {
@@ -4177,8 +4041,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComPopup = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-4a3567c6"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comPopup/index.vue"]]);
-  const _sfc_main$6 = {
+  const ComPopup = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-4a3567c6"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comPopup/index.vue"]]);
+  const _sfc_main$9 = {
     __name: "index",
     setup(__props) {
       let introduce = vue.ref({
@@ -4245,8 +4109,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComKnapsack = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-8fc46dda"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comKnapsack/index.vue"]]);
-  const _sfc_main$5 = {
+  const ComKnapsack = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-8fc46dda"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comKnapsack/index.vue"]]);
+  const _sfc_main$8 = {
     __name: "index",
     setup(__props) {
       const progressConfig = {
@@ -4271,7 +4135,7 @@ if (uni.restoreGlobal) {
             txtArr.value.list.push({
               liTxt: "\u4F60\u653B\u51FB\u4E86\u4E00\u4E0B\u53F2\u83B1\u59C6\uFF0C\u9020\u6210\u4E861\u70B9\u4F24\u5BB3"
             });
-            battleInfo.value.monster.blood = battleInfo.value.monster.blood - 1;
+            battleInfo.value.monster.hp = battleInfo.value.monster.hp - 1;
             uni.hideLoading();
           }, 1e3);
         } else {
@@ -4280,7 +4144,7 @@ if (uni.restoreGlobal) {
             title: "\u63A2\u7D22\u4E2D...",
             mask: true
           });
-          formatAppLog("log", "at components/comBattle/index.vue:54", battleInfo.value, "\u63A2\u7D22\u4E2D...======");
+          formatAppLog("log", "at components/comBattle/index.vue:55", battleInfo.value, "\u63A2\u7D22\u4E2D...======");
           setTimeout(() => {
             battleInfo.value.player.isFight = true;
             txtArr.value.list.push({
@@ -4330,9 +4194,29 @@ if (uni.restoreGlobal) {
           liTxt: `\u6765\u5230\u4E86${pageArr.value.list[pageSwitch.value.index].name}`
         }];
       });
+      const handleGetUserInfo = () => {
+        getUserInfo({
+          "force_upgrade": false,
+          "tips": "id Excepteur eu sit",
+          "changes": {
+            "goods": 56,
+            "monster": 69,
+            "map": 79
+          }
+        }).then((res) => {
+          formatAppLog("log", "at components/comBattle/index.vue:144", res, "res==========");
+        });
+      };
+      handleGetUserInfo();
+      const handleLeave = () => {
+        uni.clearStorageSync();
+        uni.reLaunch({
+          url: "/pages/loginOrRegister/index"
+        });
+      };
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", { class: "comBattleDiv" }, [
-          vue.createCommentVNode(" \u602A\u7269 - \u82F1\u96C4 "),
+          vue.createCommentVNode(" \u89D2\u8272 - \u602A\u7269 "),
           vue.createElementVNode("div", { class: "comBattleDiv_battle_1" }, [
             vue.createCommentVNode(" \u89D2\u8272 "),
             vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div" }, [
@@ -4347,12 +4231,12 @@ if (uni.restoreGlobal) {
                 class: "comBattleDiv_battle_1_div_progress",
                 "border-radius": progressConfig.border_radius,
                 "stroke-width": progressConfig.stroke_width,
-                activeColor: "#FCC4B9",
+                activeColor: "#ceb284",
                 backgroundColor: progressConfig.backgroundColor,
                 active: progressConfig.active,
-                percent: vue.unref(battleInfo).player.blood
+                percent: vue.unref(battleInfo).player.hp
               }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
-              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood1" }, vue.toDisplayString(vue.unref(battleInfo).player.blood), 1)
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood1" }, vue.toDisplayString(vue.unref(battleInfo).player.hp), 1)
             ]),
             vue.createCommentVNode(" \u602A\u7269 "),
             vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div" }, [
@@ -4373,12 +4257,12 @@ if (uni.restoreGlobal) {
                 class: "comBattleDiv_battle_1_div_progress",
                 "border-radius": progressConfig.border_radius,
                 "stroke-width": progressConfig.stroke_width,
-                activeColor: "#FCC4B9",
+                activeColor: "#ceb284",
                 backgroundColor: progressConfig.backgroundColor,
                 active: progressConfig.active,
-                percent: vue.unref(battleInfo).monster.blood
+                percent: vue.unref(battleInfo).monster.hp
               }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
-              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood2" }, vue.toDisplayString(vue.unref(battleInfo).monster.blood), 1)
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood2" }, vue.toDisplayString(vue.unref(battleInfo).monster.hp), 1)
             ])
           ]),
           vue.createCommentVNode(" \u7EBF "),
@@ -4415,14 +4299,15 @@ if (uni.restoreGlobal) {
             !vue.unref(battleInfo).player.isFight ? (vue.openBlock(), vue.createElementBlock("div", {
               key: 3,
               onClick: handleToShop
-            }, "\u5546\u5E97")) : vue.createCommentVNode("v-if", true)
+            }, "\u5546\u5E97")) : vue.createCommentVNode("v-if", true),
+            vue.createElementVNode("div", { onClick: handleLeave }, "\u9000\u51FA")
           ])
         ]);
       };
     }
   };
-  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
-  const _sfc_main$4 = {
+  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
+  const _sfc_main$7 = {
     __name: "index",
     setup(__props) {
       let shopArr = vue.ref(40);
@@ -4496,7 +4381,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComShop = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-83658b6a"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comShop/index.vue"]]);
+  const ComShop = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-83658b6a"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comShop/index.vue"]]);
   const pageArr = vue.ref({
     list: [{
       "page_battle": vue.markRaw(ComBattle),
@@ -4532,22 +4417,17 @@ if (uni.restoreGlobal) {
     height: 100
   });
   const useInfo = vue.ref({
-    dataToken: ""
+    token: uni.getStorageSync("playerInfo") ? uni.getStorageSync("playerInfo") : {}
   });
   const battleInfo = vue.ref({
-    player: {
-      blood: 100,
-      name: "\u73A9\u5BB6",
-      img: "../../../static/1.png",
-      isFight: false
-    },
+    player: uni.getStorageSync("playerInfo") ? uni.getStorageSync("playerInfo") : {},
     monster: {
-      blood: 100,
+      hp: 100,
       name: "\u602A\u7269",
       img: "../../../static/1.png"
     }
   });
-  const _sfc_main$3 = {
+  const _sfc_main$6 = {
     __name: "index",
     props: {
       comHeight: {
@@ -4577,12 +4457,10 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
-  const _sfc_main$2 = {
+  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
+  const _sfc_main$5 = {
     __name: "index",
     setup(__props) {
-      vue.watch([pageSwitch.value, pageSwitchMenu.value], ([newValue1, oldValue1], [newValue2, oldValue2]) => {
-      });
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
           vue.createElementVNode("div", { class: "content" }, [
@@ -4611,8 +4489,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesContentIndex = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-148c4b58"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/content/index.vue"]]);
-  const _sfc_main$1 = {
+  const PagesContentIndex = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-148c4b58"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/content/index.vue"]]);
+  const _sfc_main$4 = {
     __name: "index",
     setup(__props) {
       const handleToNewMap = (item, index) => {
@@ -4648,28 +4526,240 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesCanvasMapIndex = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-419b8f55"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/canvasMap/index.vue"]]);
-  __definePage("pages/loginOrRegister/index", PagesLoginOrRegisterIndex);
+  const PagesCanvasMapIndex = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-419b8f55"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/canvasMap/index.vue"]]);
+  const _imports_0 = "/static/1.gif";
+  let loginState = vue.ref({
+    isState: 1
+  });
+  const _sfc_main$3 = {
+    __name: "index",
+    setup(__props) {
+      let isLoding = vue.ref({
+        state: false
+      });
+      let sinupInfo = vue.ref({
+        name: "1",
+        password: "11111111",
+        device: "testDeviceL"
+      });
+      const handleSignUp = () => {
+        loginState.value.isState = 0;
+      };
+      const handleLogin = () => {
+        if (sinupInfo.value.name && sinupInfo.value.password) {
+          postLogin(sinupInfo.value).then((res) => {
+            uni.setStorageSync("token", res.token);
+            uni.setStorageSync("playerInfo", res.player);
+            useInfo.value.token = res == null ? void 0 : res.token;
+            battleInfo.value.player = (res == null ? void 0 : res.player) ? res == null ? void 0 : res.player : {};
+            isLoding.value.state = true;
+            setTimeout(() => {
+              uni.redirectTo({
+                url: "/pages/content/index"
+              });
+            }, 2e3);
+          });
+        } else if (sinupInfo.value.name == "") {
+          uni.showToast({
+            icon: "none",
+            title: "\u8BF7\u8F93\u5165\u6B63\u786E\u7684\u8D26\u53F7\uFF01",
+            duration: 1500
+          });
+        }
+      };
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", { class: "pageCenter" }, [
+          vue.createElementVNode("div", { class: "login_conter" }, [
+            vue.createElementVNode("p", { class: "login_p" }, "\u6B22\u8FCE\u5192\u9669\u8005"),
+            vue.createElementVNode("div", { class: "login_div" }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.unref(sinupInfo).name = $event),
+                maxlength: "30",
+                placeholder: "\u8BF7\u8F93\u5165\u8D26\u53F7"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).name]
+              ])
+            ]),
+            vue.createElementVNode("div", { class: "login_div" }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.unref(sinupInfo).password = $event),
+                type: "password",
+                maxlength: "8",
+                placeholder: "\u8BF7\u8F93\u5165\u5BC6\u7801"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).password]
+              ])
+            ]),
+            vue.createElementVNode("div", { class: "login_button login_div" }, [
+              vue.createElementVNode("div", {
+                class: "login_button_txt",
+                onClick: handleSignUp
+              }, "\u6CE8\u518C"),
+              vue.createElementVNode("div", {
+                class: "login_button_txt",
+                onClick: handleLogin
+              }, "\u767B\u5F55")
+            ])
+          ]),
+          vue.createCommentVNode(" \u8FC7\u6E21\u7684\u52A8\u753B "),
+          vue.unref(isLoding).state ? (vue.openBlock(), vue.createElementBlock("div", {
+            key: 0,
+            class: "pageCenter_gif"
+          }, [
+            vue.createElementVNode("image", {
+              class: "pageCenter_gif_img",
+              src: _imports_0,
+              alt: ""
+            })
+          ])) : vue.createCommentVNode("v-if", true)
+        ]);
+      };
+    }
+  };
+  const ComLogin = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-09a7ee4f"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLogin/index.vue"]]);
+  const _sfc_main$2 = {
+    __name: "index",
+    setup(__props) {
+      let sinupInfo = vue.ref({
+        name: "",
+        password: "",
+        email: "",
+        device: "testDeviceL"
+      });
+      const handleBank = () => {
+        loginState.value.isState = 1;
+      };
+      const handleSigUp = () => {
+        let reg = /^[a-zA-Z0-9]+([-_.][A-Za-zd]+)*@([a-zA-Z0-9]+[-.])+[A-Za-zd]{2,5}$/;
+        if (!sinupInfo.value.name) {
+          uni.showToast({
+            icon: "none",
+            title: "\u8BF7\u8F93\u5165\u8D26\u53F7\uFF0C\u6700\u591A6\u4F4D\uFF01",
+            duration: 1500
+          });
+          return;
+        }
+        if (!sinupInfo.value.password) {
+          uni.showToast({
+            icon: "none",
+            title: "\u8BF7\u8F93\u5165\u5BC6\u7801\uFF0C\u6700\u591A8\u4F4D\uFF01",
+            duration: 1500
+          });
+          return;
+        }
+        if (!sinupInfo.value.email || !reg.test(sinupInfo.value.email)) {
+          uni.showToast({
+            icon: "none",
+            title: "\u8BF7\u8F93\u5165\u6B63\u786E\u7684\u90AE\u7BB1\uFF01",
+            duration: 1500
+          });
+          return;
+        } else {
+          postRegister(sinupInfo.value).then((res) => {
+            loginState.value.isState = 1;
+          });
+        }
+      };
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", { class: "pageCenter" }, [
+          vue.createElementVNode("div", { class: "login_conter" }, [
+            vue.createElementVNode("p", { class: "login_p" }, "\u6B22\u8FCE\u5192\u9669\u8005"),
+            vue.createElementVNode("div", {
+              class: "login_div",
+              draggable: "true"
+            }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.unref(sinupInfo).name = $event),
+                maxlength: "6",
+                placeholder: "\u8BF7\u8F93\u5165\u8D26\u53F7,\u6700\u591A6\u4F4D"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).name]
+              ])
+            ]),
+            vue.createElementVNode("div", {
+              class: "login_div",
+              draggable: "true"
+            }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.unref(sinupInfo).password = $event),
+                type: "password",
+                maxlength: "8",
+                placeholder: "\u8BF7\u8F93\u5165\u5BC6\u7801,\u6700\u5C118\u4F4D"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).password]
+              ])
+            ]),
+            vue.createElementVNode("div", { class: "login_div" }, [
+              vue.withDirectives(vue.createElementVNode("input", {
+                "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => vue.unref(sinupInfo).email = $event),
+                placeholder: "\u8BF7\u8F93\u5165\u90AE\u7BB1"
+              }, null, 512), [
+                [vue.vModelText, vue.unref(sinupInfo).email]
+              ])
+            ]),
+            vue.createElementVNode("div", { class: "login_a login_div" }, [
+              vue.createElementVNode("div"),
+              vue.createElementVNode("div", { onClick: handleBank }, "\u8FD4\u56DE")
+            ]),
+            vue.createElementVNode("div", {
+              onClick: handleSigUp,
+              class: "login_button login_div"
+            }, [
+              vue.createElementVNode("div", { class: "login_button_txt" }, "\u6CE8\u518C")
+            ])
+          ])
+        ]);
+      };
+    }
+  };
+  const ComRegister = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-c6c9028a"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comRegister/index.vue"]]);
+  const _sfc_main$1 = {
+    __name: "index",
+    setup(__props) {
+      let val = vue.ref({
+        isState: 1
+      });
+      vue.watch(loginState.value, (newValue, oldValue) => {
+        val.value.isState = newValue.isState;
+      });
+      return (_ctx, _cache) => {
+        var _a;
+        return vue.openBlock(), vue.createElementBlock("div", { class: "loginOrRegisterDiv" }, [
+          vue.createCommentVNode(" \u767B\u5F55 "),
+          ((_a = vue.unref(val)) == null ? void 0 : _a.isState) ? (vue.openBlock(), vue.createBlock(ComLogin, { key: 0 })) : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
+            vue.createCommentVNode(" \u6CE8\u518C "),
+            vue.createVNode(ComRegister)
+          ], 2112)),
+          vue.createCommentVNode(" \u7248\u672C\u53F7 "),
+          vue.createElementVNode("div", { class: "loginOrRegisterDiv_version" }, "0.0.6")
+        ]);
+      };
+    }
+  };
+  const PagesLoginOrRegisterIndex = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-c05689fd"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/loginOrRegister/index.vue"]]);
   __definePage("pages/content/index", PagesContentIndex);
   __definePage("pages/canvasMap/index", PagesCanvasMapIndex);
+  __definePage("pages/loginOrRegister/index", PagesLoginOrRegisterIndex);
   const pageAddress = () => {
-    useInfo.value.dataToken = uni.getStorageSync("token");
-    if (!useInfo.value.dataToken) {
-      uni.redirectTo({
-        url: "/pages/loginOrRegister/index"
+    let token2 = uni.getStorageSync("token") ? uni.getStorageSync("token") : "";
+    if (token2) {
+      plus.navigator.closeSplashscreen();
+    } else {
+      uni.reLaunch({
+        url: "/pages/loginOrRegister/index",
+        success() {
+          plus.navigator.closeSplashscreen();
+        }
       });
     }
   };
   const _sfc_main = {
     onLaunch: function() {
-      formatAppLog("log", "at App.vue:5", "App Launch");
     },
     onShow: function() {
-      formatAppLog("log", "at App.vue:8", "App Show");
       pageAddress();
     },
     onHide: function() {
-      formatAppLog("log", "at App.vue:12", "App Hide");
     }
   };
   const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/App.vue"]]);

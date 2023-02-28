@@ -1,13 +1,13 @@
 <script setup>
 import { ref } from "vue"
-import apiRequest from "@/api/index.js"
+import { postRegister } from "@/api/index.js"
 import loginState from '@/state/action/loginOrRegister.js'
 
 let sinupInfo = ref({
 	name: '',
 	password: '',
-	phone_number: '',
 	email: '',
+	device: 'testDeviceL'
 })
 
 // 返回
@@ -16,39 +16,53 @@ const handleBank = () => {
 }
 // 注册
 const handleSigUp = () => {
-	if (sinupInfo.value.name && sinupInfo.value.password && sinupInfo.value.phone_number && sinupInfo.value.email) {
-		console.log(sinupInfo.value, '注册======')
-		// apiRequest.postLogin(sinupInfo.value).then((res) => {
-		// 	console.log(res)
-		// })
-		loginState.value.isState = 1
-	} else {
+	let reg = /^[a-zA-Z0-9]+([-_.][A-Za-zd]+)*@([a-zA-Z0-9]+[-.])+[A-Za-zd]{2,5}$/
+	
+	if(!sinupInfo.value.name){
 		uni.showToast({
 			icon: 'none',
-			title: '信息请填写完整正确！',
-			duration: 2000
+			title: '请输入账号，最多6位！',
+			duration: 1500
+		})
+		return
+	}
+	if(!sinupInfo.value.password){
+		uni.showToast({
+			icon: 'none',
+			title: '请输入密码，最多8位！',
+			duration: 1500
+		})
+		return
+	}
+	if(!sinupInfo.value.email || !reg.test(sinupInfo.value.email)){
+		uni.showToast({
+			icon: 'none',
+			title: '请输入正确的邮箱！',
+			duration: 1500
+		})
+		return
+	}else{
+		postRegister(sinupInfo.value).then((res) => {
+			loginState.value.isState = 1
 		})
 	}
+	
+
 }
 </script>
 
 <template>
 	<div class="pageCenter">
 		<div class="login_conter">
-			<p class="login_p">冒险者</p>
+			<p class="login_p">欢迎冒险者</p>
 			<div class="login_div" draggable="true">
-				<input v-model="sinupInfo.name" maxlength="30" placeholder="请输入账号"
-					oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')" />
+				<input v-model="sinupInfo.name" maxlength="6" placeholder="请输入账号,最多6位" />
 			</div>
 			<div class="login_div" draggable="true">
-				<input v-model="sinupInfo.password" maxlength="8" placeholder="请输入密码,最少8位"
-					oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')" />
+				<input v-model="sinupInfo.password" type="password" maxlength="8" placeholder="请输入密码,最少8位" />
 			</div>
 			<div class="login_div">
-				<input type="number" v-model="sinupInfo.phone_number" maxlength="11" placeholder="请输入手机号" />
-			</div>
-			<div class="login_div">
-				<input v-model="sinupInfo.email" placeholder="请输入邮箱" oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')" />
+				<input v-model="sinupInfo.email" placeholder="请输入邮箱" />
 			</div>
 			<div class="login_a login_div">
 				<div></div>

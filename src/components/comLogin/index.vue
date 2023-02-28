@@ -7,12 +7,17 @@ import {
 	watch,
 	watchEffect
 } from 'vue'
-import apiRequest from "@/api/index.js"
+import { postLogin, postRegister } from '@/api/index.js'
 import loginState from '@/state/action/loginOrRegister.js'
+import { useInfo, battleInfo } from '@/state/index.js'
 
+let isLoding = ref({
+	state: false
+})
 let sinupInfo = ref({
-	name: '',
-	password: '',
+	name: '1',
+	password: '11111111',
+	device: 'testDeviceL'
 })
 
 // 注册
@@ -22,21 +27,23 @@ const handleSignUp = () => {
 // 登录
 const handleLogin = () => {
 	if (sinupInfo.value.name && sinupInfo.value.password) {
-		console.log(sinupInfo.value, '登录参数======')
-		// apiRequest.postLogin(sinupInfo.value).then((res) => {
-		// 	console.log(res)
-		// })
-		uni.redirectTo({
-			url: "/pages/content/index",
-			success: function (res) {
-				uni.setStorageSync('token', 'tokentokentokentokentokentoken');
-			}
+		postLogin(sinupInfo.value).then((res) => {
+			uni.setStorageSync('token', res.token);
+			uni.setStorageSync('playerInfo', res.player);
+			useInfo.value.token = res?.token
+			battleInfo.value.player = res?.player ? res?.player : {}
+			isLoding.value.state = true
+			setTimeout(()=>{
+				uni.redirectTo({
+					url: "/pages/content/index"
+				})
+			},2000)
 		})
-	} else {
+	} else if(sinupInfo.value.name == ''){
 		uni.showToast({
 			icon: 'none',
-			title: '请输入正确的账号和密码！',
-			duration: 2000
+			title: '请输入正确的账号！',
+			duration: 1500
 		})
 	}
 }
@@ -47,17 +54,19 @@ const handleLogin = () => {
 		<div class="login_conter">
 			<p class="login_p">欢迎冒险者</p>
 			<div class="login_div">
-				<input v-model="sinupInfo.name" maxlength="30" placeholder="请输入账号"
-					oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')" />
+				<input v-model="sinupInfo.name" maxlength="30" placeholder="请输入账号" />
 			</div>
 			<div class="login_div">
-				<input v-model="sinupInfo.password" maxlength="8" placeholder="请输入密码"
-					oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')" />
+				<input v-model="sinupInfo.password" type="password" maxlength="8" placeholder="请输入密码" />
 			</div>
 			<div class="login_button login_div">
 				<div class="login_button_txt" @click="handleSignUp">注册</div>
 				<div class="login_button_txt" @click="handleLogin">登录</div>
 			</div>
+		</div>
+		<!-- 过渡的动画 -->
+		<div class="pageCenter_gif" v-if="isLoding.state">
+			<image class="pageCenter_gif_img" src="@/static/1.gif" alt="" />
 		</div>
 	</div>
 </template>
@@ -124,6 +133,18 @@ const handleLogin = () => {
 			.login_button_txt:active {
 				opacity: .7;
 			}
+		}
+	}
+	.pageCenter_gif{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background: #E7E8E0;
+		text-align: center;
+		.pageCenter_gif_img{
+			width: 620rpx;
+			height: 620rpx;
+			top: 375rpx;
 		}
 	}
 }

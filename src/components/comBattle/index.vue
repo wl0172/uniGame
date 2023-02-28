@@ -1,5 +1,6 @@
 <script setup>
 import { ref, watch, computed } from "vue"
+import { getUserInfo } from '@/api/index.js'
 // 线
 import ComLine from "@/components/comLine/index.vue"
 // 弹窗
@@ -8,7 +9,7 @@ import ComPopup from "@/components/comPopup/index.vue"
 import ComKnapsack from "@/components/comKnapsack/index.vue"
 
 // 全局的属性
-import { pageArr, pageSwitch, pageSwitchMenu, battleInfo, hiddenPopup } from '@/state/index.js'
+import { pageArr, pageSwitch, pageSwitchMenu, useInfo, battleInfo, hiddenPopup } from '@/state/index.js'
 
 // 进度条配置
 const progressConfig = {
@@ -42,7 +43,7 @@ const handleSeachItem = () => {
 			txtArr.value.list.push({
 				liTxt: '你攻击了一下史莱姆，造成了1点伤害'
 			})
-			battleInfo.value.monster.blood = battleInfo.value.monster.blood - 1
+			battleInfo.value.monster.hp = battleInfo.value.monster.hp - 1
 			uni.hideLoading()
 		},1000)
 	}else{
@@ -127,35 +128,52 @@ watch([pageSwitch.value], ([newValue1, oldValue1]) => {
 
 
 
+// console.log(useInfo.value, 'useInfo======')
 
-
-
-// 计算
-// const haveChineseName = computed(() => {
-//   return pageSwitch.value.index > 0 ? pageArr.value.list[pageSwitch.value.index].name : pageArr.value.list[pageSwitch.value.index].name
-// })
+// 获取玩家最新信息
+const handleGetUserInfo = () => {
+	getUserInfo({
+    "force_upgrade": false,
+    "tips": "id Excepteur eu sit",
+    "changes": {
+        "goods": 56,
+        "monster": 69,
+        "map": 79
+    }
+}).then((res)=>{
+		console.log(res, 'res==========')
+	})
+}
+handleGetUserInfo()
 
 
 // 假的掉血机制
 // setTimeout(()=>{
 // 	let a = setInterval(()=>{
-// 		if(battleInfo.value.monster.blood == 10){
+// 		if(battleInfo.value.monster.hp == 10){
 // 			clearInterval(a)
 // 		}else{
-// 			battleInfo.value.monster.blood = battleInfo.value.monster.blood - 1
-// 			battleInfo.value.player.blood = battleInfo.value.player.blood - 1
+// 			battleInfo.value.monster.hp = battleInfo.value.monster.hp - 1
+// 			battleInfo.value.player.hp = battleInfo.value.player.hp - 1
 // 		}
 // 	},1000)
 // },3000)
 
-
+// console.log(battleInfo.value.player, 'battle======')
+// 退出
+const handleLeave = () => {
+	uni.clearStorageSync()
+	uni.reLaunch({
+		url: '/pages/loginOrRegister/index'
+	})
+}
 </script>
 
 <template>
 	<div class="comBattleDiv">
-
+		
 			
-		<!-- 怪物 - 英雄 -->
+		<!-- 角色 - 怪物 -->
 		<div class="comBattleDiv_battle_1">
 			<!-- 角色 -->
 			<div class="comBattleDiv_battle_1_div">
@@ -170,12 +188,12 @@ watch([pageSwitch.value], ([newValue1, oldValue1]) => {
 					class="comBattleDiv_battle_1_div_progress" 
 					:border-radius="progressConfig.border_radius"
 					:stroke-width="progressConfig.stroke_width"
-					activeColor="#FCC4B9"
+					activeColor="#ceb284"
 					:backgroundColor="progressConfig.backgroundColor"
 					:active="progressConfig.active"
-					:percent="battleInfo.player.blood"
+					:percent="battleInfo.player.hp"
 				/>
-				<div class="comBattleDiv_battle_1_div_blood1">{{ battleInfo.player.blood }}</div>
+				<div class="comBattleDiv_battle_1_div_blood1">{{ battleInfo.player.hp }}</div>
 			</div>
 			<!-- 怪物 -->
 			<div class="comBattleDiv_battle_1_div">
@@ -190,12 +208,12 @@ watch([pageSwitch.value], ([newValue1, oldValue1]) => {
 					class="comBattleDiv_battle_1_div_progress" 
 					:border-radius="progressConfig.border_radius"
 					:stroke-width="progressConfig.stroke_width"
-					activeColor="#FCC4B9"
+					activeColor="#ceb284"
 					:backgroundColor="progressConfig.backgroundColor"
 					:active="progressConfig.active"
-					:percent="battleInfo.monster.blood"
+					:percent="battleInfo.monster.hp"
 				/>
-				<div class="comBattleDiv_battle_1_div_blood2">{{ battleInfo.monster.blood }}</div>
+				<div class="comBattleDiv_battle_1_div_blood2">{{ battleInfo.monster.hp }}</div>
 			</div>
 		</div>
 		
@@ -219,6 +237,8 @@ watch([pageSwitch.value], ([newValue1, oldValue1]) => {
 			<div @click="handleOpenKnapsack">背包</div>
 			<div v-if="!battleInfo.player.isFight" @click="handleToMap">地图</div>
 			<div v-if="!battleInfo.player.isFight" @click="handleToShop">商店</div>
+			
+			<div @click="handleLeave">退出</div>
 			
 		</div>
 

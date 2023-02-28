@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, markRaw,onMounted, watch, watchEffect, defineAsyncComponent } from 'vue'
+import { ref, watch } from 'vue'
 import ComLogin from "@/components/comLogin/index.vue"
 import ComRegister from "@/components/comRegister/index.vue"
 import loginState from '@/state/action/loginOrRegister.js'
@@ -22,7 +22,7 @@ watch(loginState.value, (newValue, oldValue) => {
 		<!-- 注册 -->
 		<ComRegister v-else />
 		<!-- 版本号 -->
-		<div class="loginOrRegisterDiv_version">version</div>
+		<div class="loginOrRegisterDiv_version">0.0.6</div>
 	</div>
 	
 </template>

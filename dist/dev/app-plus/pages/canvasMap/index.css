@@ -1294,8 +1294,9 @@ to {
 }
 .comBattleDiv .comBattleDiv_battle_1 .comBattleDiv_battle_1_div .comBattleDiv_battle_1_div_i_name[data-v-781aabaf] {
   width: 90%;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   margin: 0 0 0.625rem 0;
+  background: #ff00008a;
 }
 .comBattleDiv .comBattleDiv_battle_1 .comBattleDiv_battle_1_div .comBattleDiv_battle_1_div_progress[data-v-781aabaf] {
   width: 90%;
@@ -1324,7 +1325,7 @@ to {
   padding: 0.9375rem;
   font-size: 0.75rem;
   border-bottom: 0.0625rem dashed #806868;
-  background: #E7E8E0;
+  background: #fff5e1;
 }
 .comBattleDiv .comBattleDiv_battle_3[data-v-781aabaf] {
   width: -webkit-fill-available;
@@ -1335,7 +1336,7 @@ to {
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
-  background: #E7E8E0;
+  background: #fff5e1;
 }
 .comBattleDiv .comBattleDiv_battle_3 div[data-v-781aabaf] {
   width: 4.6875rem;
