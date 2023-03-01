@@ -3947,53 +3947,6 @@ if (uni.restoreGlobal) {
     WEEK: "GGGG-[W]WW",
     MONTH: "YYYY-MM"
   };
-  const request = (path = "", method = "GET", contentType = "application/json", data = {}) => {
-    const token2 = uni.getStorageSync("token");
-    const Authorization = token2 ? `Bearer ${token2}` : "";
-    return new Promise((resolve, reject) => {
-      uni.request({
-        header: {
-          "Authorization": Authorization,
-          "Content-Type": contentType,
-          "Accept": contentType
-        },
-        url: "http://117.78.26.78" + path,
-        method,
-        data,
-        success(response) {
-          if (response.statusCode == 200) {
-            resolve(response.data);
-          } else {
-            formatAppLog("log", "at api/request.js:32", response, "response======");
-            uni.showToast({
-              icon: "none",
-              title: response.data.message || path,
-              duration: 1500
-            });
-          }
-        },
-        fail(err) {
-          uni.showToast({
-            icon: "none",
-            title: "\u8BF7\u6C42\u5931\u8D25\u4E86\uFF0C\u8BF7\u7A0D\u540E\u91CD\u8BD5\uFF01",
-            duration: 1500
-          });
-          reject(err);
-        },
-        complete() {
-        }
-      });
-    });
-  };
-  function postLogin(params) {
-    return request(`/auth/login`, "POST", "application/json", params);
-  }
-  function postRegister(params) {
-    return request(`/auth/signup`, "POST", "application/json", params);
-  }
-  function getUserInfo(params) {
-    return request(`/user/info`, "GET", "application/json", params);
-  }
   const _export_sfc = (sfc, props) => {
     const target = sfc.__vccOpts || sfc;
     for (const [key, val] of props) {
@@ -4042,75 +3995,60 @@ if (uni.restoreGlobal) {
     }
   };
   const ComPopup = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-4a3567c6"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comPopup/index.vue"]]);
-  const _sfc_main$9 = {
-    __name: "index",
-    setup(__props) {
-      let introduce = vue.ref({
-        txt: ""
+  const request = (path = "", method = "GET", contentType = "application/json", data = {}) => {
+    const token2 = uni.getStorageSync("token");
+    const Authorization = token2 ? `Bearer ${token2}` : "";
+    return new Promise((resolve, reject) => {
+      uni.request({
+        header: {
+          "Authorization": Authorization,
+          "Content-Type": contentType,
+          "Accept": contentType
+        },
+        url: "http://117.78.26.78" + path,
+        method,
+        data,
+        success(response) {
+          if (response.statusCode == 200) {
+            resolve(response.data);
+          } else {
+            formatAppLog("log", "at api/request.js:32", response, "response======");
+            uni.showToast({
+              icon: "none",
+              title: response.data.message || path,
+              duration: 1500
+            });
+          }
+        },
+        fail(err) {
+          uni.showToast({
+            icon: "none",
+            title: "\u8BF7\u6C42\u5931\u8D25\u4E86\uFF0C\u8BF7\u7A0D\u540E\u91CD\u8BD5\uFF01",
+            duration: 1500
+          });
+          reject(err);
+        },
+        complete() {
+        }
       });
-      let leftMent = vue.ref({
-        arr: [{
-          inde: 1,
-          name: "\u6D88\u8017\u54C1"
-        }, {
-          inde: 2,
-          name: "\u88C5\u5907"
-        }]
-      });
-      const handleLeftMent = (item) => {
-        formatAppLog("log", "at components/comKnapsack/index.vue:21", "\u5DE6\u4FA7\u83DC\u5355======", item);
-        uni.showToast({
-          icon: "none",
-          title: item.name
-        });
-      };
-      const handleRightIn = (item) => {
-        formatAppLog("log", "at components/comKnapsack/index.vue:30", "\u53F3\u4FA7\u83DC\u5355======list-li", item);
-        introduce.value.txt = item;
-        uni.showToast({
-          icon: "none",
-          title: item
-        });
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", { class: "comKnapsackDiv" }, [
-          vue.createCommentVNode(" \u5DE6\u4FA7- \u83DC\u5355 "),
-          vue.createElementVNode("div", { class: "comKnapsackDiv_left" }, [
-            (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(leftMent).arr, (item, index) => {
-              return vue.openBlock(), vue.createElementBlock("div", {
-                class: "comKnapsackDiv_left_list",
-                key: item,
-                onClick: vue.withModifiers(($event) => handleLeftMent(item), ["stop"])
-              }, vue.toDisplayString(item.name), 9, ["onClick"]);
-            }), 128))
-          ]),
-          vue.createCommentVNode(" \u53F3\u4FA7 - \u8BE6\u60C5 "),
-          vue.createElementVNode("div", { class: "comKnapsackDiv_right" }, [
-            vue.createElementVNode("div", { class: "comKnapsackDiv_right_top" }, [
-              vue.createCommentVNode(" \u7269\u54C1\u5217\u8868 "),
-              (vue.openBlock(), vue.createElementBlock(vue.Fragment, null, vue.renderList([1, 2, 3], (item, index) => {
-                return vue.createElementVNode("div", {
-                  class: "comKnapsackDiv_right_list",
-                  onClick: vue.withModifiers(($event) => handleRightIn(item), ["stop"])
-                }, [
-                  vue.createElementVNode("div", { class: "comKnapsackDiv_right_li" })
-                ], 8, ["onClick"]);
-              }), 64))
-            ]),
-            vue.createCommentVNode(" \u7269\u54C1\u4ECB\u7ECD "),
-            vue.createElementVNode("div", { class: "comKnapsackDiv_right_txt" }, vue.toDisplayString(vue.unref(introduce).txt), 1),
-            vue.createCommentVNode(" \u64CD\u4F5C "),
-            vue.createElementVNode("div", { class: "comKnapsackDiv_right_butlist" }, [
-              vue.createElementVNode("div", { class: "comKnapsackDiv_right_button" }, "\u88C5\u5907"),
-              vue.createElementVNode("div", { class: "comKnapsackDiv_right_button" }, "\u88C5\u5907")
-            ])
-          ])
-        ]);
-      };
-    }
+    });
   };
-  const ComKnapsack = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-8fc46dda"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comKnapsack/index.vue"]]);
-  const _sfc_main$8 = {
+  function postLogin(params) {
+    return request(`/auth/login`, "POST", "application/json", params);
+  }
+  function postRegister(params) {
+    return request(`/auth/signup`, "POST", "application/json", params);
+  }
+  function postUserInfo(params) {
+    return request(`/user/info`, "POST", "application/json", params);
+  }
+  function getFightFind(params) {
+    return request(`/fight/find`, "GET", "application/json", params);
+  }
+  function postFightAction(params) {
+    return request(`/fight/action`, "POST", "application/json", params);
+  }
+  const _sfc_main$9 = {
     __name: "index",
     setup(__props) {
       const progressConfig = {
@@ -4123,6 +4061,24 @@ if (uni.restoreGlobal) {
         list: [{
           liTxt: `\u6765\u5230\u4E86${pageArr.value.list[pageSwitch.value.index].name}`
         }]
+      });
+      const handleGetUserInfo = () => {
+        postUserInfo({
+          "player": true,
+          "fighter": true,
+          "backpack": true,
+          "equipment": true
+        }).then((res) => {
+          formatAppLog("log", "at components/comBattle/index.vue:35", res, "\u83B7\u53D6\u73A9\u5BB6\u6700\u65B0\u4FE1\u606F -1======");
+          uni.setStorageSync("playerInfo", res.player);
+          battleInfo.value.player = (res == null ? void 0 : res.player) ? res == null ? void 0 : res.player : {};
+        });
+      };
+      handleGetUserInfo();
+      vue.watch([pageSwitch.value], ([newValue1, oldValue1]) => {
+        txtArr.value.list = [{
+          liTxt: `\u6765\u5230\u4E86${pageArr.value.list[pageSwitch.value.index].name}`
+        }];
       });
       const handleSeachItem = () => {
         if (battleInfo.value.player.isFight) {
@@ -4144,25 +4100,19 @@ if (uni.restoreGlobal) {
             title: "\u63A2\u7D22\u4E2D...",
             mask: true
           });
-          formatAppLog("log", "at components/comBattle/index.vue:55", battleInfo.value, "\u63A2\u7D22\u4E2D...======");
-          setTimeout(() => {
-            battleInfo.value.player.isFight = true;
-            txtArr.value.list.push({
-              liTxt: "\u5BFB\u5230\u4E00\u53EA\u53F2\u83B1\u59C6"
-            });
+          getFightFind().then((res) => {
             uni.hideLoading();
-          }, 1e3);
+            battleInfo.value.monster = res;
+            txtArr.value.list.push({
+              liTxt: res.name
+            });
+          });
         }
       };
       const handleRunAway = () => {
-        uni.showToast({
-          icon: "none",
-          title: "\u9003\u8DD1\u5F00\u53D1\u4E2D"
+        postFightAction().then((res) => {
+          formatAppLog("log", "at components/comBattle/index.vue:121", \u70ED\u6B7B, "\u9003\u8DD1======");
         });
-        txtArr.value.list.push({
-          liTxt: "\u9003\u8DD1\u4E86..."
-        });
-        battleInfo.value.player.isFight = false;
       };
       const handleSkill = () => {
         uni.showToast({
@@ -4189,25 +4139,6 @@ if (uni.restoreGlobal) {
         pageSwitchMenu.value.index = 1;
         pageSwitchMenu.value.key = "ComShop";
       };
-      vue.watch([pageSwitch.value], ([newValue1, oldValue1]) => {
-        txtArr.value.list = [{
-          liTxt: `\u6765\u5230\u4E86${pageArr.value.list[pageSwitch.value.index].name}`
-        }];
-      });
-      const handleGetUserInfo = () => {
-        getUserInfo({
-          "force_upgrade": false,
-          "tips": "id Excepteur eu sit",
-          "changes": {
-            "goods": 56,
-            "monster": 69,
-            "map": 79
-          }
-        }).then((res) => {
-          formatAppLog("log", "at components/comBattle/index.vue:144", res, "res==========");
-        });
-      };
-      handleGetUserInfo();
       const handleLeave = () => {
         uni.clearStorageSync();
         uni.reLaunch({
@@ -4306,7 +4237,75 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
+  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
+  const _sfc_main$8 = {
+    __name: "index",
+    setup(__props) {
+      let introduce = vue.ref({
+        txt: ""
+      });
+      let leftMent = vue.ref({
+        arr: [{
+          inde: 1,
+          name: "\u6D88\u8017\u54C1"
+        }, {
+          inde: 2,
+          name: "\u88C5\u5907"
+        }]
+      });
+      const handleLeftMent = (item) => {
+        formatAppLog("log", "at components/comKnapsack/index.vue:21", "\u5DE6\u4FA7\u83DC\u5355======", item);
+        uni.showToast({
+          icon: "none",
+          title: item.name
+        });
+      };
+      const handleRightIn = (item) => {
+        formatAppLog("log", "at components/comKnapsack/index.vue:30", "\u53F3\u4FA7\u83DC\u5355======list-li", item);
+        introduce.value.txt = item;
+        uni.showToast({
+          icon: "none",
+          title: item
+        });
+      };
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", { class: "comKnapsackDiv" }, [
+          vue.createCommentVNode(" \u5DE6\u4FA7- \u83DC\u5355 "),
+          vue.createElementVNode("div", { class: "comKnapsackDiv_left" }, [
+            (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(leftMent).arr, (item, index) => {
+              return vue.openBlock(), vue.createElementBlock("div", {
+                class: "comKnapsackDiv_left_list",
+                key: item,
+                onClick: vue.withModifiers(($event) => handleLeftMent(item), ["stop"])
+              }, vue.toDisplayString(item.name), 9, ["onClick"]);
+            }), 128))
+          ]),
+          vue.createCommentVNode(" \u53F3\u4FA7 - \u8BE6\u60C5 "),
+          vue.createElementVNode("div", { class: "comKnapsackDiv_right" }, [
+            vue.createElementVNode("div", { class: "comKnapsackDiv_right_top" }, [
+              vue.createCommentVNode(" \u7269\u54C1\u5217\u8868 "),
+              (vue.openBlock(), vue.createElementBlock(vue.Fragment, null, vue.renderList([1, 2, 3], (item, index) => {
+                return vue.createElementVNode("div", {
+                  class: "comKnapsackDiv_right_list",
+                  onClick: vue.withModifiers(($event) => handleRightIn(item), ["stop"])
+                }, [
+                  vue.createElementVNode("div", { class: "comKnapsackDiv_right_li" })
+                ], 8, ["onClick"]);
+              }), 64))
+            ]),
+            vue.createCommentVNode(" \u7269\u54C1\u4ECB\u7ECD "),
+            vue.createElementVNode("div", { class: "comKnapsackDiv_right_txt" }, vue.toDisplayString(vue.unref(introduce).txt), 1),
+            vue.createCommentVNode(" \u64CD\u4F5C "),
+            vue.createElementVNode("div", { class: "comKnapsackDiv_right_butlist" }, [
+              vue.createElementVNode("div", { class: "comKnapsackDiv_right_button" }, "\u88C5\u5907"),
+              vue.createElementVNode("div", { class: "comKnapsackDiv_right_button" }, "\u88C5\u5907")
+            ])
+          ])
+        ]);
+      };
+    }
+  };
+  const ComKnapsack = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-8fc46dda"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comKnapsack/index.vue"]]);
   const _sfc_main$7 = {
     __name: "index",
     setup(__props) {
@@ -4417,15 +4416,11 @@ if (uni.restoreGlobal) {
     height: 100
   });
   const useInfo = vue.ref({
-    token: uni.getStorageSync("playerInfo") ? uni.getStorageSync("playerInfo") : {}
+    token: uni.getStorageSync("token") ? uni.getStorageSync("token") : {}
   });
   const battleInfo = vue.ref({
     player: uni.getStorageSync("playerInfo") ? uni.getStorageSync("playerInfo") : {},
-    monster: {
-      hp: 100,
-      name: "\u602A\u7269",
-      img: "../../../static/1.png"
-    }
+    monster: {}
   });
   const _sfc_main$6 = {
     __name: "index",
@@ -4538,26 +4533,34 @@ if (uni.restoreGlobal) {
         state: false
       });
       let sinupInfo = vue.ref({
-        name: "1",
-        password: "11111111",
+        name: "testUser",
+        password: "testPass",
         device: "testDeviceL"
       });
       const handleSignUp = () => {
         loginState.value.isState = 0;
       };
       const handleLogin = () => {
+        isLoding.value.state = true;
         if (sinupInfo.value.name && sinupInfo.value.password) {
           postLogin(sinupInfo.value).then((res) => {
-            uni.setStorageSync("token", res.token);
-            uni.setStorageSync("playerInfo", res.player);
-            useInfo.value.token = res == null ? void 0 : res.token;
-            battleInfo.value.player = (res == null ? void 0 : res.player) ? res == null ? void 0 : res.player : {};
-            isLoding.value.state = true;
-            setTimeout(() => {
-              uni.redirectTo({
-                url: "/pages/content/index"
-              });
-            }, 2e3);
+            if (res.token) {
+              uni.setStorageSync("token", res.token);
+              uni.setStorageSync("playerInfo", res.player);
+              useInfo.value.token = res == null ? void 0 : res.token;
+              battleInfo.value.player = (res == null ? void 0 : res.player) ? res == null ? void 0 : res.player : {}, setTimeout(() => {
+                uni.redirectTo({
+                  url: "/pages/content/index",
+                  success() {
+                    isLoding.value.state = false;
+                  }
+                });
+              }, 2e3);
+            } else {
+              setTimeout(() => {
+                isLoding.value.state = false;
+              }, 1800);
+            }
           });
         } else if (sinupInfo.value.name == "") {
           uni.showToast({

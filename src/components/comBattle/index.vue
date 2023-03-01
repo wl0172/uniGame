@@ -1,14 +1,12 @@
 <script setup>
 import { ref, watch, computed } from "vue"
-import { getUserInfo } from '@/api/index.js'
 // 线
 import ComLine from "@/components/comLine/index.vue"
-// 弹窗
+// 弹窗 - 包裹所有
 import ComPopup from "@/components/comPopup/index.vue"
-// 背包
-import ComKnapsack from "@/components/comKnapsack/index.vue"
-
-// 全局的属性
+// 接口
+import { postUserInfo, getFightFind, postFightAction } from '@/api/index.js'
+// 全局属性
 import { pageArr, pageSwitch, pageSwitchMenu, useInfo, battleInfo, hiddenPopup } from '@/state/index.js'
 
 // 进度条配置
@@ -26,8 +24,53 @@ let txtArr = ref({
 	}]
 })
 
+// 获取玩家最新信息 -1
+const handleGetUserInfo = () => {
+	postUserInfo({
+    "player": true,// 角色信息
+    "fighter": true,// 同寻怪接口 战斗
+    "backpack": true,// 背包 玩家背包中的物品
+    "equipment": true// 装备 玩家身上的装备
+	}).then((res)=>{
+		console.log(res, '获取玩家最新信息 -1======')
+		uni.setStorageSync('playerInfo', res.player);
+		battleInfo.value.player = res?.player ? res?.player : {}
+	})
+}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 获取玩家最新信息 -1
+handleGetUserInfo()
+
+// 监听 - 所有的场景switch
+watch([pageSwitch.value], ([newValue1, oldValue1]) => {
+	txtArr.value.list = [{
+		liTxt: `来到了${pageArr.value.list[pageSwitch.value.index].name}`
+	}]
+})
 
 // 探索
 const handleSeachItem = () => {
@@ -52,28 +95,31 @@ const handleSeachItem = () => {
 			title: '探索中...',
 			mask: true
 		})
-		console.log(battleInfo.value, '探索中...======')
-		// 调用接口
-		setTimeout(()=>{
-			battleInfo.value.player.isFight = true
-			txtArr.value.list.push({
-				liTxt: '寻到一只史莱姆'
-			})
+		// 寻怪接口
+		getFightFind().then((res)=>{
 			uni.hideLoading()
-		},1000)
+			battleInfo.value.monster = res
+			txtArr.value.list.push({
+				liTxt: res.name
+			})
+		})
 	}	
 }
 
 // 逃跑
 const handleRunAway = () => {
-	uni.showToast({
-		icon: 'none',
-		title: '逃跑开发中'
+	// uni.showToast({
+	// 	icon: 'none',
+	// 	title: '逃跑开发中'
+	// })
+	// txtArr.value.list.push({
+	// 	liTxt: '逃跑了...'
+	// })
+	// battleInfo.value.player.isFight = false
+	
+	postFightAction().then((res)=>{
+		console.log(热死, '逃跑======')
 	})
-	txtArr.value.list.push({
-		liTxt: '逃跑了...'
-	})
-	battleInfo.value.player.isFight = false
 }
 
 // 技能
@@ -90,6 +136,7 @@ const handleToMap = () => {
 		url: '/pages/canvasMap/index',
 	})
 }
+
 // 打开背包
 const handleOpenKnapsack = () => {
 	hiddenPopup.value.show = true
@@ -98,6 +145,7 @@ const handleOpenKnapsack = () => {
 	pageSwitchMenu.value.index = 0
 	pageSwitchMenu.value.key = 'ComKnapsack'
 }
+
 // 战斗中 - 打开消耗品
 // const = hiddenOpenKnapsackFight = () => {}
 
@@ -110,41 +158,13 @@ const handleToShop = () => {
 	pageSwitchMenu.value.key = 'ComShop'
 }
 
-// 监听 - 所有的场景switch
-watch([pageSwitch.value], ([newValue1, oldValue1]) => {
-	txtArr.value.list = [{
-		liTxt: `来到了${pageArr.value.list[pageSwitch.value.index].name}`
-	}]
-})
-
-
-
-
-
-
-
-
-
-
-
-
-// console.log(useInfo.value, 'useInfo======')
-
-// 获取玩家最新信息
-const handleGetUserInfo = () => {
-	getUserInfo({
-    "force_upgrade": false,
-    "tips": "id Excepteur eu sit",
-    "changes": {
-        "goods": 56,
-        "monster": 69,
-        "map": 79
-    }
-}).then((res)=>{
-		console.log(res, 'res==========')
+// 退出
+const handleLeave = () => {
+	uni.clearStorageSync()
+	uni.reLaunch({
+		url: '/pages/loginOrRegister/index'
 	})
 }
-handleGetUserInfo()
 
 
 // 假的掉血机制
@@ -160,13 +180,7 @@ handleGetUserInfo()
 // },3000)
 
 // console.log(battleInfo.value.player, 'battle======')
-// 退出
-const handleLeave = () => {
-	uni.clearStorageSync()
-	uni.reLaunch({
-		url: '/pages/loginOrRegister/index'
-	})
-}
+
 </script>
 
 <template>
@@ -233,11 +247,9 @@ const handleLeave = () => {
 			<div class="" @click="handleSeachItem">{{ battleInfo.player.isFight ? '战斗' : '探索' }}</div>
 			<div class="" v-if="battleInfo.player.isFight" @click="handleRunAway">逃跑</div>
 			<div class="" v-if="battleInfo.player.isFight" @click="handleSkill">技能</div>
-			
 			<div @click="handleOpenKnapsack">背包</div>
 			<div v-if="!battleInfo.player.isFight" @click="handleToMap">地图</div>
 			<div v-if="!battleInfo.player.isFight" @click="handleToShop">商店</div>
-			
 			<div @click="handleLeave">退出</div>
 			
 		</div>

@@ -15,8 +15,8 @@ let isLoding = ref({
 	state: false
 })
 let sinupInfo = ref({
-	name: '1',
-	password: '11111111',
+	name: 'testUser',
+	password: 'testPass',
 	device: 'testDeviceL'
 })
 
@@ -26,18 +26,27 @@ const handleSignUp = () => {
 }
 // 登录
 const handleLogin = () => {
+	isLoding.value.state = true
 	if (sinupInfo.value.name && sinupInfo.value.password) {
 		postLogin(sinupInfo.value).then((res) => {
-			uni.setStorageSync('token', res.token);
-			uni.setStorageSync('playerInfo', res.player);
-			useInfo.value.token = res?.token
-			battleInfo.value.player = res?.player ? res?.player : {}
-			isLoding.value.state = true
-			setTimeout(()=>{
-				uni.redirectTo({
-					url: "/pages/content/index"
-				})
-			},2000)
+			if(res.token){
+				uni.setStorageSync('token', res.token);
+				uni.setStorageSync('playerInfo', res.player);
+				useInfo.value.token = res?.token
+				battleInfo.value.player = res?.player ? res?.player : {},
+				setTimeout(()=>{
+					uni.redirectTo({
+						url: "/pages/content/index",
+						success(){
+							isLoding.value.state = false
+						}
+					})
+				},2000)
+			}else{
+				setTimeout(()=>{
+					isLoding.value.state = false
+				},1800)
+			}
 		})
 	} else if(sinupInfo.value.name == ''){
 		uni.showToast({

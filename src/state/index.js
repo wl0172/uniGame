@@ -55,18 +55,14 @@ const hiddenPopup = ref({
 
 // 角色信息
 const useInfo = ref({
-	token: uni.getStorageSync('playerInfo') ? uni.getStorageSync('playerInfo') : {},
+	token: uni.getStorageSync('token') ? uni.getStorageSync('token') : {},
 })
-// 怪物 - 角色
+// 角色 - 怪物
 const battleInfo = ref({
 	// 角色
 	player: uni.getStorageSync('playerInfo') ? uni.getStorageSync('playerInfo') : {},
 	// 怪物
-	monster: {
-		hp: 100,
-		name: '怪物',
-		img: '../../../static/1.png'
-	}
+	monster: {}
 })
 
 export {
