@@ -4306,6 +4306,7 @@ if (uni.restoreGlobal) {
     }
   };
   const ComKnapsack = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-8fc46dda"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comKnapsack/index.vue"]]);
+  const _imports_0$1 = "/static/image/1.png";
   const _sfc_main$7 = {
     __name: "index",
     setup(__props) {
@@ -4328,7 +4329,7 @@ if (uni.restoreGlobal) {
               vue.createElementVNode("div", { class: "comShopDiv_npc_top" }, [
                 vue.createElementVNode("div", { class: "comShopDiv_npc_top_image" }, [
                   vue.createElementVNode("image", {
-                    src: "/static/2.png",
+                    src: _imports_0$1,
                     mode: ""
                   })
                 ]),
@@ -4342,7 +4343,7 @@ if (uni.restoreGlobal) {
                   return vue.openBlock(), vue.createElementBlock("div", { class: "comShopDiv_npc_tab_li" }, [
                     vue.createElementVNode("image", {
                       onClick: handleShowToast,
-                      src: "/static/1.png",
+                      src: _imports_0$1,
                       mode: ""
                     })
                   ]);
@@ -4354,7 +4355,7 @@ if (uni.restoreGlobal) {
               vue.createElementVNode("div", { class: "comShopDiv_npc_top" }, [
                 vue.createElementVNode("div", { class: "comShopDiv_npc_top_image" }, [
                   vue.createElementVNode("image", {
-                    src: "/static/2.png",
+                    src: _imports_0$1,
                     mode: ""
                   })
                 ]),
@@ -4368,7 +4369,7 @@ if (uni.restoreGlobal) {
                   return vue.openBlock(), vue.createElementBlock("div", { class: "comShopDiv_npc_tab_li" }, [
                     vue.createElementVNode("image", {
                       onClick: handleShowToast,
-                      src: "/static/1.png",
+                      src: _imports_0$1,
                       mode: ""
                     })
                   ]);

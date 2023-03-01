@@ -29,7 +29,7 @@ const handle = () => {
 			<div class="comShopDiv_npc">
 				<div class="comShopDiv_npc_top">
 					<div class="comShopDiv_npc_top_image">
-						<image src="../../static/2.png" mode=""></image>
+						<image src="@/static/image/1.png" mode=""></image>
 					</div>
 					<div class="comShopDiv_npc_top_txt">
 						<div>xxxxxxxx的商店</div>
@@ -39,7 +39,7 @@ const handle = () => {
 				
 				<div class="comShopDiv_npc_tab">
 					<div class="comShopDiv_npc_tab_li" v-for="(item, index) in shopArr">
-						<image @click="handleShowToast" src="../../static/1.png" mode=""></image>
+						<image @click="handleShowToast" src="@/static/image/1.png" mode=""></image>
 					</div>
 				</div>
 			</div>
@@ -48,7 +48,7 @@ const handle = () => {
 				
 				<div class="comShopDiv_npc_top">
 					<div class="comShopDiv_npc_top_image">
-						<image src="../../static/2.png" mode=""></image>
+						<image src="@/static/image/1.png" mode=""></image>
 					</div>
 					<div class="comShopDiv_npc_top_txt">
 						<div>xxxxxxxx的商店</div>
@@ -58,7 +58,7 @@ const handle = () => {
 				
 				<div class="comShopDiv_npc_tab">
 					<div class="comShopDiv_npc_tab_li" v-for="(item, index) in shopArr">
-						<image @click="handleShowToast" src="../../static/1.png" mode=""></image>
+						<image @click="handleShowToast" src="@/static/image/1.png" mode=""></image>
 					</div>
 				</div>
 			</div>

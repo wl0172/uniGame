@@ -75,7 +75,7 @@ const handleLogin = () => {
 		</div>
 		<!-- 过渡的动画 -->
 		<div class="pageCenter_gif" v-if="isLoding.state">
-			<image class="pageCenter_gif_img" src="@/static/1.gif" alt="" />
+			<image class="pageCenter_gif_img" src="@/static/gif/1.gif" alt="" />
 		</div>
 	</div>
 </template>
