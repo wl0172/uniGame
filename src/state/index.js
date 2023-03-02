@@ -1,4 +1,4 @@
-import { ref, reactive, markRaw, watch,computed } from 'vue'
+import { ref, reactive, markRaw, watch,computed, shallowReactive, shallowRef } from 'vue'
 /**
  * 场景 - 页面 - page
  */
@@ -12,7 +12,7 @@ import ComShop from '@/components/comShop/index.vue'
 // 所有的场景地址 - map
 const pageArr = ref({
 	list: [{
-		"page_battle": markRaw(ComBattle),
+		"page_battle": markRaw(ComBattle), //ref(ComBattle),
 		"name": 'A城（城门）'
 	}, {
 		"page_jijingsengling": markRaw(ComBattle),

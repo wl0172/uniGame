@@ -1,7 +1,6 @@
 /**
  * request
  * */
-// import http from '../../config/index.js'
  
 export default (path = '', method = 'GET', contentType = 'application/json', data = {}) => {
 	

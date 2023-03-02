@@ -1,0 +1,7 @@
+{
+    "attack": "普通攻击",
+    "runaway": "逃脱",
+    "attackTox": "毒药侵害",
+    "hpPlus": "生命恢复",
+    "hpReduce": "生命损失"
+}

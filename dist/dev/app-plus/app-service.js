@@ -3970,31 +3970,6 @@ if (uni.restoreGlobal) {
     }
   };
   const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
-  const _sfc_main$a = {
-    __name: "index",
-    setup(__props) {
-      const handleDiv = () => {
-        hiddenPopup.value.show = false;
-      };
-      return (_ctx, _cache) => {
-        return vue.unref(hiddenPopup).show ? (vue.openBlock(), vue.createElementBlock("div", {
-          key: 0,
-          class: "comPopupDiv",
-          onClick: vue.withModifiers(handleDiv, ["stop"])
-        }, [
-          vue.createElementVNode("div", {
-            class: "comPopupDiv_conter",
-            style: vue.normalizeStyle({ "--width": vue.unref(hiddenPopup).width + "%", "--height": vue.unref(hiddenPopup).height + "%" }),
-            onClick: _cache[0] || (_cache[0] = vue.withModifiers(() => {
-            }, ["stop"]))
-          }, [
-            vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
-          ], 4)
-        ], 8, ["onClick"])) : vue.createCommentVNode("v-if", true);
-      };
-    }
-  };
-  const ComPopup = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-4a3567c6"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comPopup/index.vue"]]);
   const request = (path = "", method = "GET", contentType = "application/json", data = {}) => {
     const token2 = uni.getStorageSync("token");
     const Authorization = token2 ? `Bearer ${token2}` : "";
@@ -4012,7 +3987,7 @@ if (uni.restoreGlobal) {
           if (response.statusCode == 200) {
             resolve(response.data);
           } else {
-            formatAppLog("log", "at api/request.js:32", response, "response======");
+            formatAppLog("log", "at api/request.js:31", response, "response======");
             uni.showToast({
               icon: "none",
               title: response.data.message || path,
@@ -4045,15 +4020,147 @@ if (uni.restoreGlobal) {
   function getFightFind(params) {
     return request(`/fight/find`, "GET", "application/json", params);
   }
-  const _sfc_main$9 = {
+  function postFightAction(params) {
+    return request(`/fight/action`, "POST", "application/json", params);
+  }
+  function postFightPrize(params) {
+    return request(`/fight/prize`, "POST", "application/json", params);
+  }
+  const handleGetUserInfo = () => {
+    postUserInfo({
+      "player": true,
+      "fighter": true,
+      "backpack": true,
+      "equipment": true
+    }).then((res) => {
+      formatAppLog("log", "at components/comBattle/action.js:17", res, "comBattle - \u83B7\u53D6\u73A9\u5BB6\u6700\u65B0\u4FE1\u606F - ======");
+      uni.setStorageSync("playerInfo", res.player);
+      battleInfo.value.player = (res == null ? void 0 : res.player) ? res == null ? void 0 : res.player : {}, battleInfo.value.monster = (res == null ? void 0 : res.fighter) ? res == null ? void 0 : res.fighter : {};
+    });
+  };
+  const pickUupCorpses = (txtArr, scrollIndex) => {
+    postFightPrize().then((res) => {
+      txtCopywriting(res, txtArr, 5, scrollIndex);
+      battleInfo.value.monster = {};
+    });
+  };
+  const upDown = (txtArr, scrollIndex) => {
+    setTimeout(() => {
+      scrollIndex.id = `id-${txtArr.list.length - 1}`;
+    });
+  };
+  const txtCopywriting = (response, txtArr, status, scrollIndex) => {
+    var _a, _b, _c, _d, _e, _f;
+    let liTxt = "";
+    if (status == 0) {
+      liTxt = `\u4F60\u9047\u5230\u4E86\u4E00\u53EA${response.name},\u5B83\u5728\u60A0\u95F2\u7684\u6652\u592A\u9633`;
+    }
+    if (status == 1) {
+      liTxt = `\u4F60\u653B\u51FB\u4E86\u4E00\u4E0B${(_b = (_a = battleInfo == null ? void 0 : battleInfo.value) == null ? void 0 : _a.monster) == null ? void 0 : _b.name}`;
+    }
+    if (status == 2) {
+      liTxt = `${(_d = (_c = battleInfo == null ? void 0 : battleInfo.value) == null ? void 0 : _c.monster) == null ? void 0 : _d.name}\u88AB\u4F60\u51FB\u8D25\u4E86\uFF01`;
+    }
+    if (status == 3) {
+      liTxt = `${(_f = (_e = battleInfo == null ? void 0 : battleInfo.value) == null ? void 0 : _e.monster) == null ? void 0 : _f.name}\u628A\u4F60\u6253\u5012\u4E86\uFF01`;
+    }
+    if (status == 4) {
+      liTxt = `\u4F60\u9003\u8DD1\u4E86...`;
+    }
+    if (status == 5) {
+      if (response.length) {
+        liTxt = `\u83B7\u5F97\u6218\u5229\u54C1xxxxxx`;
+      } else {
+        liTxt = `\u4EC0\u4E48\u90FD\u6CA1\u6709\u83B7\u5F97..`;
+      }
+    }
+    txtArr.list.push({
+      liTxt
+    });
+    upDown(txtArr, scrollIndex);
+  };
+  const handleSeachItem = (txtArr, scrollIndex) => {
+    if (Object.keys(battleInfo.value.monster).length) {
+      uni.showLoading({
+        icon: "none",
+        title: "\u6218\u6597\u4E2D...",
+        mask: true
+      });
+      postFightAction({
+        action: 4
+      }).then((res) => {
+        uni.hideLoading();
+        if (res.status == 1) {
+          txtCopywriting(res, txtArr, 1, scrollIndex);
+          battleInfo.value.monster.hp = battleInfo.value.monster.hp - res.mEffects[0].value;
+        }
+        if (res.status == 2) {
+          pickUupCorpses(txtArr, scrollIndex);
+        }
+        if (res.status == 3) {
+          uni.showToast({
+            icon: "none",
+            title: "\u554A~~~\u6211\u6B7B\u4E86\uFF01\uFF01\uFF01"
+          });
+        }
+      });
+    } else {
+      uni.showLoading({
+        icon: "none",
+        title: "\u63A2\u7D22\u4E2D...",
+        mask: true
+      });
+      getFightFind().then((res) => {
+        uni.hideLoading();
+        battleInfo.value.monster = res;
+        txtCopywriting(res, txtArr, 0, scrollIndex);
+      });
+    }
+  };
+  const handleRunAway = (txtArr, scrollIndex) => {
+    postFightAction({
+      action: 3
+    }).then((res) => {
+      if (res.status == 4) {
+        txtCopywriting(res, txtArr, 4, scrollIndex);
+      }
+      battleInfo.value.monster = {};
+    });
+  };
+  const handleSkill = () => {
+    uni.showToast({
+      icon: "none",
+      title: "\u6280\u80FD\u5F00\u53D1\u4E2D"
+    });
+  };
+  const handleToMap = () => {
+    uni.navigateTo({
+      url: "/pages/canvasMap/index"
+    });
+  };
+  const handleOpenKnapsack = () => {
+    hiddenPopup.value.show = true;
+    hiddenPopup.value.width = 90;
+    hiddenPopup.value.height = 70;
+    pageSwitchMenu.value.index = 0;
+    pageSwitchMenu.value.key = "ComKnapsack";
+  };
+  const handleToShop = () => {
+    hiddenPopup.value.show = true;
+    hiddenPopup.value.width = 100;
+    hiddenPopup.value.height = 100;
+    pageSwitchMenu.value.index = 1;
+    pageSwitchMenu.value.key = "ComShop";
+  };
+  const handleLeave = () => {
+    uni.clearStorageSync();
+    uni.reLaunch({
+      url: "/pages/loginOrRegister/index"
+    });
+  };
+  const _sfc_main$a = {
     __name: "index",
     setup(__props) {
-      let scrollTop = vue.ref({
-        top: 0
-      });
-      let scrollInfoView = vue.ref({
-        id: "id-1"
-      });
       const progressConfig = {
         border_radius: 50,
         stroke_width: 15,
@@ -4065,100 +4172,19 @@ if (uni.restoreGlobal) {
           liTxt: `\u6765\u5230\u4E86${pageArr.value.list[pageSwitch.value.index].name}`
         }]
       });
-      const handleGetUserInfo = () => {
-        postUserInfo({
-          "player": true,
-          "fighter": true,
-          "backpack": true,
-          "equipment": true
-        }).then((res) => {
-          formatAppLog("log", "at components/comBattle/index.vue:42", res, "\u83B7\u53D6\u73A9\u5BB6\u6700\u65B0\u4FE1\u606F -1======");
-          uni.setStorageSync("playerInfo", res.player);
-          battleInfo.value.player = (res == null ? void 0 : res.player) ? res == null ? void 0 : res.player : {}, battleInfo.value.monster = (res == null ? void 0 : res.fighter) ? res == null ? void 0 : res.fighter : {};
-        });
-      };
-      handleGetUserInfo();
+      let scrollIndex = vue.ref({
+        id: "id-1"
+      });
       vue.watch([pageSwitch.value], ([newValue1, oldValue1]) => {
         txtArr.value.list = [{
           liTxt: `\u6765\u5230\u4E86${pageArr.value.list[pageSwitch.value.index].name}`
         }];
       });
-      vue.watch([txtArr.value.list], ([newValue1, oldValue1]) => {
-      });
-      const handleSeachItem = () => {
-        if (battleInfo.value.player.isFight) {
-          uni.showLoading({
-            icon: "none",
-            title: "\u6218\u6597\u4E2D...",
-            mask: true
-          });
-          setTimeout(() => {
-            txtArr.value.list.push({
-              liTxt: "\u4F60\u653B\u51FB\u4E86\u4E00\u4E0B\u53F2\u83B1\u59C6\uFF0C\u9020\u6210\u4E861\u70B9\u4F24\u5BB3"
-            });
-            battleInfo.value.monster.hp = battleInfo.value.monster.hp - 1;
-            uni.hideLoading();
-          }, 1e3);
-        } else {
-          uni.showLoading({
-            icon: "none",
-            title: "\u63A2\u7D22\u4E2D...",
-            mask: true
-          });
-          getFightFind().then((res) => {
-            uni.hideLoading();
-            battleInfo.value.monster = res;
-            txtArr.value.list.push({
-              liTxt: res.name
-            });
-          });
-        }
-      };
-      const handleRunAway = () => {
-        txtArr.value.list.push({
-          liTxt: `\u4F60\u9003\u8DD1\u4E86...`
-        });
-        scrolltolower();
-        return;
-      };
-      const handleSkill = () => {
-        uni.showToast({
-          icon: "none",
-          title: "\u6280\u80FD\u5F00\u53D1\u4E2D"
-        });
-      };
-      const handleToMap = () => {
-        uni.navigateTo({
-          url: "/pages/canvasMap/index"
-        });
-      };
-      const handleOpenKnapsack = () => {
-        hiddenPopup.value.show = true;
-        hiddenPopup.value.width = 90;
-        hiddenPopup.value.height = 70;
-        pageSwitchMenu.value.index = 0;
-        pageSwitchMenu.value.key = "ComKnapsack";
-      };
-      const handleToShop = () => {
-        hiddenPopup.value.show = true;
-        hiddenPopup.value.width = 100;
-        hiddenPopup.value.height = 100;
-        pageSwitchMenu.value.index = 1;
-        pageSwitchMenu.value.key = "ComShop";
-      };
-      const handleLeave = () => {
-        uni.clearStorageSync();
-        uni.reLaunch({
-          url: "/pages/loginOrRegister/index"
-        });
-      };
-      const scrolltolower = () => {
-        formatAppLog("log", "at components/comBattle/index.vue:193", 0);
-      };
+      handleGetUserInfo();
       return (_ctx, _cache) => {
-        var _a, _b;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k;
         return vue.openBlock(), vue.createElementBlock("div", { class: "comBattleDiv" }, [
-          vue.createCommentVNode(" \u89D2\u8272 - \u602A\u7269 "),
+          vue.createCommentVNode(" \u89D2\u8272 + \u602A\u7269 "),
           vue.createElementVNode("div", { class: "comBattleDiv_battle_1" }, [
             vue.createCommentVNode(" \u89D2\u8272 "),
             vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div" }, [
@@ -4170,10 +4196,10 @@ if (uni.restoreGlobal) {
               vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_i_name" }, vue.toDisplayString(vue.unref(battleInfo).player.name), 1),
               vue.createElementVNode("progress", {
                 style: { "margin": "0 0 auto 0" },
+                activeColor: "#ceb284",
                 class: "comBattleDiv_battle_1_div_progress",
                 "border-radius": progressConfig.border_radius,
                 "stroke-width": progressConfig.stroke_width,
-                activeColor: "#ceb284",
                 backgroundColor: progressConfig.backgroundColor,
                 active: progressConfig.active,
                 percent: vue.unref(battleInfo).player.hp
@@ -4190,78 +4216,85 @@ if (uni.restoreGlobal) {
                   vue.createCommentVNode(' <image :src="battleInfo.monster.img" alt="" /> ')
                 ])
               ]),
-              vue.createElementVNode("div", {
+              Object.keys(vue.unref(battleInfo).monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
+                key: 0,
                 class: "comBattleDiv_battle_1_div_i_name",
                 style: { "float": "right" }
-              }, vue.toDisplayString(vue.unref(battleInfo).monster.name), 1),
-              vue.createElementVNode("progress", {
+              }, vue.toDisplayString((_b = (_a = vue.unref(battleInfo)) == null ? void 0 : _a.monster) == null ? void 0 : _b.name), 1)) : vue.createCommentVNode("v-if", true),
+              Object.keys(vue.unref(battleInfo).monster).length ? (vue.openBlock(), vue.createElementBlock("progress", {
+                key: 1,
                 style: { "margin": "0 0 0 auto", "transform": "rotate(180deg)" },
+                activeColor: "#ceb284",
                 class: "comBattleDiv_battle_1_div_progress",
                 "border-radius": progressConfig.border_radius,
                 "stroke-width": progressConfig.stroke_width,
-                activeColor: "#ceb284",
                 backgroundColor: progressConfig.backgroundColor,
                 active: progressConfig.active,
-                percent: vue.unref(battleInfo).monster.hp
-              }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
-              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood2" }, vue.toDisplayString(vue.unref(battleInfo).monster.hp), 1)
+                percent: (_d = (_c = vue.unref(battleInfo)) == null ? void 0 : _c.monster) == null ? void 0 : _d.hp
+              }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"])) : vue.createCommentVNode("v-if", true),
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood2" }, vue.toDisplayString((_f = (_e = vue.unref(battleInfo)) == null ? void 0 : _e.monster) == null ? void 0 : _f.hp), 1)
             ])
           ]),
           vue.createCommentVNode(" \u7EBF "),
           vue.createVNode(ComLine),
-          vue.createCommentVNode(" \u6218\u6597txt - \u7B49 "),
-          vue.createCommentVNode(' <div class="comBattleDiv_battle_2">\n			<div v-for="(item, index) in txtArr.list">\n				<div>{{ item.liTxt }}</div>\n			</div>\n		</div> '),
+          vue.createCommentVNode(" \u6218\u6597txt "),
           vue.createElementVNode("scroll-view", {
             class: "comBattleDiv_battle_2",
             "scroll-y": true,
             "show-scrollbar": false,
             "scroll-anchoring": true,
             "scroll-with-animation": true,
-            "scroll-top": vue.unref(scrollTop).top,
-            onScrolltolower: scrolltolower
+            "scroll-into-view": vue.unref(scrollIndex).id
           }, [
             (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(txtArr).list, (item, index) => {
               return vue.openBlock(), vue.createElementBlock("div", {
                 id: "id-" + index
               }, [
-                vue.createElementVNode("div", null, vue.toDisplayString(item.liTxt), 1),
-                vue.createElementVNode("div", null, vue.toDisplayString(vue.unref(scrollTop).top) + vue.toDisplayString(vue.unref(scrollInfoView).id), 1)
+                vue.createElementVNode("div", null, vue.toDisplayString(item.liTxt), 1)
               ], 8, ["id"]);
             }), 256))
-          ], 40, ["scroll-top"]),
-          vue.createCommentVNode(" \u64CD\u4F5Cbutton "),
+          ], 8, ["scroll-into-view"]),
+          vue.createCommentVNode(" \u64CD\u4F5C - button "),
           vue.createElementVNode("div", { class: "comBattleDiv_battle_3" }, [
             vue.createElementVNode("div", {
               class: "",
-              onClick: handleSeachItem
-            }, vue.toDisplayString(((_a = vue.unref(battleInfo).monster) == null ? void 0 : _a.hp) ? "\u6218\u6597" : "\u63A2\u7D22"), 1),
-            ((_b = vue.unref(battleInfo).monster) == null ? void 0 : _b.hp) ? (vue.openBlock(), vue.createElementBlock("div", {
+              onClick: _cache[0] || (_cache[0] = ($event) => vue.unref(handleSeachItem)(vue.unref(txtArr), vue.unref(scrollIndex)))
+            }, vue.toDisplayString(Object.keys((_g = vue.unref(battleInfo)) == null ? void 0 : _g.monster).length ? "\u6218\u6597" : "\u63A2\u7D22"), 1),
+            Object.keys((_h = vue.unref(battleInfo)) == null ? void 0 : _h.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
               key: 0,
               class: "",
-              onClick: handleRunAway
+              onClick: _cache[1] || (_cache[1] = ($event) => vue.unref(handleRunAway)(vue.unref(txtArr), vue.unref(scrollIndex)))
             }, "\u9003\u8DD1")) : vue.createCommentVNode("v-if", true),
-            vue.unref(battleInfo).player.isFight ? (vue.openBlock(), vue.createElementBlock("div", {
+            Object.keys((_i = vue.unref(battleInfo)) == null ? void 0 : _i.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
               key: 1,
               class: "",
-              onClick: handleSkill
+              onClick: _cache[2] || (_cache[2] = (...args) => vue.unref(handleSkill) && vue.unref(handleSkill)(...args))
             }, "\u6280\u80FD")) : vue.createCommentVNode("v-if", true),
-            vue.createElementVNode("div", { onClick: handleOpenKnapsack }, "\u80CC\u5305"),
-            !vue.unref(battleInfo).player.isFight ? (vue.openBlock(), vue.createElementBlock("div", {
+            vue.createElementVNode("div", {
+              class: "",
+              onClick: _cache[3] || (_cache[3] = (...args) => vue.unref(handleOpenKnapsack) && vue.unref(handleOpenKnapsack)(...args))
+            }, "\u80CC\u5305"),
+            !Object.keys((_j = vue.unref(battleInfo)) == null ? void 0 : _j.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
               key: 2,
-              onClick: handleToMap
+              class: "",
+              onClick: _cache[4] || (_cache[4] = (...args) => vue.unref(handleToMap) && vue.unref(handleToMap)(...args))
             }, "\u5730\u56FE")) : vue.createCommentVNode("v-if", true),
-            !vue.unref(battleInfo).player.isFight ? (vue.openBlock(), vue.createElementBlock("div", {
+            !Object.keys((_k = vue.unref(battleInfo)) == null ? void 0 : _k.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
               key: 3,
-              onClick: handleToShop
+              class: "",
+              onClick: _cache[5] || (_cache[5] = (...args) => vue.unref(handleToShop) && vue.unref(handleToShop)(...args))
             }, "\u5546\u5E97")) : vue.createCommentVNode("v-if", true),
-            vue.createElementVNode("div", { onClick: handleLeave }, "\u9000\u51FA")
+            vue.createElementVNode("div", {
+              class: "",
+              onClick: _cache[6] || (_cache[6] = (...args) => vue.unref(handleLeave) && vue.unref(handleLeave)(...args))
+            }, "\u9000\u51FA")
           ])
         ]);
       };
     }
   };
-  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
-  const _sfc_main$8 = {
+  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
+  const _sfc_main$9 = {
     __name: "index",
     setup(__props) {
       let introduce = vue.ref({
@@ -4328,9 +4361,9 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComKnapsack = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-8fc46dda"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comKnapsack/index.vue"]]);
+  const ComKnapsack = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-8fc46dda"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comKnapsack/index.vue"]]);
   const _imports_0$1 = "/static/image/1.png";
-  const _sfc_main$7 = {
+  const _sfc_main$8 = {
     __name: "index",
     setup(__props) {
       let shopArr = vue.ref(40);
@@ -4404,7 +4437,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComShop = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-83658b6a"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comShop/index.vue"]]);
+  const ComShop = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-83658b6a"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comShop/index.vue"]]);
   const pageArr = vue.ref({
     list: [{
       "page_battle": vue.markRaw(ComBattle),
@@ -4446,7 +4479,7 @@ if (uni.restoreGlobal) {
     player: uni.getStorageSync("playerInfo") ? uni.getStorageSync("playerInfo") : {},
     monster: {}
   });
-  const _sfc_main$6 = {
+  const _sfc_main$7 = {
     __name: "index",
     props: {
       comHeight: {
@@ -4476,11 +4509,37 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
+  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
+  const _sfc_main$6 = {
+    __name: "index",
+    setup(__props) {
+      const handleDiv = () => {
+        hiddenPopup.value.show = false;
+      };
+      return (_ctx, _cache) => {
+        return vue.unref(hiddenPopup).show ? (vue.openBlock(), vue.createElementBlock("div", {
+          key: 0,
+          class: "comPopupDiv",
+          onClick: vue.withModifiers(handleDiv, ["stop"])
+        }, [
+          vue.createElementVNode("div", {
+            class: "comPopupDiv_conter",
+            style: vue.normalizeStyle({ "--width": vue.unref(hiddenPopup).width + "%", "--height": vue.unref(hiddenPopup).height + "%" }),
+            onClick: _cache[0] || (_cache[0] = vue.withModifiers(() => {
+            }, ["stop"]))
+          }, [
+            vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
+          ], 4)
+        ], 8, ["onClick"])) : vue.createCommentVNode("v-if", true);
+      };
+    }
+  };
+  const ComPopup = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-4a3567c6"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comPopup/index.vue"]]);
   const _sfc_main$5 = {
     __name: "index",
     setup(__props) {
       return (_ctx, _cache) => {
+        var _a;
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
           vue.createElementVNode("div", { class: "content" }, [
             vue.createCommentVNode(" \u5218\u6D77\u5C4Fheader - \u76EE\u524D\u5360\u4F4D - \u663E\u793A\u573A\u666Fname "),
@@ -4490,15 +4549,18 @@ if (uni.restoreGlobal) {
               class: "contentDiv",
               style: vue.normalizeStyle({ "--conHeight": vue.unref(headerMargin) + (vue.unref(headerHeight) / 2 + 3) + "px" })
             }, [
-              (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(vue.unref(pageArr).list[vue.unref(pageSwitch).index][vue.unref(pageSwitch).key])))
+              (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent((_a = vue.unref(pageArr)) == null ? void 0 : _a.list[vue.unref(pageSwitch).index][vue.unref(pageSwitch).key])))
             ], 4),
             vue.createCommentVNode(" \u64CD\u4F5C\u9762\u677F - \u4EE5\u5F39\u7A97\u5F62\u5F0F "),
             vue.createVNode(ComPopup, {
               hiddenPopup: vue.unref(hiddenPopup).show
             }, {
-              default: vue.withCtx(() => [
-                (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(vue.unref(pageArrMenu).list[vue.unref(pageSwitchMenu).index][vue.unref(pageSwitchMenu).key])))
-              ]),
+              default: vue.withCtx(() => {
+                var _a2;
+                return [
+                  (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent((_a2 = vue.unref(pageArrMenu)) == null ? void 0 : _a2.list[vue.unref(pageSwitchMenu).index][vue.unref(pageSwitchMenu).key])))
+                ];
+              }),
               _: 1
             }, 8, ["hiddenPopup"])
           ]),
@@ -4546,7 +4608,7 @@ if (uni.restoreGlobal) {
     }
   };
   const PagesCanvasMapIndex = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-419b8f55"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/canvasMap/index.vue"]]);
-  const _imports_0 = "/static/1.gif";
+  const _imports_0 = "/static/gif/1.gif";
   let loginState = vue.ref({
     isState: 1
   });
@@ -4767,6 +4829,103 @@ if (uni.restoreGlobal) {
   __definePage("pages/content/index", PagesContentIndex);
   __definePage("pages/canvasMap/index", PagesCanvasMapIndex);
   __definePage("pages/loginOrRegister/index", PagesLoginOrRegisterIndex);
+  const monster = [
+    {
+      id: 1,
+      name: "\u53F2\u83B1\u59C6",
+      level: 1,
+      attack_min: 20,
+      attack_max: 31,
+      hp: 315,
+      defence: 0,
+      nimble: 0,
+      vision: 0,
+      exp_min: 0,
+      exp_max: 0,
+      flop: [
+        {
+          id: 1,
+          rate: 1e3,
+          min: 1,
+          max: 3
+        },
+        {
+          id: 3,
+          rate: 3e3,
+          min: 1,
+          max: 2
+        }
+      ]
+    },
+    {
+      id: 2,
+      name: "\u7CBE\u82F1\u53F2\u83B1\u59C6",
+      level: 2,
+      attack_max: 48,
+      attack_min: 30,
+      hp: 375,
+      defence: 0,
+      nimble: 0,
+      vision: 0,
+      exp_min: 0,
+      exp_max: 0,
+      flop: [
+        {
+          id: 1,
+          rate: 1e3,
+          min: 1,
+          max: 5
+        },
+        {
+          id: 3,
+          rate: 6e3,
+          min: 1,
+          max: 5
+        }
+      ]
+    },
+    {
+      id: 3,
+      name: "\u5E7D\u5F71\u5154",
+      level: 3,
+      attack_max: 72,
+      attack_min: 28,
+      hp: 666,
+      defence: 6,
+      nimble: 0,
+      vision: 0,
+      exp_min: 0,
+      exp_max: 0,
+      flop: [
+        {
+          id: 1,
+          rate: 1e3,
+          min: 1,
+          max: 5
+        },
+        {
+          id: 3,
+          rate: 6e3,
+          min: 1,
+          max: 5
+        },
+        {
+          id: 4,
+          rate: 160,
+          min: 1,
+          max: 1
+        }
+      ]
+    }
+  ];
+  const disposeConfig = () => {
+    let getMonsterStorage = uni.getStorageSync("getMonsterStorage", monster);
+    if (!getMonsterStorage) {
+      uni.setStorageSync("setMonsterStorage", monster);
+    } else {
+      uni.getStorageSync("getMonsterStorage", monster);
+    }
+  };
   const pageAddress = () => {
     let token2 = uni.getStorageSync("token") ? uni.getStorageSync("token") : "";
     if (token2) {
@@ -4785,6 +4944,7 @@ if (uni.restoreGlobal) {
     },
     onShow: function() {
       pageAddress();
+      disposeConfig();
     },
     onHide: function() {
     }

@@ -1,0 +1,10 @@
+{
+    "authReject": "账号或密码有误",
+    "inFight": "尚未脱离战斗",
+    "safeArea": "这里是安全区",
+    "monsterMiss": "战斗已结束",
+    "nameNotSupportEmail": "用户名不能使用邮箱",
+    "userNotHas": "用户未找到",
+    "uniqueMust": "用户名或邮箱已存在",
+    "serverFail": "服务执行失败"
+}

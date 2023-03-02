@@ -19,10 +19,9 @@ import {
 
 
 
-// uni.showToast({
-// 	icon: 'none',
-// 	title: '打开商店'
-// })
+
+
+
 
 // 监听页面组件变化
 // watch([pageSwitch.value, pageSwitchMenu.value], ([newValue1, oldValue1],[newValue2, oldValue2]) => {
@@ -40,11 +39,11 @@ import {
 		<ComHeader :comHeight="conHeight" />
 		<!-- 主场景 -->
 		<div class="contentDiv" :style="{ '--conHeight': ((headerMargin + (headerHeight/2+3))) + 'px' }">
-			<component :is="pageArr.list[pageSwitch.index][pageSwitch.key]" />
+			<component :is="pageArr?.list[pageSwitch.index][pageSwitch.key]" />
 		</div>
 		<!-- 操作面板 - 以弹窗形式 -->
 		<ComPopup :hiddenPopup="hiddenPopup.show">
-			<component :is="pageArrMenu.list[pageSwitchMenu.index][pageSwitchMenu.key]" />
+			<component :is="pageArrMenu?.list[pageSwitchMenu.index][pageSwitchMenu.key]" />
 		</ComPopup>
 	</div>
 	<!-- 背景图 -->
