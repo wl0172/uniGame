@@ -15,8 +15,8 @@ let isLoding = ref({
 	state: false
 })
 let sinupInfo = ref({
-	name: 'testUser',
-	password: 'testPass',
+	name: '1',
+	password: '11111111',
 	device: 'testDeviceL'
 })
 

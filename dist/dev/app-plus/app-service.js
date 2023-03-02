@@ -4045,12 +4045,15 @@ if (uni.restoreGlobal) {
   function getFightFind(params) {
     return request(`/fight/find`, "GET", "application/json", params);
   }
-  function postFightAction(params) {
-    return request(`/fight/action`, "POST", "application/json", params);
-  }
   const _sfc_main$9 = {
     __name: "index",
     setup(__props) {
+      let scrollTop = vue.ref({
+        top: 0
+      });
+      let scrollInfoView = vue.ref({
+        id: "id-1"
+      });
       const progressConfig = {
         border_radius: 50,
         stroke_width: 15,
@@ -4069,9 +4072,9 @@ if (uni.restoreGlobal) {
           "backpack": true,
           "equipment": true
         }).then((res) => {
-          formatAppLog("log", "at components/comBattle/index.vue:35", res, "\u83B7\u53D6\u73A9\u5BB6\u6700\u65B0\u4FE1\u606F -1======");
+          formatAppLog("log", "at components/comBattle/index.vue:42", res, "\u83B7\u53D6\u73A9\u5BB6\u6700\u65B0\u4FE1\u606F -1======");
           uni.setStorageSync("playerInfo", res.player);
-          battleInfo.value.player = (res == null ? void 0 : res.player) ? res == null ? void 0 : res.player : {};
+          battleInfo.value.player = (res == null ? void 0 : res.player) ? res == null ? void 0 : res.player : {}, battleInfo.value.monster = (res == null ? void 0 : res.fighter) ? res == null ? void 0 : res.fighter : {};
         });
       };
       handleGetUserInfo();
@@ -4079,6 +4082,8 @@ if (uni.restoreGlobal) {
         txtArr.value.list = [{
           liTxt: `\u6765\u5230\u4E86${pageArr.value.list[pageSwitch.value.index].name}`
         }];
+      });
+      vue.watch([txtArr.value.list], ([newValue1, oldValue1]) => {
       });
       const handleSeachItem = () => {
         if (battleInfo.value.player.isFight) {
@@ -4110,9 +4115,11 @@ if (uni.restoreGlobal) {
         }
       };
       const handleRunAway = () => {
-        postFightAction().then((res) => {
-          formatAppLog("log", "at components/comBattle/index.vue:121", \u70ED\u6B7B, "\u9003\u8DD1======");
+        txtArr.value.list.push({
+          liTxt: `\u4F60\u9003\u8DD1\u4E86...`
         });
+        scrolltolower();
+        return;
       };
       const handleSkill = () => {
         uni.showToast({
@@ -4145,7 +4152,11 @@ if (uni.restoreGlobal) {
           url: "/pages/loginOrRegister/index"
         });
       };
+      const scrolltolower = () => {
+        formatAppLog("log", "at components/comBattle/index.vue:193", 0);
+      };
       return (_ctx, _cache) => {
+        var _a, _b;
         return vue.openBlock(), vue.createElementBlock("div", { class: "comBattleDiv" }, [
           vue.createCommentVNode(" \u89D2\u8272 - \u602A\u7269 "),
           vue.createElementVNode("div", { class: "comBattleDiv_battle_1" }, [
@@ -4199,20 +4210,32 @@ if (uni.restoreGlobal) {
           vue.createCommentVNode(" \u7EBF "),
           vue.createVNode(ComLine),
           vue.createCommentVNode(" \u6218\u6597txt - \u7B49 "),
-          vue.createElementVNode("div", { class: "comBattleDiv_battle_2" }, [
+          vue.createCommentVNode(' <div class="comBattleDiv_battle_2">\n			<div v-for="(item, index) in txtArr.list">\n				<div>{{ item.liTxt }}</div>\n			</div>\n		</div> '),
+          vue.createElementVNode("scroll-view", {
+            class: "comBattleDiv_battle_2",
+            "scroll-y": true,
+            "show-scrollbar": false,
+            "scroll-anchoring": true,
+            "scroll-with-animation": true,
+            "scroll-top": vue.unref(scrollTop).top,
+            onScrolltolower: scrolltolower
+          }, [
             (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(txtArr).list, (item, index) => {
-              return vue.openBlock(), vue.createElementBlock("div", null, [
-                vue.createElementVNode("div", null, vue.toDisplayString(item.liTxt), 1)
-              ]);
+              return vue.openBlock(), vue.createElementBlock("div", {
+                id: "id-" + index
+              }, [
+                vue.createElementVNode("div", null, vue.toDisplayString(item.liTxt), 1),
+                vue.createElementVNode("div", null, vue.toDisplayString(vue.unref(scrollTop).top) + vue.toDisplayString(vue.unref(scrollInfoView).id), 1)
+              ], 8, ["id"]);
             }), 256))
-          ]),
+          ], 40, ["scroll-top"]),
           vue.createCommentVNode(" \u64CD\u4F5Cbutton "),
           vue.createElementVNode("div", { class: "comBattleDiv_battle_3" }, [
             vue.createElementVNode("div", {
               class: "",
               onClick: handleSeachItem
-            }, vue.toDisplayString(vue.unref(battleInfo).player.isFight ? "\u6218\u6597" : "\u63A2\u7D22"), 1),
-            vue.unref(battleInfo).player.isFight ? (vue.openBlock(), vue.createElementBlock("div", {
+            }, vue.toDisplayString(((_a = vue.unref(battleInfo).monster) == null ? void 0 : _a.hp) ? "\u6218\u6597" : "\u63A2\u7D22"), 1),
+            ((_b = vue.unref(battleInfo).monster) == null ? void 0 : _b.hp) ? (vue.openBlock(), vue.createElementBlock("div", {
               key: 0,
               class: "",
               onClick: handleRunAway
@@ -4534,8 +4557,8 @@ if (uni.restoreGlobal) {
         state: false
       });
       let sinupInfo = vue.ref({
-        name: "testUser",
-        password: "testPass",
+        name: "1",
+        password: "11111111",
         device: "testDeviceL"
       });
       const handleSignUp = () => {

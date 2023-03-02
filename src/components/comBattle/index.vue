@@ -9,6 +9,13 @@ import { postUserInfo, getFightFind, postFightAction } from '@/api/index.js'
 // 全局属性
 import { pageArr, pageSwitch, pageSwitchMenu, useInfo, battleInfo, hiddenPopup } from '@/state/index.js'
 
+let scrollTop = ref({
+	top: 0
+})
+let scrollInfoView = ref({
+	id: 'id-1'
+})
+
 // 进度条配置
 const progressConfig = {
 	border_radius: 50,
@@ -34,7 +41,8 @@ const handleGetUserInfo = () => {
 	}).then((res)=>{
 		console.log(res, '获取玩家最新信息 -1======')
 		uni.setStorageSync('playerInfo', res.player);
-		battleInfo.value.player = res?.player ? res?.player : {}
+		battleInfo.value.player = res?.player ? res?.player : {},
+		battleInfo.value.monster = res?.fighter ? res?.fighter : {}
 	})
 }
 
@@ -71,6 +79,11 @@ watch([pageSwitch.value], ([newValue1, oldValue1]) => {
 		liTxt: `来到了${pageArr.value.list[pageSwitch.value.index].name}`
 	}]
 })
+watch([txtArr.value.list], ([newValue1, oldValue1]) => {
+	
+})
+
+// InformationPanel
 
 // 探索
 const handleSeachItem = () => {
@@ -108,17 +121,27 @@ const handleSeachItem = () => {
 
 // 逃跑
 const handleRunAway = () => {
-	// uni.showToast({
-	// 	icon: 'none',
-	// 	title: '逃跑开发中'
-	// })
-	// txtArr.value.list.push({
-	// 	liTxt: '逃跑了...'
-	// })
-	// battleInfo.value.player.isFight = false
 	
-	postFightAction().then((res)=>{
-		console.log(热死, '逃跑======')
+	txtArr.value.list.push({
+		liTxt: `你逃跑了...`
+	})
+	scrolltolower()
+	
+	// setTimeout(()=>{
+	// 	scrollInfoView.value.id = `id-${txtArr.value.list.length-1}`
+	// 	// scrollTop.value.top = 999999
+	// },3000)
+	
+	return
+	
+	postFightAction({
+		action: 4
+	}).then((res)=>{
+		console.log(res, '逃跑======')
+		// battleInfo.value.monster = {}
+		txtArr.value.list.push({
+			liTxt: `你逃跑了...`
+		})
 	})
 }
 
@@ -164,6 +187,10 @@ const handleLeave = () => {
 	uni.reLaunch({
 		url: '/pages/loginOrRegister/index'
 	})
+}
+
+const scrolltolower = () => {
+	console.log(0)
 }
 
 
@@ -235,17 +262,34 @@ const handleLeave = () => {
 		<ComLine />
 		
 		<!-- 战斗txt - 等 -->
-		<div class="comBattleDiv_battle_2">
+		<!-- <div class="comBattleDiv_battle_2">
 			<div v-for="(item, index) in txtArr.list">
 				<div>{{ item.liTxt }}</div>
 			</div>
-		</div>
+		</div> -->
+		
+		<scroll-view 
+			class="comBattleDiv_battle_2"
+			:scroll-y="true"
+			:show-scrollbar="false"
+			:scroll-anchoring="true"
+			:scroll-with-animation="true"
+			:scroll-top="scrollTop.top"
+			@scrolltolower="scrolltolower"
+			
+		>
+			<div v-for="(item, index) in txtArr.list" :id=" 'id-'+index ">
+				<div>{{ item.liTxt }}</div>
+				<div>{{ scrollTop.top }}{{ scrollInfoView.id }}</div>
+			</div>
+		</scroll-view>
+		
 
 		<!-- 操作button -->
 		<div class="comBattleDiv_battle_3">
 			
-			<div class="" @click="handleSeachItem">{{ battleInfo.player.isFight ? '战斗' : '探索' }}</div>
-			<div class="" v-if="battleInfo.player.isFight" @click="handleRunAway">逃跑</div>
+			<div class="" @click="handleSeachItem">{{ battleInfo.monster?.hp ? '战斗' : '探索' }}</div>
+			<div class="" v-if="battleInfo.monster?.hp" @click="handleRunAway">逃跑</div>
 			<div class="" v-if="battleInfo.player.isFight" @click="handleSkill">技能</div>
 			<div @click="handleOpenKnapsack">背包</div>
 			<div v-if="!battleInfo.player.isFight" @click="handleToMap">地图</div>

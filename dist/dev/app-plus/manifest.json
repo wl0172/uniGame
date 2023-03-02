@@ -91,7 +91,7 @@
       "style": "dark",
       "background": "#F8F8F8"
     },
-    "arguments": "{\"name\":\"内容页\",\"path\":\"pages/content/index\",\"query\":\"\"}",
+    "arguments": "{\"name\":\"内容页\",\"path\":\"pages/loginOrRegister/index\",\"query\":\"\"}",
     "uniStatistics": {
       "enable": false
     },

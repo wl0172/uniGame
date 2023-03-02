@@ -2,6 +2,8 @@
  * 刘海适配
  */
 
+// wx.getSystemInfoSync()
+
 // 状态栏高度 单位px
 const headerMargin = wx.getSystemInfoSync().statusBarHeight
 
@@ -15,8 +17,6 @@ const conHeight = {
 	headerHeight,
 	headerMargin: headerMargin * 2
 }
-
-// wx.getSystemInfoSync().
 
 export {
 	headerHeight,
