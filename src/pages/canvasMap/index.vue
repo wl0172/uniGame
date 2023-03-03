@@ -8,7 +8,7 @@ const handleToNewMap = (item, index) => {
 	
 	uni.showToast({
 		icon: 'none',
-		title: `去新场景======${item.name}======${Object.keys(item)[0]}`
+		title: `${item.name}==${Object.keys(item)[0]}==去新场景======`
 	})
 	
 	pageSwitch.value.index = index

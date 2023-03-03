@@ -1,24 +1,46 @@
 import { ref, watch, computed } from "vue"
+import { useInfo } from '@/state/index.js'
 // 接口
-import { postUserInfo, getFightFind, postFightAction, postFightPrize } from '@/api/index.js'
+import { 
+	postUserInfo, 
+	getFightFind, 
+	postFightAction, 
+	postFightPrize ,
+} from '@/api/index.js'
 // 全局属性
-import { pageArr, pageSwitch, pageSwitchMenu, battleInfo, hiddenPopup
+import { 
+	pageArr, 
+	pageSwitch, 
+	pageSwitchMenu, 
+	battleInfo, 
+	hiddenPopup ,
 } from '@/state/index.js'
+
+// 配置文件
+import { 
+	effectCnsRef, 
+	errorCnsRef, 
+	monsterRef, 
+	goodsRef, 
+	mapRef, 
+} from '@/state/config/index.js'
 
 
 // 获取玩家最新信息
 const handleGetUserInfo = () => {
-	postUserInfo({
-		"player": true, // 角色信息
-		"fighter": true, // 同寻怪接口 战斗
-		"backpack": true, // 背包 玩家背包中的物品
-		"equipment": true // 装备 玩家身上的装备
-	}).then((res) => {
-		console.log(res, 'comBattle - 获取玩家最新信息 - ======')
-		uni.setStorageSync('playerInfo', res.player);
-		battleInfo.value.player = res?.player ? res?.player : {},
-		battleInfo.value.monster = res?.fighter ? res?.fighter : {}
-	})
+	if(useInfo.value.token){
+		postUserInfo({
+			"player": true, // 角色信息
+			"fighter": true, // 同寻怪接口 战斗
+			"backpack": true, // 背包 玩家背包中的物品
+			"equipment": true // 装备 玩家身上的装备
+		}).then((res) => {
+			console.log(res, '玩家最新信息->comBattle->action->handleGetUserInfo->')
+			uni.setStorageSync('playerInfo', res.player);
+			battleInfo.value.player = res?.player ? res?.player : {},
+			battleInfo.value.monster = res?.fighter ? res?.fighter : {}
+		})
+	}
 }
 
 // 捡尸
@@ -37,35 +59,59 @@ const upDown = (txtArr,scrollIndex) => {
 }
 
 // txt文案
-const txtCopywriting = (response,txtArr,status,scrollIndex) => {
-	// 0 - 搜索，1 - 战斗持续中，2 - 玩家胜利，3 - 玩家失败，4 - 平手，5 - 捡尸
-	let liTxt = ''
-	if(status == 0){
-		liTxt = `你遇到了一只${response.name},它在悠闲的晒太阳`
-	}
-	if(status == 1){
-		liTxt = `你攻击了一下${battleInfo?.value?.monster?.name}`
-	}
-	if(status == 2){
-		liTxt = `${battleInfo?.value?.monster?.name}被你击败了！`
-	}
-	if(status == 3){
-		liTxt = `${battleInfo?.value?.monster?.name}把你打倒了！`
-	}
-	if(status == 4){
-		liTxt = `你逃跑了...`
-	}
-	if(status == 5){
-		if(response.length){
-			liTxt = `获得战利品xxxxxx`
-		}else{
-			liTxt = `什么都没有获得..`
-		}
+// status = 0 - 搜索，1 - 战斗持续中，2 - 玩家胜利，3 - 玩家失败，4 - 平手，5 - 捡尸
+const txtCopywriting = (response,txtArr,status,scrollIndex,effect=-1,bloodTxt) => {
+	let statusObj = {
+		0: `你遇到了一只${response.name},它在悠闲的晒太阳`,
+		1: bloodTxt,
+		2: `${battleInfo?.value?.monster?.name}被你击败了！`,
+		3: `${battleInfo?.value?.monster?.name}把你打倒了！`,
+		4: `你逃跑了...`,
+		5: response.length ? `获得战利品xxxxxx待开发` : `什么都没有获得...`,
 	}
 	txtArr.list.push({
-		liTxt: liTxt
+		liTxt: effect > -1 ? statusObj[status] : statusObj[status]
 	})
 	upDown(txtArr,scrollIndex)
+}
+
+// 掉血，role角色 - monst怪物
+const buckleBlood = (item,response,txtArr,status,scrollIndex) => {
+	
+	let eff = new Map(Object.entries(effectCnsRef.value))
+	// 怪物对角色产生的效果
+	if(response?.mEffects?.length){
+		let monsterTxt = `${item.value.monster.name}对你使用了${eff.get(response.mEffects[0].effect)}`
+		
+		// 普通攻击
+		if(response.mEffects[0].effect == 'attack'){
+			monsterTxt += `,造成了${response.mEffects[0].value}点伤害`
+			item.value.player.hp = item.value.player.hp - response.mEffects[0].value
+		}
+		// 逃脱
+		if(response.mEffects[0].effect == 'runaway'){
+			
+		}
+		// 毒药侵害
+		if(response.mEffects[0].effect == 'attackTox'){
+			
+		}
+		// 生命恢复
+		if(response.mEffects[0].effect == 'hpPlus'){
+			
+		}
+		// 生命损失
+		if(response.mEffects[0].effect == 'hpReduce'){
+			
+		}
+		txtCopywriting(response,txtArr,status,scrollIndex,0,monsterTxt)
+	}
+	// 角色对怪物产生的效果
+	if(response?.pEffects?.length){
+		let playerTxt = `你攻击了一下${item?.value?.monster?.name},造成了${response.pEffects[0].value}伤害`
+		item.value.monster.hp = item.value.monster.hp - response.pEffects[0].value
+		txtCopywriting(response,txtArr,status,scrollIndex,1,playerTxt)
+	}
 }
 
 
@@ -82,10 +128,23 @@ const txtCopywriting = (response,txtArr,status,scrollIndex) => {
 
 
 
-// 攻击 - 探索
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 探索 - 攻击
 const handleSeachItem = (txtArr,scrollIndex) => {
-	
-	// 在战斗中
+	// 有怪的信息 - 在战斗中
 	if (Object.keys(battleInfo.value.monster).length) {
 		uni.showLoading({
 			icon: 'none',
@@ -98,8 +157,8 @@ const handleSeachItem = (txtArr,scrollIndex) => {
 			uni.hideLoading()
 			// 1 - 持续战斗
 			if(res.status == 1){
-				txtCopywriting(res,txtArr,1,scrollIndex)
-				battleInfo.value.monster.hp = battleInfo.value.monster.hp - res.mEffects[0].value
+				// 掉血
+				buckleBlood(battleInfo,res,txtArr,1,scrollIndex)
 			}
 			// 2 - 胜利
 			if(res.status == 2){

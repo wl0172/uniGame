@@ -88,7 +88,7 @@ if (uni.restoreGlobal) {
   function isDate(input) {
     return input instanceof Date || Object.prototype.toString.call(input) === "[object Date]";
   }
-  function map(arr, fn) {
+  function map$1(arr, fn) {
     var res = [], i, arrLen = arr.length;
     for (i = 0; i < arrLen; ++i) {
       res.push(fn(arr[i], i));
@@ -2047,7 +2047,7 @@ if (uni.restoreGlobal) {
       return;
     }
     var i = normalizeObjectUnits(config._i), dayOrDate = i.day === void 0 ? i.date : i.day;
-    config._a = map(
+    config._a = map$1(
       [i.year, i.month, dayOrDate, i.hour, i.minute, i.second, i.millisecond],
       function(obj) {
         return obj && parseInt(obj, 10);
@@ -2097,7 +2097,7 @@ if (uni.restoreGlobal) {
     } else if (typeof input === "string") {
       configFromString(config);
     } else if (isArray(input)) {
-      config._a = map(input.slice(0), function(obj) {
+      config._a = map$1(input.slice(0), function(obj) {
         return parseInt(obj, 10);
       });
       configFromArray(config);
@@ -3991,7 +3991,7 @@ if (uni.restoreGlobal) {
             uni.showToast({
               icon: "none",
               title: response.data.message || path,
-              duration: 1500
+              duration: 5e3
             });
           }
         },
@@ -4026,17 +4026,227 @@ if (uni.restoreGlobal) {
   function postFightPrize(params) {
     return request(`/fight/prize`, "POST", "application/json", params);
   }
+  const attack = "\u666E\u901A\u653B\u51FB";
+  const runaway = "\u9003\u8131";
+  const attackTox = "\u6BD2\u836F\u4FB5\u5BB3";
+  const hpPlus = "\u751F\u547D\u6062\u590D";
+  const hpReduce = "\u751F\u547D\u635F\u5931";
+  const effectCns = {
+    attack,
+    runaway,
+    attackTox,
+    hpPlus,
+    hpReduce
+  };
+  const authReject = "\u8D26\u53F7\u6216\u5BC6\u7801\u6709\u8BEF";
+  const inFight = "\u5C1A\u672A\u8131\u79BB\u6218\u6597";
+  const safeArea = "\u8FD9\u91CC\u662F\u5B89\u5168\u533A";
+  const monsterMiss = "\u6218\u6597\u5DF2\u7ED3\u675F";
+  const nameNotSupportEmail = "\u7528\u6237\u540D\u4E0D\u80FD\u4F7F\u7528\u90AE\u7BB1";
+  const userNotHas = "\u7528\u6237\u672A\u627E\u5230";
+  const uniqueMust = "\u7528\u6237\u540D\u6216\u90AE\u7BB1\u5DF2\u5B58\u5728";
+  const serverFail = "\u670D\u52A1\u6267\u884C\u5931\u8D25";
+  const errorCns = {
+    authReject,
+    inFight,
+    safeArea,
+    monsterMiss,
+    nameNotSupportEmail,
+    userNotHas,
+    uniqueMust,
+    serverFail
+  };
+  const monster = [
+    {
+      id: 1,
+      name: "\u53F2\u83B1\u59C6",
+      level: 1,
+      attack_min: 20,
+      attack_max: 31,
+      hp: 315,
+      defence: 0,
+      nimble: 0,
+      vision: 0,
+      exp_min: 0,
+      exp_max: 0,
+      flop: [
+        {
+          id: 1,
+          rate: 1e3,
+          min: 1,
+          max: 3
+        },
+        {
+          id: 3,
+          rate: 3e3,
+          min: 1,
+          max: 2
+        }
+      ]
+    },
+    {
+      id: 2,
+      name: "\u7CBE\u82F1\u53F2\u83B1\u59C6",
+      level: 2,
+      attack_max: 48,
+      attack_min: 30,
+      hp: 375,
+      defence: 0,
+      nimble: 0,
+      vision: 0,
+      exp_min: 0,
+      exp_max: 0,
+      flop: [
+        {
+          id: 1,
+          rate: 1e3,
+          min: 1,
+          max: 5
+        },
+        {
+          id: 3,
+          rate: 6e3,
+          min: 1,
+          max: 5
+        }
+      ]
+    },
+    {
+      id: 3,
+      name: "\u5E7D\u5F71\u5154",
+      level: 3,
+      attack_max: 72,
+      attack_min: 28,
+      hp: 666,
+      defence: 6,
+      nimble: 0,
+      vision: 0,
+      exp_min: 0,
+      exp_max: 0,
+      flop: [
+        {
+          id: 1,
+          rate: 1e3,
+          min: 1,
+          max: 5
+        },
+        {
+          id: 3,
+          rate: 6e3,
+          min: 1,
+          max: 5
+        },
+        {
+          id: 4,
+          rate: 160,
+          min: 1,
+          max: 1
+        }
+      ]
+    }
+  ];
+  const map = [
+    {
+      id: 1,
+      name: "\u65E7\u94DC\u5E01",
+      level: 1,
+      wear: 1,
+      stack: 1e7,
+      rare: 1,
+      effect: {
+        money: 1
+      }
+    },
+    {
+      id: 2,
+      name: "\u53E4\u91D1\u5E01",
+      level: 1,
+      wear: 1,
+      stack: 1e7,
+      rare: 3,
+      effect: {
+        gold: 1
+      }
+    },
+    {
+      id: 3,
+      name: "\u6D46\u679C",
+      level: 1,
+      wear: 1,
+      stack: 1e7,
+      rare: 1,
+      effect: {
+        energyPlus: 1
+      }
+    },
+    {
+      id: 4,
+      name: "\u6728\u5251",
+      level: 1,
+      wear: 550,
+      stack: 1,
+      rare: 1,
+      effect: {
+        attackMin: 5,
+        attackMax: 10
+      }
+    },
+    {
+      id: 5,
+      name: "\u6728\u677F\u7532",
+      level: 1,
+      wear: 650,
+      stack: 1,
+      rare: 1,
+      type: 1,
+      effect: {
+        defence: 5
+      }
+    },
+    {
+      id: 6,
+      name: "\u788E\u5251\u5203",
+      level: 1,
+      wear: 150,
+      stack: 1,
+      rare: 3,
+      type: 1,
+      effect: {
+        attackMin: 15,
+        attackMax: 21
+      }
+    },
+    {
+      id: 7,
+      name: "\u9EBB\u5E03\u9774",
+      level: 1,
+      wear: 480,
+      stack: 1,
+      rare: 1,
+      type: 1,
+      effect: {
+        defence: 3
+      }
+    }
+  ];
+  const effectCnsRef = vue.ref(effectCns);
+  vue.ref(errorCns);
+  const monsterRef = vue.ref(monster);
+  vue.ref(map);
+  vue.ref(map);
   const handleGetUserInfo = () => {
-    postUserInfo({
-      "player": true,
-      "fighter": true,
-      "backpack": true,
-      "equipment": true
-    }).then((res) => {
-      formatAppLog("log", "at components/comBattle/action.js:17", res, "comBattle - \u83B7\u53D6\u73A9\u5BB6\u6700\u65B0\u4FE1\u606F - ======");
-      uni.setStorageSync("playerInfo", res.player);
-      battleInfo.value.player = (res == null ? void 0 : res.player) ? res == null ? void 0 : res.player : {}, battleInfo.value.monster = (res == null ? void 0 : res.fighter) ? res == null ? void 0 : res.fighter : {};
-    });
+    if (useInfo.value.token) {
+      postUserInfo({
+        "player": true,
+        "fighter": true,
+        "backpack": true,
+        "equipment": true
+      }).then((res) => {
+        formatAppLog("log", "at components/comBattle/action.js:38", res, "\u73A9\u5BB6\u6700\u65B0\u4FE1\u606F->comBattle->action->handleGetUserInfo->");
+        uni.setStorageSync("playerInfo", res.player);
+        battleInfo.value.player = (res == null ? void 0 : res.player) ? res == null ? void 0 : res.player : {}, battleInfo.value.monster = (res == null ? void 0 : res.fighter) ? res == null ? void 0 : res.fighter : {};
+      });
+    }
   };
   const pickUupCorpses = (txtArr, scrollIndex) => {
     postFightPrize().then((res) => {
@@ -4049,35 +4259,45 @@ if (uni.restoreGlobal) {
       scrollIndex.id = `id-${txtArr.list.length - 1}`;
     });
   };
-  const txtCopywriting = (response, txtArr, status, scrollIndex) => {
-    var _a, _b, _c, _d, _e, _f;
-    let liTxt = "";
-    if (status == 0) {
-      liTxt = `\u4F60\u9047\u5230\u4E86\u4E00\u53EA${response.name},\u5B83\u5728\u60A0\u95F2\u7684\u6652\u592A\u9633`;
-    }
-    if (status == 1) {
-      liTxt = `\u4F60\u653B\u51FB\u4E86\u4E00\u4E0B${(_b = (_a = battleInfo == null ? void 0 : battleInfo.value) == null ? void 0 : _a.monster) == null ? void 0 : _b.name}`;
-    }
-    if (status == 2) {
-      liTxt = `${(_d = (_c = battleInfo == null ? void 0 : battleInfo.value) == null ? void 0 : _c.monster) == null ? void 0 : _d.name}\u88AB\u4F60\u51FB\u8D25\u4E86\uFF01`;
-    }
-    if (status == 3) {
-      liTxt = `${(_f = (_e = battleInfo == null ? void 0 : battleInfo.value) == null ? void 0 : _e.monster) == null ? void 0 : _f.name}\u628A\u4F60\u6253\u5012\u4E86\uFF01`;
-    }
-    if (status == 4) {
-      liTxt = `\u4F60\u9003\u8DD1\u4E86...`;
-    }
-    if (status == 5) {
-      if (response.length) {
-        liTxt = `\u83B7\u5F97\u6218\u5229\u54C1xxxxxx`;
-      } else {
-        liTxt = `\u4EC0\u4E48\u90FD\u6CA1\u6709\u83B7\u5F97..`;
-      }
-    }
+  const txtCopywriting = (response, txtArr, status, scrollIndex, effect = -1, bloodTxt) => {
+    var _a, _b, _c, _d;
+    let statusObj = {
+      0: `\u4F60\u9047\u5230\u4E86\u4E00\u53EA${response.name},\u5B83\u5728\u60A0\u95F2\u7684\u6652\u592A\u9633`,
+      1: bloodTxt,
+      2: `${(_b = (_a = battleInfo == null ? void 0 : battleInfo.value) == null ? void 0 : _a.monster) == null ? void 0 : _b.name}\u88AB\u4F60\u51FB\u8D25\u4E86\uFF01`,
+      3: `${(_d = (_c = battleInfo == null ? void 0 : battleInfo.value) == null ? void 0 : _c.monster) == null ? void 0 : _d.name}\u628A\u4F60\u6253\u5012\u4E86\uFF01`,
+      4: `\u4F60\u9003\u8DD1\u4E86...`,
+      5: response.length ? `\u83B7\u5F97\u6218\u5229\u54C1xxxxxx\u5F85\u5F00\u53D1` : `\u4EC0\u4E48\u90FD\u6CA1\u6709\u83B7\u5F97...`
+    };
     txtArr.list.push({
-      liTxt
+      liTxt: effect > -1 ? statusObj[status] : statusObj[status]
     });
     upDown(txtArr, scrollIndex);
+  };
+  const buckleBlood = (item, response, txtArr, status, scrollIndex) => {
+    var _a, _b, _c, _d;
+    let eff = new Map(Object.entries(effectCnsRef.value));
+    if ((_a = response == null ? void 0 : response.mEffects) == null ? void 0 : _a.length) {
+      let monsterTxt = `${item.value.monster.name}\u5BF9\u4F60\u4F7F\u7528\u4E86${eff.get(response.mEffects[0].effect)}`;
+      if (response.mEffects[0].effect == "attack") {
+        monsterTxt += `,\u9020\u6210\u4E86${response.mEffects[0].value}\u70B9\u4F24\u5BB3`;
+        item.value.player.hp = item.value.player.hp - response.mEffects[0].value;
+      }
+      if (response.mEffects[0].effect == "runaway")
+        ;
+      if (response.mEffects[0].effect == "attackTox")
+        ;
+      if (response.mEffects[0].effect == "hpPlus")
+        ;
+      if (response.mEffects[0].effect == "hpReduce")
+        ;
+      txtCopywriting(response, txtArr, status, scrollIndex, 0, monsterTxt);
+    }
+    if ((_b = response == null ? void 0 : response.pEffects) == null ? void 0 : _b.length) {
+      let playerTxt = `\u4F60\u653B\u51FB\u4E86\u4E00\u4E0B${(_d = (_c = item == null ? void 0 : item.value) == null ? void 0 : _c.monster) == null ? void 0 : _d.name},\u9020\u6210\u4E86${response.pEffects[0].value}\u4F24\u5BB3`;
+      item.value.monster.hp = item.value.monster.hp - response.pEffects[0].value;
+      txtCopywriting(response, txtArr, status, scrollIndex, 1, playerTxt);
+    }
   };
   const handleSeachItem = (txtArr, scrollIndex) => {
     if (Object.keys(battleInfo.value.monster).length) {
@@ -4091,8 +4311,7 @@ if (uni.restoreGlobal) {
       }).then((res) => {
         uni.hideLoading();
         if (res.status == 1) {
-          txtCopywriting(res, txtArr, 1, scrollIndex);
-          battleInfo.value.monster.hp = battleInfo.value.monster.hp - res.mEffects[0].value;
+          buckleBlood(battleInfo, res, txtArr, 1, scrollIndex);
         }
         if (res.status == 2) {
           pickUupCorpses(txtArr, scrollIndex);
@@ -4158,6 +4377,21 @@ if (uni.restoreGlobal) {
       url: "/pages/loginOrRegister/index"
     });
   };
+  function bloodShow(objInfo = {}, status = 0) {
+    let bloodNum = 0;
+    let monsterRefArr = monsterRef.value;
+    if (status == 0 && (objInfo == null ? void 0 : objInfo.hp) > -1) {
+      bloodNum = +(objInfo.hp / objInfo.hpMax) * 100;
+    }
+    if (status == 1 && objInfo.hp > -1) {
+      for (let i = 0; i < monsterRefArr.length; i++) {
+        if (objInfo.id == monsterRefArr[i].id) {
+          bloodNum = +(objInfo.hp / monsterRefArr[i].hp) * 100;
+        }
+      }
+    }
+    return bloodNum;
+  }
   const _sfc_main$a = {
     __name: "index",
     setup(__props) {
@@ -4176,14 +4410,17 @@ if (uni.restoreGlobal) {
         id: "id-1"
       });
       vue.watch([pageSwitch.value], ([newValue1, oldValue1]) => {
-        txtArr.value.list = [{
+        txtArr.value.list.push({
           liTxt: `\u6765\u5230\u4E86${pageArr.value.list[pageSwitch.value.index].name}`
-        }];
+        });
       });
       handleGetUserInfo();
       return (_ctx, _cache) => {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k;
-        return vue.openBlock(), vue.createElementBlock("div", { class: "comBattleDiv" }, [
+        var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j;
+        return vue.unref(useInfo).token ? (vue.openBlock(), vue.createElementBlock("div", {
+          key: 0,
+          class: "comBattleDiv"
+        }, [
           vue.createCommentVNode(" \u89D2\u8272 + \u602A\u7269 "),
           vue.createElementVNode("div", { class: "comBattleDiv_battle_1" }, [
             vue.createCommentVNode(" \u89D2\u8272 "),
@@ -4202,7 +4439,7 @@ if (uni.restoreGlobal) {
                 "stroke-width": progressConfig.stroke_width,
                 backgroundColor: progressConfig.backgroundColor,
                 active: progressConfig.active,
-                percent: vue.unref(battleInfo).player.hp
+                percent: vue.unref(bloodShow)(vue.unref(battleInfo).player, 0)
               }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"]),
               vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood1" }, vue.toDisplayString(vue.unref(battleInfo).player.hp), 1)
             ]),
@@ -4230,9 +4467,9 @@ if (uni.restoreGlobal) {
                 "stroke-width": progressConfig.stroke_width,
                 backgroundColor: progressConfig.backgroundColor,
                 active: progressConfig.active,
-                percent: (_d = (_c = vue.unref(battleInfo)) == null ? void 0 : _c.monster) == null ? void 0 : _d.hp
+                percent: vue.unref(bloodShow)((_c = vue.unref(battleInfo)) == null ? void 0 : _c.monster, 1)
               }, null, 8, ["border-radius", "stroke-width", "backgroundColor", "active", "percent"])) : vue.createCommentVNode("v-if", true),
-              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood2" }, vue.toDisplayString((_f = (_e = vue.unref(battleInfo)) == null ? void 0 : _e.monster) == null ? void 0 : _f.hp), 1)
+              vue.createElementVNode("div", { class: "comBattleDiv_battle_1_div_blood2" }, vue.toDisplayString((_e = (_d = vue.unref(battleInfo)) == null ? void 0 : _d.monster) == null ? void 0 : _e.hp), 1)
             ])
           ]),
           vue.createCommentVNode(" \u7EBF "),
@@ -4259,13 +4496,13 @@ if (uni.restoreGlobal) {
             vue.createElementVNode("div", {
               class: "",
               onClick: _cache[0] || (_cache[0] = ($event) => vue.unref(handleSeachItem)(vue.unref(txtArr), vue.unref(scrollIndex)))
-            }, vue.toDisplayString(Object.keys((_g = vue.unref(battleInfo)) == null ? void 0 : _g.monster).length ? "\u6218\u6597" : "\u63A2\u7D22"), 1),
-            Object.keys((_h = vue.unref(battleInfo)) == null ? void 0 : _h.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
+            }, vue.toDisplayString(Object.keys((_f = vue.unref(battleInfo)) == null ? void 0 : _f.monster).length ? "\u6218\u6597" : "\u63A2\u7D22"), 1),
+            Object.keys((_g = vue.unref(battleInfo)) == null ? void 0 : _g.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
               key: 0,
               class: "",
               onClick: _cache[1] || (_cache[1] = ($event) => vue.unref(handleRunAway)(vue.unref(txtArr), vue.unref(scrollIndex)))
             }, "\u9003\u8DD1")) : vue.createCommentVNode("v-if", true),
-            Object.keys((_i = vue.unref(battleInfo)) == null ? void 0 : _i.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
+            Object.keys((_h = vue.unref(battleInfo)) == null ? void 0 : _h.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
               key: 1,
               class: "",
               onClick: _cache[2] || (_cache[2] = (...args) => vue.unref(handleSkill) && vue.unref(handleSkill)(...args))
@@ -4274,12 +4511,12 @@ if (uni.restoreGlobal) {
               class: "",
               onClick: _cache[3] || (_cache[3] = (...args) => vue.unref(handleOpenKnapsack) && vue.unref(handleOpenKnapsack)(...args))
             }, "\u80CC\u5305"),
-            !Object.keys((_j = vue.unref(battleInfo)) == null ? void 0 : _j.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
+            !Object.keys((_i = vue.unref(battleInfo)) == null ? void 0 : _i.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
               key: 2,
               class: "",
               onClick: _cache[4] || (_cache[4] = (...args) => vue.unref(handleToMap) && vue.unref(handleToMap)(...args))
             }, "\u5730\u56FE")) : vue.createCommentVNode("v-if", true),
-            !Object.keys((_k = vue.unref(battleInfo)) == null ? void 0 : _k.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
+            !Object.keys((_j = vue.unref(battleInfo)) == null ? void 0 : _j.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
               key: 3,
               class: "",
               onClick: _cache[5] || (_cache[5] = (...args) => vue.unref(handleToShop) && vue.unref(handleToShop)(...args))
@@ -4289,7 +4526,7 @@ if (uni.restoreGlobal) {
               onClick: _cache[6] || (_cache[6] = (...args) => vue.unref(handleLeave) && vue.unref(handleLeave)(...args))
             }, "\u9000\u51FA")
           ])
-        ]);
+        ])) : vue.createCommentVNode("v-if", true);
       };
     }
   };
@@ -4473,7 +4710,7 @@ if (uni.restoreGlobal) {
     height: 100
   });
   const useInfo = vue.ref({
-    token: uni.getStorageSync("token") ? uni.getStorageSync("token") : {}
+    token: uni.getStorageSync("token") ? uni.getStorageSync("token") : ""
   });
   const battleInfo = vue.ref({
     player: uni.getStorageSync("playerInfo") ? uni.getStorageSync("playerInfo") : {},
@@ -4577,7 +4814,7 @@ if (uni.restoreGlobal) {
       const handleToNewMap = (item, index) => {
         uni.showToast({
           icon: "none",
-          title: `\u53BB\u65B0\u573A\u666F======${item.name}======${Object.keys(item)[0]}`
+          title: `${item.name}==${Object.keys(item)[0]}==\u53BB\u65B0\u573A\u666F======`
         });
         pageSwitch.value.index = index;
         pageSwitch.value.key = Object.keys(item)[0];
@@ -4641,7 +4878,7 @@ if (uni.restoreGlobal) {
                     isLoding.value.state = false;
                   }
                 });
-              }, 2e3);
+              }, 1800);
             } else {
               setTimeout(() => {
                 isLoding.value.state = false;
@@ -4829,103 +5066,6 @@ if (uni.restoreGlobal) {
   __definePage("pages/content/index", PagesContentIndex);
   __definePage("pages/canvasMap/index", PagesCanvasMapIndex);
   __definePage("pages/loginOrRegister/index", PagesLoginOrRegisterIndex);
-  const monster = [
-    {
-      id: 1,
-      name: "\u53F2\u83B1\u59C6",
-      level: 1,
-      attack_min: 20,
-      attack_max: 31,
-      hp: 315,
-      defence: 0,
-      nimble: 0,
-      vision: 0,
-      exp_min: 0,
-      exp_max: 0,
-      flop: [
-        {
-          id: 1,
-          rate: 1e3,
-          min: 1,
-          max: 3
-        },
-        {
-          id: 3,
-          rate: 3e3,
-          min: 1,
-          max: 2
-        }
-      ]
-    },
-    {
-      id: 2,
-      name: "\u7CBE\u82F1\u53F2\u83B1\u59C6",
-      level: 2,
-      attack_max: 48,
-      attack_min: 30,
-      hp: 375,
-      defence: 0,
-      nimble: 0,
-      vision: 0,
-      exp_min: 0,
-      exp_max: 0,
-      flop: [
-        {
-          id: 1,
-          rate: 1e3,
-          min: 1,
-          max: 5
-        },
-        {
-          id: 3,
-          rate: 6e3,
-          min: 1,
-          max: 5
-        }
-      ]
-    },
-    {
-      id: 3,
-      name: "\u5E7D\u5F71\u5154",
-      level: 3,
-      attack_max: 72,
-      attack_min: 28,
-      hp: 666,
-      defence: 6,
-      nimble: 0,
-      vision: 0,
-      exp_min: 0,
-      exp_max: 0,
-      flop: [
-        {
-          id: 1,
-          rate: 1e3,
-          min: 1,
-          max: 5
-        },
-        {
-          id: 3,
-          rate: 6e3,
-          min: 1,
-          max: 5
-        },
-        {
-          id: 4,
-          rate: 160,
-          min: 1,
-          max: 1
-        }
-      ]
-    }
-  ];
-  const disposeConfig = () => {
-    let getMonsterStorage = uni.getStorageSync("getMonsterStorage", monster);
-    if (!getMonsterStorage) {
-      uni.setStorageSync("setMonsterStorage", monster);
-    } else {
-      uni.getStorageSync("getMonsterStorage", monster);
-    }
-  };
   const pageAddress = () => {
     let token2 = uni.getStorageSync("token") ? uni.getStorageSync("token") : "";
     if (token2) {
@@ -4941,10 +5081,9 @@ if (uni.restoreGlobal) {
   };
   const _sfc_main = {
     onLaunch: function() {
+      pageAddress();
     },
     onShow: function() {
-      pageAddress();
-      disposeConfig();
     },
     onHide: function() {
     }

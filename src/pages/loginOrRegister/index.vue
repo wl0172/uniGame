@@ -2,7 +2,7 @@
 import { ref, watch } from 'vue'
 import ComLogin from "@/components/comLogin/index.vue"
 import ComRegister from "@/components/comRegister/index.vue"
-import loginState from '@/state/action/loginOrRegister.js'
+import loginState from '@/state/loginRegister/index.js'
 
 let val = ref({
 	isState: 1
@@ -11,6 +11,7 @@ let val = ref({
 watch(loginState.value, (newValue, oldValue) => {
 	val.value.isState = newValue.isState
 })
+
 
 </script>
 

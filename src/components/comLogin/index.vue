@@ -8,7 +8,7 @@ import {
 	watchEffect
 } from 'vue'
 import { postLogin, postRegister } from '@/api/index.js'
-import loginState from '@/state/action/loginOrRegister.js'
+import loginState from '@/state/loginRegister/index.js'
 import { useInfo, battleInfo } from '@/state/index.js'
 
 let isLoding = ref({
@@ -41,7 +41,7 @@ const handleLogin = () => {
 							isLoding.value.state = false
 						}
 					})
-				},2000)
+				},1800)
 			}else{
 				setTimeout(()=>{
 					isLoding.value.state = false

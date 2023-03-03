@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue"
 import { postRegister } from "@/api/index.js"
-import loginState from '@/state/action/loginOrRegister.js'
+import loginState from '@/state/loginRegister/index.js'
 
 let sinupInfo = ref({
 	name: '',

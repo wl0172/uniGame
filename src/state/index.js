@@ -55,7 +55,7 @@ const hiddenPopup = ref({
 
 // 角色信息
 const useInfo = ref({
-	token: uni.getStorageSync('token') ? uni.getStorageSync('token') : {},
+	token: uni.getStorageSync('token') ? uni.getStorageSync('token') : '',
 })
 // 角色 - 怪物
 const battleInfo = ref({

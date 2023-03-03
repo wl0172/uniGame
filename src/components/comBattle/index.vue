@@ -5,14 +5,9 @@ import ComLine from "@/components/comLine/index.vue"
 // 接口
 import { postUserInfo, getFightFind, postFightAction } from '@/api/index.js'
 // 全局属性
-import {
-	pageArr,
-	pageSwitch,
-	pageSwitchMenu,
-	battleInfo,
-	hiddenPopup
-} from '@/state/index.js'
+import { useInfo, pageArr, pageSwitch, pageSwitchMenu, battleInfo, hiddenPopup } from '@/state/index.js'
 
+// action - 行为
 import { 
 	handleGetUserInfo,// 获取玩家最新信息
 	handleSeachItem,// 探索
@@ -24,6 +19,9 @@ import {
 	handleLeave,// 退出
 } from './action'
 
+// 血量展示
+import { bloodShow } from '@/state/bloodConfig/index.js'
+
 // 进度条配置
 const progressConfig = {
 	border_radius: 50,
@@ -32,7 +30,7 @@ const progressConfig = {
 	backgroundColor: '#e6e6e670'
 }
 
-// 战斗信息 - txt
+// 初始化 - 战斗信息面板 - txt
 let txtArr = ref({
 	list: [{
 		liTxt: `来到了${pageArr.value.list[pageSwitch.value.index].name}`
@@ -46,31 +44,39 @@ let scrollIndex = ref({
 
 // 监听 - 所有的场景 - switch - 更新txt
 watch([pageSwitch.value], ([newValue1, oldValue1]) => {
-	txtArr.value.list = [{
+	txtArr.value.list.push({
 		liTxt: `来到了${pageArr.value.list[pageSwitch.value.index].name}`
-	}]
+	})
 })
-// watch([txtArr.value.list], ([newValue1, oldValue1]) => {
-// })
-
-
-
-
-
-
-
-
-
-
-
 
 // 获取玩家最新信息
 handleGetUserInfo()
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 
 <template>
-	<div class="comBattleDiv">
+	<div class="comBattleDiv" v-if="useInfo.token">
 
 
 		<!-- 角色 + 怪物 -->
@@ -84,14 +90,14 @@ handleGetUserInfo()
 				</div>
 				<div class="comBattleDiv_battle_1_div_i_name">{{ battleInfo.player.name }}</div>
 				<progress
-					style="margin: 0 0 auto 0" 
-					activeColor="#ceb284" 
+					style="margin: 0 0 auto 0"
+					activeColor="#ceb284"
 					class="comBattleDiv_battle_1_div_progress"
-					:border-radius="progressConfig.border_radius" 
+					:border-radius="progressConfig.border_radius"
 					:stroke-width="progressConfig.stroke_width"
 					:backgroundColor="progressConfig.backgroundColor"
-					:active="progressConfig.active" 
-					:percent="battleInfo.player.hp" 
+					:active="progressConfig.active"
+					:percent="bloodShow(battleInfo.player,0)"
 				/>
 				<div class="comBattleDiv_battle_1_div_blood1">{{ battleInfo.player.hp }}</div>
 			</div>
@@ -103,7 +109,7 @@ handleGetUserInfo()
 					</div>
 				</div>
 				<div 
-					v-if="Object.keys(battleInfo.monster).length" 
+					v-if="Object.keys(battleInfo.monster).length"
 					class="comBattleDiv_battle_1_div_i_name" 
 					style="float: right;">{{ battleInfo?.monster?.name }}
 				</div>
@@ -116,7 +122,7 @@ handleGetUserInfo()
 					:stroke-width="progressConfig.stroke_width"
 					:backgroundColor="progressConfig.backgroundColor"
 					:active="progressConfig.active" 
-					:percent="battleInfo?.monster?.hp" 
+					:percent="bloodShow(battleInfo?.monster,1)" 
 				/>
 				<div class="comBattleDiv_battle_1_div_blood2">{{ battleInfo?.monster?.hp }}</div>
 			</div>

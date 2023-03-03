@@ -32,7 +32,7 @@ export default (path = '', method = 'GET', contentType = 'application/json', dat
 					uni.showToast({
 						icon: "none",
 						title: response.data.message || path,
-						duration: 1500
+						duration: 5000
 					});
 				}
 			},

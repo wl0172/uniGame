@@ -1,14 +1,11 @@
 <script>
-	import disposeConfig from "../config/index.js"
 	import pageAddress from "@/state/pageState/index.js"
 	export default {
-		onLaunch: function() {},
-		onShow: function() {
+		onLaunch: function() {
 			// 判断有无token - 跳转首页
 			pageAddress()
-			// 获取配置文件 - 存本地
-			disposeConfig()
 		},
+		onShow: function() {},
 		onHide: function() {},
 	}
 </script>
