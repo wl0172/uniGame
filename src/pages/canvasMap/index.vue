@@ -26,7 +26,7 @@ const handleToNewMap = (item, index) => {
 					<div class="conSceneListLi_title_state">服务中</div>
 				</div>
 				<div class="conSceneListLi_txt">服务内容：xxxxxx</div>
-				<div class="conSceneListLi_tiem">开图时间：xxxxxx</div>
+				<!-- <div class="conSceneListLi_tiem">开图时间：xxxxxx</div> -->
 			</div>
 		</div>
 	</div>

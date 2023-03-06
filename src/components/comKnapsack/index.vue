@@ -40,6 +40,8 @@ const handleRightIn = (item) => {
 <template>
 	
 	<div class="comKnapsackDiv">
+	
+		<div>11111</div>
 
 		<!-- 左侧- 菜单 -->
 		<div class="comKnapsackDiv_left">
