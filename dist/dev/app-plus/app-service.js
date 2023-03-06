@@ -3947,85 +3947,6 @@ if (uni.restoreGlobal) {
     WEEK: "GGGG-[W]WW",
     MONTH: "YYYY-MM"
   };
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
-  const _sfc_main$b = {
-    __name: "index",
-    setup(__props) {
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createCommentVNode(" \u7EBF "),
-          vue.createElementVNode("div", { class: "comLine" }, [
-            vue.createElementVNode("div", { class: "comLine_line" }),
-            vue.createElementVNode("div", { class: "comLine_txt" }, "Player"),
-            vue.createElementVNode("div", { class: "comLine_line" })
-          ])
-        ], 2112);
-      };
-    }
-  };
-  const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
-  const request = (path = "", method = "GET", contentType = "application/json", data = {}) => {
-    const token2 = uni.getStorageSync("token");
-    const Authorization = token2 ? `Bearer ${token2}` : "";
-    return new Promise((resolve, reject) => {
-      uni.request({
-        header: {
-          "Authorization": Authorization,
-          "Content-Type": contentType,
-          "Accept": contentType
-        },
-        url: "http://117.78.26.78" + path,
-        method,
-        data,
-        success(response) {
-          if (response.statusCode == 200) {
-            resolve(response.data);
-          } else {
-            formatAppLog("log", "at api/request.js:31", response, "response======");
-            uni.showToast({
-              icon: "none",
-              title: response.data.message || path,
-              duration: 5e3
-            });
-          }
-        },
-        fail(err) {
-          uni.showToast({
-            icon: "none",
-            title: "\u8BF7\u6C42\u5931\u8D25\u4E86\uFF0C\u8BF7\u7A0D\u540E\u91CD\u8BD5\uFF01",
-            duration: 1500
-          });
-          reject(err);
-        },
-        complete() {
-        }
-      });
-    });
-  };
-  function postLogin(params) {
-    return request(`/auth/login`, "POST", "application/json", params);
-  }
-  function postRegister(params) {
-    return request(`/auth/signup`, "POST", "application/json", params);
-  }
-  function postUserInfo(params) {
-    return request(`/user/info`, "POST", "application/json", params);
-  }
-  function getFightFind(params) {
-    return request(`/fight/find`, "GET", "application/json", params);
-  }
-  function postFightAction(params) {
-    return request(`/fight/action`, "POST", "application/json", params);
-  }
-  function postFightPrize(params) {
-    return request(`/fight/prize`, "POST", "application/json", params);
-  }
   const attack = "\u666E\u901A\u653B\u51FB";
   const runaway = "\u9003\u8131";
   const attackTox = "\u6BD2\u836F\u4FB5\u5BB3";
@@ -4145,7 +4066,7 @@ if (uni.restoreGlobal) {
       ]
     }
   ];
-  const map = [
+  const goods = [
     {
       id: 1,
       name: "\u65E7\u94DC\u5E01",
@@ -4229,11 +4150,146 @@ if (uni.restoreGlobal) {
       }
     }
   ];
+  const map = [
+    {
+      id: 1,
+      name: "\u81EA\u5BB6\u519C\u573A",
+      level: 1,
+      linked: [
+        2,
+        4
+      ],
+      monsters: [
+        1,
+        2
+      ],
+      deep: 0
+    },
+    {
+      id: 2,
+      name: "\u5B81\u9759\u4E4B\u68EE",
+      level: 3,
+      linked: [
+        1,
+        3
+      ],
+      monsters: [
+        1,
+        2,
+        3
+      ],
+      deep: 1
+    },
+    {
+      id: 3,
+      name: "\u98D8\u6E3A\u6E56",
+      level: 6,
+      linked: [
+        2
+      ],
+      monsters: [
+        3,
+        4,
+        5
+      ],
+      deep: 2
+    },
+    {
+      id: 4,
+      name: "\u519C\u573A\u4E3B\u9547",
+      level: 0,
+      linked: [
+        1
+      ],
+      monsters: [],
+      deep: 1
+    }
+  ];
   const effectCnsRef = vue.ref(effectCns);
-  vue.ref(errorCns);
+  const errorCnsRef = vue.ref(errorCns);
   const monsterRef = vue.ref(monster);
-  vue.ref(map);
-  vue.ref(map);
+  vue.ref(goods);
+  const mapRef = vue.ref(map);
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
+  const _sfc_main$b = {
+    __name: "index",
+    setup(__props) {
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+          vue.createCommentVNode(" \u7EBF "),
+          vue.createElementVNode("div", { class: "comLine" }, [
+            vue.createElementVNode("div", { class: "comLine_line" }),
+            vue.createElementVNode("div", { class: "comLine_txt" }, "Player"),
+            vue.createElementVNode("div", { class: "comLine_line" })
+          ])
+        ], 2112);
+      };
+    }
+  };
+  const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
+  let errorCnsRefTxt = new Map(Object.entries(errorCnsRef.value));
+  const request = (path = "", method = "GET", contentType = "application/json", data = {}) => {
+    const token2 = uni.getStorageSync("token");
+    const Authorization = token2 ? `Bearer ${token2}` : "";
+    return new Promise((resolve, reject) => {
+      uni.request({
+        header: {
+          "Authorization": Authorization,
+          "Content-Type": contentType,
+          "Accept": contentType
+        },
+        url: "http://117.78.26.78" + path,
+        method,
+        data,
+        success(response) {
+          if (response.statusCode == 200) {
+            resolve(response.data);
+          } else {
+            uni.showToast({
+              icon: "none",
+              title: errorCnsRefTxt.get(response.data.message),
+              duration: 5e3
+            });
+            resolve(response.data);
+          }
+        },
+        fail(err) {
+          uni.showToast({
+            icon: "none",
+            title: "\u8BF7\u6C42\u5931\u8D25\u4E86\uFF0C\u8BF7\u7A0D\u540E\u91CD\u8BD5\uFF01",
+            duration: 1500
+          });
+          reject(err);
+        },
+        complete() {
+        }
+      });
+    });
+  };
+  function postLogin(params) {
+    return request(`/auth/login`, "POST", "application/json", params);
+  }
+  function postRegister(params) {
+    return request(`/auth/signup`, "POST", "application/json", params);
+  }
+  function postUserInfo(params) {
+    return request(`/user/info`, "POST", "application/json", params);
+  }
+  function getFightFind(params) {
+    return request(`/fight/find`, "GET", "application/json", params);
+  }
+  function postFightAction(params) {
+    return request(`/fight/action`, "POST", "application/json", params);
+  }
+  function postFightPrize(params) {
+    return request(`/fight/prize`, "POST", "application/json", params);
+  }
   const handleGetUserInfo = () => {
     if (useInfo.value.token) {
       postUserInfo({
@@ -4675,21 +4731,15 @@ if (uni.restoreGlobal) {
     }
   };
   const ComShop = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-83658b6a"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comShop/index.vue"]]);
+  let mapRefPageArr = JSON.parse(JSON.stringify(mapRef.value));
+  for (let i of mapRefPageArr) {
+    i.pageComponent = vue.markRaw(ComBattle);
+  }
   const pageArr = vue.ref({
-    list: [{
-      "page_battle": vue.markRaw(ComBattle),
-      "name": "A\u57CE\uFF08\u57CE\u95E8\uFF09"
-    }, {
-      "page_jijingsengling": vue.markRaw(ComBattle),
-      "name": "\u5BC2\u9759\u68EE\u6797"
-    }, {
-      "page_nongchangzheng": vue.markRaw(ComBattle),
-      "name": "\u519C\u573A\u9547"
-    }]
+    list: mapRefPageArr
   });
   const pageSwitch = vue.ref({
-    index: 0,
-    key: "page_battle"
+    index: 0
   });
   const pageArrMenu = vue.ref({
     list: [{
@@ -4776,7 +4826,7 @@ if (uni.restoreGlobal) {
     __name: "index",
     setup(__props) {
       return (_ctx, _cache) => {
-        var _a;
+        var _a, _b;
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
           vue.createElementVNode("div", { class: "content" }, [
             vue.createCommentVNode(" \u5218\u6D77\u5C4Fheader - \u76EE\u524D\u5360\u4F4D - \u663E\u793A\u573A\u666Fname "),
@@ -4786,7 +4836,7 @@ if (uni.restoreGlobal) {
               class: "contentDiv",
               style: vue.normalizeStyle({ "--conHeight": vue.unref(headerMargin) + (vue.unref(headerHeight) / 2 + 3) + "px" })
             }, [
-              (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent((_a = vue.unref(pageArr)) == null ? void 0 : _a.list[vue.unref(pageSwitch).index][vue.unref(pageSwitch).key])))
+              (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent((_b = (_a = vue.unref(pageArr)) == null ? void 0 : _a.list[vue.unref(pageSwitch).index]) == null ? void 0 : _b.pageComponent)))
             ], 4),
             vue.createCommentVNode(" \u64CD\u4F5C\u9762\u677F - \u4EE5\u5F39\u7A97\u5F62\u5F0F "),
             vue.createVNode(ComPopup, {
@@ -4817,7 +4867,6 @@ if (uni.restoreGlobal) {
           title: `${item.name}==${Object.keys(item)[0]}==\u53BB\u65B0\u573A\u666F======`
         });
         pageSwitch.value.index = index;
-        pageSwitch.value.key = Object.keys(item)[0];
         uni.navigateBack({
           delta: 1
         });
@@ -4864,14 +4913,14 @@ if (uni.restoreGlobal) {
         loginState.value.isState = 0;
       };
       const handleLogin = () => {
-        isLoding.value.state = true;
         if (sinupInfo.value.name && sinupInfo.value.password) {
           postLogin(sinupInfo.value).then((res) => {
             if (res.token) {
               uni.setStorageSync("token", res.token);
               uni.setStorageSync("playerInfo", res.player);
               useInfo.value.token = res == null ? void 0 : res.token;
-              battleInfo.value.player = (res == null ? void 0 : res.player) ? res == null ? void 0 : res.player : {}, setTimeout(() => {
+              battleInfo.value.player = (res == null ? void 0 : res.player) ? res == null ? void 0 : res.player : {}, isLoding.value.state = true;
+              setTimeout(() => {
                 uni.redirectTo({
                   url: "/pages/content/index",
                   success() {
@@ -4880,9 +4929,7 @@ if (uni.restoreGlobal) {
                 });
               }, 1800);
             } else {
-              setTimeout(() => {
-                isLoding.value.state = false;
-              }, 1800);
+              isLoding.value.state = false;
             }
           });
         } else if (sinupInfo.value.name == "") {
@@ -5057,7 +5104,7 @@ if (uni.restoreGlobal) {
             vue.createVNode(ComRegister)
           ], 2112)),
           vue.createCommentVNode(" \u7248\u672C\u53F7 "),
-          vue.createElementVNode("div", { class: "loginOrRegisterDiv_version" }, "0.0.6")
+          vue.createElementVNode("div", { class: "loginOrRegisterDiv_version" }, "v0.0.6")
         ]);
       };
     }

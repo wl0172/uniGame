@@ -67,7 +67,7 @@ const txtCopywriting = (response,txtArr,status,scrollIndex,effect=-1,bloodTxt) =
 		2: `${battleInfo?.value?.monster?.name}被你击败了！`,
 		3: `${battleInfo?.value?.monster?.name}把你打倒了！`,
 		4: `你逃跑了...`,
-		5: response.length ? `获得战利品xxxxxx待开发` : `什么都没有获得...`,
+		5: response.length ? `获得战利品${'id='+response[0].id}待开发...` : `什么都没有获得...`,
 	}
 	txtArr.list.push({
 		liTxt: effect > -1 ? statusObj[status] : statusObj[status]
@@ -208,23 +208,23 @@ const handleSkill = () => {
 	})
 }
 
-// 打开地图
+// 地图
 const handleToMap = () => {
 	uni.navigateTo({
 		url: '/pages/canvasMap/index',
 	})
 }
 
-// 打开背包
+// 背包
 const handleOpenKnapsack = () => {
 	hiddenPopup.value.show = true
-	hiddenPopup.value.width = 90
-	hiddenPopup.value.height = 70
+	hiddenPopup.value.width = 100
+	hiddenPopup.value.height = 100
 	pageSwitchMenu.value.index = 0
 	pageSwitchMenu.value.key = 'ComKnapsack'
 }
 
-// 打开商店
+// 商店
 const handleToShop = () => {
 	hiddenPopup.value.show = true
 	hiddenPopup.value.width = 100

@@ -5,7 +5,7 @@ import errorCns from '../../../config/dict/custom/error.cns.json';
 
 import monster from '../../../config/dict/monster.json';
 import goods from '../../../config/dict/goods.json';
-import map from '../../../config/dict/goods.json';
+import map from '../../../config/dict/map.json';
 
 // 配置文件存储
 const effectCnsRef = ref(effectCns)

@@ -2,7 +2,11 @@
 import { ref } from "vue"
 import { postRegister } from "@/api/index.js"
 import loginState from '@/state/loginRegister/index.js'
+import { useInfo, battleInfo } from '@/state/index.js'
 
+let isLoding = ref({
+	state: false
+})
 let sinupInfo = ref({
 	name: '',
 	password: '',
@@ -43,7 +47,24 @@ const handleSigUp = () => {
 		return
 	}else{
 		postRegister(sinupInfo.value).then((res) => {
-			loginState.value.isState = 1
+			if(res.token){
+				uni.setStorageSync('token', res.token);
+				uni.setStorageSync('playerInfo', res.player);
+				useInfo.value.token = res?.token
+				battleInfo.value.player = res?.player ? res?.player : {},
+				isLoding.value.state = true
+				setTimeout(()=>{
+					uni.redirectTo({
+						url: "/pages/content/index",
+						success(){
+							isLoding.value.state = false
+						}
+					})
+				},1800)
+				// loginState.value.isState = 1
+			}else{
+				isLoding.value.state = false
+			}
 		})
 	}
 	
@@ -71,6 +92,10 @@ const handleSigUp = () => {
 			<div @click="handleSigUp" class="login_button login_div">
 				<div class="login_button_txt">注册</div>
 			</div>
+		</div>
+		<!-- 过渡的动画 -->
+		<div class="pageCenter_gif" v-if="isLoding.state">
+			<image class="pageCenter_gif_img" src="@/static/gif/1.gif" alt="" />
 		</div>
 	</div>
 </template>
@@ -143,6 +168,18 @@ const handleSigUp = () => {
 			.login_button_txt:active {
 				opacity: .7;
 			}
+		}
+	}
+	.pageCenter_gif{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background: #E7E8E0;
+		text-align: center;
+		.pageCenter_gif_img{
+			width: 620rpx;
+			height: 620rpx;
+			top: 375rpx;
 		}
 	}
 }

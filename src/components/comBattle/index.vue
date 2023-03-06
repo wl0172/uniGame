@@ -153,7 +153,9 @@ handleGetUserInfo()
 			
 			<div class="" @click="handleSkill" v-if="Object.keys(battleInfo?.monster).length">技能</div>
 			
-			<div class="" @click="handleOpenKnapsack">背包</div>
+			<div class="" @click="" v-if="Object.keys(battleInfo?.monster).length">道具</div>
+			
+			<div class="" @click="handleOpenKnapsack" v-if="!Object.keys(battleInfo?.monster).length">背包</div>
 			
 			<div class="" @click="handleToMap" v-if="!Object.keys(battleInfo?.monster).length">地图</div>
 			

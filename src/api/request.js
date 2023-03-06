@@ -1,8 +1,19 @@
 /**
  * request
  * */
- 
+ // 配置文件
+import { errorCnsRef } from '@/state/config/index.js'
+// 全局属性
+import { pageArr, pageSwitch } from '@/state/index.js'
+
+// 报错配置
+let errorCnsRefTxt = new Map(Object.entries(errorCnsRef.value))
+
 export default (path = '', method = 'GET', contentType = 'application/json', data = {}) => {
+	
+	// 地图
+	// let mapPage = pageArr.value.list[pageSwitch.value.index]
+	// console.log(mapPage, '----------')
 	
 	// uni.showLoading({
 	// 	title: "加载中",
@@ -24,16 +35,16 @@ export default (path = '', method = 'GET', contentType = 'application/json', dat
 			method: method,
 			data,
 			success(response) {
+				// uni.hideLoading()
 				if(response.statusCode == 200){
-					// uni.hideLoading()
 					resolve(response.data)
 				}else{
-					console.log(response,'response======')
 					uni.showToast({
 						icon: "none",
-						title: response.data.message || path,
+						title: errorCnsRefTxt.get(response.data.message),
 						duration: 5000
 					});
+					resolve(response.data)
 				}
 			},
 			fail(err) {
@@ -42,12 +53,9 @@ export default (path = '', method = 'GET', contentType = 'application/json', dat
 					title: "请求失败了，请稍后重试！",
 					duration: 1500
 				});
-				// uni.hideLoading()
 				reject(err);
 			},
-			complete() {
-				// uni.hideLoading();
-			}
+			complete() {}
 		});
 	});
 };

@@ -39,7 +39,7 @@ import {
 		<ComHeader :comHeight="conHeight" />
 		<!-- 主场景 -->
 		<div class="contentDiv" :style="{ '--conHeight': ((headerMargin + (headerHeight/2+3))) + 'px' }">
-			<component :is="pageArr?.list[pageSwitch.index][pageSwitch.key]" />
+			<component :is="pageArr?.list[pageSwitch.index]?.pageComponent" />
 		</div>
 		<!-- 操作面板 - 以弹窗形式 -->
 		<ComPopup :hiddenPopup="hiddenPopup.show">

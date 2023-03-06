@@ -31,7 +31,7 @@ const handleRightIn = (item) => {
 	introduce.value.txt = item
 	uni.showToast({
 		icon: 'none',
-		title: item
+		title: item+''
 	})
 }
 

@@ -4,16 +4,11 @@ import { pageSwitch,pageArr } from '@/state/index.js'
 
 // 去新场景
 const handleToNewMap = (item, index) => {
-	// console.log(item, '===')
-	
 	uni.showToast({
 		icon: 'none',
 		title: `${item.name}==${Object.keys(item)[0]}==去新场景======`
 	})
-	
 	pageSwitch.value.index = index
-	pageSwitch.value.key = Object.keys(item)[0]
-	
 	uni.navigateBack({
 		delta: 1
 	})

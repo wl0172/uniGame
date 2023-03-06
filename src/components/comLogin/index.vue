@@ -26,7 +26,6 @@ const handleSignUp = () => {
 }
 // 登录
 const handleLogin = () => {
-	isLoding.value.state = true
 	if (sinupInfo.value.name && sinupInfo.value.password) {
 		postLogin(sinupInfo.value).then((res) => {
 			if(res.token){
@@ -34,6 +33,7 @@ const handleLogin = () => {
 				uni.setStorageSync('playerInfo', res.player);
 				useInfo.value.token = res?.token
 				battleInfo.value.player = res?.player ? res?.player : {},
+				isLoding.value.state = true
 				setTimeout(()=>{
 					uni.redirectTo({
 						url: "/pages/content/index",
@@ -43,9 +43,7 @@ const handleLogin = () => {
 					})
 				},1800)
 			}else{
-				setTimeout(()=>{
-					isLoding.value.state = false
-				},1800)
+				isLoding.value.state = false
 			}
 		})
 	} else if(sinupInfo.value.name == ''){

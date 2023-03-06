@@ -12,7 +12,6 @@ watch(loginState.value, (newValue, oldValue) => {
 	val.value.isState = newValue.isState
 })
 
-
 </script>
 
 <template>
@@ -23,7 +22,7 @@ watch(loginState.value, (newValue, oldValue) => {
 		<!-- 注册 -->
 		<ComRegister v-else />
 		<!-- 版本号 -->
-		<div class="loginOrRegisterDiv_version">0.0.6</div>
+		<div class="loginOrRegisterDiv_version">v0.0.6</div>
 	</div>
 	
 </template>

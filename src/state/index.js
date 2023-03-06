@@ -1,4 +1,13 @@
-import { ref, reactive, markRaw, watch,computed, shallowReactive, shallowRef } from 'vue'
+import { ref, markRaw } from 'vue'
+// 配置
+// 配置文件
+import { 
+	effectCnsRef, 
+	errorCnsRef, 
+	monsterRef, 
+	goodsRef, 
+	mapRef, 
+} from '@/state/config/index.js'
 /**
  * 场景 - 页面 - page
  */
@@ -10,23 +19,16 @@ import ComKnapsack from '@/components/comKnapsack/index.vue'
 import ComShop from '@/components/comShop/index.vue'
 
 // 所有的场景地址 - map
+let mapRefPageArr = JSON.parse(JSON.stringify(mapRef.value))
+for(let i of mapRefPageArr){
+	i.pageComponent = markRaw(ComBattle)
+}
 const pageArr = ref({
-	list: [{
-		"page_battle": markRaw(ComBattle), //ref(ComBattle),
-		"name": 'A城（城门）'
-	}, {
-		"page_jijingsengling": markRaw(ComBattle),
-		"name": '寂静森林'
-	}, {
-		"page_nongchangzheng": markRaw(ComBattle),
-		"name": '农场镇'
-	}]
+	list: mapRefPageArr
 })
 const pageSwitch = ref({
 	index: 0,
-	key: 'page_battle'
 })
-
 
 // 所有的场景 - 操作页
 const pageArrMenu = ref({
@@ -57,7 +59,7 @@ const hiddenPopup = ref({
 const useInfo = ref({
 	token: uni.getStorageSync('token') ? uni.getStorageSync('token') : '',
 })
-// 角色 - 怪物
+// 主场信息 = 角色 - 怪物
 const battleInfo = ref({
 	// 角色
 	player: uni.getStorageSync('playerInfo') ? uni.getStorageSync('playerInfo') : {},
