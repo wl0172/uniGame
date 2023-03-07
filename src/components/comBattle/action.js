@@ -1,34 +1,40 @@
-import { ref, watch, computed } from "vue"
-import { useInfo } from '@/state/index.js'
+import {
+	ref,
+	watch,
+	computed
+} from "vue"
+import {
+	useInfo
+} from '@/state/index.js'
 // 接口
-import { 
-	postUserInfo, 
-	getFightFind, 
-	postFightAction, 
-	postFightPrize ,
+import {
+	postUserInfo,
+	getFightFind,
+	postFightAction,
+	postFightPrize,
 } from '@/api/index.js'
 // 全局属性
-import { 
-	pageArr, 
-	pageSwitch, 
-	pageSwitchMenu, 
-	battleInfo, 
-	hiddenPopup ,
+import {
+	pageArr,
+	pageSwitch,
+	pageSwitchMenu,
+	battleInfo,
+	hiddenPopup,
 } from '@/state/index.js'
 
 // 配置文件
-import { 
-	effectCnsRef, 
-	errorCnsRef, 
-	monsterRef, 
-	goodsRef, 
-	mapRef, 
+import {
+	effectCnsRef,
+	errorCnsRef,
+	monsterRef,
+	goodsRef,
+	mapRef,
 } from '@/state/config/index.js'
 
 
 // 获取玩家最新信息
 const handleGetUserInfo = () => {
-	if(useInfo.value.token){
+	if (useInfo.value.token) {
 		postUserInfo({
 			"player": true, // 角色信息
 			"fighter": true, // 同寻怪接口 战斗
@@ -38,21 +44,21 @@ const handleGetUserInfo = () => {
 			console.log(res, '玩家最新信息->comBattle->action->handleGetUserInfo->')
 			uni.setStorageSync('playerInfo', res.player);
 			battleInfo.value.player = res?.player ? res?.player : {},
-			battleInfo.value.monster = res?.fighter ? res?.fighter : {}
+				battleInfo.value.monster = res?.fighter ? res?.fighter : {}
 		})
 	}
 }
 
 // 捡尸
-const pickUupCorpses = (txtArr,scrollIndex)=> {
-	postFightPrize().then((res)=>{
-		txtCopywriting(res,txtArr,5,scrollIndex)
+const pickUupCorpses = (txtArr, scrollIndex) => {
+	postFightPrize().then((res) => {
+		txtCopywriting(res, txtArr, 5, scrollIndex)
 		battleInfo.value.monster = {}
 	})
 }
 
 // txt滚动条自动下落
-const upDown = (txtArr,scrollIndex) => {
+const upDown = (txtArr, scrollIndex) => {
 	setTimeout(() => {
 		scrollIndex.id = `id-${txtArr.list.length-1}`
 	})
@@ -60,7 +66,7 @@ const upDown = (txtArr,scrollIndex) => {
 
 // txt文案
 // status = 0 - 搜索，1 - 战斗持续中，2 - 玩家胜利，3 - 玩家失败，4 - 平手，5 - 捡尸
-const txtCopywriting = (response,txtArr,status,scrollIndex,effect=-1,bloodTxt) => {
+const txtCopywriting = (response, txtArr, status, scrollIndex, effect = -1, bloodTxt) => {
 	let statusObj = {
 		0: `你遇到了一只${response.name},它在悠闲的晒太阳`,
 		1: bloodTxt,
@@ -72,45 +78,45 @@ const txtCopywriting = (response,txtArr,status,scrollIndex,effect=-1,bloodTxt) =
 	txtArr.list.push({
 		liTxt: effect > -1 ? statusObj[status] : statusObj[status]
 	})
-	upDown(txtArr,scrollIndex)
+	upDown(txtArr, scrollIndex)
 }
 
 // 掉血，role角色 - monst怪物
-const buckleBlood = (item,response,txtArr,status,scrollIndex) => {
-	
+const buckleBlood = (item, response, txtArr, status, scrollIndex) => {
+
 	let eff = new Map(Object.entries(effectCnsRef.value))
 	// 怪物对角色产生的效果
-	if(response?.mEffects?.length){
+	if (response?.mEffects?.length) {
 		let monsterTxt = `${item.value.monster.name}对你使用了${eff.get(response.mEffects[0].effect)}`
-		
+
 		// 普通攻击
-		if(response.mEffects[0].effect == 'attack'){
+		if (response.mEffects[0].effect == 'attack') {
 			monsterTxt += `,造成了${response.mEffects[0].value}点伤害`
 			item.value.player.hp = item.value.player.hp - response.mEffects[0].value
 		}
 		// 逃脱
-		if(response.mEffects[0].effect == 'runaway'){
-			
+		if (response.mEffects[0].effect == 'runaway') {
+
 		}
 		// 毒药侵害
-		if(response.mEffects[0].effect == 'attackTox'){
-			
+		if (response.mEffects[0].effect == 'attackTox') {
+
 		}
 		// 生命恢复
-		if(response.mEffects[0].effect == 'hpPlus'){
-			
+		if (response.mEffects[0].effect == 'hpPlus') {
+
 		}
 		// 生命损失
-		if(response.mEffects[0].effect == 'hpReduce'){
-			
+		if (response.mEffects[0].effect == 'hpReduce') {
+
 		}
-		txtCopywriting(response,txtArr,status,scrollIndex,0,monsterTxt)
+		txtCopywriting(response, txtArr, status, scrollIndex, 0, monsterTxt)
 	}
 	// 角色对怪物产生的效果
-	if(response?.pEffects?.length){
+	if (response?.pEffects?.length) {
 		let playerTxt = `你攻击了一下${item?.value?.monster?.name},造成了${response.pEffects[0].value}伤害`
 		item.value.monster.hp = item.value.monster.hp - response.pEffects[0].value
-		txtCopywriting(response,txtArr,status,scrollIndex,1,playerTxt)
+		txtCopywriting(response, txtArr, status, scrollIndex, 1, playerTxt)
 	}
 }
 
@@ -143,7 +149,7 @@ const buckleBlood = (item,response,txtArr,status,scrollIndex) => {
 
 
 // 探索 - 攻击
-const handleSeachItem = (txtArr,scrollIndex) => {
+const handleSeachItem = (txtArr, scrollIndex) => {
 	// 有怪的信息 - 在战斗中
 	if (Object.keys(battleInfo.value.monster).length) {
 		uni.showLoading({
@@ -153,26 +159,26 @@ const handleSeachItem = (txtArr,scrollIndex) => {
 		})
 		postFightAction({
 			action: 4
-		}).then((res)=> {
+		}).then((res) => {
 			uni.hideLoading()
 			// 1 - 持续战斗
-			if(res.status == 1){
+			if (res.status == 1) {
 				// 掉血
-				buckleBlood(battleInfo,res,txtArr,1,scrollIndex)
+				buckleBlood(battleInfo, res, txtArr, 1, scrollIndex)
 			}
 			// 2 - 胜利
-			if(res.status == 2){
+			if (res.status == 2) {
 				// 默认先摸尸 - 后续在改
-				pickUupCorpses(txtArr,scrollIndex)
+				pickUupCorpses(txtArr, scrollIndex)
 			}
 			// 3 - 失败死亡了
-			if(res.status == 3){
+			if (res.status == 3) {
 				uni.showToast({
 					icon: 'none',
 					title: '啊~~~我死了！！！'
 				})
 			}
-		})		
+		})
 	} else {
 		uni.showLoading({
 			icon: 'none',
@@ -183,18 +189,18 @@ const handleSeachItem = (txtArr,scrollIndex) => {
 		getFightFind().then((res) => {
 			uni.hideLoading()
 			battleInfo.value.monster = res
-			txtCopywriting(res,txtArr,0,scrollIndex)
+			txtCopywriting(res, txtArr, 0, scrollIndex)
 		})
 	}
 }
 
 // 逃跑
-const handleRunAway = (txtArr,scrollIndex) => {
+const handleRunAway = (txtArr, scrollIndex) => {
 	postFightAction({
 		action: 3
-	}).then((res)=>{
-		if(res.status == 4){
-			txtCopywriting(res,txtArr,4,scrollIndex)
+	}).then((res) => {
+		if (res.status == 4) {
+			txtCopywriting(res, txtArr, 4, scrollIndex)
 		}
 		battleInfo.value.monster = {}
 	})
@@ -252,19 +258,7 @@ const handleLeave = () => {
 
 
 
-// 假的掉血机制
-// setTimeout(()=>{
-// 	let a = setInterval(()=>{
-// 		if(battleInfo.value.monster.hp == 10){
-// 			clearInterval(a)
-// 		}else{
-// 			battleInfo.value.monster.hp = battleInfo.value.monster.hp - 1
-// 			battleInfo.value.player.hp = battleInfo.value.player.hp - 1
-// 		}
-// 	},1000)
-// },3000)
 
-// console.log(battleInfo.value.player, 'battle======')
 
 
 
@@ -272,12 +266,12 @@ const handleLeave = () => {
 
 
 export {
-  handleGetUserInfo,// 获取玩家最新信息
-	handleSeachItem,// 探索
-	handleRunAway,// 逃跑
-	handleSkill,// 技能
-	handleToMap,// 打开地图
-	handleOpenKnapsack,// 打开背包
-	handleToShop,// 打开商店
-	handleLeave,// 退出
+	handleGetUserInfo, // 获取玩家最新信息
+	handleSeachItem, // 探索
+	handleRunAway, // 逃跑
+	handleSkill, // 技能
+	handleToMap, // 打开地图
+	handleOpenKnapsack, // 打开背包
+	handleToShop, // 打开商店
+	handleLeave, // 退出
 }

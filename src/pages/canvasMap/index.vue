@@ -1,25 +1,27 @@
 <script setup>
-import { ref } from "vue"
-import { pageSwitch,pageArr } from '@/state/index.js'
+	import { ref } from 'vue'
+	import { pageSwitch, pageArr } from '@/state/index.js'
 
-// 去新场景
-const handleToNewMap = (item, index) => {
-	uni.showToast({
-		icon: 'none',
-		title: `${item.name}==${Object.keys(item)[0]}==去新场景======`
-	})
-	pageSwitch.value.index = index
-	uni.navigateBack({
-		delta: 1
-	})
-}
-
+	// 去新场景
+	const handleToNewMap = (item, index) => {
+		uni.showToast({
+			icon: 'none',
+			title: `${item.name}==${Object.keys(item)[0]}==去新场景======`
+		})
+		pageSwitch.value.index = index
+		uni.navigateBack({
+			delta: 1
+		})
+	}
 </script>
 
 <template>
 	<div class="conSceneList">
 		<div class="conSceneListL">
-			<div class="conSceneListLi" v-for="(item, index) in pageArr.list" :key="index"
+			<div
+				class="conSceneListLi"
+				v-for="(item, index) in pageArr.list"
+				:key="index"
 				@click="handleToNewMap(item, index)">
 				<div class="conSceneListLi_title">
 					<div>{{ item.name }}</div>
@@ -33,41 +35,43 @@ const handleToNewMap = (item, index) => {
 </template>
 
 <style scoped lang="less">
-.conSceneList{
-	width: 100%;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	.conSceneListL{
+	.conSceneList {
 		width: 100%;
-		height: 80%;
-		overflow: auto;
-		.conSceneListLi {
-			padding: 30rpx;
-			background: #ffffff;
-			color: #9d9d9d;
-			font-size: 28rpx;
-			margin: 0 30rpx 30rpx 30rpx;
-			border-radius: 10rpx;
-			background: #edecee;
-		
-			.conSceneListLi_title {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				color: black;
-				font-size: 32rpx;
-				margin: 0 0 20rpx 0;
-		
-				.conSceneListLi_title_state {
-					color: #4bbda3;
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		.conSceneListL {
+			width: 100%;
+			height: 80%;
+			overflow: auto;
+			.conSceneListLi {
+				padding: 30rpx;
+				background: #ffffff;
+				color: #9d9d9d;
+				font-size: 28rpx;
+				margin: 0 30rpx 30rpx 30rpx;
+				border-radius: 10rpx;
+				background: #edecee;
+
+				.conSceneListLi_title {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					color: black;
+					font-size: 32rpx;
+					margin: 0 0 20rpx 0;
+
+					.conSceneListLi_title_state {
+						color: #4bbda3;
+					}
+				}
+
+				.conSceneListLi_txt {
+				}
+
+				.conSceneListLi_time {
 				}
 			}
-		
-			.conSceneListLi_txt {}
-		
-			.conSceneListLi_time {}
 		}
 	}
-}
 </style>

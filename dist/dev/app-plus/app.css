@@ -688,7 +688,7 @@ to {
   border-radius: 0.3125rem;
   margin: 0 0.25rem;
   color: #806868;
-  border: 0.0625rem solid #A18884;
+  border: 0.0625rem solid #a18884;
 }
 .comBattleDiv .comBattleDiv_battle_3 div[data-v-781aabaf]:active {
   background: red;
@@ -985,9 +985,7 @@ to {
 }
 }
 .main[data-v-8d98681c] {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  transform: scale(0.1);
+  transform: scale(0.2);
 }
 div[data-v-8d98681c] {
   width: 20px;
@@ -1300,7 +1298,7 @@ to {
 }
 .comKnapsackDiv .comKnapsackDiv_left[data-v-8fc46dda] {
   width: 100%;
-  height: 40%;
+  height: 30%;
   overflow: hidden;
   position: relative;
 }
@@ -1322,13 +1320,19 @@ to {
 }
 .comKnapsackDiv .comKnapsackDiv_left .comKnapsackDiv_leftUp .comKnapsackDiv_leftUp_left .comKnapsackDiv_leftUp_left1[data-v-8fc46dda] {
   display: flex;
+  justify-content: center;
 }
 .comKnapsackDiv .comKnapsackDiv_left .comKnapsackDiv_leftUp .comKnapsackDiv_leftUp_left .comKnapsackDiv_leftUp_left2[data-v-8fc46dda] {
   display: flex;
+  justify-content: center;
+}
+.comKnapsackDiv .comKnapsackDiv_left .comKnapsackDiv_leftUp .comKnapsackDiv_leftUp_right[data-v-8fc46dda] {
+  position: relative;
+  width: 50%;
 }
 .comKnapsackDiv .comKnapsackDiv_right[data-v-8fc46dda] {
   width: 100%;
-  height: 60%;
+  height: 70%;
   position: relative;
   overflow: auto;
 }
