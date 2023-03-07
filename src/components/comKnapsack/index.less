@@ -1,0 +1,84 @@
+.comKnapsackDiv{
+	height: 100vh;
+	overflow: hidden;
+	// display: flex;
+	.comKnapsackDiv_left{
+		width: 100%;
+		height: 30%;
+		overflow: hidden;
+		position: relative;
+		.comKnapsackDiv_left_seat{
+			width: 100%;
+			height: var(--conHeight);
+		}
+		.comKnapsackDiv_leftUp{
+			width: 100%;
+			height: calc(100% - var(--conHeight));
+			overflow: auto;
+			position: relative;
+			border-right: 1rpx solid #d6d6d6;
+			display: flex;
+			justify-content: space-around;
+			.comKnapsackDiv_leftUp_left{
+				width: 50%;
+				.comKnapsackDiv_leftUp_left1{
+					display: flex;
+					justify-content: center;
+				}
+				.comKnapsackDiv_leftUp_left2{
+					display: flex;
+					justify-content: center;
+				}
+			}
+			.comKnapsackDiv_leftUp_right{
+				position: relative;
+				width: 50%;
+			}
+		}
+	}
+	.comKnapsackDiv_right{
+		width: 100%;
+		height: 70%;
+		position: relative;
+		overflow: auto;
+		.comKnapsackDiv_right_top{
+			width: 100%;
+			height: 65%;
+			padding: 14rpx 0 0 0;
+			overflow: auto;
+			display: grid;
+			grid-template-columns: 33% 33% 33%;
+			justify-content: center;
+			.comKnapsackDiv_right_list{
+				width: 100%;
+				height: 150rpx;
+				margin: 0 0 10rpx 0;
+				.comKnapsackDiv_right_li{
+					width: 90%;
+					height: 100%;
+					background: red;
+					margin: 0 auto;
+				}
+			}
+		}
+		.comKnapsackDiv_right_txt{
+			width: 100%;
+			height: 20%;
+			background: red;
+		}
+		.comKnapsackDiv_right_butlist{
+			width: 100%;
+			height: calc( 15% - 7px );
+			background: red;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			.comKnapsackDiv_right_button{
+				color: #ffffff;
+				padding: 14rpx;
+				background: black;
+				border-radius: 14rpx;
+			}
+		}
+	}
+}

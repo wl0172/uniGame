@@ -47,7 +47,7 @@ const pageSwitchMenu = ref({
 
 // 弹窗显示 - 隐藏
 const hiddenPopup = ref({
-	show: false,
+	show: true,
 	width: 100,
 	height: 100
 })

@@ -4217,7 +4217,7 @@ if (uni.restoreGlobal) {
     }
     return target;
   };
-  const _sfc_main$b = {
+  const _sfc_main$c = {
     __name: "index",
     setup(__props) {
       return (_ctx, _cache) => {
@@ -4232,7 +4232,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
+  const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
   let errorCnsRefTxt = new Map(Object.entries(errorCnsRef.value));
   const request = (path = "", method = "GET", contentType = "application/json", data = {}) => {
     const token2 = uni.getStorageSync("token");
@@ -4323,7 +4323,7 @@ if (uni.restoreGlobal) {
       2: `${(_b = (_a = battleInfo == null ? void 0 : battleInfo.value) == null ? void 0 : _a.monster) == null ? void 0 : _b.name}\u88AB\u4F60\u51FB\u8D25\u4E86\uFF01`,
       3: `${(_d = (_c = battleInfo == null ? void 0 : battleInfo.value) == null ? void 0 : _c.monster) == null ? void 0 : _d.name}\u628A\u4F60\u6253\u5012\u4E86\uFF01`,
       4: `\u4F60\u9003\u8DD1\u4E86...`,
-      5: response.length ? `\u83B7\u5F97\u6218\u5229\u54C1xxxxxx\u5F85\u5F00\u53D1` : `\u4EC0\u4E48\u90FD\u6CA1\u6709\u83B7\u5F97...`
+      5: response.length ? `\u83B7\u5F97\u6218\u5229\u54C1${"id=" + response[0].id}\u5F85\u5F00\u53D1...` : `\u4EC0\u4E48\u90FD\u6CA1\u6709\u83B7\u5F97...`
     };
     txtArr.list.push({
       liTxt: effect > -1 ? statusObj[status] : statusObj[status]
@@ -4415,8 +4415,8 @@ if (uni.restoreGlobal) {
   };
   const handleOpenKnapsack = () => {
     hiddenPopup.value.show = true;
-    hiddenPopup.value.width = 90;
-    hiddenPopup.value.height = 70;
+    hiddenPopup.value.width = 100;
+    hiddenPopup.value.height = 100;
     pageSwitchMenu.value.index = 0;
     pageSwitchMenu.value.key = "ComKnapsack";
   };
@@ -4448,7 +4448,7 @@ if (uni.restoreGlobal) {
     }
     return bloodNum;
   }
-  const _sfc_main$a = {
+  const _sfc_main$b = {
     __name: "index",
     setup(__props) {
       const progressConfig = {
@@ -4472,7 +4472,7 @@ if (uni.restoreGlobal) {
       });
       handleGetUserInfo();
       return (_ctx, _cache) => {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l;
         return vue.unref(useInfo).token ? (vue.openBlock(), vue.createElementBlock("div", {
           key: 0,
           class: "comBattleDiv"
@@ -4563,37 +4563,51 @@ if (uni.restoreGlobal) {
               class: "",
               onClick: _cache[2] || (_cache[2] = (...args) => vue.unref(handleSkill) && vue.unref(handleSkill)(...args))
             }, "\u6280\u80FD")) : vue.createCommentVNode("v-if", true),
-            vue.createElementVNode("div", {
-              class: "",
-              onClick: _cache[3] || (_cache[3] = (...args) => vue.unref(handleOpenKnapsack) && vue.unref(handleOpenKnapsack)(...args))
-            }, "\u80CC\u5305"),
-            !Object.keys((_i = vue.unref(battleInfo)) == null ? void 0 : _i.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
+            Object.keys((_i = vue.unref(battleInfo)) == null ? void 0 : _i.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
               key: 2,
               class: "",
-              onClick: _cache[4] || (_cache[4] = (...args) => vue.unref(handleToMap) && vue.unref(handleToMap)(...args))
-            }, "\u5730\u56FE")) : vue.createCommentVNode("v-if", true),
+              onClick: _cache[3] || (_cache[3] = () => {
+              })
+            }, "\u9053\u5177")) : vue.createCommentVNode("v-if", true),
             !Object.keys((_j = vue.unref(battleInfo)) == null ? void 0 : _j.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
               key: 3,
               class: "",
-              onClick: _cache[5] || (_cache[5] = (...args) => vue.unref(handleToShop) && vue.unref(handleToShop)(...args))
+              onClick: _cache[4] || (_cache[4] = (...args) => vue.unref(handleOpenKnapsack) && vue.unref(handleOpenKnapsack)(...args))
+            }, "\u80CC\u5305")) : vue.createCommentVNode("v-if", true),
+            !Object.keys((_k = vue.unref(battleInfo)) == null ? void 0 : _k.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
+              key: 4,
+              class: "",
+              onClick: _cache[5] || (_cache[5] = (...args) => vue.unref(handleToMap) && vue.unref(handleToMap)(...args))
+            }, "\u5730\u56FE")) : vue.createCommentVNode("v-if", true),
+            !Object.keys((_l = vue.unref(battleInfo)) == null ? void 0 : _l.monster).length ? (vue.openBlock(), vue.createElementBlock("div", {
+              key: 5,
+              class: "",
+              onClick: _cache[6] || (_cache[6] = (...args) => vue.unref(handleToShop) && vue.unref(handleToShop)(...args))
             }, "\u5546\u5E97")) : vue.createCommentVNode("v-if", true),
             vue.createElementVNode("div", {
               class: "",
-              onClick: _cache[6] || (_cache[6] = (...args) => vue.unref(handleLeave) && vue.unref(handleLeave)(...args))
+              onClick: _cache[7] || (_cache[7] = (...args) => vue.unref(handleLeave) && vue.unref(handleLeave)(...args))
             }, "\u9000\u51FA")
           ])
         ])) : vue.createCommentVNode("v-if", true);
       };
     }
   };
-  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
+  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
+  const _sfc_main$a = {};
+  function _sfc_render(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("div", { class: "main" }, [
+      vue.createElementVNode("div")
+    ]);
+  }
+  const ComPeople = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render], ["__scopeId", "data-v-8d98681c"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comPeople/index.vue"]]);
   const _sfc_main$9 = {
     __name: "index",
     setup(__props) {
       let introduce = vue.ref({
         txt: ""
       });
-      let leftMent = vue.ref({
+      vue.ref({
         arr: [{
           inde: 1,
           name: "\u6D88\u8017\u54C1"
@@ -4602,34 +4616,69 @@ if (uni.restoreGlobal) {
           name: "\u88C5\u5907"
         }]
       });
-      const handleLeftMent = (item) => {
-        formatAppLog("log", "at components/comKnapsack/index.vue:21", "\u5DE6\u4FA7\u83DC\u5355======", item);
-        uni.showToast({
-          icon: "none",
-          title: item.name
-        });
-      };
       const handleRightIn = (item) => {
-        formatAppLog("log", "at components/comKnapsack/index.vue:30", "\u53F3\u4FA7\u83DC\u5355======list-li", item);
+        formatAppLog("log", "at components/comKnapsack/index.vue:41", "\u4E0A\u70B9\u51FB======", item);
         introduce.value.txt = item;
         uni.showToast({
           icon: "none",
-          title: item
+          title: item + ""
         });
+      };
+      const handleCloseComKnapsack = () => {
+        hiddenPopup.value.show = false;
+        hiddenPopup.value.width = 100;
+        hiddenPopup.value.height = 100;
+        pageSwitchMenu.value.index = 0;
+        pageSwitchMenu.value.key = "ComKnapsack";
       };
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", { class: "comKnapsackDiv" }, [
-          vue.createCommentVNode(" \u5DE6\u4FA7- \u83DC\u5355 "),
+          vue.createCommentVNode(" \u4E0A - \u4EBA\u5F62-\u88C5\u5907 "),
           vue.createElementVNode("div", { class: "comKnapsackDiv_left" }, [
-            (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(leftMent).arr, (item, index) => {
-              return vue.openBlock(), vue.createElementBlock("div", {
-                class: "comKnapsackDiv_left_list",
-                key: item,
-                onClick: vue.withModifiers(($event) => handleLeftMent(item), ["stop"])
-              }, vue.toDisplayString(item.name), 9, ["onClick"]);
-            }), 128))
+            vue.createElementVNode("div", {
+              class: "comKnapsackDiv_left_seat",
+              style: vue.normalizeStyle({ "--conHeight": vue.unref(headerMargin) + "px" })
+            }, null, 4),
+            vue.createElementVNode("div", {
+              class: "comKnapsackDiv_leftUp",
+              style: vue.normalizeStyle({ "--conHeight": vue.unref(headerMargin) + "px" })
+            }, [
+              vue.createElementVNode("div", { class: "comKnapsackDiv_leftUp_left" }, [
+                vue.createElementVNode("div", { class: "comKnapsackDiv_leftUp_left1" }, [
+                  vue.createElementVNode("div", null, "\u5934\u50CF "),
+                  vue.createElementVNode("div", { class: "comKnapsackDiv_leftUp_left1_txt" }, [
+                    vue.createElementVNode("div", null, "name"),
+                    vue.createElementVNode("div", null, "sex")
+                  ])
+                ]),
+                vue.createElementVNode("div", { class: "comKnapsackDiv_leftUp_left2" }, [
+                  vue.createElementVNode("div", null, "\u8840\u6761:"),
+                  vue.createElementVNode("div", null, "100%")
+                ]),
+                vue.createElementVNode("div", { class: "comKnapsackDiv_leftUp_left2" }, [
+                  vue.createElementVNode("div", null, "\u8840\u6761:"),
+                  vue.createElementVNode("div", null, "100%")
+                ]),
+                vue.createElementVNode("div", { class: "comKnapsackDiv_leftUp_left2" }, [
+                  vue.createElementVNode("div", null, "\u8840\u6761:"),
+                  vue.createElementVNode("div", null, "100%")
+                ]),
+                vue.createElementVNode("div", { class: "comKnapsackDiv_leftUp_left2" }, [
+                  vue.createElementVNode("div", null, "\u8840\u6761:"),
+                  vue.createElementVNode("div", null, "100%")
+                ]),
+                vue.createElementVNode("div", { class: "comKnapsackDiv_leftUp_left2" }, [
+                  vue.createElementVNode("div", null, "\u8840\u6761:"),
+                  vue.createElementVNode("div", null, "100%")
+                ])
+              ]),
+              vue.createElementVNode("div", { style: { "position": "relative" } }, [
+                vue.createCommentVNode(" <div>1</div>\n					<div>1</div>\n					<div>1</div>\n					<div>1</div>\n					<div>1</div>\n					<div>1</div> "),
+                vue.createVNode(ComPeople)
+              ])
+            ], 4)
           ]),
-          vue.createCommentVNode(" \u53F3\u4FA7 - \u8BE6\u60C5 "),
+          vue.createCommentVNode(" \u4E0B - \u7269\u54C1 "),
           vue.createElementVNode("div", { class: "comKnapsackDiv_right" }, [
             vue.createElementVNode("div", { class: "comKnapsackDiv_right_top" }, [
               vue.createCommentVNode(" \u7269\u54C1\u5217\u8868 "),
@@ -4647,7 +4696,10 @@ if (uni.restoreGlobal) {
             vue.createCommentVNode(" \u64CD\u4F5C "),
             vue.createElementVNode("div", { class: "comKnapsackDiv_right_butlist" }, [
               vue.createElementVNode("div", { class: "comKnapsackDiv_right_button" }, "\u88C5\u5907"),
-              vue.createElementVNode("div", { class: "comKnapsackDiv_right_button" }, "\u88C5\u5907")
+              vue.createElementVNode("div", {
+                class: "comKnapsackDiv_right_button",
+                onClick: handleCloseComKnapsack
+              }, "\u5173\u95ED")
             ])
           ])
         ]);
@@ -4755,7 +4807,7 @@ if (uni.restoreGlobal) {
     key: "ComKnapsack"
   });
   const hiddenPopup = vue.ref({
-    show: false,
+    show: true,
     width: 100,
     height: 100
   });
@@ -4885,7 +4937,7 @@ if (uni.restoreGlobal) {
                   vue.createElementVNode("div", { class: "conSceneListLi_title_state" }, "\u670D\u52A1\u4E2D")
                 ]),
                 vue.createElementVNode("div", { class: "conSceneListLi_txt" }, "\u670D\u52A1\u5185\u5BB9\uFF1Axxxxxx"),
-                vue.createElementVNode("div", { class: "conSceneListLi_tiem" }, "\u5F00\u56FE\u65F6\u95F4\uFF1Axxxxxx")
+                vue.createCommentVNode(' <div class="conSceneListLi_tiem">\u5F00\u56FE\u65F6\u95F4\uFF1Axxxxxx</div> ')
               ], 8, ["onClick"]);
             }), 128))
           ])
@@ -4993,6 +5045,9 @@ if (uni.restoreGlobal) {
   const _sfc_main$2 = {
     __name: "index",
     setup(__props) {
+      let isLoding = vue.ref({
+        state: false
+      });
       let sinupInfo = vue.ref({
         name: "",
         password: "",
@@ -5029,7 +5084,22 @@ if (uni.restoreGlobal) {
           return;
         } else {
           postRegister(sinupInfo.value).then((res) => {
-            loginState.value.isState = 1;
+            if (res.token) {
+              uni.setStorageSync("token", res.token);
+              uni.setStorageSync("playerInfo", res.player);
+              useInfo.value.token = res == null ? void 0 : res.token;
+              battleInfo.value.player = (res == null ? void 0 : res.player) ? res == null ? void 0 : res.player : {}, isLoding.value.state = true;
+              setTimeout(() => {
+                uni.redirectTo({
+                  url: "/pages/content/index",
+                  success() {
+                    isLoding.value.state = false;
+                  }
+                });
+              }, 1800);
+            } else {
+              isLoding.value.state = false;
+            }
           });
         }
       };
@@ -5080,7 +5150,18 @@ if (uni.restoreGlobal) {
             }, [
               vue.createElementVNode("div", { class: "login_button_txt" }, "\u6CE8\u518C")
             ])
-          ])
+          ]),
+          vue.createCommentVNode(" \u8FC7\u6E21\u7684\u52A8\u753B "),
+          vue.unref(isLoding).state ? (vue.openBlock(), vue.createElementBlock("div", {
+            key: 0,
+            class: "pageCenter_gif"
+          }, [
+            vue.createElementVNode("image", {
+              class: "pageCenter_gif_img",
+              src: _imports_0,
+              alt: ""
+            })
+          ])) : vue.createCommentVNode("v-if", true)
         ]);
       };
     }

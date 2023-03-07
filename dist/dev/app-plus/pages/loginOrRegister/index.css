@@ -688,6 +688,319 @@ to {
   color: #806868;
   border: 0.0625rem solid #A18884;
 }
+.comBattleDiv .comBattleDiv_battle_3 div[data-v-781aabaf]:active {
+  background: red;
+}
+
+/**
+  旋转
+  div{
+    font-size: 1.5rem;
+    width:1.5rem;
+    height: 1.5rem;
+    animation: load 1.7s infinite ease, round 1.7s infinite ease;
+  }
+*/
+@keyframes load-8d98681c {
+0% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+}
+20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+}
+38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+}
+100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+}
+}
+@keyframes round-8d98681c {
+0% {
+    transform: rotate(0deg);
+    /* 开始旋转 div 元素 */
+}
+100% {
+    transform: rotate(360deg);
+    /* 结束旋转 div 元素 */
+}
+}
+/**
+  抖动
+  div{
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+  }
+*/
+@keyframes shake-8d98681c {
+10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+}
+20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+}
+30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+}
+40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+}
+}
+/**
+  左右抖动
+  div{
+    animation: wiggle 2s linear infinite;
+  }
+*/
+@keyframes wiggle-8d98681c {
+0%,
+  7% {
+    transform: rotateZ(0);
+}
+15% {
+    transform: rotateZ(-15deg);
+}
+20% {
+    transform: rotateZ(10deg);
+}
+25% {
+    transform: rotateZ(-10deg);
+}
+30% {
+    transform: rotateZ(6deg);
+}
+35% {
+    transform: rotateZ(-4deg);
+}
+40%,
+  100% {
+    transform: rotateZ(0);
+}
+}
+/**
+  文字抖动
+  div{
+    animation: shake-joggle 10s infinite ease-in-out;
+  }
+*/
+@keyframes shake-joggle-8d98681c {
+2% {
+    transform: translate(6px, -2px) rotate(3.5deg);
+}
+4% {
+    transform: translate(5px, 8px) rotate(-0.5deg);
+}
+6% {
+    transform: translate(6px, -3px) rotate(-2.5deg);
+}
+8% {
+    transform: translate(4px, -2px) rotate(1.5deg);
+}
+10% {
+    transform: translate(-6px, 8px) rotate(-1.5deg);
+}
+12% {
+    transform: translate(-5px, 5px) rotate(1.5deg);
+}
+14% {
+    transform: translate(4px, 10px) rotate(3.5deg);
+}
+16% {
+    transform: translate(0px, 4px) rotate(1.5deg);
+}
+18% {
+    transform: translate(-1px, -6px) rotate(-0.5deg);
+}
+20% {
+    transform: translate(6px, -9px) rotate(2.5deg);
+}
+22% {
+    transform: translate(1px, -5px) rotate(-1.5deg);
+}
+24% {
+    transform: translate(-9px, 6px) rotate(-0.5deg);
+}
+26% {
+    transform: translate(8px, -2px) rotate(-1.5deg);
+}
+28% {
+    transform: translate(2px, -3px) rotate(-2.5deg);
+}
+30% {
+    transform: translate(9px, -7px) rotate(-0.5deg);
+}
+32% {
+    transform: translate(8px, -6px) rotate(-2.5deg);
+}
+34% {
+    transform: translate(-5px, 1px) rotate(3.5deg);
+}
+36% {
+    transform: translate(0px, -5px) rotate(2.5deg);
+}
+38% {
+    transform: translate(2px, 7px) rotate(-1.5deg);
+}
+40% {
+    transform: translate(6px, 3px) rotate(-1.5deg);
+}
+42% {
+    transform: translate(1px, -5px) rotate(-1.5deg);
+}
+44% {
+    transform: translate(10px, -4px) rotate(-0.5deg);
+}
+46% {
+    transform: translate(-2px, 2px) rotate(3.5deg);
+}
+48% {
+    transform: translate(3px, 4px) rotate(-0.5deg);
+}
+50% {
+    transform: translate(8px, 1px) rotate(-1.5deg);
+}
+52% {
+    transform: translate(7px, 4px) rotate(-1.5deg);
+}
+54% {
+    transform: translate(10px, 8px) rotate(-1.5deg);
+}
+56% {
+    transform: translate(-3px, 0px) rotate(-0.5deg);
+}
+58% {
+    transform: translate(0px, -1px) rotate(1.5deg);
+}
+60% {
+    transform: translate(6px, 9px) rotate(-1.5deg);
+}
+62% {
+    transform: translate(-9px, 8px) rotate(0.5deg);
+}
+64% {
+    transform: translate(-6px, 10px) rotate(0.5deg);
+}
+66% {
+    transform: translate(7px, 0px) rotate(0.5deg);
+}
+68% {
+    transform: translate(3px, 8px) rotate(-0.5deg);
+}
+70% {
+    transform: translate(-2px, -9px) rotate(1.5deg);
+}
+72% {
+    transform: translate(-6px, 2px) rotate(1.5deg);
+}
+74% {
+    transform: translate(-2px, 10px) rotate(-1.5deg);
+}
+76% {
+    transform: translate(2px, 8px) rotate(2.5deg);
+}
+78% {
+    transform: translate(6px, -2px) rotate(-0.5deg);
+}
+80% {
+    transform: translate(6px, 8px) rotate(0.5deg);
+}
+82% {
+    transform: translate(10px, 9px) rotate(3.5deg);
+}
+84% {
+    transform: translate(-3px, -1px) rotate(3.5deg);
+}
+86% {
+    transform: translate(1px, 8px) rotate(-2.5deg);
+}
+88% {
+    transform: translate(-5px, -9px) rotate(2.5deg);
+}
+90% {
+    transform: translate(2px, 8px) rotate(0.5deg);
+}
+92% {
+    transform: translate(0px, -1px) rotate(1.5deg);
+}
+94% {
+    transform: translate(-8px, -1px) rotate(0.5deg);
+}
+96% {
+    transform: translate(-3px, 8px) rotate(-1.5deg);
+}
+98% {
+    transform: translate(4px, 8px) rotate(0.5deg);
+}
+0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+}
+}
+/**
+ * 放大缩小后
+ * <div class="animated pulse">Example</div>
+ * .pulse {
+			-webkit-animation-name: pulse;
+			animation-name: pulse;
+		}
+
+		.animated {
+			-webkit-animation-duration: 1s;
+			animation-duration: 1s;
+			-webkit-animation-fill-mode: both;
+			animation-fill-mode: both;
+		}
+ * */
+@keyframes pulse-8d98681c {
+from {
+    transform: scale3d(1, 1, 1);
+}
+50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+}
+to {
+    transform: scale3d(1, 1, 1);
+}
+}
+@keyframes move-8d98681c {
+0% {
+    background-position: 0 0;
+}
+100% {
+    background-position: -1600px 0;
+}
+}
+.main[data-v-8d98681c] {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transform: scale(0.1);
+}
+div[data-v-8d98681c] {
+  width: 20px;
+  height: 20px;
+  box-shadow: 20px 0px 0 #000, 40px 0px 0 #000, 60px 0px 0 #000, 80px 0px 0 #000, 0 20px 0 #000, 20px 20px 0 #EC3, 40px 20px 0 #EC3, 60px 20px 0 #EC3, 80px 20px 0 #000, 100px 20px 0 #000, 120px 20px 0 #000, 0 40px 0 #000, 20px 40px 0 #EC3, 40px 40px 0 #ED3, 60px 40px 0 #ED3, 80px 40px 0 #000, 100px 40px 0 #EC3, 120px 40px 0 #EC3, 140px 40px 0 #000, 0 60px 0 #000, 20px 60px 0 #EC3, 40px 60px 0 #ED3, 60px 60px 0 #ED3, 80px 60px 0 #000, 100px 60px 0 #EC3, 120px 60px 0 #ED3, 140px 60px 0 #000, 160px 60px 0 #000, 0 80px 0 #000, 20px 80px 0 #EC3, 40px 80px 0 #ED3, 60px 80px 0 #ED3, 80px 80px 0 #000, 100px 80px 0 #EC3, 120px 80px 0 #ED3, 140px 80px 0 #000, 160px 80px 0 #EC3, 180px 80px 0 #000, 0 100px 0 #000, 20px 100px 0 #EC3, 40px 100px 0 #ED3, 60px 100px 0 #ED3, 80px 100px 0 #000, 100px 100px 0 #EC3, 120px 100px 0 #ED3, 140px 100px 0 #000, 160px 100px 0 #EC3, 180px 100px 0 #ED3, 200px 100px 0 #000, 0 120px 0 #000, 20px 120px 0 #EC3, 40px 120px 0 #EC3, 60px 120px 0 #ED3, 80px 120px 0 #000, 100px 120px 0 #EC3, 120px 120px 0 #ED3, 140px 120px 0 #000, 160px 120px 0 #EC3, 180px 120px 0 #ED3, 200px 120px 0 #000, 220px 120px 0 #000, 20px 140px 0 #000, 40px 140px 0 #EC3, 60px 140px 0 #ED3, 80px 140px 0 #000, 100px 140px 0 #EC3, 120px 140px 0 #ED3, 140px 140px 0 #000, 160px 140px 0 #EC3, 180px 140px 0 #ED3, 200px 140px 0 #000, 220px 140px 0 #EC3, 240px 140px 0 #000, 20px 160px 0 #000, 40px 160px 0 #EC3, 60px 160px 0 #EC3, 80px 160px 0 #ED3, 100px 160px 0 #000, 120px 160px 0 #EC3, 140px 160px 0 #ED3, 160px 160px 0 #000, 180px 160px 0 #EC3, 200px 160px 0 #000, 220px 160px 0 #EC3, 240px 160px 0 #EC3, 260px 160px 0 #000, 40px 180px 0 #000, 60px 180px 0 #EC3, 80px 180px 0 #ED3, 100px 180px 0 #000, 120px 180px 0 #EC3, 140px 180px 0 #ED3, 160px 180px 0 #000, 180px 180px 0 #EC3, 200px 180px 0 #ED3, 220px 180px 0 #000, 240px 180px 0 #EC3, 260px 180px 0 #ED3, 280px 180px 0 #000, 40px 200px 0 #000, 60px 200px 0 #EC3, 80px 200px 0 #ED3, 100px 200px 0 #000, 120px 200px 0 #EC3, 140px 200px 0 #ED3, 160px 200px 0 #000, 180px 200px 0 #EC3, 200px 200px 0 #ED3, 220px 200px 0 #000, 240px 200px 0 #EC3, 260px 200px 0 #ED3, 280px 200px 0 #000, 40px 220px 0 #000, 60px 220px 0 #EC3, 80px 220px 0 #EC3, 100px 220px 0 #EC3, 120px 220px 0 #EC3, 140px 220px 0 #EC3, 160px 220px 0 #EC3, 180px 220px 0 #EC3, 200px 220px 0 #EC3, 220px 220px 0 #EC3, 240px 220px 0 #EC3, 260px 220px 0 #ED3, 280px 220px 0 #000, 60px 240px 0 #000, 80px 240px 0 #E97, 100px 240px 0 #EA7, 120px 240px 0 #EA7, 140px 240px 0 #EA7, 160px 240px 0 #EA7, 180px 240px 0 #EA7, 200px 240px 0 #EA7, 220px 240px 0 #EA7, 240px 240px 0 #EC3, 260px 240px 0 #ED3, 280px 240px 0 #000, 60px 260px 0 #000, 80px 260px 0 #E97, 100px 260px 0 #EA7, 120px 260px 0 #EA7, 140px 260px 0 #EA7, 160px 260px 0 #E97, 180px 260px 0 #E97, 200px 260px 0 #E97, 220px 260px 0 #EA7, 240px 260px 0 #EC3, 260px 260px 0 #ED3, 280px 260px 0 #000, 60px 280px 0 #000, 80px 280px 0 #E97, 100px 280px 0 #EA7, 120px 280px 0 #EA7, 140px 280px 0 #EA7, 160px 280px 0 #EA7, 180px 280px 0 #EA7, 200px 280px 0 #EA7, 220px 280px 0 #EC3, 240px 280px 0 #EC3, 260px 280px 0 #ED3, 280px 280px 0 #000, 60px 300px 0 #000, 80px 300px 0 #000, 100px 300px 0 #000, 120px 300px 0 #000, 140px 300px 0 #000, 160px 300px 0 #000, 180px 300px 0 #000, 200px 300px 0 #000, 220px 300px 0 #000, 240px 300px 0 #000, 260px 300px 0 #ED3, 280px 300px 0 #000, 60px 320px 0 #000, 80px 320px 0 #000, 100px 320px 0 #000, 120px 320px 0 #000, 140px 320px 0 #EA7, 160px 320px 0 #000, 180px 320px 0 #000, 200px 320px 0 #000, 220px 320px 0 #EC3, 240px 320px 0 #EA7, 260px 320px 0 #000, 60px 340px 0 #000, 80px 340px 0 #E97, 100px 340px 0 #EA7, 120px 340px 0 #E97, 140px 340px 0 #EA7, 160px 340px 0 #EA7, 180px 340px 0 #EA7, 200px 340px 0 #EA7, 220px 340px 0 #EC3, 240px 340px 0 #EA7, 260px 340px 0 #000, 60px 360px 0 #000, 80px 360px 0 #E97, 100px 360px 0 #EA7, 120px 360px 0 #EA7, 140px 360px 0 #EA7, 160px 360px 0 #EA7, 180px 360px 0 #EA7, 200px 360px 0 #EA7, 220px 360px 0 #EA7, 240px 360px 0 #000, 60px 380px 0 #000, 80px 380px 0 #E97, 100px 380px 0 #E97, 120px 380px 0 #EA7, 140px 380px 0 #EA7, 160px 380px 0 #EA7, 180px 380px 0 #EA7, 200px 380px 0 #EA7, 220px 380px 0 #EA7, 240px 380px 0 #000, 80px 400px 0 #000, 100px 400px 0 #E97, 120px 400px 0 #E97, 140px 400px 0 #E97, 160px 400px 0 #E97, 180px 400px 0 #E97, 200px 400px 0 #EA7, 220px 400px 0 #EA7, 240px 400px 0 #000, 60px 420px 0 #000, 80px 420px 0 #000, 100px 420px 0 #000, 120px 420px 0 #000, 140px 420px 0 #000, 160px 420px 0 #000, 180px 420px 0 #000, 200px 420px 0 #000, 220px 420px 0 #000, 240px 420px 0 #000, 260px 420px 0 #000, 40px 440px 0 #000, 60px 440px 0 #111, 80px 440px 0 #111, 100px 440px 0 #222, 120px 440px 0 #222, 140px 440px 0 #222, 160px 440px 0 #222, 180px 440px 0 #222, 200px 440px 0 #222, 220px 440px 0 #222, 240px 440px 0 #222, 260px 440px 0 #222, 280px 440px 0 #000, 20px 460px 0 #000, 40px 460px 0 #111, 60px 460px 0 #111, 80px 460px 0 #222, 100px 460px 0 #222, 120px 460px 0 #222, 140px 460px 0 #222, 160px 460px 0 #222, 180px 460px 0 #222, 200px 460px 0 #222, 220px 460px 0 #111, 240px 460px 0 #222, 260px 460px 0 #222, 280px 460px 0 #222, 300px 460px 0 #000, 20px 480px 0 #000, 40px 480px 0 #111, 60px 480px 0 #111, 80px 480px 0 #111, 100px 480px 0 #111, 120px 480px 0 #222, 140px 480px 0 #222, 160px 480px 0 #222, 180px 480px 0 #222, 200px 480px 0 #222, 220px 480px 0 #222, 240px 480px 0 #111, 260px 480px 0 #222, 280px 480px 0 #222, 300px 480px 0 #000, 20px 500px 0 #000, 40px 500px 0 #E97, 60px 500px 0 #EA7, 80px 500px 0 #000, 100px 500px 0 #111, 120px 500px 0 #222, 140px 500px 0 #222, 160px 500px 0 #222, 180px 500px 0 #222, 200px 500px 0 #222, 220px 500px 0 #222, 240px 500px 0 #000, 260px 500px 0 #E97, 280px 500px 0 #EA7, 300px 500px 0 #000, 20px 520px 0 #000, 40px 520px 0 #E97, 60px 520px 0 #EA7, 80px 520px 0 #000, 100px 520px 0 #111, 120px 520px 0 #222, 140px 520px 0 #222, 160px 520px 0 #222, 180px 520px 0 #222, 200px 520px 0 #222, 220px 520px 0 #222, 240px 520px 0 #000, 260px 520px 0 #E97, 280px 520px 0 #EA7, 300px 520px 0 #000, 40px 540px 0 #000, 60px 540px 0 #E97, 80px 540px 0 #000, 100px 540px 0 #000, 120px 540px 0 #111, 140px 540px 0 #222, 160px 540px 0 #222, 180px 540px 0 #222, 200px 540px 0 #222, 220px 540px 0 #222, 240px 540px 0 #000, 260px 540px 0 #E97, 280px 540px 0 #000, 60px 560px 0 #000, 80px 560px 0 #000, 100px 560px 0 #000, 120px 560px 0 #111, 140px 560px 0 #111, 160px 560px 0 #111, 180px 560px 0 #111, 200px 560px 0 #111, 220px 560px 0 #000, 240px 560px 0 #000, 260px 560px 0 #000, 100px 580px 0 #000, 120px 580px 0 #06B, 140px 580px 0 #06B, 160px 580px 0 #07B, 180px 580px 0 #07B, 200px 580px 0 #07B, 220px 580px 0 #000, 100px 600px 0 #000, 120px 600px 0 #06B, 140px 600px 0 #000, 160px 600px 0 #000, 180px 600px 0 #000, 200px 600px 0 #07B, 220px 600px 0 #000, 100px 620px 0 #000, 120px 620px 0 #06B, 140px 620px 0 #000, 180px 620px 0 #000, 200px 620px 0 #07B, 220px 620px 0 #000, 100px 640px 0 #000, 120px 640px 0 #111, 140px 640px 0 #000, 180px 640px 0 #000, 200px 640px 0 #111, 220px 640px 0 #000, 100px 660px 0 #000, 120px 660px 0 #000, 140px 660px 0 #000, 180px 660px 0 #000, 200px 660px 0 #000, 220px 660px 0 #000;
+}
+@media all and (max-width: 340px) {
+div[data-v-8d98681c] {
+    transform: scale(0.5);
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    margin: -5px 0 0 -5px;
+}
+}
 
 /**
   旋转
@@ -980,27 +1293,42 @@ to {
 }
 }
 .comKnapsackDiv[data-v-8fc46dda] {
-  height: 100%;
-  display: flex;
+  height: 100vh;
   overflow: hidden;
 }
 .comKnapsackDiv .comKnapsackDiv_left[data-v-8fc46dda] {
-  width: 30%;
+  width: 100%;
+  height: 40%;
+  overflow: hidden;
+  position: relative;
+}
+.comKnapsackDiv .comKnapsackDiv_left .comKnapsackDiv_left_seat[data-v-8fc46dda] {
+  width: 100%;
+  height: var(--conHeight);
+}
+.comKnapsackDiv .comKnapsackDiv_left .comKnapsackDiv_leftUp[data-v-8fc46dda] {
+  width: 100%;
+  height: calc(100% - var(--conHeight));
   overflow: auto;
   position: relative;
   border-right: 0.03125rem solid #d6d6d6;
+  display: flex;
+  justify-content: space-around;
 }
-.comKnapsackDiv .comKnapsackDiv_left .comKnapsackDiv_left_list[data-v-8fc46dda] {
-  height: 3.125rem;
-  overflow: auto;
-  line-height: 3.125rem;
-  text-align: center;
-  border-bottom: 0.03125rem solid #d6d6d6;
+.comKnapsackDiv .comKnapsackDiv_left .comKnapsackDiv_leftUp .comKnapsackDiv_leftUp_left[data-v-8fc46dda] {
+  width: 50%;
+}
+.comKnapsackDiv .comKnapsackDiv_left .comKnapsackDiv_leftUp .comKnapsackDiv_leftUp_left .comKnapsackDiv_leftUp_left1[data-v-8fc46dda] {
+  display: flex;
+}
+.comKnapsackDiv .comKnapsackDiv_left .comKnapsackDiv_leftUp .comKnapsackDiv_leftUp_left .comKnapsackDiv_leftUp_left2[data-v-8fc46dda] {
+  display: flex;
 }
 .comKnapsackDiv .comKnapsackDiv_right[data-v-8fc46dda] {
   width: 100%;
-  height: 100%;
+  height: 60%;
   position: relative;
+  overflow: auto;
 }
 .comKnapsackDiv .comKnapsackDiv_right .comKnapsackDiv_right_top[data-v-8fc46dda] {
   width: 100%;
@@ -2087,6 +2415,18 @@ to {
 }
 .pageCenter .login_conter .login_button .login_button_txt[data-v-c6c9028a]:active {
   opacity: 0.7;
+}
+.pageCenter .pageCenter_gif[data-v-c6c9028a] {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #E7E8E0;
+  text-align: center;
+}
+.pageCenter .pageCenter_gif .pageCenter_gif_img[data-v-c6c9028a] {
+  width: 19.375rem;
+  height: 19.375rem;
+  top: 11.71875rem;
 }
 
 /**

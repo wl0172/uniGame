@@ -1,5 +1,16 @@
 <script setup>
 import { ref } from "vue"
+import { headerMargin } from '@/state/bangs.js'
+// 全局属性
+import { 
+	pageArr, 
+	pageSwitch, 
+	pageSwitchMenu, 
+	battleInfo, 
+	hiddenPopup ,
+} from '@/state/index.js'
+
+import ComPeople from '@/components/comPeople/index.vue'
 
 let introduce = ref({
 	txt: ''
@@ -16,7 +27,7 @@ let leftMent = ref({
 	}]
 })
 
-// 左侧菜单
+// 上
 const handleLeftMent = (item) => {
 	console.log('左侧菜单======',item)
 	uni.showToast({
@@ -25,9 +36,9 @@ const handleLeftMent = (item) => {
 	})
 }
 
-// 右侧列表 - li
+// 下
 const handleRightIn = (item) => {
-	console.log('右侧菜单======list-li', item)
+	console.log('上点击======', item)
 	introduce.value.txt = item
 	uni.showToast({
 		icon: 'none',
@@ -35,24 +46,73 @@ const handleRightIn = (item) => {
 	})
 }
 
+// 关闭背包
+const handleCloseComKnapsack = () => {
+	hiddenPopup.value.show = false
+	hiddenPopup.value.width = 100
+	hiddenPopup.value.height = 100
+	pageSwitchMenu.value.index = 0
+	pageSwitchMenu.value.key = 'ComKnapsack'
+}
+
+
+
 </script>
 
 <template>
 	
 	<div class="comKnapsackDiv">
-	
-		<div>11111</div>
 
-		<!-- 左侧- 菜单 -->
+		<!-- 上 - 人形-装备 -->
 		<div class="comKnapsackDiv_left">
-			<div class="comKnapsackDiv_left_list" 
-				v-for="(item, index) in leftMent.arr" 
-				:key="item"
-				 @click.stop="handleLeftMent(item)">
-				{{ item.name }}
+			<div class="comKnapsackDiv_left_seat" :style="{ '--conHeight': headerMargin + 'px' }"></div>
+			<div class="comKnapsackDiv_leftUp" :style="{ '--conHeight': headerMargin + 'px' }">
+				
+				<div class="comKnapsackDiv_leftUp_left">
+					<div class="comKnapsackDiv_leftUp_left1">
+						<div>
+							头像
+						</div>
+						<div class="comKnapsackDiv_leftUp_left1_txt">
+							<div>name</div>
+							<div>sex</div>
+						</div>
+					</div>
+					<div class="comKnapsackDiv_leftUp_left2">
+						<div>血条:</div>
+						<div>100%</div>
+					</div>
+					<div class="comKnapsackDiv_leftUp_left2">
+						<div>血条:</div>
+						<div>100%</div>
+					</div>
+					<div class="comKnapsackDiv_leftUp_left2">
+						<div>血条:</div>
+						<div>100%</div>
+					</div>
+					<div class="comKnapsackDiv_leftUp_left2">
+						<div>血条:</div>
+						<div>100%</div>
+					</div>
+					<div class="comKnapsackDiv_leftUp_left2">
+						<div>血条:</div>
+						<div>100%</div>
+					</div>
+				</div>
+				
+				<div class="comKnapsackDiv_leftUp_right">
+					<!-- <div>1</div>
+					<div>1</div>
+					<div>1</div>
+					<div>1</div>
+					<div>1</div>
+					<div>1</div> -->
+					<ComPeople />
+				</div>
+				
 			</div>
 		</div>
-		<!-- 右侧 - 详情 -->
+		<!-- 下 - 物品 -->
 		<div class="comKnapsackDiv_right">
 			<div class="comKnapsackDiv_right_top">
 				<!-- 物品列表 -->
@@ -67,7 +127,7 @@ const handleRightIn = (item) => {
 			<!-- 操作 -->
 			<div class="comKnapsackDiv_right_butlist">
 				<div class="comKnapsackDiv_right_button">装备</div>
-				<div class="comKnapsackDiv_right_button">装备</div>
+				<div class="comKnapsackDiv_right_button" @click="handleCloseComKnapsack">关闭</div>
 			</div>
 		</div>
 		
@@ -77,67 +137,5 @@ const handleRightIn = (item) => {
 </template>
 
 <style scoped lang="less">
-.comKnapsackDiv{
-	height: 100%;
-	display: flex;
-	overflow: hidden;
-	.comKnapsackDiv_left{
-		width: 30%;
-		overflow: auto;
-		position: relative;
-		border-right: 1rpx solid #d6d6d6;
-		.comKnapsackDiv_left_list{
-			height: 100rpx;
-			overflow: auto;
-			line-height: 100rpx;
-			text-align: center;
-			border-bottom: 1rpx solid #d6d6d6;
-			// border-right: 1rpx solid #d6d6d6;
-		}
-	}
-	.comKnapsackDiv_right{
-		width: 100%;
-		height: 100%;
-		position: relative;
-		.comKnapsackDiv_right_top{
-			width: 100%;
-			height: 65%;
-			padding: 14rpx 0 0 0;
-			overflow: auto;
-			display: grid;
-			grid-template-columns: 33% 33% 33%;
-			justify-content: center;
-			.comKnapsackDiv_right_list{
-				width: 100%;
-				height: 150rpx;
-				margin: 0 0 10rpx 0;
-				.comKnapsackDiv_right_li{
-					width: 90%;
-					height: 100%;
-					background: red;
-					margin: 0 auto;
-				}
-			}
-		}
-		.comKnapsackDiv_right_txt{
-			width: 100%;
-			height: 20%;
-			background: red;
-		}
-		.comKnapsackDiv_right_butlist{
-			width: 100%;
-			height: calc( 15% - 7px );
-			background: red;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			.comKnapsackDiv_right_button{
-				color: #ffffff;
-				padding: 14rpx;
-				background: black;
-				border-radius: 14rpx;
-			}
-		}
-	}
-}
+@import url('index.less');
 </style>
