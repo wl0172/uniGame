@@ -113,7 +113,7 @@
 					v-for="(item, index) in [1, 2, 3]"
 					@click.stop="handleRightIn(item)">
 					<div class="comKnapsackDiv_right_li">
-						1
+						物品名称+图
 					</div>
 				</div>
 			</div>
@@ -122,11 +122,9 @@
 			<!-- 操作 -->
 			<div class="comKnapsackDiv_right_butlist">
 				<div class="comKnapsackDiv_right_button">装备</div>
-				<div
-					class="comKnapsackDiv_right_button"
-					@click="handleCloseComKnapsack">
-					关闭
-				</div>
+				<div class="comKnapsackDiv_right_button">卸载</div>
+				<div class="comKnapsackDiv_right_button">丢弃</div>
+				<div class="comKnapsackDiv_right_button" @click="handleCloseComKnapsack">关闭</div>
 			</div>
 		</div>
 	</div>
