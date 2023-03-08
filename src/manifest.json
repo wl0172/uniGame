@@ -50,7 +50,16 @@
             },
             /* SDK配置 */
             "sdkConfigs" : {
-                "ad" : {}
+                "ad" : {
+                    "gdt" : {},
+                    "csj" : {},
+                    "360" : {},
+                    "ks" : {},
+                    "ks-content" : {},
+                    "sigmob" : {},
+                    "hw" : {},
+                    "bd" : {}
+                }
             },
             "splashscreen" : {
                 "androidStyle" : "common",

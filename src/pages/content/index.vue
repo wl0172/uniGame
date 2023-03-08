@@ -31,7 +31,7 @@
 		</div>
 		<!-- 操作面板 - 以弹窗形式 -->
 		<ComPopup :hiddenPopup="hiddenPopup.show">
-			<component :is="pageArrMenu?.list[pageSwitchMenu.index][pageSwitchMenu.key]" />
+			<component :is="pageArrMenu?.list[pageSwitchMenu.index]['pageKey']" />
 		</ComPopup>
 	</div>
 	<!-- 背景图 -->

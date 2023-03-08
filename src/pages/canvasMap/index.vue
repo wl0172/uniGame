@@ -1,16 +1,15 @@
 <script setup>
 	import { ref } from 'vue'
-	import { pageSwitch, pageArr } from '@/state/index.js'
+	import { pageSwitch, pageArr, txtArr, scrollIndex } from '@/state/index.js'
 
 	// 去新场景
-	const handleToNewMap = (item, index) => {
-		uni.showToast({
-			icon: 'none',
-			title: `${item.name}==${Object.keys(item)[0]}==去新场景======`
-		})
+	const handleToNewMap = (item, index) => {		
 		pageSwitch.value.index = index
+		setTimeout(() => {
+			scrollIndex.value.id = `id-${txtArr.value.list.length-1}`
+		},50)
 		uni.navigateBack({
-			delta: 1
+			delta: 1,
 		})
 	}
 </script>

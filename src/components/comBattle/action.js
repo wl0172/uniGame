@@ -224,19 +224,21 @@ const handleToMap = () => {
 // 背包
 const handleOpenKnapsack = () => {
 	hiddenPopup.value.show = true
-	hiddenPopup.value.width = 100
-	hiddenPopup.value.height = 100
 	pageSwitchMenu.value.index = 0
-	pageSwitchMenu.value.key = 'ComKnapsack'
 }
 
 // 商店
 const handleToShop = () => {
-	hiddenPopup.value.show = true
-	hiddenPopup.value.width = 100
-	hiddenPopup.value.height = 100
-	pageSwitchMenu.value.index = 1
-	pageSwitchMenu.value.key = 'ComShop'
+	uni.navigateTo({
+		url: '/pages/shopping/index',
+	})
+}
+
+// 锻造
+const handleToForge = () =>{
+	uni.navigateTo({
+		url: '/pages/forge/index',
+	})
 }
 
 // 退出
@@ -273,5 +275,6 @@ export {
 	handleToMap, // 打开地图
 	handleOpenKnapsack, // 打开背包
 	handleToShop, // 打开商店
+	handleToForge,
 	handleLeave, // 退出
 }

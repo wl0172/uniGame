@@ -11,9 +11,10 @@
 
 <style scoped lang="less">
 	.main {
+		margin: 0 0 0 100rpx;
 		-webkit-transform: translate(-50%, -50%);
-		// transform: translate(-50%, -50%);
-		transform: scale(.2);
+		transform: translate(-50%, -50%);
+		transform: scale(.25);
 	}
 
 	div {

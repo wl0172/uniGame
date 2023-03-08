@@ -12,8 +12,10 @@ const handleShowToast = () => {
 	})
 }
 
-const handle = () => {
-	hiddenPopup.value.show = false
+const handleBack = () => {
+	uni.navigateBack({
+		delta: 1
+	})
 }
 
 </script>
@@ -23,7 +25,7 @@ const handle = () => {
 	<div class="comShopD">
 		<div class="comShopDiv">
 			
-			<div @click="handle">11</div>
+			<div @click="handleBack">关闭</div>
 			
 			<!-- npc -->
 			<div class="comShopDiv_npc">

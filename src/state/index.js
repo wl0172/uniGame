@@ -15,8 +15,10 @@ import {
 import ComBattle from "@/components/comBattle/index.vue"
 // 背包
 import ComKnapsack from '@/components/comKnapsack/index.vue'
-// 商店
-import ComShop from '@/components/comShop/index.vue'
+
+
+// 广告 - 测试
+import ComAdvertisement from '@/components/comAdvertisement'
 
 // 所有的场景地址 - map
 let mapRefPageArr = JSON.parse(JSON.stringify(mapRef.value))
@@ -29,28 +31,48 @@ const pageArr = ref({
 const pageSwitch = ref({
 	index: 0,
 })
-
 // 所有的场景 - 操作页
 const pageArrMenu = ref({
 	list: [{
-		"ComKnapsack": markRaw(ComKnapsack),
-		"name": '背包'
-	}, {
-		"ComShop": markRaw(ComShop),
-		"name": '商店'
+		'pageKey': markRaw(ComKnapsack),// 背包
+	},{
+		'pageKey': markRaw(ComAdvertisement),// 广告
 	}]
 })
 const pageSwitchMenu = ref({
 	index: 0,
-	key: 'ComKnapsack'
 })
-
 // 弹窗显示 - 隐藏
 const hiddenPopup = ref({
-	show: true,
+	show: false,
 	width: 100,
 	height: 100
 })
+
+
+
+
+
+
+
+
+
+// txt文字滚动下落 - 初始化 - 战斗信息面板 - txt
+let txtArr = ref({
+	list: [{
+		liTxt: `来到了${pageArr.value.list[pageSwitch.value.index].name}`
+	}]
+})
+
+// txt下标
+let scrollIndex = ref({
+	id: 'id-1'
+})
+
+
+
+
+
 
 
 
@@ -67,6 +89,8 @@ const battleInfo = ref({
 	monster: {}
 })
 
+
+
 export {
 	pageArr,// 所有的场景地址 - map
 	pageSwitch,// 所有的场景switch
@@ -77,5 +101,8 @@ export {
 	useInfo,// 用户信息
 	battleInfo,//战斗 - 角色 + 怪物 = 信息
 	
-	hiddenPopup// 全局弹窗
+	hiddenPopup,// 全局弹窗
+	
+	txtArr,// 战斗信息面板 - txt
+	scrollIndex,// // txt下标
 }

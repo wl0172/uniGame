@@ -78,7 +78,16 @@
         "dSYMs": false
       },
       "plugins": {
-        "ad": {},
+        "ad": {
+          "360": {},
+          "gdt": {},
+          "csj": {},
+          "ks": {},
+          "ks-content": {},
+          "sigmob": {},
+          "hw": {},
+          "bd": {}
+        },
         "audio": {
           "mp3": {
             "description": "Android平台录音支持MP3格式文件"

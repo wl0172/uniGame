@@ -25,6 +25,18 @@
 				// "disableScroll": true
 			}
 		},
+		// 地商店
+		{
+			"path": "pages/shopping/index",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none" // 将回弹属性关掉
+				},
+				"navigationBarTextStyle": "black"
+				// "disableScroll": true
+			}
+		},
 		// 锻造
 		{
 			"path": "pages/forge/index",
@@ -40,6 +52,21 @@
 		// 登录 - 注册
 		{
 			"path": "pages/loginOrRegister/index",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none" ,// 将回弹属性关掉
+					"splashscreen" : {
+					  "alwaysShowBeforeRender" : true
+					}
+				},
+				"navigationBarTextStyle": "black"
+				// "disableScroll": true,
+			}
+		},
+		// 广告
+		{
+			"path": "pages/comAdPagePath/aaaa/index",
 			"style": {
 				"navigationStyle": "custom",
 				"app-plus": {
