@@ -4253,6 +4253,16 @@ if (uni.restoreGlobal) {
         success(response) {
           if (response.statusCode == 200) {
             resolve(response.data);
+          } else if (response.statusCode == 401) {
+            uni.showToast({
+              icon: "none",
+              title: "\u767B\u5F55\u8FC7\u671F\u4E86\uFF0C\u8BF7\u91CD\u65B0\u767B\u5F55!",
+              duration: 5e3
+            });
+            uni.clearStorageSync();
+            uni.reLaunch({
+              url: "/pages/loginOrRegister/index"
+            });
           } else {
             uni.showToast({
               icon: "none",

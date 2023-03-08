@@ -20,7 +20,7 @@ import ComKnapsack from '@/components/comKnapsack/index.vue'
 // 广告 - 测试
 import ComAdvertisement from '@/components/comAdvertisement'
 
-// 所有的场景地址 - map
+// 所有的场景地址 - map - 地图切换等
 let mapRefPageArr = JSON.parse(JSON.stringify(mapRef.value))
 for(let i of mapRefPageArr){
 	i.pageComponent = markRaw(ComBattle)
@@ -31,7 +31,7 @@ const pageArr = ref({
 const pageSwitch = ref({
 	index: 0,
 })
-// 所有的场景 - 操作页
+// 所有的场景 - 操作页 - 比如背包等
 const pageArrMenu = ref({
 	list: [{
 		'pageKey': markRaw(ComKnapsack),// 背包

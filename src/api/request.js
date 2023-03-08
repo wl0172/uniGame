@@ -11,10 +11,6 @@ let errorCnsRefTxt = new Map(Object.entries(errorCnsRef.value))
 
 export default (path = '', method = 'GET', contentType = 'application/json', data = {}) => {
 	
-	// 地图
-	// let mapPage = pageArr.value.list[pageSwitch.value.index]
-	// console.log(mapPage, '----------')
-	
 	// uni.showLoading({
 	// 	title: "加载中",
 	// 	mask: true
@@ -31,13 +27,22 @@ export default (path = '', method = 'GET', contentType = 'application/json', dat
 				'Accept': contentType
 			},
 			url: 'http://117.78.26.78' + path,
-			// url: '/api' + path,
 			method: method,
 			data,
 			success(response) {
 				// uni.hideLoading()
 				if(response.statusCode == 200){
 					resolve(response.data)
+				}else if(response.statusCode == 401){
+					uni.showToast({
+						icon: "none",
+						title: '登录过期了，请重新登录!',
+						duration: 5000
+					});
+					uni.clearStorageSync()
+					uni.reLaunch({
+						url: '/pages/loginOrRegister/index'
+					})
 				}else{
 					uni.showToast({
 						icon: "none",
