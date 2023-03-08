@@ -31,6 +31,9 @@ if (uni.restoreGlobal) {
 }
 (function(vue, shared) {
   "use strict";
+  const ON_SHOW = "onShow";
+  const ON_HIDE = "onHide";
+  const ON_LOAD = "onLoad";
   function formatAppLog(type, filename, ...args) {
     if (uni.__log__) {
       uni.__log__(type, filename, ...args);
@@ -41,6 +44,12 @@ if (uni.restoreGlobal) {
   function resolveEasycom(component, easycom) {
     return shared.isString(component) ? easycom : component;
   }
+  const createHook = (lifecycle) => (hook, target = vue.getCurrentInstance()) => {
+    !vue.isInSSRComponentSetup && vue.injectHook(lifecycle, hook, target);
+  };
+  const onShow = /* @__PURE__ */ createHook(ON_SHOW);
+  const onHide = /* @__PURE__ */ createHook(ON_HIDE);
+  const onLoad = /* @__PURE__ */ createHook(ON_LOAD);
   const headerMargin = wx.getSystemInfoSync().statusBarHeight;
   wx.getSystemInfoSync().screenHeight;
   const headerHeight = 90;
@@ -4220,7 +4229,7 @@ if (uni.restoreGlobal) {
     }
     return target;
   };
-  const _sfc_main$g = {
+  const _sfc_main$h = {
     __name: "index",
     setup(__props) {
       return (_ctx, _cache) => {
@@ -4235,7 +4244,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
+  const ComLine = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-7b7834fe"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comLine/index.vue"]]);
   let errorCnsRefTxt = new Map(Object.entries(errorCnsRef.value));
   const request = (path = "", method = "GET", contentType = "application/json", data = {}) => {
     const token2 = uni.getStorageSync("token");
@@ -4303,6 +4312,31 @@ if (uni.restoreGlobal) {
   function postFightPrize(params) {
     return request(`/fight/prize`, "POST", "application/json", params);
   }
+  let bgAudioPaht = "../../static/audio/bg.mp3";
+  let AttackAudioPaht = "../../static/audio/attack.mp3";
+  let innerAudioContext = uni.createInnerAudioContext();
+  const audioPlay = (state = 1) => {
+    if (state == 0) {
+      innerAudioContext.pause();
+      return;
+    } else if (state == 1) {
+      innerAudioContext.autoplay = true;
+      innerAudioContext.loop = true;
+      innerAudioContext.src = bgAudioPaht;
+      innerAudioContext.onPlay();
+    } else if (state == 2) {
+      innerAudioContext.play();
+    }
+  };
+  const audioAttack = () => {
+    let innerAudioContext2 = uni.createInnerAudioContext();
+    innerAudioContext2.autoplay = true;
+    innerAudioContext2.src = AttackAudioPaht;
+    innerAudioContext2.onPlay({});
+  };
+  const audioClose = () => {
+    audioPlay(0);
+  };
   const handleGetUserInfo = () => {
     if (useInfo.value.token) {
       postUserInfo({
@@ -4311,7 +4345,7 @@ if (uni.restoreGlobal) {
         "backpack": true,
         "equipment": true
       }).then((res) => {
-        formatAppLog("log", "at components/comBattle/action.js:44", res, "\u73A9\u5BB6\u6700\u65B0\u4FE1\u606F->comBattle->action->handleGetUserInfo->");
+        formatAppLog("log", "at components/comBattle/action.js:46", res, "\u73A9\u5BB6\u6700\u65B0\u4FE1\u606F->comBattle->action->handleGetUserInfo->");
         uni.setStorageSync("playerInfo", res.player);
         battleInfo.value.player = (res == null ? void 0 : res.player) ? res == null ? void 0 : res.player : {}, battleInfo.value.monster = (res == null ? void 0 : res.fighter) ? res == null ? void 0 : res.fighter : {};
       });
@@ -4381,6 +4415,7 @@ if (uni.restoreGlobal) {
         uni.hideLoading();
         if (res.status == 1) {
           buckleBlood(battleInfo, res, txtArr2, 1, scrollIndex2);
+          audioAttack();
         }
         if (res.status == 2) {
           pickUupCorpses(txtArr2, scrollIndex2);
@@ -4388,7 +4423,16 @@ if (uni.restoreGlobal) {
         if (res.status == 3) {
           uni.showToast({
             icon: "none",
-            title: "\u554A~~~\u6211\u6B7B\u4E86\uFF01\uFF01\uFF01"
+            title: "\u554A~~~\u6211\u6B7B\u4E86\uFF01\uFF01\uFF01",
+            duration: 2e3,
+            mask: true,
+            success() {
+              setTimeout(() => {
+                uni.reLaunch({
+                  url: "/pages/diePage/index"
+                });
+              }, 2e3);
+            }
           });
         }
       });
@@ -4461,7 +4505,7 @@ if (uni.restoreGlobal) {
     }
     return bloodNum;
   }
-  const _sfc_main$f = {
+  const _sfc_main$g = {
     __name: "index",
     setup(__props) {
       const progressConfig = {
@@ -4603,15 +4647,15 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
-  const _sfc_main$e = {};
+  const ComBattle = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-781aabaf"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comBattle/index.vue"]]);
+  const _sfc_main$f = {};
   function _sfc_render$3(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock("div", { class: "main" }, [
       vue.createElementVNode("div")
     ]);
   }
-  const ComPeople = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$3], ["__scopeId", "data-v-8d98681c"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comPeople/index.vue"]]);
-  const _sfc_main$d = {
+  const ComPeople = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$3], ["__scopeId", "data-v-8d98681c"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comPeople/index.vue"]]);
+  const _sfc_main$e = {
     __name: "index",
     setup(__props) {
       const progressConfig = {
@@ -4773,7 +4817,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComKnapsack = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-8fc46dda"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comKnapsack/index.vue"]]);
+  const ComKnapsack = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-8fc46dda"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comKnapsack/index.vue"]]);
   const AD_URL = "https://wxac1.dcloud.net.cn/openPage/acs";
   const AD_REPORT_URL = "https://wxac1.dcloud.net.cn/openPage/acs";
   const events = {
@@ -4781,7 +4825,7 @@ if (uni.restoreGlobal) {
     close: "close",
     error: "error"
   };
-  const _sfc_main$c = {
+  const _sfc_main$d = {
     name: "AdInteractive",
     props: {
       options: {
@@ -4911,8 +4955,8 @@ if (uni.restoreGlobal) {
       }, void 0, true)
     ]);
   }
-  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$2], ["__scopeId", "data-v-449f90a6"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/node_modules/@dcloudio/uni-components/lib/ad-interactive/ad-interactive.vue"]]);
-  const _sfc_main$b = {
+  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$2], ["__scopeId", "data-v-449f90a6"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/node_modules/@dcloudio/uni-components/lib/ad-interactive/ad-interactive.vue"]]);
+  const _sfc_main$c = {
     data() {
       return {};
     },
@@ -4950,7 +4994,7 @@ if (uni.restoreGlobal) {
       }, 8, ["onLoad", "onError"])
     ]);
   }
-  const ComAdvertisement = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$1], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comAdvertisement/index.vue"]]);
+  const ComAdvertisement = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$1], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comAdvertisement/index.vue"]]);
   let mapRefPageArr = JSON.parse(JSON.stringify(mapRef.value));
   for (let i of mapRefPageArr) {
     i.pageComponent = vue.markRaw(ComBattle);
@@ -4991,7 +5035,7 @@ if (uni.restoreGlobal) {
     player: uni.getStorageSync("playerInfo") ? uni.getStorageSync("playerInfo") : {},
     monster: {}
   });
-  const _sfc_main$a = {
+  const _sfc_main$b = {
     __name: "index",
     props: {
       comHeight: {
@@ -5021,8 +5065,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
-  const _sfc_main$9 = {
+  const ComHeader = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-87c09459"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comHeader/index.vue"]]);
+  const _sfc_main$a = {
     __name: "index",
     setup(__props) {
       const handleDiv = () => {
@@ -5046,10 +5090,19 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const ComPopup = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-4a3567c6"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comPopup/index.vue"]]);
-  const _sfc_main$8 = {
+  const ComPopup = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-4a3567c6"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/components/comPopup/index.vue"]]);
+  const _sfc_main$9 = {
     __name: "index",
     setup(__props) {
+      onLoad(() => {
+        audioPlay();
+      });
+      onShow(() => {
+        audioPlay(2);
+      });
+      onHide(() => {
+        audioClose();
+      });
       return (_ctx, _cache) => {
         var _a, _b;
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
@@ -5082,8 +5135,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesContentIndex = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-148c4b58"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/content/index.vue"]]);
-  const _sfc_main$7 = {
+  const PagesContentIndex = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-148c4b58"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/content/index.vue"]]);
+  const _sfc_main$8 = {
     __name: "index",
     setup(__props) {
       const handleToNewMap = (item, index) => {
@@ -5117,9 +5170,9 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesCanvasMapIndex = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-419b8f55"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/canvasMap/index.vue"]]);
+  const PagesCanvasMapIndex = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-419b8f55"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/canvasMap/index.vue"]]);
   const _imports_0$1 = "/static/image/1.png";
-  const _sfc_main$6 = {
+  const _sfc_main$7 = {
     __name: "index",
     setup(__props) {
       let shopArr = vue.ref(40);
@@ -5195,7 +5248,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesShoppingIndex = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-6cc80e65"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/shopping/index.vue"]]);
+  const PagesShoppingIndex = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-6cc80e65"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/shopping/index.vue"]]);
   const handleStartForge = () => {
     formatAppLog("log", "at pages/forge/index.js:9", "\u5F00\u59CB\u953B\u9020");
   };
@@ -5204,7 +5257,7 @@ if (uni.restoreGlobal) {
       delta: 1
     });
   };
-  const _sfc_main$5 = {
+  const _sfc_main$6 = {
     __name: "index",
     setup(__props) {
       vue.ref("\u953B\u9020");
@@ -5244,7 +5297,43 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesForgeIndex = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-90f83137"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/forge/index.vue"]]);
+  const PagesForgeIndex = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-90f83137"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/forge/index.vue"]]);
+  const _sfc_main$5 = {
+    __name: "index",
+    setup(__props) {
+      vue.ref("index");
+      const handleBrokenBlood = () => {
+        uni.reLaunch({
+          url: "/pages/content/index"
+        });
+      };
+      const handleFullBlood = () => {
+        uni.showToast({
+          icon: "none",
+          title: "\u9700\u8981\u770B\u5E7F\u544A",
+          duration: 3e3
+        });
+      };
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", { class: "diePageDiv" }, [
+          vue.createElementVNode("div", { class: "diePageDiv_conter" }, [
+            vue.createElementVNode("div", { class: "diePageDiv_conter_txt" }, "\u4F60\u88AB\u6B8B\u5FCD\u7684\u51FB\u8D25\u4E86..."),
+            vue.createElementVNode("div", { class: "diePageDiv_conter_but" }, [
+              vue.createElementVNode("button", {
+                class: "diePageDiv_conter_button",
+                onClick: handleBrokenBlood
+              }, "\u62D6\u7740\u6B8B\u7834\u7684\u8EAB\u4F53\u590D\u6D3B"),
+              vue.createElementVNode("button", {
+                class: "diePageDiv_conter_button",
+                onClick: handleFullBlood
+              }, "\u6EE1\u8840\u590D\u6D3B")
+            ])
+          ])
+        ]);
+      };
+    }
+  };
+  const PagesDiePageIndex = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-f41d58f2"], ["__file", "/Users/cce/Desktop/myDemo/uniappGame/uniGame/src/pages/diePage/index.vue"]]);
   const _imports_0 = "/static/gif/1.gif";
   let loginState = vue.ref({
     isState: 1
@@ -5510,6 +5599,7 @@ if (uni.restoreGlobal) {
   __definePage("pages/canvasMap/index", PagesCanvasMapIndex);
   __definePage("pages/shopping/index", PagesShoppingIndex);
   __definePage("pages/forge/index", PagesForgeIndex);
+  __definePage("pages/diePage/index", PagesDiePageIndex);
   __definePage("pages/loginOrRegister/index", PagesLoginOrRegisterIndex);
   __definePage("pages/comAdPagePath/aaaa/index", PagesComAdPagePathAaaaIndex);
   const pageAddress = () => {

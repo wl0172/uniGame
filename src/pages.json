@@ -25,7 +25,7 @@
 				// "disableScroll": true
 			}
 		},
-		// 地商店
+		// 商店
 		{
 			"path": "pages/shopping/index",
 			"style": {
@@ -40,6 +40,18 @@
 		// 锻造
 		{
 			"path": "pages/forge/index",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none" // 将回弹属性关掉
+				},
+				"navigationBarTextStyle": "black"
+				// "disableScroll": true
+			}
+		},
+		// 死亡页
+		{
+			"path": "pages/diePage/index",
 			"style": {
 				"navigationStyle": "custom",
 				"app-plus": {

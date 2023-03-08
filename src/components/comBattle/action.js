@@ -31,6 +31,8 @@ import {
 	mapRef,
 } from '@/state/config/index.js'
 
+import { audioAttack } from '@/state/audio/index.js'
+
 
 // 获取玩家最新信息
 const handleGetUserInfo = () => {
@@ -165,6 +167,7 @@ const handleSeachItem = (txtArr, scrollIndex) => {
 			if (res.status == 1) {
 				// 掉血
 				buckleBlood(battleInfo, res, txtArr, 1, scrollIndex)
+				audioAttack()
 			}
 			// 2 - 胜利
 			if (res.status == 2) {
@@ -175,7 +178,16 @@ const handleSeachItem = (txtArr, scrollIndex) => {
 			if (res.status == 3) {
 				uni.showToast({
 					icon: 'none',
-					title: '啊~~~我死了！！！'
+					title: '啊~~~我死了！！！',
+					duration: 2000,
+					mask: true,
+					success(){
+						setTimeout(()=>{
+							uni.reLaunch({
+								url: '/pages/diePage/index'
+							})	
+						},2000)
+					}
 				})
 			}
 		})

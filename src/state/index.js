@@ -1,4 +1,4 @@
-import { ref, markRaw } from 'vue'
+import { ref, computed ,markRaw } from 'vue'
 // 配置
 // 配置文件
 import { 
@@ -68,10 +68,6 @@ let txtArr = ref({
 let scrollIndex = ref({
 	id: 'id-1'
 })
-
-
-
-
 
 
 

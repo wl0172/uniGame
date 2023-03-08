@@ -1,5 +1,5 @@
 <script setup>
-	import { onLoad, onShow } from '@dcloudio/uni-app'
+	import { onLoad, onShow, onHide } from '@dcloudio/uni-app'
 	import { ref, reactive, markRaw, onMounted, watch } from 'vue'
 	import { headerHeight, conHeight, headerMargin } from '@/state/bangs.js'
 	// 默认的刘海屏兼容header
@@ -10,13 +10,18 @@
 	// 全局属性 - 场景 - 切换
 	import { pageArr, pageSwitch, pageArrMenu, pageSwitchMenu, hiddenPopup } from '@/state/index.js'
 
-	// 监听页面组件变化
-	// watch([pageSwitch.value, pageSwitchMenu.value], ([newValue1, oldValue1],[newValue2, oldValue2]) => {
-	// 	console.log(newValue1, '  主场景watch,newValue1======')
-	// 	console.log(newValue2, '  主场景watch,newValue2======')
-	// 	pageSwitch.value.index = newValue1[0].index
-	// 	pageSwitch.key = newValue1[0].key
-	// })
+	import { audioPlay, audioClose } from '@/state/audio/index.js'
+	
+	onLoad(()=>{
+		audioPlay()
+	})
+	onShow(()=>{
+		audioPlay(2)
+	})
+	onHide(()=>{
+		audioClose()
+	})
+	
 </script>
 
 <template>
@@ -36,6 +41,7 @@
 	</div>
 	<!-- 背景图 -->
 	<div class="bg"></div>
+	
 </template>
 
 <style scoped lang="less">
