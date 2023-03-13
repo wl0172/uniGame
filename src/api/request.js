@@ -46,7 +46,7 @@ export default (path = '', method = 'GET', contentType = 'application/json', dat
 				}else{
 					uni.showToast({
 						icon: "none",
-						title: errorCnsRefTxt.get(response.data.message),
+						title: errorCnsRefTxt.get(response.data.message) || response.data.message,
 						duration: 5000
 					});
 					resolve(response.data)
