@@ -13,7 +13,7 @@ export function bloodShow(objInfo={},status=0){
 	}
 	if(status == 1 && objInfo.hp > -1){
 		for (let i = 0; i < monsterRefArr.length; i++) {
-			if(objInfo.id == monsterRefArr[i].id){
+			if(objInfo.index == monsterRefArr[i].id){
 				bloodNum = +(objInfo.hp/monsterRefArr[i].hp) * 100
 			}
 		}

@@ -1,14 +1,22 @@
 <script setup>
 import { ref } from "vue"
 import { headerMargin } from '@/state/bangs.js'
-import { txtValue,handleArticle, handleBack } from './index.js'
 // 线
 import ComLine from "@/components/comLine/index.vue"
 // 全局属性
 import { battleInfo } from '@/state/index.js'
-
 // 血量展示
 import { bloodShow } from '@/state/bloodConfig/index.js'
+// action
+import { 
+	txtValue,
+	handleBack,
+	handleArticle,
+	handleDiscard,
+	handleAction,
+	handleEquip
+} from './index.js'
+
 // 进度条配置
 const progressConfig = {
 	border_radius: 50,
@@ -99,7 +107,7 @@ const progressConfig = {
 							@click="handleArticle(item,index)"
 							class="comBattleDiv_battle_2_list_li" 
 							v-for="(item,index) in new Array(150)" :key="item">
-							{{ index }}aa
+							<div>{{ index }}</div>
 						</div>
 					</div>
 				</div>
@@ -109,11 +117,9 @@ const progressConfig = {
 		</div>
 		<!-- 操作菜单 -->
 		<div class="forgeDiv_footer">
-			<div>丢弃</div>
-			<div>售出</div>
-			<div>买进</div>
-			<div>使用</div>
-			<div>装备</div>
+			<div v-if="true" @click="handleDiscard">丢弃</div>
+			<div v-if="true" @click="handleAction">使用</div>
+			<div v-if="true" @click="handleEquip">装备</div>
 			<div @click="handleBack">离开</div>
 		</div>
 	

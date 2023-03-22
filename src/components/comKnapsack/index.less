@@ -99,10 +99,22 @@
 					display: flex;
 					flex-wrap: wrap;
 					.comBattleDiv_battle_2_list_li{
-						width: 60rpx;
-						height: 60rpx;
+						width: 95rpx;
+						height: 95rpx;
+						position: relative;
+					}
+					.comBattleDiv_battle_2_list_li:active{
 						background: red;
-					}	
+					}
+					.comBattleDiv_battle_2_list_li::after{
+						content: '';
+						border: 1rpx solid red;
+						width: 100%;
+						height: 100%;
+						position: absolute;
+						left: 0;
+						top: 0;
+					}
 				}
 			}
 			.comBattleDiv_battle_2_txt{

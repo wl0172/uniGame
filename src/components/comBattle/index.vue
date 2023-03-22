@@ -64,7 +64,8 @@ handleGetUserInfo()
 							:stroke-width="progressConfig.stroke_width"
 							:backgroundColor="progressConfig.backgroundColor" 
 							:active="progressConfig.active"
-							:percent="bloodShow(battleInfo.player,0)" />
+							:percent="bloodShow(battleInfo.player,0)" 
+						/>
 						<div class="comBattleDiv_battle_1_div_blood1">{{ battleInfo.player.hp }}</div>
 					</div>
 				</div>
@@ -76,13 +77,15 @@ handleGetUserInfo()
 						</div>
 						<div class="comBattleDiv_battle_1_div_i_name">{{ battleInfo?.monster?.name }}</div>
 						<progress 
+							style="transform:rotate(180deg)"
 							activeColor="#ceb284"
-							class="comBattleDiv_battle_1_div_progress" 
-							:border-radius="progressConfig.border_radius"
-							:stroke-width="progressConfig.stroke_width" 
-							:backgroundColor="progressConfig.backgroundColor"
-							:active="progressConfig.active" 
-							:percent="bloodShow(battleInfo?.monster,1)" />
+							class="comBattleDiv_battle_1_div_progress"
+							:border-radius="progressConfig.border_radius" 
+							:stroke-width="progressConfig.stroke_width"
+							:backgroundColor="progressConfig.backgroundColor" 
+							:active="progressConfig.active"
+							:percent="bloodShow(battleInfo.monster,1)" 
+						/>
 						<div class="comBattleDiv_battle_1_div_blood1">{{ battleInfo?.monster?.hp }}</div>
 					</div>
 				</div>
