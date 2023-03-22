@@ -4793,9 +4793,10 @@ if (uni.restoreGlobal) {
             ]),
             vue.createCommentVNode(" \u7EBF "),
             vue.createVNode(ComLine),
-            vue.createCommentVNode(" \u80CC\u5305 + txt "),
+            vue.createCommentVNode(" \u80CC\u5305\u7F51\u683C + txt "),
             vue.createElementVNode("div", { class: "comBattleDiv_battle_2" }, [
               vue.createElementVNode("div", { class: "comBattleDiv_battle_2_list" }, [
+                vue.createElementVNode("div", null, "\u7B5B\u9009"),
                 vue.createElementVNode("div", { class: "comBattleDiv_battle_2_list_ui" }, [
                   (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(new Array(150), (item, index) => {
                     return vue.openBlock(), vue.createElementBlock("div", {
@@ -5175,17 +5176,18 @@ if (uni.restoreGlobal) {
           vue.createElementVNode("div", { class: "forgeDiv_conter" }, [
             vue.createCommentVNode(" \u6C47\u7387 "),
             vue.createElementVNode("div", null, [
-              vue.createTextVNode(" \u91D1 \u94F6 \u94DC "),
-              vue.createElementVNode("image", {
-                style: { "width": "600px", "height": "500px", "position": "absolute", "left": "-77px" },
-                src: "https://img0.baidu.com/it/u=536060619,532633719&fm=253&fmt=auto&app=138&f=JPEG?w=658&h=447",
-                mode: ""
-              })
+              vue.createElementVNode("div", null, "\u4ECA\u65E5\u6C47\u7387\uFF1A"),
+              vue.createElementVNode("div", null, "\u91D1 100 = 1\u5E01"),
+              vue.createElementVNode("div", null, "\u94F6 100 = 1\u91D1"),
+              vue.createElementVNode("div", null, "\u94DC 100 = 1\u94F6")
             ]),
             vue.createCommentVNode(" \u5546\u4EBA "),
             vue.createElementVNode("div", null, [
-              vue.createElementVNode("div", null, "\u5934\u50CF"),
-              vue.createElementVNode("div", null, " \u540D\u5B57 \u4E00\u53E5\u8BDD ")
+              vue.createElementVNode("div", null, [
+                vue.createElementVNode("div", null, "\u5934\u50CF"),
+                vue.createElementVNode("div", null, "\u540D\u5B57 \u4E00\u53E5\u8BDD")
+              ]),
+              vue.createElementVNode("div", null, "\u7269\u54C1\u5217\u8868")
             ]),
             vue.createCommentVNode(" \u4ECB\u7ECD "),
             vue.createElementVNode("div"),
@@ -5194,11 +5196,8 @@ if (uni.restoreGlobal) {
           ]),
           vue.createCommentVNode(" \u64CD\u4F5C\u83DC\u5355 "),
           vue.createElementVNode("div", { class: "forgeDiv_footer" }, [
-            vue.createElementVNode("div", null, "\u4E22\u5F03"),
             vue.createElementVNode("div", null, "\u552E\u51FA"),
             vue.createElementVNode("div", null, "\u4E70\u8FDB"),
-            vue.createElementVNode("div", null, "\u4F7F\u7528"),
-            vue.createElementVNode("div", null, "\u88C5\u5907"),
             vue.createElementVNode("div", {
               onClick: _cache[0] || (_cache[0] = (...args) => vue.unref(handleBack$1) && vue.unref(handleBack$1)(...args))
             }, "\u79BB\u5F00")

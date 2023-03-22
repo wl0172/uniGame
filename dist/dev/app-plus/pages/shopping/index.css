@@ -297,7 +297,18 @@ to {
 .forgeDiv .forgeDiv_conter[data-v-6cc80e65] {
   width: 100%;
   height: calc(100vh - var(--headerMargin) - 6.875rem);
-  background: yellow;
+  position: relative;
+  z-index: 99;
+}
+.forgeDiv .forgeDiv_conter[data-v-6cc80e65]::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px dashed #806868;
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
 }
 .forgeDiv .forgeDiv_footer[data-v-6cc80e65] {
   height: 5.625rem;

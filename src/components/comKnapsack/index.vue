@@ -112,9 +112,10 @@ const progressConfig = {
 			</div>
 			<!-- 线 -->
 			<ComLine />
-			<!-- 背包 + txt -->
+			<!-- 背包网格 + txt -->
 			<div class="comBattleDiv_battle_2" >
 				<div class="comBattleDiv_battle_2_list">
+					<div>筛选</div>
 					<div class="comBattleDiv_battle_2_list_ui">
 						<div 
 							@click="handleArticle(item,index)"

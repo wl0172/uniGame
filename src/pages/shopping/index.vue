@@ -13,18 +13,18 @@ let a = ref('锻造')
 		<div class="forgeDiv_conter">
 			<!-- 汇率 -->
 			<div>
-				金
-				银
-				铜
-				<image style="width: 600px;height: 500px;position: absolute;left: -77px;" src="https://img0.baidu.com/it/u=536060619,532633719&fm=253&fmt=auto&app=138&f=JPEG?w=658&h=447" mode=""></image>
+				<div>今日汇率：</div>
+				<div>金 100 = 1币</div>
+				<div>银 100 = 1金</div>
+				<div>铜 100 = 1银</div>
 			</div>
 			<!-- 商人 -->
 			<div>
-				<div>头像</div>
 				<div>
-					名字
-					一句话
+					<div>头像</div>
+					<div>名字 一句话</div>
 				</div>
+				<div>物品列表</div>
 			</div>
 			<!-- 介绍 -->
 			<div></div>
@@ -34,11 +34,8 @@ let a = ref('锻造')
 		</div>
 		<!-- 操作菜单 -->
 		<div class="forgeDiv_footer">
-			<div>丢弃</div>
 			<div>售出</div>
 			<div>买进</div>
-			<div>使用</div>
-			<div>装备</div>
 			<div @click="handleBack">离开</div>
 		</div>
 	
