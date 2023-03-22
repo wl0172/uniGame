@@ -44,9 +44,14 @@ const handleGetUserInfo = () => {
 			"equipment": true // 装备 玩家身上的装备
 		}).then((res) => {
 			console.log(res, 'comBattle->action->handleGetUserInfo->玩家最新信息->======')
-			uni.setStorageSync('playerInfo', res.player);
-			battleInfo.value.player = res?.player ? res?.player : {},
-			battleInfo.value.monster = res?.fighter ? res?.fighter : {}//res?.player
+			uni.setStorageSync('playerInfo', res.player)
+			battleInfo.value.player = res?.player ? res?.player : {}
+			// 如果有偶怪的信息
+			if(res?.fighter){
+				const getMon = monsterRef.value.find(item => item.id == res?.fighter?.index)
+				const getMonsters = {...getMon,...res?.fighter}
+				battleInfo.value.monster = getMonsters//res?.player
+			}
 		})
 	}
 }

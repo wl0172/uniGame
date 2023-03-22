@@ -33,11 +33,28 @@ const progressConfig = {
 		<div class="forgeDiv_conter">
 			<!-- 左侧 - 角色 + 右侧 - 怪物 -->
 			<div class="comBattleDiv_battle_1">
-				<!-- 角色 -->
-				<div class="comBattleDiv_battle_1_div">
+				<image style="width: 100%;height: 100%;position: absolute;" src="@/static/image/22.jpeg" mode=""></image>
+				<!-- 左 -->
+				<div class="comBattleDiv_battle_1_div comBattleDiv_left">
+					<div class="comBattleDiv_left_li">
+						<div class="comBattleDiv_left_li_div">1</div>
+						<div class="comBattleDiv_left_li_div">1</div>
+						<div class="comBattleDiv_left_li_div">1</div>
+					</div>
+					<div class="comBattleDiv_left_li comBattleDiv_left_lis">
+						<image src="@/static/image/11.png" mode=""></image>
+					</div>
+					<div class="comBattleDiv_left_li">
+						<div class="comBattleDiv_left_li_div">1</div>
+						<div class="comBattleDiv_left_li_div">1</div>
+						<div class="comBattleDiv_left_li_div">1</div>
+					</div>
+				</div>
+				<!-- 右 -->
+				<div class="comBattleDiv_battle_1_div" style="background: #fff5e1;">
 					<div class="comBattleDiv_battle_1_divs">
 						<div class="comBattleDiv_battle_1_div_img">
-							<!-- <image :src="battleInfo.player.img" alt="" /> -->
+							<image src="@/static/image/11.png" alt="" />
 						</div>
 						<div class="comBattleDiv_battle_1_div_i_name">{{ battleInfo.player.name }}</div>
 						<!-- 血量 -->
@@ -91,10 +108,6 @@ const progressConfig = {
 						
 					</div>
 				</div>
-				<!-- 怪物 -->
-				<div class="comBattleDiv_battle_1_div">
-					<div>装备栏</div>
-				</div>
 			
 			</div>
 			<!-- 线 -->
@@ -111,6 +124,8 @@ const progressConfig = {
 						</div>
 					</div>
 				</div>
+				<!-- 线 -->
+				<ComLine />
 				<div class="comBattleDiv_battle_2_txt">{{ txtValue }}</div>
 			</div>
 			

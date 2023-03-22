@@ -73,7 +73,7 @@ handleGetUserInfo()
 				<div class="comBattleDiv_battle_1_div">
 					<div class="comBattleDiv_battle_1_divs" v-if="Object.keys(battleInfo?.monster).length">
 						<div class="comBattleDiv_battle_1_div_img">
-							<!-- <image :src="battleInfo.monster.img" alt="" /> -->
+							<image src="@/static/image/11.png" alt="" />
 						</div>
 						<div class="comBattleDiv_battle_1_div_i_name">{{ battleInfo?.monster?.name }}</div>
 						<progress 

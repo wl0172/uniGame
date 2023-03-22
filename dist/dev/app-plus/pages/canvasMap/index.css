@@ -627,6 +627,7 @@ to {
   height: 1.875rem;
   line-height: 1.875rem;
   margin: 0.3125rem auto;
+  color: #fff;
 }
 .comBattleDiv .comBattleDiv_conter .comBattleDiv_battle_1 .comBattleDiv_battle_1_div .comBattleDiv_battle_1_divs .comBattleDiv_battle_1_div_progress[data-v-781aabaf] {
   width: 80%;
@@ -635,17 +636,14 @@ to {
   margin: 0 auto 0.3125rem auto;
 }
 .comBattleDiv .comBattleDiv_conter .comBattleDiv_battle_1 .comBattleDiv_battle_1_div .comBattleDiv_battle_1_divs .comBattleDiv_battle_1_div_img[data-v-781aabaf] {
-  background: red;
-  opacity: 0.4;
   width: 7.8125rem;
-  height: 7.8125rem;
+  height: 10.9375rem;
   overflow: hidden;
   margin: 0 auto;
-  background-image: url('../../static/gif/1.gif');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  animation: move-781aabaf 1.7s steps(8, end) infinite;
+}
+.comBattleDiv .comBattleDiv_conter .comBattleDiv_battle_1 .comBattleDiv_battle_1_div .comBattleDiv_battle_1_divs .comBattleDiv_battle_1_div_img uni-image[data-v-781aabaf] {
+  width: 100%;
+  height: 100%;
 }
 .comBattleDiv .comBattleDiv_conter .comBattleDiv_battle_1 .comBattleDiv_battle_1_div_blood1[data-v-781aabaf] {
   width: 100%;
@@ -998,6 +996,10 @@ to {
   height: calc(100vh - var(--headerMargin));
   background: #fff5e1;
 }
+.forgeDiv uni-image[data-v-8fc46dda] {
+  width: 100%;
+  height: 100%;
+}
 .forgeDiv .forgeDiv_conter[data-v-8fc46dda] {
   width: 100%;
   height: calc(100vh - var(--headerMargin) - 6.875rem);
@@ -1028,17 +1030,14 @@ to {
   margin: 0.3125rem auto;
 }
 .forgeDiv .forgeDiv_conter .comBattleDiv_battle_1 .comBattleDiv_battle_1_div .comBattleDiv_battle_1_divs .comBattleDiv_battle_1_div_img[data-v-8fc46dda] {
-  background: red;
-  opacity: 0.4;
-  width: 7.8125rem;
+  width: 6.0625rem;
   height: 7.8125rem;
   overflow: hidden;
   margin: 0 auto;
-  background-image: url('../../static/gif/1.gif');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  animation: move-8fc46dda 1.7s steps(8, end) infinite;
+}
+.forgeDiv .forgeDiv_conter .comBattleDiv_battle_1 .comBattleDiv_battle_1_div .comBattleDiv_battle_1_divs .comBattleDiv_battle_1_div_img uni-image[data-v-8fc46dda] {
+  width: 100%;
+  height: 100%;
 }
 .forgeDiv .forgeDiv_conter .comBattleDiv_battle_1 .comBattleDiv_battle_1_div .comBattleDiv_battle_1_divs .comBattleDiv_battle_1_div_i_pro[data-v-8fc46dda] {
   position: relative;
@@ -1056,8 +1055,27 @@ to {
   position: absolute;
   left: 0;
   font-size: 12px;
-  color: #ffffff;
+  color: black;
   bottom: 0;
+}
+.forgeDiv .forgeDiv_conter .comBattleDiv_battle_1 .comBattleDiv_left[data-v-8fc46dda] {
+  display: flex;
+  align-items: center;
+}
+.forgeDiv .forgeDiv_conter .comBattleDiv_battle_1 .comBattleDiv_left .comBattleDiv_left_li[data-v-8fc46dda] {
+  flex: 1;
+}
+.forgeDiv .forgeDiv_conter .comBattleDiv_battle_1 .comBattleDiv_left .comBattleDiv_left_li .comBattleDiv_left_li_div[data-v-8fc46dda] {
+  width: 2.3125rem;
+  height: 2.3125rem;
+  background: red;
+  margin: 0 auto;
+}
+.forgeDiv .forgeDiv_conter .comBattleDiv_battle_1 .comBattleDiv_left .comBattleDiv_left_li .comBattleDiv_left_li_div[data-v-8fc46dda]:nth-child(2) {
+  margin: 1.25rem auto;
+}
+.forgeDiv .forgeDiv_conter .comBattleDiv_battle_1 .comBattleDiv_left .comBattleDiv_left_lis[data-v-8fc46dda] {
+  flex: 2;
 }
 .forgeDiv .forgeDiv_conter .comBattleDiv_battle_1[data-v-8fc46dda]::after {
   content: '';
@@ -1075,26 +1093,39 @@ to {
 }
 .forgeDiv .forgeDiv_conter .comBattleDiv_battle_2[data-v-8fc46dda] {
   width: auto;
-  height: calc(100% - 18.1875rem);
+  height: calc(100% - 17.25rem);
   overflow: auto;
-  padding: 0 0.9375rem 0.9375rem 0.9375rem;
   font-size: 0.75rem;
   border-bottom: 0.0625rem dashed #806868;
   background: #fff5e1;
 }
 .forgeDiv .forgeDiv_conter .comBattleDiv_battle_2 .comBattleDiv_battle_2_list[data-v-8fc46dda] {
   width: 100%;
-  height: 80%;
+  height: calc(80% - 1.5625rem);
   overflow: auto;
+  position: relative;
 }
 .forgeDiv .forgeDiv_conter .comBattleDiv_battle_2 .comBattleDiv_battle_2_list .comBattleDiv_battle_2_list_ui[data-v-8fc46dda] {
   display: flex;
   flex-wrap: wrap;
+  position: relative;
 }
 .forgeDiv .forgeDiv_conter .comBattleDiv_battle_2 .comBattleDiv_battle_2_list .comBattleDiv_battle_2_list_ui .comBattleDiv_battle_2_list_li[data-v-8fc46dda] {
-  width: 1.875rem;
-  height: 1.875rem;
+  width: 3.21875rem;
+  height: 3.21875rem;
+  position: relative;
+}
+.forgeDiv .forgeDiv_conter .comBattleDiv_battle_2 .comBattleDiv_battle_2_list .comBattleDiv_battle_2_list_ui .comBattleDiv_battle_2_list_li[data-v-8fc46dda]:active {
   background: red;
+}
+.forgeDiv .forgeDiv_conter .comBattleDiv_battle_2 .comBattleDiv_battle_2_list .comBattleDiv_battle_2_list_ui .comBattleDiv_battle_2_list_li[data-v-8fc46dda]::after {
+  content: '';
+  border: 0.03125rem solid red;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 .forgeDiv .forgeDiv_conter .comBattleDiv_battle_2 .comBattleDiv_battle_2_txt[data-v-8fc46dda] {
   width: 100%;

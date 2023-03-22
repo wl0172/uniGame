@@ -16,7 +16,7 @@ let a = ref('锻造')
 				金
 				银
 				铜
-				<image style="" src="https://img0.baidu.com/it/u=536060619,532633719&fm=253&fmt=auto&app=138&f=JPEG?w=658&h=447" mode=""></image>
+				<image style="width: 600px;height: 500px;position: absolute;left: -77px;" src="https://img0.baidu.com/it/u=536060619,532633719&fm=253&fmt=auto&app=138&f=JPEG?w=658&h=447" mode=""></image>
 			</div>
 			<!-- 商人 -->
 			<div>
