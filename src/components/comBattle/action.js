@@ -235,6 +235,14 @@ const handleSkill = () => {
 	})
 }
 
+// 道具
+const handleProp = () => {
+	uni.showToast({
+		icon: 'none',
+		title: '道具开发中'
+	})
+}
+
 // 地图
 const handleToMap = () => {
 	uni.navigateTo({
@@ -292,10 +300,11 @@ export {
 	handleGetUserInfo, // 获取玩家最新信息
 	handleSeachItem, // 探索
 	handleRunAway, // 逃跑
+	handleProp,// 道具
 	handleSkill, // 技能
 	handleToMap, // 打开地图
 	handleOpenKnapsack, // 打开背包
 	handleToShop, // 打开商店
-	handleToForge,
+	handleToForge,// 锻造
 	handleLeave, // 退出
 }

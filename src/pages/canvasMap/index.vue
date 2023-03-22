@@ -39,6 +39,9 @@ const handleToNewMap = (item, index) => {
 		height: 100vh;
 		display: flex;
 		align-items: center;
+		background-image: url('https://img0.baidu.com/it/u=1480154962,515565636&fm=253&fmt=auto&app=138&f=JPEG?w=678&h=370');
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
 		.conSceneListL {
 			width: 100%;
 			height: 80%;

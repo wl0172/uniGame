@@ -1,12 +1,15 @@
 import { ref } from "vue"
-
+import { headerMargin } from '@/state/bangs.js'
 
 
 
 
 // 开始锻造
 const handleStartForge = () => {
-	console.log('开始锻造')
+	uni.showToast({
+		icon: 'none',
+		title: '开始锻造'
+	})
 }
 
 // 离开锻造炉
@@ -17,6 +20,7 @@ const handleBack = () => {
 }
 
 export {
+	headerMargin,
 	handleBack,
 	handleStartForge
 }

@@ -1,7 +1,10 @@
 <script setup>
 import { ref } from "vue"
-import { handleStartForge, handleBack } from './index.js'
-	import { headerMargin } from '@/state/bangs.js'
+import { 
+	headerMargin,
+	handleStartForge,
+	handleBack ,
+} from './index.js'
 
 let a = ref('锻造')
 
@@ -22,7 +25,7 @@ let a = ref('锻造')
 			<div>123</div>
 			<div>123</div>
 			<div>123</div>
-			<div>{{ headerMargin }}</div>
+			<div>{{ a }}</div>
 		</div>
 		<!-- 操作菜单 -->
 		<div class="forgeDiv_footer">

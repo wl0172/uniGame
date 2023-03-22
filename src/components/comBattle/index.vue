@@ -4,24 +4,32 @@ import { ref, watch, computed } from "vue"
 import ComLine from "@/components/comLine/index.vue"
 // 接口
 import { postUserInfo, getFightFind, postFightAction } from '@/api/index.js'
+// 血量展示
+import { bloodShow } from '@/state/bloodConfig/index.js'
 // 全局属性
-import { useInfo, pageArr, pageSwitch, pageSwitchMenu, battleInfo, hiddenPopup, txtArr, scrollIndex } from '@/state/index.js'
-
+import { 
+	useInfo, 
+	pageArr, 
+	pageSwitch, 
+	pageSwitchMenu, 
+	battleInfo, 
+	hiddenPopup, 
+	txtArr, 
+	scrollIndex ,
+} from '@/state/index.js'
 // action - 行为
 import { 
 	handleGetUserInfo,// 获取玩家最新信息
 	handleSeachItem,// 探索
 	handleRunAway,// 逃跑
 	handleSkill,// 技能
+	handleProp,//道具
 	handleToMap,// 打开地图
 	handleOpenKnapsack,// 打开背包
 	handleToShop,// 打开商店
 	handleToForge,// 锻造
 	handleLeave,// 退出
 } from './action'
-
-// 血量展示
-import { bloodShow } from '@/state/bloodConfig/index.js'
 
 // 进度条配置
 const progressConfig = {
@@ -109,22 +117,30 @@ handleGetUserInfo()
 		<!-- 操作 -->
 		<div class="comBattleDiv_battle_3">
 			
+			<!-- 探索 - 攻击 -->
 			<div class="" @click="handleSeachItem(txtArr,scrollIndex)">{{ Object.keys(battleInfo?.monster).length ? '战斗' : '探索' }}</div>
-			
+			<!-- 逃跑 -->
 			<div class="" @click="handleRunAway(txtArr,scrollIndex)" v-if="Object.keys(battleInfo?.monster).length">逃跑</div>
 			
+			<!-- 技能 -->
 			<div class="" @click="handleSkill" v-if="Object.keys(battleInfo?.monster).length">技能</div>
 			
-			<div class="" @click="" v-if="Object.keys(battleInfo?.monster).length">道具</div>
+			<!-- 道具 -->
+			<div class="" @click="handleProp" v-if="Object.keys(battleInfo?.monster).length">道具</div>
 			
+			<!-- 背包 -->
 			<div class="" @click="handleOpenKnapsack" v-if="!Object.keys(battleInfo?.monster).length">背包</div>
 			
+			<!-- 地图 -->
 			<div class="" @click="handleToMap" v-if="!Object.keys(battleInfo?.monster).length">地图</div>
 			
+			<!-- 商店 -->
 			<div class="" @click="handleToShop" v-if="!Object.keys(battleInfo?.monster).length">商店</div>
 			
+			<!-- 锻造 -->
 			<div class="" @click="handleToForge" v-if="!Object.keys(battleInfo?.monster).length">锻造</div>
 			
+			<!-- 退出 -->
 			<div class="" @click="handleLeave">退出</div>
 			
 		</div>
