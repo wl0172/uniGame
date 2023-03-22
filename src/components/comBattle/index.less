@@ -1,100 +1,111 @@
 @import url('../../style/animation.less');
 .comBattleDiv {
-	height: -webkit-fill-available;
+	height: 100%;
 	position: relative;
-	padding: 120rpx 0 0 0;
-	// 1
-	.comBattleDiv_battle_1 {
+	.comBattleDiv_conter{
 		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		.comBattleDiv_battle_1_div_blood1 {
-			width: 90%;
-			position: absolute;
-			left: 0;
-			z-index: 999;
-			font-size: 12px;
-			color: #ffffff;
-			bottom: 0;
-		}
-		.comBattleDiv_battle_1_div_blood2 {
-			width: 90%;
-			position: absolute;
-			right: 0;
-			z-index: 999;
-			font-size: 12px;
-			color: #ffffff;
-			bottom: 0;
-		}
-		.comBattleDiv_battle_1_div {
-			flex: 1;
-			text-align: center;
+		height: calc( 100% - 220rpx );
+		// 1
+		.comBattleDiv_battle_1 {
+			width: 100%;
+			height: 500rpx;
+			overflow: hidden;
 			position: relative;
-			.comBattleDiv_battle_1_div_i_name {
-				width: 90%;
-				font-size: 28rpx;
-				margin: -30rpx 0 20rpx 0;
-				background: #ba87618a;
-				height: 60rpx;
-				line-height: 60rpx;
-			}
-			.comBattleDiv_battle_1_div_progress {
-				width: 90%;
-				border-radius: 100rpx;
-				overflow: hidden;
-			}
-			.comBattleDiv_battle_1_div_i {
-				width: 90%;
-				.comBattleDiv_battle_1_div_img {
-					width: 250rpx;
-					height: 250rpx;
-					margin: 0 auto 40rpx auto;
-					overflow: hidden;
-					background-image: url('@/static/image/test-1-gif.jpg');
-					background-repeat: no-repeat;
-					background-position: center center;
-					background-size: cover;
-					animation: move 1.7s steps(8, end) infinite;
-					opacity: 0;
-					// image{
-					// 	width: 100%;
-					// 	height: 100%;
-					// }
+			display: flex;
+			.comBattleDiv_battle_1_div {
+				flex: 1;
+				text-align: center;
+				position: relative;
+				.comBattleDiv_battle_1_divs{
+					position: absolute;
+					bottom: 0;
+					width: 100%;
+					.comBattleDiv_battle_1_div_i_name {
+						width: 80%;
+						font-size: 32rpx;
+						background: #ba87618a;
+						height: 60rpx;
+						line-height: 60rpx;
+						margin: 10rpx auto;
+					}
+					.comBattleDiv_battle_1_div_progress {
+						width: 80%;
+						border-radius: 100rpx;
+						overflow: hidden;
+						margin: 0 auto 10rpx auto;
+					}
+					.comBattleDiv_battle_1_div_img {
+						background: red;
+						opacity: .4;
+						width: 250rpx;
+						height: 250rpx;
+						overflow: hidden;
+						margin: 0 auto;
+						background-image: url('@/static/gif/1.gif');
+						background-repeat: no-repeat;
+						background-position: center center;
+						background-size: cover;
+						animation: move 1.7s steps(8, end) infinite;
+						// image{
+						// 	width: 100%;
+						// 	height: 100%;
+						// }
+					}
 				}
 			}
+			.comBattleDiv_battle_1_div_blood1 {
+				width: 100%;
+				position: absolute;
+				left: 0;
+				font-size: 12px;
+				color: #ffffff;
+				bottom: 10rpx;
+			}
+		}
+		.comBattleDiv_battle_1::after{
+			content: '';
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 500rpx;
+			background-image: url('@/static/image/bg_top1.png');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: contain;
+			background-color: #fff5e1;
+		}
+		// 2
+		.comBattleDiv_battle_2 {
+			width: auto;
+			height: calc( 100% - 582rpx );
+			overflow: auto;
+			padding: 0 30rpx 30rpx 30rpx;
+			font-size: 24rpx;
+			border-bottom: 2rpx dashed #806868;
+			background: #fff5e1;
 		}
 	}
-	// 2
-	.comBattleDiv_battle_2 {
-		width: auto;
-		height: calc(100% - 712rpx);
-		overflow: auto;
-		padding: 30rpx;
-		font-size: 24rpx;
-		border-bottom: 2rpx dashed #806868;
-		background: #fff5e1;
-	}
-	// 3
+	// 3 - 操作
 	.comBattleDiv_battle_3 {
-		width: -webkit-fill-available;
-		height: 190rpx;
-		padding: 10rpx 30rpx 0 30rpx;
-		position: fixed;
-		bottom: 0;
+		height: 180rpx;
+		padding: 20rpx;
+		overflow: hidden;
+		position: relative;
 		display: flex;
 		justify-content: flex-end;
 		flex-wrap: wrap;
 		background: #fff5e1;
 		div {
-			width: 150rpx;
-			height: 74rpx;
-			line-height: 74rpx;
+			width: 147rpx;
+			height: 67rpx;
+			line-height: 67rpx;
 			text-align: center;
 			border-radius: 10rpx;
-			margin: 0 8rpx;
+			margin: 0 7rpx;
 			color: #806868;
-			border: 2rpx solid #a18884;
+			border: 1rpx solid #a18884;
 		}
 		div:active {
 			background: red;

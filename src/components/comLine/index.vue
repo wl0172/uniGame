@@ -14,11 +14,10 @@
 <style scoped lang="less">
 	.comLine {
 		width: 100%;
-		height: 10rpx;
+		height: 50rpx;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		margin: 30rpx 0;
 		.comLine_line {
 			width: 45%;
 			height: 1rpx;

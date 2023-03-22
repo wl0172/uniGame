@@ -7,7 +7,7 @@
     animation: load 1.7s infinite ease, round 1.7s infinite ease;
   }
 */
-@keyframes load-6cc80e65 {
+@keyframes load-eff989ce {
 0% {
     box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
 }
@@ -29,7 +29,7 @@
     box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
 }
 }
-@keyframes round-6cc80e65 {
+@keyframes round-eff989ce {
 0% {
     transform: rotate(0deg);
     /* 开始旋转 div 元素 */
@@ -45,7 +45,7 @@
     animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
   }
 */
-@keyframes shake-6cc80e65 {
+@keyframes shake-eff989ce {
 10%,
   90% {
     transform: translate3d(-1px, 0, 0);
@@ -70,7 +70,7 @@
     animation: wiggle 2s linear infinite;
   }
 */
-@keyframes wiggle-6cc80e65 {
+@keyframes wiggle-eff989ce {
 0%,
   7% {
     transform: rotateZ(0);
@@ -101,7 +101,7 @@
     animation: shake-joggle 10s infinite ease-in-out;
   }
 */
-@keyframes shake-joggle-6cc80e65 {
+@keyframes shake-joggle-eff989ce {
 2% {
     transform: translate(6px, -2px) rotate(3.5deg);
 }
@@ -269,7 +269,7 @@
 			animation-fill-mode: both;
 		}
  * */
-@keyframes pulse-6cc80e65 {
+@keyframes pulse-eff989ce {
 from {
     transform: scale3d(1, 1, 1);
 }
@@ -280,7 +280,7 @@ to {
     transform: scale3d(1, 1, 1);
 }
 }
-@keyframes move-6cc80e65 {
+@keyframes move-eff989ce {
 0% {
     background-position: 0 0;
 }
@@ -288,37 +288,6 @@ to {
     background-position: -1600px 0;
 }
 }
-.forgeDiv[data-v-6cc80e65] {
-  width: 100%;
-  padding: var(--headerMargin) 0 0 0;
-  height: calc(100vh - var(--headerMargin));
-  background: #fff5e1;
-}
-.forgeDiv .forgeDiv_conter[data-v-6cc80e65] {
-  width: 100%;
-  height: calc(100vh - var(--headerMargin) - 6.875rem);
-  background: yellow;
-}
-.forgeDiv .forgeDiv_footer[data-v-6cc80e65] {
-  height: 5.625rem;
-  padding: 0.625rem;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  background: #fff5e1;
-}
-.forgeDiv .forgeDiv_footer div[data-v-6cc80e65] {
-  width: 4.59375rem;
-  height: 2.09375rem;
-  line-height: 2.09375rem;
-  text-align: center;
-  border-radius: 0.3125rem;
-  margin: 0 0.21875rem;
-  color: #806868;
-  border: 0.03125rem solid #a18884;
-}
-.forgeDiv .forgeDiv_footer div[data-v-6cc80e65]:active {
-  background: red;
+div[data-v-eff989ce] {
+  color: black;
 }

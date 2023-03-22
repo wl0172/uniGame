@@ -3,8 +3,6 @@
 	// 组件
 	import ComCanvas from '@/components/comCanvas/index.vue'
 
-	let a = ref('index')
-
 	// uni.showToast({
 	// 	icon: 'none',
 	// 	title: '测试',
@@ -14,9 +12,6 @@
 
 <template>
 	<div>
-		<div>{{ a }}1234</div>
-		<text>123456</text>
-
 		<ComCanvas />
 	</div>
 </template>

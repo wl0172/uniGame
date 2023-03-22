@@ -10,28 +10,26 @@
 	// 全局属性 - 场景 - 切换
 	import { pageArr, pageSwitch, pageArrMenu, pageSwitchMenu, hiddenPopup } from '@/state/index.js'
 
+	// 背景音乐
 	import { audioPlay, audioClose } from '@/state/audio/index.js'
-	
 	onLoad(()=>{
 		audioPlay()
 	})
 	onShow(()=>{
 		audioPlay(2)
 	})
-	onHide(()=>{
-		audioClose()
-	})
+	// onHide(()=>{
+	// 	// audioClose()
+	// })
 	
 </script>
 
 <template>
 	<div class="content">
-		<!-- 刘海屏header - 目前占位 - 显示场景name -->
-		<ComHeader :comHeight="conHeight" />
+		<!-- 刘海 - 占位用 -->
+		<div class="contentSeat" :style="{ '--headerMargin': headerMargin + 'px' }"></div>
 		<!-- 主场景 -->
-		<div 
-			class="contentDiv"
-			:style="{ '--conHeight': headerMargin + (headerHeight / 2 + 3) + 'px' }">
+		<div class="contentDiv" :style="{ '--headerMargin': headerMargin + 'px' }">
 			<component :is="pageArr?.list[pageSwitch.index]?.pageComponent" />
 		</div>
 		<!-- 操作面板 - 以弹窗形式 -->
@@ -39,8 +37,6 @@
 			<component :is="pageArrMenu?.list[pageSwitchMenu.index]['pageKey']" />
 		</ComPopup>
 	</div>
-	<!-- 背景图 -->
-	<div class="bg"></div>
 	
 </template>
 

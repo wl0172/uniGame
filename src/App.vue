@@ -1,12 +1,15 @@
 <script>
 	import pageAddress from "@/state/pageState/index.js"
+	import { audioClose } from '@/state/audio/index.js'
 	export default {
 		onLaunch: function() {
 			// 判断有无token - 跳转首页
 			pageAddress()
 		},
 		onShow: function() {},
-		onHide: function() {},
+		onHide: function() {
+			audioClose()
+		},
 	}
 </script>
 

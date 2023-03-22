@@ -288,3 +288,37 @@ to {
     background-position: -1600px 0;
 }
 }
+.forgeDiv[data-v-90f83137] {
+  width: 100%;
+  padding: var(--headerMargin) 0 0 0;
+  height: calc(100vh - var(--headerMargin));
+  background: #fff5e1;
+}
+.forgeDiv .forgeDiv_conter[data-v-90f83137] {
+  width: 100%;
+  height: calc(100vh - var(--headerMargin) - 6.875rem);
+  background: yellow;
+}
+.forgeDiv .forgeDiv_footer[data-v-90f83137] {
+  height: 5.625rem;
+  padding: 0.625rem;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  background: #fff5e1;
+}
+.forgeDiv .forgeDiv_footer div[data-v-90f83137] {
+  width: 4.59375rem;
+  height: 2.09375rem;
+  line-height: 2.09375rem;
+  text-align: center;
+  border-radius: 0.3125rem;
+  margin: 0 0.21875rem;
+  color: #806868;
+  border: 0.03125rem solid #a18884;
+}
+.forgeDiv .forgeDiv_footer div[data-v-90f83137]:active {
+  background: red;
+}

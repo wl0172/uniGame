@@ -1,17 +1,17 @@
 <script setup>
-	import { ref } from 'vue'
-	import { pageSwitch, pageArr, txtArr, scrollIndex } from '@/state/index.js'
+import { ref } from 'vue'
+import { pageSwitch, pageArr, txtArr, scrollIndex } from '@/state/index.js'
 
-	// 去新场景
-	const handleToNewMap = (item, index) => {		
-		pageSwitch.value.index = index
-		setTimeout(() => {
-			scrollIndex.value.id = `id-${txtArr.value.list.length-1}`
-		},50)
-		uni.navigateBack({
-			delta: 1,
-		})
-	}
+// 去新场景
+const handleToNewMap = (item, index) => {		
+	pageSwitch.value.index = index
+	setTimeout(() => {
+		scrollIndex.value.id = `id-${txtArr.value.list.length-1}`
+	},50)
+	uni.navigateBack({
+		delta: 1,
+	})
+}
 </script>
 
 <template>
@@ -23,10 +23,10 @@
 				:key="index"
 				@click="handleToNewMap(item, index)">
 				<div class="conSceneListLi_title">
-					<div>{{ item.name }}</div>
+					<div>{{ item.name }}<text>{{ (pageSwitch.index+1) == item.id ? ' - 当前' : '' }}</text></div>
 					<div class="conSceneListLi_title_state">服务中</div>
 				</div>
-				<div class="conSceneListLi_txt">服务内容：xxxxxx</div>
+				<div class="conSceneListLi_txt">服务内容：内有暗影猫妖，交易等等</div>
 				<!-- <div class="conSceneListLi_tiem">开图时间：xxxxxx</div> -->
 			</div>
 		</div>

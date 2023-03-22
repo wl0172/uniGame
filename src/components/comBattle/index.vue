@@ -41,99 +41,69 @@ watch([pageSwitch.value], ([newValue1, oldValue1]) => {
 // 获取玩家最新信息
 handleGetUserInfo()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
 
 <template>
 	<div class="comBattleDiv" v-if="useInfo.token">
-
-
-		<!-- 角色 + 怪物 -->
-		<div class="comBattleDiv_battle_1">
-			<!-- 角色 -->
-			<div class="comBattleDiv_battle_1_div">
-				<div class="comBattleDiv_battle_1_div_i">
-					<div class="comBattleDiv_battle_1_div_img">
-						<!-- <image :src="battleInfo.player.img" alt="" /> -->
+		
+		<!-- 内容 -->
+		<div class="comBattleDiv_conter">
+			<!-- 左侧 - 角色 + 右侧 - 怪物 -->
+			<div class="comBattleDiv_battle_1">
+				<!-- 角色 -->
+				<div class="comBattleDiv_battle_1_div">
+					<div class="comBattleDiv_battle_1_divs">
+						<div class="comBattleDiv_battle_1_div_img">
+							<!-- <image :src="battleInfo.player.img" alt="" /> -->
+						</div>
+						<div class="comBattleDiv_battle_1_div_i_name">{{ battleInfo.player.name }}</div>
+						<progress 
+							activeColor="#ceb284" 
+							class="comBattleDiv_battle_1_div_progress"
+							:border-radius="progressConfig.border_radius" 
+							:stroke-width="progressConfig.stroke_width"
+							:backgroundColor="progressConfig.backgroundColor" 
+							:active="progressConfig.active"
+							:percent="bloodShow(battleInfo.player,0)" />
+						<div class="comBattleDiv_battle_1_div_blood1">{{ battleInfo.player.hp }}</div>
 					</div>
 				</div>
-				<div class="comBattleDiv_battle_1_div_i_name">{{ battleInfo.player.name }}</div>
-				<progress
-					style="margin: 0 0 auto 0"
-					activeColor="#ceb284"
-					class="comBattleDiv_battle_1_div_progress"
-					:border-radius="progressConfig.border_radius"
-					:stroke-width="progressConfig.stroke_width"
-					:backgroundColor="progressConfig.backgroundColor"
-					:active="progressConfig.active"
-					:percent="bloodShow(battleInfo.player,0)"
-				/>
-				<div class="comBattleDiv_battle_1_div_blood1">{{ battleInfo.player.hp }}</div>
-			</div>
-			<!-- 怪物 -->
-			<div class="comBattleDiv_battle_1_div">
-				<div class="comBattleDiv_battle_1_div_i" style="margin: 0 0 0 auto;">
-					<div class="comBattleDiv_battle_1_div_img">
-						<!-- <image :src="battleInfo.monster.img" alt="" /> -->
+				<!-- 怪物 -->
+				<div class="comBattleDiv_battle_1_div">
+					<div class="comBattleDiv_battle_1_divs" v-if="Object.keys(battleInfo?.monster).length">
+						<div class="comBattleDiv_battle_1_div_img">
+							<!-- <image :src="battleInfo.monster.img" alt="" /> -->
+						</div>
+						<div class="comBattleDiv_battle_1_div_i_name">{{ battleInfo?.monster?.name }}</div>
+						<progress 
+							activeColor="#ceb284"
+							class="comBattleDiv_battle_1_div_progress" 
+							:border-radius="progressConfig.border_radius"
+							:stroke-width="progressConfig.stroke_width" 
+							:backgroundColor="progressConfig.backgroundColor"
+							:active="progressConfig.active" 
+							:percent="bloodShow(battleInfo?.monster,1)" />
+						<div class="comBattleDiv_battle_1_div_blood1">{{ battleInfo?.monster?.hp }}</div>
 					</div>
 				</div>
-				<div 
-					v-if="Object.keys(battleInfo.monster).length"
-					class="comBattleDiv_battle_1_div_i_name" 
-					style="float: right;">{{ battleInfo?.monster?.name }}
-				</div>
-				<progress 
-					v-if="Object.keys(battleInfo.monster).length" 
-					style="margin: 0 0 0 auto;transform:rotate(180deg)" 
-					activeColor="#ceb284" 
-					class="comBattleDiv_battle_1_div_progress"
-					:border-radius="progressConfig.border_radius" 
-					:stroke-width="progressConfig.stroke_width"
-					:backgroundColor="progressConfig.backgroundColor"
-					:active="progressConfig.active" 
-					:percent="bloodShow(battleInfo?.monster,1)" 
-				/>
-				<div class="comBattleDiv_battle_1_div_blood2">{{ battleInfo?.monster?.hp }}</div>
+
 			</div>
+			<!-- 线 -->
+			<ComLine />
+			<!-- 战斗txt -->
+			<scroll-view 
+				class="comBattleDiv_battle_2" 
+				:scroll-y="true" 
+				:show-scrollbar="false" 
+				:scroll-anchoring="true"
+				:scroll-with-animation="true" 
+				:scroll-into-view="scrollIndex.id">
+				<div v-for="(item, index) in txtArr.list" :id=" 'id-'+index ">
+					<div>{{ item.liTxt }}</div>
+				</div>
+			</scroll-view>
 		</div>
-
-		<!-- 线 -->
-		<ComLine />
-
-		<!-- 战斗txt -->
-		<scroll-view 
-			class="comBattleDiv_battle_2" 
-			:scroll-y="true" 
-			:show-scrollbar="false" 
-			:scroll-anchoring="true"
-			:scroll-with-animation="true" 
-			:scroll-into-view="scrollIndex.id">
-			<div v-for="(item, index) in txtArr.list" :id=" 'id-'+index ">
-				<div>{{ item.liTxt }}</div>
-			</div>
-		</scroll-view>
-
-		<!-- 操作 - button -->
+		<!-- 操作 -->
 		<div class="comBattleDiv_battle_3">
 			
 			<div class="" @click="handleSeachItem(txtArr,scrollIndex)">{{ Object.keys(battleInfo?.monster).length ? '战斗' : '探索' }}</div>
@@ -155,7 +125,6 @@ handleGetUserInfo()
 			<div class="" @click="handleLeave">退出</div>
 			
 		</div>
-
 
 
 	</div>

@@ -43,10 +43,10 @@ const handleGetUserInfo = () => {
 			"backpack": true, // 背包 玩家背包中的物品
 			"equipment": true // 装备 玩家身上的装备
 		}).then((res) => {
-			console.log(res, '玩家最新信息->comBattle->action->handleGetUserInfo->')
+			console.log(res, 'comBattle->action->handleGetUserInfo->玩家最新信息->======')
 			uni.setStorageSync('playerInfo', res.player);
 			battleInfo.value.player = res?.player ? res?.player : {},
-				battleInfo.value.monster = res?.fighter ? res?.fighter : {}
+			battleInfo.value.monster = res?.fighter ? res?.fighter : {}//res?.player
 		})
 	}
 }
@@ -198,10 +198,14 @@ const handleSeachItem = (txtArr, scrollIndex) => {
 			mask: true
 		})
 		// 寻怪接口
-		getFightFind().then((res) => {
-			uni.hideLoading()
-			battleInfo.value.monster = res
-			txtCopywriting(res, txtArr, 0, scrollIndex)
+		getFightFind().then((res) => {	
+			if(res){
+				uni.hideLoading()
+				const beforeMon = monsterRef.value.find(item => item.id == res.index)
+				const beforeMonster = {...beforeMon,...res}
+				battleInfo.value.monster = beforeMonster
+				txtCopywriting(beforeMonster, txtArr, 0, scrollIndex)
+			}
 		})
 	}
 }

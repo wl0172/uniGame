@@ -20,13 +20,15 @@ export default (path = '', method = 'GET', contentType = 'application/json', dat
 	const Authorization = token ? `Bearer ${token}` : "";
 	
 	return new Promise((resolve, reject) => {
+		// 区分一下web - app
+		let port = uni.getSystemInfoSync().uniPlatform
 		uni.request({
 			header: {
 				"Authorization": Authorization,
 				"Content-Type": contentType,
-				'Accept': contentType
+				'Accept': contentType,
 			},
-			url: 'http://117.78.26.78' + path,
+			url: port == 'web' ? '/api' + path : 'http://117.78.26.78:8080' + path,
 			method: method,
 			data,
 			success(response) {
@@ -46,7 +48,7 @@ export default (path = '', method = 'GET', contentType = 'application/json', dat
 				}else{
 					uni.showToast({
 						icon: "none",
-						title: errorCnsRefTxt.get(response.data.message) || response.data.message,
+						title: errorCnsRefTxt.get(response.data.message) || response.data.message || response.errMsg,
 						duration: 5000
 					});
 					resolve(response.data)

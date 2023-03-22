@@ -1,128 +1,137 @@
-.comKnapsackDiv{
-	height: 100vh;
-	overflow: hidden;
-	// display: flex;
-	.comKnapsackDiv_left{
+.forgeDiv{
+	width: 100%;
+	padding: var(--headerMargin) 0 0 0;
+	height: calc( 100vh - var(--headerMargin) );
+	background: #fff5e1;
+	.forgeDiv_conter{
 		width: 100%;
-		height: 30%;
-		overflow: hidden;
-		position: relative;
-		.comKnapsackDiv_left_seat{
+		height: calc( 100vh - var(--headerMargin) - 220rpx );
+		// 1
+		.comBattleDiv_battle_1 {
 			width: 100%;
-			height: var(--conHeight);
-		}
-		.comKnapsackDiv_leftUp{
-			width: 100%;
-			height: calc(100% - var(--conHeight));
-			overflow: auto;
+			height: 500rpx;
+			overflow: hidden;
 			position: relative;
-			border-right: 1rpx solid #d6d6d6;
 			display: flex;
-			justify-content: space-around;
-			.comKnapsackDiv_leftUp_left{
-				width: 50%;
-				.comKnapsackDiv_leftUp_left1{
-					display: flex;
-					// justify-content: center;
-					.comKnapsackDiv_leftUp_left1_image{
-						width: 100rpx;
-						height: 100rpx;
-						overflow: hidden;
-						image{
-							width: 100%;
-							height: 100%;
-						}
-					}
-					.comKnapsackDiv_leftUp_left1_txt{
-					}
-				}
-				.comKnapsackDiv_leftUp_left2{
-					display: flex;
-					align-items: center;
-					position: relative;
-					.comKnapsackDiv_leftUp_left2_pro{
+			.comBattleDiv_battle_1_div {
+				flex: 1;
+				text-align: center;
+				position: relative;
+				.comBattleDiv_battle_1_divs{
+					position: absolute;
+					bottom: 0;
+					width: 100%;
+					.comBattleDiv_battle_1_div_i_name {
 						width: 80%;
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						.comKnapsackDiv_progress{
-							width: 100%;
+						font-size: 32rpx;
+						background: #ba87618a;
+						height: 60rpx;
+						line-height: 60rpx;
+						margin: 10rpx auto;
+					}
+					.comBattleDiv_battle_1_div_img {
+						background: red;
+						opacity: .4;
+						width: 250rpx;
+						height: 250rpx;
+						overflow: hidden;
+						margin: 0 auto;
+						background-image: url('@/static/gif/1.gif');
+						background-repeat: no-repeat;
+						background-position: center center;
+						background-size: cover;
+						animation: move 1.7s steps(8, end) infinite;
+						// image{
+						// 	width: 100%;
+						// 	height: 100%;
+						// }
+					}
+					.comBattleDiv_battle_1_div_i_pro{
+						position: relative;
+						margin: 10rpx 0;
+						.comBattleDiv_battle_1_div_progress {
+							width: 80%;
 							border-radius: 100rpx;
 							overflow: hidden;
+							margin: 0 auto;
 						}
-						.comKnapsackDiv_leftUp_left2_proNum{
-							position: absolute;
+						.comBattleDiv_battle_1_div_blood1 {
 							width: 100%;
-							font-size: small;
-							text-align: center;
+							height: 30rpx;
+							position: absolute;
+							left: 0;
+							font-size: 12px;
+							color: #ffffff;
+							bottom: 0;
 						}
 					}
 				}
 			}
-			.comKnapsackDiv_leftUp_right{
-				position: relative;
-				width: 50%;
+		}
+		.comBattleDiv_battle_1::after{
+			content: '';
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 500rpx;
+			background-image: url('@/static/image/bg_top1.png');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: contain;
+			background-color: #fff5e1;
+		}
+		// 2
+		.comBattleDiv_battle_2 {
+			width: auto;
+			height: calc( 100% - 582rpx );
+			overflow: auto;
+			padding: 0 30rpx 30rpx 30rpx;
+			font-size: 24rpx;
+			border-bottom: 2rpx dashed #806868;
+			background: #fff5e1;
+			.comBattleDiv_battle_2_list{
+				width: 100%;
+				height: 80%;
+				overflow: auto;
+				.comBattleDiv_battle_2_list_ui{
+					display: flex;
+					flex-wrap: wrap;
+					.comBattleDiv_battle_2_list_li{
+						width: 60rpx;
+						height: 60rpx;
+						background: red;
+					}	
+				}
+			}
+			.comBattleDiv_battle_2_txt{
+				width: 100%;
+				height: 20%;
 			}
 		}
 	}
-	.comKnapsackDiv_right{
-		width: 100%;
-		height: 70%;
-		position: relative;
+	.forgeDiv_footer{
+		height: 180rpx;
+		padding: 20rpx;
 		overflow: hidden;
-		.comKnapsackDiv_right_top{
-			width: 100%;
-			height: 65%;
-			padding: 14rpx 0 0 0;
-			overflow: hidden;
-			.comKnapsackDiv_right_tops{
-				display: flex;
-				flex-wrap: wrap;
-				width: 94%;
-				height: 97%;
-				margin: 0 auto;
-				overflow: auto;
-				.comKnapsackDiv_right_list{
-					width: 100rpx;
-					height: 100rpx;
-					margin: 0 0 10rpx 0;
-					.comKnapsackDiv_right_li{
-						width: 90%;
-						height: 100%;
-						background: red;
-						margin: 0 auto;
-						font-size: small;
-					}
-				}
-			}
+		position: relative;
+		display: flex;
+		justify-content: flex-end;
+		flex-wrap: wrap;
+		background: #fff5e1;
+		div {
+			width: 147rpx;
+			height: 67rpx;
+			line-height: 67rpx;
+			text-align: center;
+			border-radius: 10rpx;
+			margin: 0 7rpx;
+			color: #806868;
+			border: 1rpx solid #a18884;
 		}
-		.comKnapsackDiv_right_txt{
-			width: 100%;
-			height: 20%;
-			background: #FFF5E2;
-		}
-		.comKnapsackDiv_right_butlist{
-			width: 100%;
-			height: calc( 15% - 7px );
+		div:active {
 			background: red;
-			display: flex;
-			align-items: center;
-			// justify-content: center;
-			.comKnapsackDiv_right_butlist_but{
-				width: 80%;
-				display: flex;
-			}
-			.comKnapsackDiv_right_button{
-				color: #ffffff;
-				padding: 14rpx;
-				background: black;
-				border-radius: 14rpx;
-				text-align: center;
-				width: 80rpx;
-				height: 40rpx;
-				font-size: small;
-				line-height: 40rpx;
-			}
 		}
 	}
 }

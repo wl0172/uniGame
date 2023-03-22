@@ -2,7 +2,7 @@
   <view class="content">
     <!-- 用户点击组件后将打开广告页面，参见属性 open-page-path -->
     <ad-interactive 
-			adpid="1000000001" 
+			adpid="126617260307"
 			v-slot:default="{data, loading, error}" 
 			@load="onadload" 
 			@error="onaderror" 

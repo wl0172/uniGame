@@ -12,7 +12,7 @@ export function postRegister(params) {
 
 // 获取玩家信息
 export function postUserInfo(params) {
-	return request(`/user/info`, 'POST', 'application/json', params);
+	return request(`/user/info`, 'GET', 'application/json', params);
 }
 
 // 寻怪
