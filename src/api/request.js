@@ -1,13 +1,10 @@
 /**
  * request
  * */
- // 配置文件
-import { errorCnsRef } from '@/state/config/index.js'
+// util报错提示
+import { errorCnsRefTxt } from '@/utils/index.js'
 // 全局属性
 import { pageArr, pageSwitch } from '@/state/index.js'
-
-// 报错配置
-let errorCnsRefTxt = new Map(Object.entries(errorCnsRef.value))
 
 export default (path = '', method = 'GET', contentType = 'application/json', data = {}) => {
 	
@@ -33,8 +30,8 @@ export default (path = '', method = 'GET', contentType = 'application/json', dat
 			data,
 			success(response) {
 				// uni.hideLoading()
-				if(response.statusCode == 200){
-					resolve(response.data)
+				if(response.statusCode == 200 || response.statusCode == 201){
+					resolve(response.data?response.data:[])
 				}else if(response.statusCode == 401){
 					uni.showToast({
 						icon: "none",
@@ -48,10 +45,10 @@ export default (path = '', method = 'GET', contentType = 'application/json', dat
 				}else{
 					uni.showToast({
 						icon: "none",
-						title: errorCnsRefTxt.get(response.data.message) || response.data.message || response.errMsg,
+						title: errorCnsRefTxt.get(response.data),
 						duration: 5000
 					});
-					resolve(response.data)
+					resolve(null)
 				}
 			},
 			fail(err) {

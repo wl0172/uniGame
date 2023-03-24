@@ -1,76 +1,75 @@
-[{
+[
+  {
     "id": 1,
+		"index": 1,
     "name": "旧铜币",
     "level": 1,
     "wear": 1,
-    "stack": 10000000,
-    "rare": 1,
-    "effect": {
-        "money": 1
+    "weight": 0,
+    "type": 1,
+    "effects": {
+      "money": 1
     }
-}, {
+  },
+  {
     "id": 2,
+		"index":2,
     "name": "古金币",
     "level": 1,
     "wear": 1,
-    "stack": 10000000,
-    "rare": 3,
-    "effect": {
-        "gold": 1
+    "weight": 0,
+    "type": 1,
+    "effects": {
+      "gold": 1
     }
-}, {
+  },
+  {
     "id": 3,
+		"index": 3,
     "name": "浆果",
     "level": 1,
     "wear": 1,
-    "stack": 10000000,
-    "rare": 1,
-    "effect": {
-        "energyPlus": 1
+    "weight": 15,
+    "type": 1,
+    "effects": {
+      "energy_plus": 1
     }
-}, {
+  },
+  {
     "id": 4,
-    "name": "木剑",
+		"index": 4,
+    "name": "毕加索之刃",
     "level": 1,
-    "wear": 550,
-    "stack": 1,
-    "rare": 1,
-    "effect": {
-        "attackMin": 5,
-        "attackMax": 10
+    "wear": 1200,
+    "weight": 2800,
+    "type": 5,
+    "effects": {
+      "attack_max_add": 15,
+      "attack_min_add": 6
     }
-}, {
+  },
+  {
     "id": 5,
-    "name": "木板甲",
+		"index": 5,
+    "name": "莫奈短匕",
     "level": 1,
-    "wear": 650,
-    "stack": 1,
-    "rare": 1,
-    "type": 1,
-    "effect": {
-        "defence": 5
+    "wear": 1200,
+    "weight": 1150,
+    "type": 4,
+    "effects": {
+      "attack_max_add": 8
     }
-}, {
+  },
+  {
     "id": 6,
-    "name": "碎剑刃",
+		"index": 6,
+    "name": "莫奈圆盾",
     "level": 1,
-    "wear": 150,
-    "stack": 1,
-    "rare": 3,
-    "type": 1,
-    "effect": {
-        "attackMin": 15,
-        "attackMax": 21
+    "wear": 1600,
+    "weight": 1750,
+    "type": 3,
+    "effects": {
+      "defence_add": 10
     }
-}, {
-    "id": 7,
-    "name": "麻布靴",
-    "level": 1,
-    "wear": 480,
-    "stack": 1,
-    "rare": 1,
-    "type": 1,
-    "effect": {
-        "defence": 3
-    }
-}]
+  }
+]

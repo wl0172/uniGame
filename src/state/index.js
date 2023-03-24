@@ -55,8 +55,6 @@ const hiddenPopup = ref({
 
 
 
-
-
 // txt文字滚动下落 - 初始化 - 战斗信息面板 - txt
 let txtArr = ref({
 	list: [{

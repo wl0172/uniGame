@@ -3,9 +3,14 @@ import {
 	watch,
 	computed
 } from "vue"
+// 配置文件
 import {
-	useInfo
-} from '@/state/index.js'
+	effectCnsRef,
+	errorCnsRef,
+	monsterRef,
+	goodsRef,
+	mapRef,
+} from '@/state/config/index.js'
 // 接口
 import {
 	postUserInfo,
@@ -15,22 +20,15 @@ import {
 } from '@/api/index.js'
 // 全局属性
 import {
+	useInfo,
 	pageArr,
 	pageSwitch,
 	pageSwitchMenu,
 	battleInfo,
 	hiddenPopup,
+	txtArr
 } from '@/state/index.js'
-
-// 配置文件
-import {
-	effectCnsRef,
-	errorCnsRef,
-	monsterRef,
-	goodsRef,
-	mapRef,
-} from '@/state/config/index.js'
-
+// 音频
 import { audioAttack } from '@/state/audio/index.js'
 
 
@@ -43,9 +41,13 @@ const handleGetUserInfo = () => {
 			"backpack": true, // 背包 玩家背包中的物品
 			"equipment": true // 装备 玩家身上的装备
 		}).then((res) => {
-			console.log(res, 'comBattle->action->handleGetUserInfo->玩家最新信息->======')
+			console.log(res, '玩家最新信息 ==========')
 			uni.setStorageSync('playerInfo', res.player)
-			battleInfo.value.player = res?.player ? res?.player : {}
+			uni.setStorageSync('backpackInfo', res.backpack)
+			uni.setStorageSync('equipmentInfo', res.equipment)
+			
+			battleInfo.value.player = res?.player ? res?.player : {},
+			pageSwitch.value.index = res?.player?.local - 1//地图
 			// 如果有偶怪的信息
 			if(res?.fighter){
 				const getMon = monsterRef.value.find(item => item.id == res?.fighter?.index)
@@ -80,7 +82,7 @@ const txtCopywriting = (response, txtArr, status, scrollIndex, effect = -1, bloo
 		2: `${battleInfo?.value?.monster?.name}被你击败了！`,
 		3: `${battleInfo?.value?.monster?.name}把你打倒了！`,
 		4: `你逃跑了...`,
-		5: response.length ? `获得战利品${'id='+response[0].id}待开发...` : `什么都没有获得...`,
+		5: response.length ? `获得战利品${dropArticle(response)}...` : `什么都没有获得...`,
 	}
 	txtArr.list.push({
 		liTxt: effect > -1 ? statusObj[status] : statusObj[status]
@@ -90,7 +92,6 @@ const txtCopywriting = (response, txtArr, status, scrollIndex, effect = -1, bloo
 
 // 掉血，role角色 - monst怪物
 const buckleBlood = (item, response, txtArr, status, scrollIndex) => {
-
 	let eff = new Map(Object.entries(effectCnsRef.value))
 	// 怪物对角色产生的效果
 	if (response?.mEffects?.length) {
@@ -127,9 +128,70 @@ const buckleBlood = (item, response, txtArr, status, scrollIndex) => {
 	}
 }
 
-
-
-
+// 掉落的物品名字
+const dropArticle = (res=[]) => {
+	
+	// const a = [{ aa: 1 }, { bb: 1 },{cc:2}];
+	// const b = [{ aa: 2 }, { bb: 2 },{cc:3}];
+	
+	// const result = [...a, ...b].reduce((acc, cur) => {
+	//   const key = Object.keys(cur)[0];
+	//   const value = cur[key];
+	//   acc[key] = (acc[key] || 0) + value;
+	//   return acc;
+	// }, {});
+	
+	// console.log(result);
+	
+	
+	let a = []
+	let b = uni.getStorageSync('backpackInfo')
+	let c = []
+	let d = ''
+	
+	if(res.length){
+		for(let i of res){
+			if(b.length){
+				if(b.some(item=>item.index == i.id)){
+					for(let j of b){
+						if(j.index == i.id){
+							j.has += i.got
+						}
+					}
+				}else{
+					for(let k of goodsRef.value){
+						if(k.index == i.id){
+							k.has = i.got
+							b.push(k)
+						}
+					}
+				}
+			}else{
+				for(let k of goodsRef.value){
+					if(k.index == i.id){
+						k.has = i.got
+						b.push(k)
+					}
+				}
+			}
+		}
+		uni.setStorageSync('backpackInfo', b)
+		for(let h of goodsRef.value){
+			for(let f of res){
+				if(f.id == h.index){
+					c.push({
+						name: h.name,
+						num: f.got
+					})
+				}
+			}
+		}
+		for(let e of c){
+			d += e.num + '个' + e.name
+		}
+		return d
+	}
+}
 
 
 
@@ -274,7 +336,7 @@ const handleToForge = () =>{
 const handleLeave = () => {
 	uni.clearStorageSync()
 	uni.reLaunch({
-		url: '/pages/loginOrRegister/index'
+		url: '/pages/loginOrRegister/index',
 	})
 }
 

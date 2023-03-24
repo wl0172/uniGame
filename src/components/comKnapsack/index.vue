@@ -1,10 +1,10 @@
 <script setup>
-import { ref } from "vue"
+import { ref, watch } from "vue"
 import { headerMargin } from '@/state/bangs.js'
 // 线
 import ComLine from "@/components/comLine/index.vue"
 // 全局属性
-import { battleInfo } from '@/state/index.js'
+import { battleInfo,pageSwitchMenu } from '@/state/index.js'
 // 血量展示
 import { bloodShow } from '@/state/bloodConfig/index.js'
 // action
@@ -24,6 +24,11 @@ const progressConfig = {
 	active: false,
 	backgroundColor: '#e6e6e670'
 }
+
+// 背包物品
+let wrapThing = ref(uni.getStorageSync('backpackInfo'))
+
+
 
 </script>
 
@@ -53,9 +58,14 @@ const progressConfig = {
 				<!-- 右 -->
 				<div class="comBattleDiv_battle_1_div" style="background: #fff5e1;">
 					<div class="comBattleDiv_battle_1_divs">
-						<div class="comBattleDiv_battle_1_div_img">
-							<image src="@/static/image/11.png" alt="" />
+						<!-- 钱 -->
+						<div class="right_money">
+							<div>人民币：</div>
+							<div>金币：</div>
+							<div>银币：</div>
+							<div>铜币：</div>
 						</div>
+						
 						<div class="comBattleDiv_battle_1_div_i_name">{{ battleInfo.player.name }}</div>
 						<!-- 血量 -->
 						<div class="comBattleDiv_battle_1_div_i_pro">
@@ -120,22 +130,26 @@ const progressConfig = {
 						<div 
 							@click="handleArticle(item,index)"
 							class="comBattleDiv_battle_2_list_li" 
-							v-for="(item,index) in new Array(150)" :key="item">
-							<div>{{ index }}</div>
+							v-for="(item,index) in wrapThing" :key="item">
+							<image style="width: 100%;height: 100%;" src="@/static/svg/2.svg" mode=""></image>
+							<div class="comBattleDiv_battle_2_list_li_txt">{{ item.has }}</div>
 						</div>
 					</div>
 				</div>
 				<!-- 线 -->
 				<ComLine />
-				<div class="comBattleDiv_battle_2_txt">{{ txtValue }}</div>
+				<div class="comBattleDiv_battle_2_txt">
+					<div>{{ txtValue.name }}</div>
+					<div>{{ JSON.stringify(txtValue) }}</div>
+				</div>
 			</div>
 			
 		</div>
 		<!-- 操作菜单 -->
 		<div class="forgeDiv_footer">
-			<div v-if="true" @click="handleDiscard">丢弃</div>
-			<div v-if="true" @click="handleAction">使用</div>
-			<div v-if="true" @click="handleEquip">装备</div>
+			<div v-if="txtValue.name" @click="handleDiscard">丢弃</div>
+			<div v-if="txtValue.name" @click="handleAction">使用</div>
+			<div v-if="txtValue.name" @click="handleEquip">装备</div>
 			<div @click="handleBack">离开</div>
 		</div>
 	

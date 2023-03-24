@@ -1,8 +1,8 @@
 {
-    "authReject": "Username or password is failed.",
-    "safeArea": "can't from is safe area",
-    "nameNotSupportEmail": "username not support email address",
-    "userNotHas": "Account not found.",
-    "uniqueMust": "Username or email exists.",
-    "serverFail": "Server running is failed."
+  "authReject": "Username or password is failed.",
+  "safeArea": "can't from is safe area",
+  "nameNotSupportEmail": "username not support email address",
+  "userNotHas": "Account not found.",
+  "uniqueMust": "Username or email exists.",
+  "serverFail": "Server running is failed."
 }

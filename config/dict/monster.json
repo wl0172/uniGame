@@ -1,27 +1,26 @@
-[{
+[
+  {
     "id": 1,
     "name": "史莱姆",
     "level": 1,
-    "attack_min": 20,
-    "attack_max": 31,
+    "attack_max": 20,
+    "attack_min": 31,
     "hp": 315,
     "defence": 0,
     "nimble": 0,
     "vision": 0,
     "exp_min": 0,
     "exp_max": 0,
-    "flop": [{
+    "flops": [
+      {
         "id": 1,
-        "rate": 1000,
+        "rate": 10000,
         "min": 1,
         "max": 3
-    }, {
-        "id": 3,
-        "rate": 3000,
-        "min": 1,
-        "max": 2
-    }]
-}, {
+      }
+    ]
+  },
+  {
     "id": 2,
     "name": "精英史莱姆",
     "level": 2,
@@ -33,18 +32,34 @@
     "vision": 0,
     "exp_min": 0,
     "exp_max": 0,
-    "flop": [{
+    "flop": [
+      {
         "id": 1,
-        "rate": 1000,
+        "rate": 8000,
         "min": 1,
         "max": 5
-    }, {
+      },
+      {
         "id": 3,
         "rate": 6000,
         "min": 1,
         "max": 5
-    }]
-}, {
+      },
+      {
+        "id": 6,
+        "rate": 3333,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "id": 5,
+        "rate": 3333,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
     "id": 3,
     "name": "幽影兔",
     "level": 3,
@@ -56,20 +71,31 @@
     "vision": 0,
     "exp_min": 0,
     "exp_max": 0,
-    "flop": [{
+    "flop": [
+      {
         "id": 1,
         "rate": 1000,
         "min": 1,
         "max": 5
-    }, {
+      },
+      {
         "id": 3,
         "rate": 6000,
         "min": 1,
         "max": 5
-    }, {
+      },
+      {
         "id": 4,
-        "rate": 160,
+        "rate": 3333,
         "min": 1,
         "max": 1
-    }]
-}]
+      },
+      {
+        "id": 6,
+        "rate": 3333,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  }
+]
