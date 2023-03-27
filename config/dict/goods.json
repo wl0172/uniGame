@@ -1,23 +1,19 @@
 [
   {
     "id": 1,
-		"index": 1,
     "name": "旧铜币",
     "level": 1,
     "wear": 1,
-    "weight": 0,
+    "price": 1,
     "type": 1,
-    "effects": {
-      "money": 1
-    }
+    "effects": {}
   },
   {
     "id": 2,
-		"index":2,
     "name": "古金币",
     "level": 1,
     "wear": 1,
-    "weight": 0,
+    "price": 8800,
     "type": 1,
     "effects": {
       "gold": 1
@@ -25,51 +21,104 @@
   },
   {
     "id": 3,
-		"index": 3,
     "name": "浆果",
     "level": 1,
     "wear": 1,
-    "weight": 15,
+    "price": 7,
     "type": 1,
     "effects": {
-      "energy_plus": 1
+      "energy_plus": 1,
+      "hp_plus": 2
     }
   },
   {
     "id": 4,
-		"index": 4,
-    "name": "毕加索之刃",
+    "name": "歪铁棍",
     "level": 1,
     "wear": 1200,
-    "weight": 2800,
+    "price": 320,
     "type": 5,
     "effects": {
-      "attack_max_add": 15,
+      "attack_max_add": 22,
       "attack_min_add": 6
     }
   },
   {
     "id": 5,
-		"index": 5,
-    "name": "莫奈短匕",
+    "name": "木棍",
     "level": 1,
     "wear": 1200,
-    "weight": 1150,
+    "price": 100,
     "type": 4,
     "effects": {
-      "attack_max_add": 8
+      "attack_max_add": 12,
+      "attack_min_add": 2
     }
   },
   {
     "id": 6,
-		"index": 6,
-    "name": "莫奈圆盾",
+    "name": "天然木板",
     "level": 1,
     "wear": 1600,
-    "weight": 1750,
+    "price": 120,
     "type": 3,
     "effects": {
       "defence_add": 10
+    }
+  },
+  {
+    "id": 7,
+    "name": "小麦",
+    "level": 1,
+    "wear": 1,
+    "price": 3,
+    "type": 1,
+    "effects": {
+      "hp_plus": 1
+    }
+  },
+  {
+    "id": 8,
+    "name": "止血绷带",
+    "level": 1,
+    "wear": 1,
+    "price": 20,
+    "type": 1,
+    "effects": {
+      "hp_plus": 60
+    }
+  },
+  {
+    "id": 9,
+    "name": "柠檬",
+    "level": 1,
+    "wear": 1,
+    "price": 25,
+    "type": 1,
+    "effects": {
+      "power_plus": 40
+    }
+  },
+  {
+    "id": 10,
+    "name": "金仓药",
+    "level": 1,
+    "wear": 1,
+    "price": 100,
+    "type": 1,
+    "effects": {
+      "hp_plus": 275
+    }
+  },
+  {
+    "id": 11,
+    "name": "金疮药",
+    "level": 1,
+    "wear": 1,
+    "price": 220,
+    "type": 1,
+    "effects": {
+      "hp_plus": 550
     }
   }
 ]

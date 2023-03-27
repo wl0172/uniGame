@@ -2,6 +2,8 @@
 import { ref, watch, computed } from "vue"
 // 线
 import ComLine from "@/components/comLine/index.vue"
+// 技能 - 道具
+import ComBattlePopup from "@/components/comBattlePopup/index.vue"
 // 接口
 import { postUserInfo, getFightFind, postFightAction } from '@/api/index.js'
 // 血量展示
@@ -29,6 +31,7 @@ import {
 	handleToShop,// 打开商店
 	handleToForge,// 锻造
 	handleLeave,// 退出
+	skillShow,
 } from './action'
 
 // 进度条配置
@@ -44,7 +47,11 @@ watch([pageSwitch.value], ([newValue1, oldValue1]) => {
 	txtArr.value.list.push({
 		liTxt: `来到了${pageArr.value.list[pageSwitch.value.index].name}`
 	})
+},{ 
+	deep: true,
+	// immediate: true
 })
+
 
 // 获取玩家最新信息
 handleGetUserInfo()
@@ -116,32 +123,33 @@ handleGetUserInfo()
 		</div>
 		<!-- 操作 -->
 		<div class="comBattleDiv_battle_3">
-			
+			<!-- 技能 - 道具 -->
+			<ComBattlePopup v-if="skillShow" />
 			<!-- 探索 - 攻击 -->
-			<div class="" @click="handleSeachItem(txtArr,scrollIndex)">{{ Object.keys(battleInfo?.monster).length ? '战斗' : '探索' }}</div>
+			<div class="but" @click="handleSeachItem(txtArr,scrollIndex)">{{ Object.keys(battleInfo?.monster).length ? '战斗' : '探索' }}</div>
 			<!-- 逃跑 -->
-			<div class="" @click="handleRunAway(txtArr,scrollIndex)" v-if="Object.keys(battleInfo?.monster).length">逃跑</div>
+			<div class="but" @click="handleRunAway(txtArr,scrollIndex)" v-if="Object.keys(battleInfo?.monster).length">逃跑</div>
 			
 			<!-- 技能 -->
-			<div class="" @click="handleSkill" v-if="Object.keys(battleInfo?.monster).length">技能</div>
+			<div class="but" @click="handleSkill" v-if="Object.keys(battleInfo?.monster).length">技能</div>
 			
 			<!-- 道具 -->
-			<div class="" @click="handleProp" v-if="Object.keys(battleInfo?.monster).length">道具</div>
+			<div class="but" @click="handleProp" v-if="Object.keys(battleInfo?.monster).length">道具</div>
 			
 			<!-- 背包 -->
-			<div class="" @click="handleOpenKnapsack" v-if="!Object.keys(battleInfo?.monster).length">背包</div>
+			<div class="but" @click="handleOpenKnapsack" v-if="!Object.keys(battleInfo?.monster).length">背包</div>
 			
 			<!-- 地图 -->
-			<div class="" @click="handleToMap" v-if="!Object.keys(battleInfo?.monster).length">地图</div>
+			<div class="but" @click="handleToMap" v-if="!Object.keys(battleInfo?.monster).length">地图</div>
 			
 			<!-- 商店 -->
-			<div class="" @click="handleToShop" v-if="!Object.keys(battleInfo?.monster).length">商店</div>
+			<div class="but" @click="handleToShop" v-if="!Object.keys(battleInfo?.monster).length">商店</div>
 			
 			<!-- 锻造 -->
-			<div class="" @click="handleToForge" v-if="!Object.keys(battleInfo?.monster).length">锻造</div>
+			<div class="but" @click="handleToForge" v-if="!Object.keys(battleInfo?.monster).length">锻造</div>
 			
 			<!-- 退出 -->
-			<div class="" @click="handleLeave">退出</div>
+			<div class="but" @click="handleLeave">退出</div>
 			
 		</div>
 

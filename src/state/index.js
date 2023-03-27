@@ -29,7 +29,7 @@ const pageArr = ref({
 	list: mapRefPageArr
 })
 const pageSwitch = ref({
-	index: 0,
+	index: 1,
 })
 // 所有的场景 - 操作页 - 比如背包等
 const pageArrMenu = ref({
@@ -58,7 +58,7 @@ const hiddenPopup = ref({
 // txt文字滚动下落 - 初始化 - 战斗信息面板 - txt
 let txtArr = ref({
 	list: [{
-		liTxt: `来到了${pageArr.value.list[pageSwitch.value.index].name}`
+		// liTxt: `来到了${pageArr.value.list[pageSwitch.value.index].name}`
 	}]
 })
 
@@ -80,7 +80,11 @@ const battleInfo = ref({
 	// 角色
 	player: uni.getStorageSync('playerInfo') ? uni.getStorageSync('playerInfo') : {},
 	// 怪物
-	monster: {}
+	monster: {},
+	// 身上穿戴的装备
+	equipments: [],
+	// 背包
+	backpack: []
 })
 
 

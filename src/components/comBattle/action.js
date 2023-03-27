@@ -28,9 +28,13 @@ import {
 	hiddenPopup,
 	txtArr
 } from '@/state/index.js'
+// util
+import { backpackSet } from "@/utils/index.js"
 // 音频
 import { audioAttack } from '@/state/audio/index.js'
 
+// 技能显示
+let skillShow = ref(false)
 
 // 获取玩家最新信息
 const handleGetUserInfo = () => {
@@ -42,12 +46,17 @@ const handleGetUserInfo = () => {
 			"equipment": true // 装备 玩家身上的装备
 		}).then((res) => {
 			console.log(res, '玩家最新信息 ==========')
+			
 			uni.setStorageSync('playerInfo', res.player)
-			uni.setStorageSync('backpackInfo', res.backpack)
-			uni.setStorageSync('equipmentInfo', res.equipment)
+			uni.setStorageSync('backpackInfo', backpackSet(res.backpack))
+			uni.setStorageSync('equipmentsInfo', backpackSet(res.equipments))
 			
 			battleInfo.value.player = res?.player ? res?.player : {},
-			pageSwitch.value.index = res?.player?.local - 1//地图
+			battleInfo.value.backpack = backpackSet(res.backpack).length ? backpackSet(res.backpack) : []
+			battleInfo.value.equipments = backpackSet(res.equipments).length ? backpackSet(res.equipments) : []
+			
+			pageSwitch.value.index = res?.player?.local == 4 ? 0 : res?.player?.local//地图
+			
 			// 如果有偶怪的信息
 			if(res?.fighter){
 				const getMon = monsterRef.value.find(item => item.id == res?.fighter?.index)
@@ -141,11 +150,9 @@ const dropArticle = (res=[]) => {
 	//   return acc;
 	// }, {});
 	
-	// console.log(result);
-	
 	
 	let a = []
-	let b = uni.getStorageSync('backpackInfo')
+	let b = battleInfo.value.backpack
 	let c = []
 	let d = ''
 	
@@ -176,9 +183,10 @@ const dropArticle = (res=[]) => {
 			}
 		}
 		uni.setStorageSync('backpackInfo', b)
+		battleInfo.value.backpack = b
 		for(let h of goodsRef.value){
 			for(let f of res){
-				if(f.id == h.index){
+				if(f.id == h.id){
 					c.push({
 						name: h.name,
 						num: f.got
@@ -295,6 +303,7 @@ const handleSkill = () => {
 		icon: 'none',
 		title: '技能开发中'
 	})
+	skillShow.value = !skillShow.value
 }
 
 // 道具
@@ -303,6 +312,7 @@ const handleProp = () => {
 		icon: 'none',
 		title: '道具开发中'
 	})
+	skillShow.value = !skillShow.value
 }
 
 // 地图
@@ -334,10 +344,24 @@ const handleToForge = () =>{
 
 // 退出
 const handleLeave = () => {
-	uni.clearStorageSync()
-	uni.reLaunch({
-		url: '/pages/loginOrRegister/index',
+	uni.showModal({
+		title: '确定退出游戏吗？',
+		content: '',// '这是一个模态弹窗',
+		success: function (res) {
+			if (res.confirm) {
+				txtArr.value.list = [{
+					liTxt: `来到了${pageArr.value.list[pageSwitch.value.index].name}`
+				}]
+				uni.clearStorageSync()
+				uni.reLaunch({
+					url: '/pages/loginOrRegister/index',
+				})
+			} else if (res.cancel) {
+				console.log('用户点击取消');
+			}
+		}
 	})
+
 }
 
 
@@ -369,4 +393,5 @@ export {
 	handleToShop, // 打开商店
 	handleToForge,// 锻造
 	handleLeave, // 退出
+	skillShow,// 技能框-显示隐藏
 }

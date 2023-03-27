@@ -10,10 +10,10 @@ import { postUserTravel } from '@/api/index.js'
 // 去新场景
 const handleToNewMap = (item, index) => {
 	postUserTravel({
-		'local': index+1
+		'local': item.id
 	}).then((res)=>{
 		if(res != null){
-			pageSwitch.value.index = index
+			pageSwitch.value.index = item.id == 4 ? 0 : item.id
 			setTimeout(() => {
 				scrollIndex.value.id = `id-${txtArr.value.list.length-1}`
 			},50)
@@ -23,6 +23,10 @@ const handleToNewMap = (item, index) => {
 		}		
 	})
 }
+
+console.log(pageSwitch.value, '======')
+
+
 </script>
 
 <template>
@@ -36,8 +40,13 @@ const handleToNewMap = (item, index) => {
 				<div class="conSceneListLi_title">
 					<div>
 						<text>{{ item.name }}</text>
-						<text style="color: #4bbda3;">{{ (pageSwitch.index+1) == item.id ? ' - 当前' : '' }}</text>
+						<text 
+							style="color: #4bbda3;" 
+							v-if="pageSwitch.index == item.id || (pageSwitch.index == 0 && item.id == 4)">
+							 - 当前
+						</text>
 					</div>
+					
 					<div class="conSceneListLi_title_state">服务中</div>
 				</div>
 				<div class="conSceneListLi_txt" v-if="sceneName(item.linked)">可去：{{ sceneName(item.linked) }}</div>

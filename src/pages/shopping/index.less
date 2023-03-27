@@ -7,7 +7,21 @@
 		width: 100%;
 		height: calc( 100vh - var(--headerMargin) - 220rpx );
 		position: relative;
-		z-index: 99;
+		overflow: hidden;
+		.forgeDiv_npc{
+			.forgeDiv_list{
+				height: 100px;
+				overflow: auto;
+				.forgeDiv_list_ul{
+					display: flex;
+					flex-wrap: wrap;
+					.forgeDiv_list_li{
+						width: 30px;
+						height: 30px;
+					}
+				}
+			}
+		}
 	}
 	.forgeDiv_conter::after{
 		content: '';

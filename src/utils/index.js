@@ -1,5 +1,5 @@
  // 配置文件
-import { errorCnsRef, monsterRef, mapRef } from '@/state/config/index.js'
+import { errorCnsRef, monsterRef, mapRef, goodsRef } from '@/state/config/index.js'
 
 // 报错配置
 let errorCnsRefTxt = new Map(Object.entries(errorCnsRef.value))
@@ -46,9 +46,30 @@ const monsterName = (arr=[]) => {
 	return name
 }
 
+// 背包
+const backpackSet = (backpackRes=[]) => {
+	let a = []
+	for(let i of goodsRef.value){
+		for(let j of backpackRes){
+			if(j.index == i.id){
+				let b = JSON.parse(JSON.stringify(i))
+				b.id = j.id
+				let _a = {...j,...b}
+				a.push(_a)
+			}
+		}
+	}
+	return a
+}
+
+// 背包数量 0=1,1=+
+const backpackNum = (arr,state = 0) => {
+	
+}
 
 export {
 	errorCnsRefTxt,
 	monsterName,
-	sceneName
+	sceneName,
+	backpackSet
 }

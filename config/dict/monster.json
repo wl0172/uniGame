@@ -32,7 +32,7 @@
     "vision": 0,
     "exp_min": 0,
     "exp_max": 0,
-    "flop": [
+    "flops": [
       {
         "id": 1,
         "rate": 8000,
@@ -71,7 +71,7 @@
     "vision": 0,
     "exp_min": 0,
     "exp_max": 0,
-    "flop": [
+    "flops": [
       {
         "id": 1,
         "rate": 1000,
