@@ -5034,6 +5034,7 @@ if (uni.restoreGlobal) {
       const handleUserEquipments = (item) => {
         txtValue.value = item;
         apparelEquipBut.value = true;
+        wrapThingBut.value = false;
       };
       const handleArticle = (item, index) => {
         for (let i of goodsRef.value) {
@@ -5046,6 +5047,7 @@ if (uni.restoreGlobal) {
         } else {
           wrapThingBut.value = false;
         }
+        apparelEquipBut.value = false;
       };
       const handleAction = () => {
         postGoodsConsumeOnce({
@@ -5073,12 +5075,8 @@ if (uni.restoreGlobal) {
             if (res) {
               equipUtilUp(txtValue.value);
               wrapThing.forEach((item, index) => {
-                if (item.index == txtValue.value.index) {
-                  if (item.has > 1) {
-                    item.has -= 1;
-                  } else {
-                    wrapThing.splice(index, 1);
-                  }
+                if (item.id == txtValue.value.id) {
+                  wrapThing.splice(index, 1);
                 }
               });
               battleInfo.value.equipments.push(txtValue.value);
@@ -5092,20 +5090,12 @@ if (uni.restoreGlobal) {
           }).then((res) => {
             if (res) {
               equipUtilDown(txtValue.value);
+              wrapThing.push(txtValue.value);
               battleInfo.value.equipments.forEach((item, index) => {
                 if (item.index == txtValue.value.index) {
                   battleInfo.value.equipments.splice(index, 1);
                 }
               });
-              if (wrapThing.some((item) => item.index == txtValue.value.index)) {
-                wrapThing.forEach((item, index) => {
-                  if (item.index == txtValue.value.index) {
-                    item.has += 1;
-                  }
-                });
-              } else {
-                wrapThing.push(txtValue.value);
-              }
               txtValue.value = "";
               apparelEquipBut.value = false;
             }
@@ -5284,6 +5274,10 @@ if (uni.restoreGlobal) {
                         src: _imports_2,
                         mode: ""
                       }),
+                      vue.createElementVNode("div", {
+                        class: "comBattleDiv_battle_2_list_li_txt",
+                        style: { "top": "0" }
+                      }, "id=" + vue.toDisplayString(item.id), 1),
                       vue.createElementVNode("div", { class: "comBattleDiv_battle_2_list_li_txt" }, vue.toDisplayString(item.has), 1)
                     ], 8, ["onClick"]);
                   }), 128))
@@ -5666,7 +5660,7 @@ if (uni.restoreGlobal) {
     setup(__props) {
       vue.ref("\u5546\u5E97");
       getShopMarket().then((res) => {
-        formatAppLog("log", "at pages/shopping/index.vue:11", res, "==========");
+        formatAppLog("log", "at pages/shopping/index.vue:13", res, "\u5546\u5E97\u6BCF\u65E5\u66F4\u65B0==========");
       });
       const handleSold = () => {
       };

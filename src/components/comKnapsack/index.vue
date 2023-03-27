@@ -163,6 +163,7 @@ if(battleInfo.value.equipments.length){
 const handleUserEquipments = (item) => {
 	txtValue.value = item
 	apparelEquipBut.value = true
+	wrapThingBut.value = false
 }
 // 背包物品点击
 const handleArticle = (item,index) => {
@@ -176,6 +177,7 @@ const handleArticle = (item,index) => {
 	}else{
 		wrapThingBut.value = false
 	}
+	apparelEquipBut.value = false
 }
 // 丢弃
 const handleDiscard = () => {
@@ -214,14 +216,11 @@ const handleEquip = (i) => {
 				equipUtilUp(txtValue.value)
 				
 				wrapThing.forEach((item,index)=>{
-					if(item.index == txtValue.value.index){
-						if(item.has > 1){
-							item.has -= 1
-						}else{
-							wrapThing.splice(index,1)
-						}
+					if(item.id == txtValue.value.id){
+						wrapThing.splice(index,1)
 					}
 				})
+				
 				battleInfo.value.equipments.push(txtValue.value)
 				txtValue.value = ''
 				wrapThingBut.value = false
@@ -234,22 +233,15 @@ const handleEquip = (i) => {
 		}).then((res)=>{
 			if(res){
 				equipUtilDown(txtValue.value)
-				
+
+				wrapThing.push(txtValue.value)
+
 				battleInfo.value.equipments.forEach((item,index)=>{
 					if(item.index == txtValue.value.index){
 						battleInfo.value.equipments.splice(index,1)
 					}
 				})
 				
-				if(wrapThing.some(item=>item.index == txtValue.value.index)){
-					wrapThing.forEach((item,index)=>{
-						if(item.index == txtValue.value.index){
-							item.has += 1
-						}
-					})
-				}else{
-					wrapThing.push(txtValue.value)
-				}
 				txtValue.value = ''
 				apparelEquipBut.value = false
 				
@@ -377,6 +369,7 @@ const handleBack = () => {
 							class="comBattleDiv_battle_2_list_li" 
 							v-for="(item,index) in wrapThing" :key="item">
 							<image style="width: 100%;height: 100%;" src="@/static/svg/2.svg" mode=""></image>
+							<div class="comBattleDiv_battle_2_list_li_txt" style="top: 0;">id={{item.id}}</div>
 							<div class="comBattleDiv_battle_2_list_li_txt">{{ item.has }}</div>
 						</div>
 					</div>

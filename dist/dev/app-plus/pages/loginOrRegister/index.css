@@ -1402,7 +1402,7 @@ to {
   background: #fff5e1;
 }
 .forgeDiv .forgeDiv_conter .comBattleDiv_battle_2 .comBattleDiv_battle_2_list[data-v-8fc46dda] {
-  width: 100%;
+  padding: 0 0.4375rem;
   height: calc(80% - 1.5625rem);
   overflow: auto;
   position: relative;

@@ -1,14 +1,16 @@
 <script setup>
 import { ref } from "vue"
-import { handleStartForge, handleBack } from './index.js'
+// 属性
 import { headerMargin } from '@/state/bangs.js'
 // 接口
 import { getShopMarket, postShopMarket, deleteShopMarket } from '@/api/index.js'
+// action
+import { handleStartForge, handleBack } from './index.js'
 
 let a = ref('商店')
 
 getShopMarket().then((res)=>{
-	console.log(res,'==========')
+	console.log(res,'商店每日更新==========')
 })
 
 const handleSold = () => {

@@ -158,32 +158,22 @@ const dropArticle = (res=[]) => {
 	
 	if(res.length){
 		for(let i of res){
-			if(b.length){
-				if(b.some(item=>item.index == i.id)){
-					for(let j of b){
-						if(j.index == i.id){
-							j.has += i.got
-						}
-					}
-				}else{
-					for(let k of goodsRef.value){
-						if(k.index == i.id){
-							k.has = i.got
-							b.push(k)
-						}
+			if(b.some(item=>item.type == 1 && item.index == i.id)){
+				for(let j of b){
+					if(j.index == i.id){
+						j.has += i.got
 					}
 				}
 			}else{
 				for(let k of goodsRef.value){
-					if(k.index == i.id){
+					if(k.id == i.id){
 						k.has = i.got
+						k.index = k.id
 						b.push(k)
 					}
 				}
 			}
 		}
-		uni.setStorageSync('backpackInfo', b)
-		battleInfo.value.backpack = b
 		for(let h of goodsRef.value){
 			for(let f of res){
 				if(f.id == h.id){
