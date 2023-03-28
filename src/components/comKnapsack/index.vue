@@ -62,44 +62,44 @@ const equipUtilUp = (i) => {
 	// 头
 	if(i.type == 6){
 		apparelEquip.value.head = i
-		apparelEquip.value.head.url = `../../static/image/${i.index}.png`
+		apparelEquip.value.head.url = `../../static/image/${i.sku}.png`
 	}
 	// 左
 	if(i.type == 3){
 		apparelEquip.value.leftHand = i
-		apparelEquip.value.leftHand.url = `../../static/image/${i.index}.png`
+		apparelEquip.value.leftHand.url = `../../static/image/${i.sku}.png`
 	}
 	// 右
 	if(i.type == 4){
 		apparelEquip.value.rightHand = i
-		apparelEquip.value.rightHand.url = `../../static/image/${i.index}.png`
+		apparelEquip.value.rightHand.url = `../../static/image/${i.sku}.png`
 	}
 	// 胸甲
 	if(i.type == 7){
 		apparelEquip.value.vitalPoints = i
-		apparelEquip.value.vitalPoints.url = `../../static/image/${i.index}.png`
+		apparelEquip.value.vitalPoints.url = `../../static/image/${i.sku}.png`
 	}
 	// 腿
 	if(i.type == 8){
 		apparelEquip.value.Legs = i
-		apparelEquip.value.Legs.url = `../../static/image/${i.index}.png`
+		apparelEquip.value.Legs.url = `../../static/image/${i.sku}.png`
 	}
 	// 脚
 	if(i.type == 9){
 		apparelEquip.value.foot = i
-		apparelEquip.value.foot.url = `../../static/image/${i.index}.png`
+		apparelEquip.value.foot.url = `../../static/image/${i.sku}.png`
 	}
 	// 饰品
 	if(i.type == 10){
 		apparelEquip.value.Accessories = i
-		apparelEquip.value.Accessories.url = `../../static/image/${i.index}.png`
+		apparelEquip.value.Accessories.url = `../../static/image/${i.sku}.png`
 	}
 	// 双手武器
 	if(i.type == 5){
 		apparelEquip.value.leftHand = i
 		apparelEquip.value.rightHand = i
-		apparelEquip.value.leftHand.url = `../../static/image/${i.index}.png`
-		apparelEquip.value.rightHand.url = `../../static/image/${i.index}.png`
+		apparelEquip.value.leftHand.url = `../../static/image/${i.sku}.png`
+		apparelEquip.value.rightHand.url = `../../static/image/${i.sku}.png`
 	}
 }
 
@@ -194,7 +194,7 @@ const handleAction = () => {
 	}).then((res)=>{
 		if(res){
 			wrapThing.forEach((item,index)=>{
-				if(item.index == txtValue.value.index){
+				if(item.sku == txtValue.value.sku){
 					if(item.has > 1){
 						item.has -= 1
 					}else{
@@ -237,7 +237,7 @@ const handleEquip = (i) => {
 				wrapThing.push(txtValue.value)
 
 				battleInfo.value.equipments.forEach((item,index)=>{
-					if(item.index == txtValue.value.index){
+					if(item.id == txtValue.value.id){
 						battleInfo.value.equipments.splice(index,1)
 					}
 				})
@@ -369,7 +369,7 @@ const handleBack = () => {
 							class="comBattleDiv_battle_2_list_li" 
 							v-for="(item,index) in wrapThing" :key="item">
 							<image style="width: 100%;height: 100%;" src="@/static/svg/2.svg" mode=""></image>
-							<div class="comBattleDiv_battle_2_list_li_txt" style="top: 0;">id={{item.id}}</div>
+							<div class="comBattleDiv_battle_2_list_li_txt" style="top: 0;">id={{item.id}}{{item.name}}</div>
 							<div class="comBattleDiv_battle_2_list_li_txt">{{ item.has }}</div>
 						</div>
 					</div>

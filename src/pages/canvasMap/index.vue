@@ -24,8 +24,6 @@ const handleToNewMap = (item, index) => {
 	})
 }
 
-console.log(pageSwitch.value, '======')
-
 
 </script>
 

@@ -51,9 +51,8 @@ const backpackSet = (backpackRes=[]) => {
 	let a = []
 	for(let i of goodsRef.value){
 		for(let j of backpackRes){
-			if(j.index == i.id){
+			if(j.sku == i.sku){
 				let b = JSON.parse(JSON.stringify(i))
-				b.id = j.id
 				let _a = {...j,...b}
 				a.push(_a)
 			}

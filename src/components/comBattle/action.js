@@ -45,24 +45,28 @@ const handleGetUserInfo = () => {
 			"backpack": true, // 背包 玩家背包中的物品
 			"equipment": true // 装备 玩家身上的装备
 		}).then((res) => {
-			console.log(res, '玩家最新信息 ==========')
+			// uni.setStorageSync('playerInfo', res.player)
+			// uni.setStorageSync('backpackInfo', backpackSet(res.backpack))
+			// uni.setStorageSync('equipmentsInfo', backpackSet(res.equipments))
 			
-			uni.setStorageSync('playerInfo', res.player)
-			uni.setStorageSync('backpackInfo', backpackSet(res.backpack))
-			uni.setStorageSync('equipmentsInfo', backpackSet(res.equipments))
-			
+			// 玩家信息
 			battleInfo.value.player = res?.player ? res?.player : {},
-			battleInfo.value.backpack = backpackSet(res.backpack).length ? backpackSet(res.backpack) : []
-			battleInfo.value.equipments = backpackSet(res.equipments).length ? backpackSet(res.equipments) : []
-			
-			pageSwitch.value.index = res?.player?.local == 4 ? 0 : res?.player?.local//地图
-			
+			// 玩家背包
+			battleInfo.value.backpack = res.backpack.length ? backpackSet(res.backpack) : [],
+			// 玩家身上的装备
+			battleInfo.value.equipments = res.equipments.length ? backpackSet(res.equipments) : []
+			// 地图下标
+			pageSwitch.value.index = res?.player?.local == 4 ? 0 : res?.player?.local
 			// 如果有偶怪的信息
 			if(res?.fighter){
 				const getMon = monsterRef.value.find(item => item.id == res?.fighter?.index)
 				const getMonsters = {...getMon,...res?.fighter}
 				battleInfo.value.monster = getMonsters//res?.player
 			}
+			
+			// console.log(res, '接口玩家最新信息 ==========')
+			console.log(battleInfo.value, '玩家信息==========')
+			
 		})
 	}
 }
@@ -156,19 +160,23 @@ const dropArticle = (res=[]) => {
 	let c = []
 	let d = ''
 	
-	if(res.length){
+	
+	// {sku: 3, id: 3, got: 3}
+	
+	if(Object.prototype.toString.call(res).slice(8, -1) == 'Array' && res.length){
 		for(let i of res){
-			if(b.some(item=>item.type == 1 && item.index == i.id)){
+			// 背包里面是否有 如果是消耗品 + sku
+			if(b.some(item=>item.type == 1 && item.sku == i.sku)){
 				for(let j of b){
-					if(j.index == i.id){
+					if(j.sku == i.sku){
 						j.has += i.got
 					}
 				}
 			}else{
 				for(let k of goodsRef.value){
-					if(k.id == i.id){
+					if(k.sku == i.sku){
 						k.has = i.got
-						k.index = k.id
+						k.id = i.id
 						b.push(k)
 					}
 				}
@@ -176,7 +184,7 @@ const dropArticle = (res=[]) => {
 		}
 		for(let h of goodsRef.value){
 			for(let f of res){
-				if(f.id == h.id){
+				if(f.sku == h.sku){
 					c.push({
 						name: h.name,
 						num: f.got
