@@ -4,7 +4,7 @@ import { monsterRef } from '@/state/config/index.js'
 // 全局 - 角色 - 怪 - 信息
 import { battleInfo } from '@/state/index.js'
 
-// status = 0 - 角色，1 - 怪物
+// 血量显示 = status = 0 - 角色，1 - 怪物
 export function bloodShow(objInfo={},status=0){
 	let bloodNum = 0
 	let monsterRefArr = monsterRef.value

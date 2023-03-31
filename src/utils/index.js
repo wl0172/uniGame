@@ -47,28 +47,30 @@ const monsterName = (arr=[]) => {
 }
 
 // 背包
-const backpackSet = (backpackRes=[]) => {
+const backpackSet = (backpackRes = []) => {
 	let a = []
-	for(let i of goodsRef.value){
-		for(let j of backpackRes){
-			if(j.sku == i.sku){
-				let b = JSON.parse(JSON.stringify(i))
-				let _a = {...j,...b}
-				a.push(_a)
-			}
-		}
+	for (let i of backpackRes) {
+		let b = JSON.parse(JSON.stringify(i))
+		b.url = `../../static/image/${i.sku}.png`
+		a.push({...b,...goodsRef.value[i.sku]})
 	}
 	return a
 }
 
-// 背包数量 0=1,1=+
-const backpackNum = (arr,state = 0) => {
-	
+// 根据商品id - ids=[8, 9, 10, 4, 11] 匹配到相对应的商品信息
+const backpackItem = (shopArr) => {
+	let arr = []
+	for (let i of shopArr){
+		goodsRef.value[i].url = `../../static/image/${i}.png`
+		arr.push(goodsRef.value[i])
+	}
+	return arr
 }
 
 export {
 	errorCnsRefTxt,
 	monsterName,
 	sceneName,
-	backpackSet
+	backpackSet,
+	backpackItem
 }

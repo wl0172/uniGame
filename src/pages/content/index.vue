@@ -12,12 +12,13 @@
 
 	// 背景音乐
 	import { audioPlay, audioClose } from '@/state/audio/index.js'
-	onLoad(()=>{
-		audioPlay()
-	})
-	onShow(()=>{
-		audioPlay(2)
-	})
+	// onLoad(()=>{
+	// 	audioPlay()
+	// })
+	// onShow(()=>{
+	// 	audioPlay(2)
+	// })
+	// 暂时无用
 	// onHide(()=>{
 	// 	// audioClose()
 	// })

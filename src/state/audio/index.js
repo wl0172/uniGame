@@ -1,7 +1,7 @@
 import { onLoad, onShow, onHide } from '@dcloudio/uni-app'
 import { ref } from 'vue'
 
-// 背景音乐地址
+// 背景
 let bgAudioPaht = '../../static/audio/bg.mp3'
 // 攻击
 let AttackAudioPaht = '../../static/audio/attack.mp3'
@@ -31,6 +31,7 @@ const audioAttack = () => {
 	innerAudioContext.onPlay({})
 }
 
+// 关闭音乐
 const audioClose = () => {
 	audioPlay(0)
 }

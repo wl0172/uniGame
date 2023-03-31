@@ -7,7 +7,7 @@
 		width: 100%;
 		height: calc( 100vh - var(--headerMargin) - 220rpx );
 		position: relative;
-		overflow: hidden;
+		overflow: auto;
 		.forgeDiv_npc{
 			.forgeDiv_list{
 				height: 100px;
@@ -17,21 +17,27 @@
 					display: flex;
 					flex-wrap: wrap;
 					.forgeDiv_list_li{
-						width: 30px;
-						height: 30px;
+						width: 103rpx;
+						height: 103rpx;
+						position: relative;
+						image{
+							width: 100%;
+							height: 100%;
+						}
+						.forgeDiv_list_li_txt{
+							position: absolute;
+							bottom: 0;
+							right: 0;
+							width: 100%;
+							font-size: 32rpx;
+							text-align: right;
+							color: #fff;
+							font-size: 24rpx;
+						}
 					}
 				}
 			}
 		}
-	}
-	.forgeDiv_conter::after{
-		content: '';
-		display: block;
-		width: 100%;
-		height: 100%;
-		border-bottom: 1px dashed #806868;
-		position: absolute;
-		bottom: 0;
 	}
 	.forgeDiv_footer{
 		height: 180rpx;
@@ -55,5 +61,14 @@
 		div:active {
 			background: red;
 		}
+	}
+	.forgeDiv_footer::after{
+		content: '';
+		display: block;
+		width: 100%;
+		height: 1rpx;
+		border-bottom: 1px dashed #806868;
+		position: absolute;
+		top: 0;
 	}
 }

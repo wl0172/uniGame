@@ -1,9 +1,7 @@
-import { useInfo } from '@/state/index.js'
-
 // 是否登录
 const pageAddress = () => {
 	// 获取token
-	let token = uni.getStorageSync('token') ? uni.getStorageSync('token') : ''
+	let token = uni.getStorageSync('token') || null
 	if(token){
 		// uni.reLaunch({
 		// 	url: '/pages/content/index',

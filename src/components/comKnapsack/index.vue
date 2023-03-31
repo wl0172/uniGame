@@ -1,23 +1,20 @@
 <script setup>
 import { onMounted, ref, watch } from "vue"
 import { headerMargin } from '@/state/bangs.js'
-// 配置文件
-import {
-	effectCnsRef,
-	errorCnsRef,
-	monsterRef,
-	goodsRef,
-	mapRef,
-} from '@/state/config/index.js'
 // 线
 import ComLine from "@/components/comLine/index.vue"
+// 包
+import ComKnapsackWrap from "@/components/comKnapsackWrap/index.vue"
 // 全局属性
-import { battleInfo,pageSwitchMenu, hiddenPopup } from '@/state/index.js'
+import { battleInfo, hiddenPopup } from '@/state/index.js'
 // 血量展示
 import { bloodShow } from '@/state/bloodConfig/index.js'
 // 接口
 import { postGoodsConsumeOnce, postGoodsEquip, postGoodsUnequipped } from '@/api/index.js'
-import testVue from "../../pages/test.vue"
+// 钱
+import { moneyProject } from '@/state/money/index.js'
+
+
 
 // 进度条配置
 const progressConfig = {
@@ -27,7 +24,7 @@ const progressConfig = {
 	backgroundColor: '#e6e6e670'
 }
 // 物品介绍
-let txtValue = ref('')
+let txtValue = ref({})
 // 背包物品
 let wrapThing = battleInfo.value.backpack
 // 身上穿戴的装备
@@ -57,52 +54,52 @@ let apparelEquipBut = ref(false)
 // 装
 let wrapThingBut = ref(false)
 
-// 装备适配
+// 装备上
 const equipUtilUp = (i) => {
 	// 头
 	if(i.type == 6){
 		apparelEquip.value.head = i
-		apparelEquip.value.head.url = `../../static/image/${i.sku}.png`
+		// apparelEquip.value.head.url = `../../static/image/${i.sku}.png`
 	}
 	// 左
 	if(i.type == 3){
 		apparelEquip.value.leftHand = i
-		apparelEquip.value.leftHand.url = `../../static/image/${i.sku}.png`
+		// apparelEquip.value.leftHand.url = `../../static/image/${i.sku}.png`
 	}
 	// 右
 	if(i.type == 4){
 		apparelEquip.value.rightHand = i
-		apparelEquip.value.rightHand.url = `../../static/image/${i.sku}.png`
+		// apparelEquip.value.rightHand.url = `../../static/image/${i.sku}.png`
 	}
 	// 胸甲
 	if(i.type == 7){
 		apparelEquip.value.vitalPoints = i
-		apparelEquip.value.vitalPoints.url = `../../static/image/${i.sku}.png`
+		// apparelEquip.value.vitalPoints.url = `../../static/image/${i.sku}.png`
 	}
 	// 腿
 	if(i.type == 8){
 		apparelEquip.value.Legs = i
-		apparelEquip.value.Legs.url = `../../static/image/${i.sku}.png`
+		// apparelEquip.value.Legs.url = `../../static/image/${i.sku}.png`
 	}
 	// 脚
 	if(i.type == 9){
 		apparelEquip.value.foot = i
-		apparelEquip.value.foot.url = `../../static/image/${i.sku}.png`
+		// apparelEquip.value.foot.url = `../../static/image/${i.sku}.png`
 	}
 	// 饰品
 	if(i.type == 10){
 		apparelEquip.value.Accessories = i
-		apparelEquip.value.Accessories.url = `../../static/image/${i.sku}.png`
+		// apparelEquip.value.Accessories.url = `../../static/image/${i.sku}.png`
 	}
 	// 双手武器
 	if(i.type == 5){
 		apparelEquip.value.leftHand = i
 		apparelEquip.value.rightHand = i
-		apparelEquip.value.leftHand.url = `../../static/image/${i.sku}.png`
-		apparelEquip.value.rightHand.url = `../../static/image/${i.sku}.png`
+		// apparelEquip.value.leftHand.url = `../../static/image/${i.sku}.png`
+		// apparelEquip.value.rightHand.url = `../../static/image/${i.sku}.png`
 	}
 }
-
+// 装备下
 const equipUtilDown = (i) => {
 	// 头
 	if(i.type == 6){
@@ -167,11 +164,8 @@ const handleUserEquipments = (item) => {
 }
 // 背包物品点击
 const handleArticle = (item,index) => {
-	for(let i of goodsRef.value){
-		if(i.id == item.index){
-			txtValue.value = item
-		}
-	}
+	txtValue.value = item
+	
 	if(item.type !== 1){
 		wrapThingBut.value = true
 	}else{
@@ -222,7 +216,7 @@ const handleEquip = (i) => {
 				})
 				
 				battleInfo.value.equipments.push(txtValue.value)
-				txtValue.value = ''
+				txtValue.value = {}
 				wrapThingBut.value = false
 				
 			}
@@ -242,7 +236,7 @@ const handleEquip = (i) => {
 					}
 				})
 				
-				txtValue.value = ''
+				txtValue.value = {}
 				apparelEquipBut.value = false
 				
 			}
@@ -263,32 +257,32 @@ const handleBack = () => {
 		<div class="forgeDiv_conter">
 			<!-- 左侧 - 角色 + 右侧 - 怪物 -->
 			<div class="comBattleDiv_battle_1">
-				<image style="width: 100%;height: 100%;position: absolute;" src="@/static/image/22.jpeg" mode=""></image>
+				<image style="width: 100%;height: 100%;position: absolute;" src="@/static/image/comKnapsack_top_bg.jpeg" mode="" />
 				<!-- 左 -->
 				<div class="comBattleDiv_battle_1_div comBattleDiv_left">
 					<div class="comBattleDiv_left_li">
 						<div class="comBattleDiv_left_li_div" @click="handleUserEquipments(apparelEquip.head)">
-							<image :src="apparelEquip.head.url" mode=""></image>
+							<image :src="apparelEquip.head.url" mode="" />
 						</div>
 						<div class="comBattleDiv_left_li_div" @click="handleUserEquipments(apparelEquip.leftHand)">
-							<image :src="apparelEquip.leftHand.url" mode=""></image>
+							<image :src="apparelEquip.leftHand.url" mode="" />
 						</div>
 						<div class="comBattleDiv_left_li_div" @click="handleUserEquipments(apparelEquip.Legs)">
-							<image :src="apparelEquip.Legs.url" mode=""></image>
+							<image :src="apparelEquip.Legs.url" mode="" />
 						</div>
 					</div>
 					<div class="comBattleDiv_left_li comBattleDiv_left_lis">
-						<image src="@/static/image/11.png" mode=""></image>
+						<image src="@/static/image/battle_right_monster.png" mode="" />
 					</div>
 					<div class="comBattleDiv_left_li">
 						<div class="comBattleDiv_left_li_div" @click="handleUserEquipments(apparelEquip.vitalPoints)">
-							<image :src="apparelEquip.vitalPoints.url" mode=""></image>
+							<image :src="apparelEquip.vitalPoints.url" mode="" />
 						</div>
 						<div class="comBattleDiv_left_li_div" @click="handleUserEquipments(apparelEquip.rightHand)">
-							<image :src="apparelEquip.rightHand.url" mode=""></image>
+							<image :src="apparelEquip.rightHand.url" mode="" />
 						</div>
 						<div class="comBattleDiv_left_li_div" @click="handleUserEquipments(apparelEquip.foot)">
-							<image :src="apparelEquip.foot.url" mode=""></image>
+							<image :src="apparelEquip.foot.url" mode="" />
 						</div>
 					</div>
 				</div>
@@ -297,10 +291,9 @@ const handleBack = () => {
 					<div class="comBattleDiv_battle_1_divs">
 						<!-- 钱 -->
 						<div class="right_money">
-							<div>人民币：</div>
-							<div>金币：</div>
-							<div>银币：</div>
-							<div>铜币：</div>
+							<div>金币：{{ moneyProject(2) }}</div>
+							<div>银币：{{ moneyProject(1) }}</div>
+							<div>铜币：{{ moneyProject(0) }}</div>
 						</div>
 						
 						<div class="comBattleDiv_battle_1_div_i_name">{{ battleInfo.player.name }}</div>
@@ -360,27 +353,7 @@ const handleBack = () => {
 			<!-- 线 -->
 			<ComLine />
 			<!-- 背包网格 + txt -->
-			<div class="comBattleDiv_battle_2" >
-				<div class="comBattleDiv_battle_2_list">
-					<div>筛选</div>
-					<div class="comBattleDiv_battle_2_list_ui">
-						<div 
-							@click="handleArticle(item,index)"
-							class="comBattleDiv_battle_2_list_li" 
-							v-for="(item,index) in wrapThing" :key="item">
-							<image style="width: 100%;height: 100%;" src="@/static/svg/2.svg" mode=""></image>
-							<div class="comBattleDiv_battle_2_list_li_txt" style="top: 0;">id={{item.id}}{{item.name}}</div>
-							<div class="comBattleDiv_battle_2_list_li_txt">{{ item.has }}</div>
-						</div>
-					</div>
-				</div>
-				<!-- 线 -->
-				<ComLine />
-				<div class="comBattleDiv_battle_2_txt">
-					<div>{{ txtValue.name }}</div>
-					<div>{{ JSON.stringify(txtValue) }}</div>
-				</div>
-			</div>
+			<ComKnapsackWrap :txtValue="txtValue" @handleArticle="handleArticle" />
 			
 		</div>
 		<!-- 操作菜单 -->

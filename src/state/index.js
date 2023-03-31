@@ -1,13 +1,7 @@
 import { ref, computed ,markRaw } from 'vue'
 // 配置
 // 配置文件
-import { 
-	effectCnsRef, 
-	errorCnsRef, 
-	monsterRef, 
-	goodsRef, 
-	mapRef, 
-} from '@/state/config/index.js'
+import { mapRef } from '@/state/config/index.js'
 /**
  * 场景 - 页面 - page
  */
@@ -73,12 +67,12 @@ let scrollIndex = ref({
 
 // 角色信息
 const useInfo = ref({
-	token: uni.getStorageSync('token') ? uni.getStorageSync('token') : '',
+	token: uni.getStorageSync('token') || null,
 })
 // 主场信息 = 角色 - 怪物
 const battleInfo = ref({
 	// 角色
-	player: uni.getStorageSync('playerInfo') ? uni.getStorageSync('playerInfo') : {},
+	player: uni.getStorageSync('playerInfo') || {},
 	// 怪物
 	monster: {},
 	// 身上穿戴的装备

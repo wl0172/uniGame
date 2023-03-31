@@ -1,4 +1,12 @@
 [
+	{
+	  "id": 4,
+	  "name": "农场主镇",
+	  "level": 0,
+	  "linked": [1],
+	  "monsters": [],
+	  "deep": 1
+	},
   {
     "id": 1,
     "name": "自家农场",
@@ -35,13 +43,5 @@
       "goodsRandom": [4, 11]
     }],
     "deep": 2
-  },
-  {
-    "id": 4,
-    "name": "农场主镇",
-    "level": 0,
-    "linked": [1],
-    "monsters": [],
-    "deep": 1
   }
 ]

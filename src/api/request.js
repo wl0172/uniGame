@@ -3,8 +3,8 @@
  * */
 // util报错提示
 import { errorCnsRefTxt } from '@/utils/index.js'
-// 全局属性
-import { pageArr, pageSwitch } from '@/state/index.js'
+// 退出
+import resetIndex from '@/state/reset.js'
 
 export default (path = '', method = 'GET', contentType = 'application/json', data = {}) => {
 	
@@ -36,8 +36,9 @@ export default (path = '', method = 'GET', contentType = 'application/json', dat
 					uni.showToast({
 						icon: "none",
 						title: '登录过期了，请重新登录!',
-						duration: 5000
+						duration: 3000
 					});
+					resetIndex()
 					uni.clearStorageSync()
 					uni.reLaunch({
 						url: '/pages/loginOrRegister/index'
@@ -46,7 +47,7 @@ export default (path = '', method = 'GET', contentType = 'application/json', dat
 					uni.showToast({
 						icon: "none",
 						title: errorCnsRefTxt.get(response.data),
-						duration: 5000
+						duration: 3000
 					});
 					resolve(null)
 				}

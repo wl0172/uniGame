@@ -1,0 +1,51 @@
+.comBattleDiv_battle_2 {
+	width: auto;
+	height: calc( 100% - 552rpx );
+	overflow: auto;
+	font-size: 24rpx;
+	// border-bottom: 2rpx dashed #806868;
+	background: #fff5e1;
+	.comBattleDiv_battle_2_list{
+		// width: 100%;
+		padding: 0 14rpx;
+		height: calc( 80% - 50rpx );
+		overflow: auto;
+		position: relative;
+		.comBattleDiv_battle_2_list_ui{
+			display: flex;
+			flex-wrap: wrap;
+			position: relative;
+			.comBattleDiv_battle_2_list_li{
+				width: 103rpx;
+				height: 103rpx;
+				position: relative;
+				background: chocolate;
+				.comBattleDiv_battle_2_list_li_txt{
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					width: 100%;
+					font-size: 32rpx;
+					text-align: right;
+					color: #fff;
+				}
+			}
+			.comBattleDiv_battle_2_list_li:active{
+				background: red;
+			}
+			.comBattleDiv_battle_2_list_li::after{
+				// content: '';
+				// border: 1rpx solid red;
+				// width: 100%;
+				// height: 100%;
+				// position: absolute;
+				// left: 0;
+				// top: 0;
+			}
+		}
+	}
+	.comBattleDiv_battle_2_txt{
+		width: 100%;
+		height: 20%;
+	}
+}

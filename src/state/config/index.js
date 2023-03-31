@@ -7,14 +7,21 @@ import monster from '../../../config/dict/monster.json';
 import goods from '../../../config/dict/goods.json';
 import map from '../../../config/dict/map.json';
 
+const goodsRefHasMp = () => {
+	let a = []
+	goods.forEach((item,index) => {
+		a[item.sku] = item
+	});
+	return a
+}
+
 // 配置文件存储
-const effectCnsRef = ref(effectCns)
-const errorCnsRef = ref(errorCns)
+const effectCnsRef = ref(effectCns)// 暂时不动
+const errorCnsRef = ref(errorCns)// 暂时不动
 
-const monsterRef = ref(monster)
-const goodsRef = ref(goods)
+const monsterRef = ref(monster)// 暂时不动
+const goodsRef = ref(goodsRefHasMp())
 const mapRef = ref(map)
-
 
 export {
 	effectCnsRef,// 攻击反馈 - key

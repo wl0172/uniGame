@@ -6,10 +6,8 @@ import {
 // 配置文件
 import {
 	effectCnsRef,
-	errorCnsRef,
 	monsterRef,
 	goodsRef,
-	mapRef,
 } from '@/state/config/index.js'
 // 接口
 import {
@@ -20,14 +18,18 @@ import {
 } from '@/api/index.js'
 // 全局属性
 import {
-	useInfo,
-	pageArr,
-	pageSwitch,
-	pageSwitchMenu,
-	battleInfo,
-	hiddenPopup,
-	txtArr
+	pageArr,// 所有的场景地址 - map
+	pageSwitch,// 所有的场景switch
+	pageArrMenu,// 所有的场景 - 操作页
+	pageSwitchMenu,// 所有的场景switchMenu
+	useInfo,// 用户信息
+	battleInfo,//战斗 - 角色 + 怪物 = 信息
+	hiddenPopup,// 全局弹窗
+	txtArr,// 战斗信息面板 - txt
+	scrollIndex,// // txt下标
 } from '@/state/index.js'
+// 退出
+import resetIndex from '@/state/reset.js'
 // util
 import { backpackSet } from "@/utils/index.js"
 // 音频
@@ -177,6 +179,7 @@ const dropArticle = (res=[]) => {
 					if(k.sku == i.sku){
 						k.has = i.got
 						k.id = i.id
+						k.url = `../../static/image/${k.sku}.png`
 						b.push(k)
 					}
 				}
@@ -347,9 +350,7 @@ const handleLeave = () => {
 		content: '',// '这是一个模态弹窗',
 		success: function (res) {
 			if (res.confirm) {
-				txtArr.value.list = [{
-					liTxt: `来到了${pageArr.value.list[pageSwitch.value.index].name}`
-				}]
+				resetIndex()
 				uni.clearStorageSync()
 				uni.reLaunch({
 					url: '/pages/loginOrRegister/index',
