@@ -16,7 +16,7 @@ const props = defineProps({
 const emits = defineEmits(['handleArticle'])
 
 // 背包物品
-let wrapThing = battleInfo.value.backpack
+let wrapThing = battleInfo.value.backpack || []
 // 组件内定义事件，父调用
 const handleArticle = (item,index) => {
 	emits('handleArticle', item,index)

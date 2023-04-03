@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "史莱姆",
+    "name": "铜史莱姆",
     "level": 1,
     "attack_max": 20,
     "attack_min": 31,
@@ -38,24 +38,6 @@
         "rate": 8000,
         "min": 1,
         "max": 5
-      },
-      {
-        "sku": 3,
-        "rate": 6000,
-        "min": 1,
-        "max": 5
-      },
-      {
-        "sku": 6,
-        "rate": 3333,
-        "min": 1,
-        "max": 1
-      },
-      {
-        "sku": 5,
-        "rate": 3333,
-        "min": 1,
-        "max": 1
       }
     ]
   },
@@ -77,24 +59,426 @@
         "rate": 1000,
         "min": 1,
         "max": 5
-      },
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "幼年淡水鱼人",
+    "level": 4,
+    "attack_max": 72,
+    "attack_min": 28,
+    "hp": 666,
+    "defence": 6,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
       {
-        "sku": 3,
-        "rate": 6000,
+        "sku": 1,
+        "rate": 1000,
         "min": 1,
         "max": 5
-      },
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "淡水鱼人",
+    "level": 3,
+    "attack_max": 72,
+    "attack_min": 28,
+    "hp": 666,
+    "defence": 6,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
       {
-        "sku": 4,
-        "rate": 3333,
+        "sku": 1,
+        "rate": 1000,
         "min": 1,
-        "max": 1
-      },
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "变异淡水鱼人",
+    "level": 3,
+    "attack_max": 72,
+    "attack_min": 28,
+    "hp": 666,
+    "defence": 6,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
       {
-        "sku": 6,
-        "rate": 3333,
+        "sku": 1,
+        "rate": 1000,
         "min": 1,
-        "max": 1
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "智者淡水鱼人",
+    "level": 3,
+    "attack_max": 72,
+    "attack_min": 28,
+    "hp": 666,
+    "defence": 6,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "水贼",
+    "level": 3,
+    "attack_max": 72,
+    "attack_min": 28,
+    "hp": 666,
+    "defence": 6,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "水贼小头目",
+    "level": 3,
+    "attack_max": 72,
+    "attack_min": 28,
+    "hp": 666,
+    "defence": 6,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "野人",
+    "level": 3,
+    "attack_max": 72,
+    "attack_min": 28,
+    "hp": 666,
+    "defence": 6,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "野人头目",
+    "level": 3,
+    "attack_max": 72,
+    "attack_min": 28,
+    "hp": 666,
+    "defence": 6,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "水贼守卫者",
+    "level": 3,
+    "attack_max": 72,
+    "attack_min": 28,
+    "hp": 666,
+    "defence": 6,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "密藏猎人",
+    "level": 3,
+    "attack_max": 72,
+    "attack_min": 28,
+    "hp": 666,
+    "defence": 6,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "“血手”比卡辛",
+    "level": 3,
+    "attack_max": 72,
+    "attack_min": 28,
+    "hp": 666,
+    "defence": 6,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "杨科重骑兵",
+    "level": 30,
+    "attack_max": 4720,
+    "attack_min": 2800,
+    "hp": 60000,
+    "defence": 850,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "杨科步兵",
+    "level": 30,
+    "attack_max": 4720,
+    "attack_min": 2800,
+    "hp": 60000,
+    "defence": 850,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "杨科征召兵",
+    "level": 30,
+    "attack_max": 4720,
+    "attack_min": 2800,
+    "hp": 60000,
+    "defence": 850,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "杨科弓骑兵",
+    "level": 30,
+    "attack_max": 4720,
+    "attack_min": 2800,
+    "hp": 60000,
+    "defence": 850,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "杨科哨骑",
+    "level": 30,
+    "attack_max": 4720,
+    "attack_min": 2800,
+    "hp": 60000,
+    "defence": 850,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "穆旦哨骑",
+    "level": 30,
+    "attack_max": 4720,
+    "attack_min": 2800,
+    "hp": 60000,
+    "defence": 850,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "穆旦长矛兵",
+    "level": 30,
+    "attack_max": 4720,
+    "attack_min": 2800,
+    "hp": 60000,
+    "defence": 850,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "穆旦重甲刀斧手",
+    "level": 30,
+    "attack_max": 4720,
+    "attack_min": 2800,
+    "hp": 60000,
+    "defence": 850,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "穆旦轻甲骑兵",
+    "level": 30,
+    "attack_max": 4720,
+    "attack_min": 2800,
+    "hp": 60000,
+    "defence": 850,
+    "nimble": 0,
+    "vision": 0,
+    "exp_min": 0,
+    "exp_max": 0,
+    "flops": [
+      {
+        "sku": 1,
+        "rate": 1000,
+        "min": 1,
+        "max": 5
       }
     ]
   }

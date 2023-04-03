@@ -52,7 +52,7 @@ const backpackSet = (backpackRes = []) => {
 	for (let i of backpackRes) {
 		let b = JSON.parse(JSON.stringify(i))
 		b.url = `../../static/image/${i.sku}.png`
-		a.push({...b,...goodsRef.value[i.sku]})
+		a.push({ ...b, ...goodsRef.value[i.sku] })
 	}
 	return a
 }

@@ -15,7 +15,6 @@ import { postGoodsConsumeOnce, postGoodsEquip, postGoodsUnequipped } from '@/api
 import { moneyProject } from '@/state/money/index.js'
 
 
-
 // 进度条配置
 const progressConfig = {
 	border_radius: 50,
@@ -145,8 +144,9 @@ const equipUtilDown = (i) => {
 	}
 }
 
+
 if(battleInfo.value.equipments.length){
-	for(let i of battleInfo.value.equipments){
+	for (let i of battleInfo.value.equipments) {
 		equipUtilUp(i)
 	}
 }

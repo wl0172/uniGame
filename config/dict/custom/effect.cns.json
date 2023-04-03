@@ -1,7 +1,14 @@
 {
     "attack": "造成伤害",
-    "runaway": "逃脱战斗",
     "attackTox": "受到毒药侵害",
+    "attackMaxAdd": "最大伤害增加",
+    "attackMinAdd": "最小伤害增加",
+    "broken": "残破的",
+    "defenceAdd": "防御增加",
+    "energyPlus": "体力恢复",
+    "gold": "兑换一枚金币",
     "hpPlus": "生命恢复",
-    "hpReduce": "生命损失"
+    "hpReduce": "生命损失",
+    "powerPlus": "法力恢复",
+    "runaway": "逃脱战斗"
 }

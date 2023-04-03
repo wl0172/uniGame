@@ -8,7 +8,7 @@ import goods from '../../../config/dict/goods.json';
 import map from '../../../config/dict/map.json';
 
 const goodsRefHasMp = () => {
-	let a = []
+	let a = {}
 	goods.forEach((item,index) => {
 		a[item.sku] = item
 	});

@@ -55,7 +55,7 @@ const handleBuyIn = () => {
 	}).then((res)=> {
 		if(res){
 			battleInfo.value.player.money = battleInfo.value.player.money - shopTxt.value.price
-			if(wrapThing.some(item=>item.sku == shopTxt.value.sku)){
+			if(wrapThing.some(item=>item.sku == shopTxt.value.sku && item.type == 1)){
 				for(let i of wrapThing){
 					if(shopTxt.value.sku == i.sku){
 						i.has += 1

@@ -13,7 +13,7 @@
     "name": "古金币",
     "level": 1,
     "wear": 1,
-    "price": 8800,
+    "price": 8000,
     "type": 1,
     "effects": {
       "gold": 1
@@ -27,98 +27,271 @@
     "price": 7,
     "type": 1,
     "effects": {
-      "energy_plus": 1,
-      "hp_plus": 2
+      "energyPlus": 1,
+      "hpPlus": 2
     }
   },
   {
     "sku": 4,
-    "name": "歪铁棍",
-    "level": 1,
-    "wear": 1200,
-    "price": 320,
-    "type": 5,
-    "effects": {
-      "attack_max_add": 22,
-      "attack_min_add": 6
-    }
-  },
-  {
-    "sku": 5,
-    "name": "木棍",
-    "level": 1,
-    "wear": 1200,
-    "price": 100,
-    "type": 4,
-    "effects": {
-      "attack_max_add": 12,
-      "attack_min_add": 2
-    }
-  },
-  {
-    "sku": 6,
-    "name": "天然木板",
-    "level": 1,
-    "wear": 1600,
-    "price": 120,
-    "type": 3,
-    "effects": {
-      "defence_add": 10
-    }
-  },
-  {
-    "sku": 7,
     "name": "小麦",
     "level": 1,
     "wear": 1,
     "price": 3,
     "type": 1,
     "effects": {
-      "hp_plus": 1
+      "hpPlus": 2
     }
   },
   {
-    "sku": 8,
-    "name": "止血绷带",
-    "level": 1,
-    "wear": 1,
-    "price": 20,
-    "type": 1,
-    "effects": {
-      "hp_plus": 60
-    }
-  },
-  {
-    "sku": 9,
+    "sku": 5,
     "name": "柠檬",
     "level": 1,
     "wear": 1,
     "price": 25,
     "type": 1,
     "effects": {
-      "power_plus": 40
+      "powerPlus": 30
+    }
+  },
+  {
+    "sku": 6,
+    "name": "水果西饼",
+    "level": 1,
+    "wear": 1,
+    "price": 25,
+    "type": 1,
+    "effects": {
+      "powerPlus": 40,
+      "energyPlus": 5,
+      "hpPlus": 30
+    }
+  },
+  {
+    "sku": 7,
+    "name": "木板",
+    "level": 1,
+    "wear": 500,
+    "price": 60,
+    "type": 3,
+    "effects": {
+      "defenceAdd": 5
+    }
+  },
+  {
+    "sku": 8,
+    "name": "钉子",
+    "level": 1,
+    "wear": 1,
+    "price": 6,
+    "type": 1,
+    "effects": {}
+  },
+  {
+    "sku": 9,
+    "name": "原木树干",
+    "level": 1,
+    "wear": 1,
+    "price": 6,
+    "type": 1,
+    "effects": {
+      "defenceAdd": 3,
+      "attackMaxAdd": 3,
+      "attackMinAdd": -2
     }
   },
   {
     "sku": 10,
-    "name": "金仓药",
+    "name": "绳子",
     "level": 1,
     "wear": 1,
-    "price": 100,
+    "price": 6,
     "type": 1,
-    "effects": {
-      "hp_plus": 275
-    }
+    "effects": {}
   },
   {
     "sku": 11,
+    "name": "芦荟",
+    "level": 1,
+    "wear": 1,
+    "price": 3,
+    "type": 1,
+    "effects": {
+      "energyPlus": 4,
+      "hpPlus": 10
+    }
+  },
+  {
+    "sku": 12,
+    "name": "粗麻布",
+    "level": 1,
+    "wear": 1,
+    "price": 3,
+    "type": 1,
+    "effects": {}
+  },
+  {
+    "sku": 13,
+    "name": "止血绷带",
+    "level": 1,
+    "wear": 1,
+    "price": 20,
+    "type": 1,
+    "effects": {
+      "hpPlus": 85
+    }
+  },
+  {
+    "sku": 14,
+    "name": "草纸",
+    "level": 1,
+    "wear": 1,
+    "price": 20,
+    "type": 1,
+    "effects": {}
+  },
+  {
+    "sku": 15,
+    "name": "鱼骨",
+    "level": 1,
+    "wear": 1,
+    "price": 20,
+    "type": 1,
+    "effects": {}
+  },
+  {
+    "sku": 16,
     "name": "金疮药",
     "level": 1,
     "wear": 1,
-    "price": 220,
+    "price": 180,
     "type": 1,
     "effects": {
-      "hp_plus": 550
+      "hpPlus": 550
+    }
+  },
+  {
+    "sku": 17,
+    "name": "跌打丸",
+    "level": 1,
+    "wear": 1,
+    "price": 90,
+    "type": 1,
+    "effects": {
+      "hpPlus": 275
+    }
+  },
+  {
+    "sku": 18,
+    "name": "木盾",
+    "level": 1,
+    "wear": 1200,
+    "price": 330,
+    "type": 3,
+    "effects": {
+      "defenceAdd": 15
+    }
+  },
+  {
+    "sku": 19,
+    "name": "猎人棒",
+    "level": 1,
+    "wear": 1000,
+    "price": 330,
+    "type": 4,
+    "effects": {
+      "attackMaxAdd": 26,
+      "attackMinAdd": 6
+    }
+  },
+  {
+    "sku": 20,
+    "name": "粗布裤子",
+    "level": 1,
+    "wear": 750,
+    "price": 210,
+    "type": 8,
+    "effects": {
+      "defenceAdd": 8
+    }
+  },
+  {
+    "sku": 21,
+    "name": "舒适木靴",
+    "level": 1,
+    "wear": 900,
+    "price": 300,
+    "type": 9,
+    "effects": {
+      "defenceAdd": 9
+    }
+  },
+  {
+    "sku": 22,
+    "name": "粗布上衣",
+    "level": 1,
+    "wear": 750,
+    "price": 275,
+    "type": 7,
+    "effects": {
+      "defenceAdd": 10
+    }
+  },
+  {
+    "sku": 23,
+    "name": "简陋木靴",
+    "level": 1,
+    "wear": 750,
+    "price": 200,
+    "type": 9,
+    "effects": {
+      "defenceAdd": 6
+    }
+  },
+  {
+    "sku": 24,
+    "name": "木质胸甲",
+    "level": 1,
+    "wear": 1000,
+    "price": 400,
+    "type": 7,
+    "effects": {
+      "defenceAdd": 16
+    }
+  },
+  {
+    "sku": 25,
+    "name": "比卡辛长刀",
+    "level": 3,
+    "wear": 2000,
+    "price": 800,
+    "type": 4,
+    "effects": {
+      "attackMaxAdd": 48,
+      "attackMinAdd": 26
+    }
+  },
+  {
+    "sku": 26,
+    "name": "比卡辛短刺",
+    "level": 3,
+    "wear": 2000,
+    "price": 650,
+    "type": 3,
+    "effects": {
+      "defenceAdd": 7,
+      "attackMaxAdd": 25,
+      "attackMinAdd": 20
+    }
+  },
+  {
+    "sku": 27,
+    "name": "木头盔",
+    "level": 1,
+    "wear": 800,
+    "price": 240,
+    "type": 6,
+    "effects": {
+      "defenceAdd": 6
     }
   }
 ]

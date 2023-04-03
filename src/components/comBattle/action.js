@@ -1,14 +1,6 @@
-import {
-	ref,
-	watch,
-	computed
-} from "vue"
+import { ref } from "vue"
 // 配置文件
-import {
-	effectCnsRef,
-	monsterRef,
-	goodsRef,
-} from '@/state/config/index.js'
+import { effectCnsRef, monsterRef, goodsRef } from '@/state/config/index.js'
 // 接口
 import {
 	postUserInfo,
@@ -47,16 +39,12 @@ const handleGetUserInfo = () => {
 			"backpack": true, // 背包 玩家背包中的物品
 			"equipment": true // 装备 玩家身上的装备
 		}).then((res) => {
-			// uni.setStorageSync('playerInfo', res.player)
-			// uni.setStorageSync('backpackInfo', backpackSet(res.backpack))
-			// uni.setStorageSync('equipmentsInfo', backpackSet(res.equipments))
-			
 			// 玩家信息
-			battleInfo.value.player = res?.player ? res?.player : {},
+			battleInfo.value.player = res?.player
 			// 玩家背包
-			battleInfo.value.backpack = res.backpack.length ? backpackSet(res.backpack) : [],
+			battleInfo.value.backpack = backpackSet(res.backpack)
 			// 玩家身上的装备
-			battleInfo.value.equipments = res.equipments.length ? backpackSet(res.equipments) : []
+			battleInfo.value.equipments = backpackSet(res.equipments)
 			// 地图下标
 			pageSwitch.value.index = res?.player?.local == 4 ? 0 : res?.player?.local
 			// 如果有偶怪的信息
@@ -146,60 +134,34 @@ const buckleBlood = (item, response, txtArr, status, scrollIndex) => {
 // 掉落的物品名字
 const dropArticle = (res=[]) => {
 	
-	// const a = [{ aa: 1 }, { bb: 1 },{cc:2}];
-	// const b = [{ aa: 2 }, { bb: 2 },{cc:3}];
-	
-	// const result = [...a, ...b].reduce((acc, cur) => {
-	//   const key = Object.keys(cur)[0];
-	//   const value = cur[key];
-	//   acc[key] = (acc[key] || 0) + value;
-	//   return acc;
-	// }, {});
-	
-	
-	let a = []
 	let b = battleInfo.value.backpack
 	let c = []
 	let d = ''
-	
-	
-	// {sku: 3, id: 3, got: 3}
-	
-	if(Object.prototype.toString.call(res).slice(8, -1) == 'Array' && res.length){
-		for(let i of res){
-			// 背包里面是否有 如果是消耗品 + sku
-			if(b.some(item=>item.type == 1 && item.sku == i.sku)){
-				for(let j of b){
-					if(j.sku == i.sku){
-						j.has += i.got
-					}
+
+	for (let i of res) {
+		// 如果背包里面物品可叠加 && sku
+		if (b.some(item => item.id == i.id)) {
+			b.forEach((items,index)=>{
+				if(items.id == i.id && items.sku == i.sku){
+					items.has += i.got
 				}
-			}else{
-				for(let k of goodsRef.value){
-					if(k.sku == i.sku){
-						k.has = i.got
-						k.id = i.id
-						k.url = `../../static/image/${k.sku}.png`
-						b.push(k)
-					}
-				}
-			}
+			})
+		} else {
+			let a = JSON.parse(JSON.stringify(goodsRef.value[i.sku]))
+			a.id = i.id
+			a.has = i.got
+			a.url = `../../static/image/${i.sku}.png`
+			b.push(a)
 		}
-		for(let h of goodsRef.value){
-			for(let f of res){
-				if(f.sku == h.sku){
-					c.push({
-						name: h.name,
-						num: f.got
-					})
-				}
-			}
-		}
-		for(let e of c){
-			d += e.num + '个' + e.name
-		}
-		return d
+		c.push({
+			name: goodsRef.value[i.sku].name,
+			num: i.got
+		})
 	}
+	for(let e of c){
+		d += e.num + '个' + e.name
+	}
+	return d
 }
 
 
