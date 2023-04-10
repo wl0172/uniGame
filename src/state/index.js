@@ -51,9 +51,7 @@ const hiddenPopup = ref({
 
 // txt文字滚动下落 - 初始化 - 战斗信息面板 - txt
 let txtArr = ref({
-	list: [{
-		// liTxt: `来到了${pageArr.value.list[pageSwitch.value.index].name}`
-	}]
+	list: []
 })
 
 // txt下标

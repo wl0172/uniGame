@@ -7,7 +7,32 @@
 		width: 100%;
 		height: calc( 100vh - var(--headerMargin) - 220rpx );
 		position: relative;
+		overflow: auto;
 		z-index: 99;
+		.forgeDiv_conter_book{
+			display: flex;
+			overflow: auto;
+			font-size: 24rpx;
+			.forgeDiv_conter_book_ui{
+				width: 100rpx;
+				height: 100rpx;
+				background: red;
+				flex-shrink: 0;
+			}
+		}
+		.forgeDiv_conter_book_result{
+			.forgeDiv_conter_book_result_img{
+				width: 100rpx;
+				height: 100rpx;
+				background: red;
+				margin: 0 auto;
+				overflow: hidden;
+				image{
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
 	}
 	.forgeDiv_conter::after{
 		content: '';

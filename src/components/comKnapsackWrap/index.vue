@@ -49,7 +49,7 @@ const handleArticle = (item,index) => {
 		<ComLine />
 		<div class="comBattleDiv_battle_2_txt">
 			<div>{{ props.txtValue.name }}</div>
-			<div>{{ JSON.stringify(props.txtValue) }}</div>
+			<div class="comBattleDiv_battle_2_txt_word">{{ JSON.stringify(props.txtValue) }}</div>
 		</div>
 	</div>
 </template>

@@ -13,10 +13,10 @@ const handleToNewMap = (item, index) => {
 		'local': item.id
 	}).then((res)=>{
 		if(res != null){
-			pageSwitch.value.index = item.id == 4 ? 0 : item.id
-			setTimeout(() => {
-				scrollIndex.value.id = `id-${txtArr.value.list.length-1}`
-			},50)
+			// pageSwitch.value.index = item.id == 4 ? 0 : item.id
+			// setTimeout(() => {
+			// 	scrollIndex.value.id = `id-${txtArr.value.list.length-1}`
+			// },50)
 			uni.navigateBack({
 				delta: 1,
 			})

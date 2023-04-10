@@ -1,5 +1,6 @@
- // 配置文件
-import { errorCnsRef, monsterRef, mapRef, goodsRef } from '@/state/config/index.js'
+import goods from '../../config/dict/goods.json';
+// 配置文件
+import { errorCnsRef, monsterRef, mapRef, goodsRef, mixtureRef } from '@/state/config/index.js'
 
 // 报错配置
 let errorCnsRefTxt = new Map(Object.entries(errorCnsRef.value))
@@ -67,10 +68,44 @@ const backpackItem = (shopArr) => {
 	return arr
 }
 
+// 锻造书
+const mixtrueArr = () => {
+	let goodsArr = goods
+	let arr = []
+	for(let i of mixtureRef.value){
+		for(let j of goodsArr){
+			if(i.sku == j.sku){
+				j.url = `../../static/image/${j.sku}.png`
+				arr.push({...i,...j})
+			}
+		}
+	}
+	return arr
+}
+// 锻造书所需的材料
+const mixtrueArrFormula = (obj) => {
+	let goodsArr = goods
+	let arr = []
+	for(let i in obj){
+		for(let j of goodsArr){
+			if(i == j.sku){
+				j.url = `../../static/image/${j.sku}.png`
+				arr.push({
+					item: j,
+					index: obj[i]
+				})
+			}
+		}
+	}
+	return arr
+}
+
 export {
 	errorCnsRefTxt,
 	monsterName,
 	sceneName,
 	backpackSet,
-	backpackItem
+	backpackItem,
+	mixtrueArr,
+	mixtrueArrFormula
 }

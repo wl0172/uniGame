@@ -60,6 +60,10 @@ export function postShopMarket(params) {
 export function deleteShopMarket(params) {
 	return request(`/shop/market`, 'DELETE', 'application/json', params);
 }
+// 合成
+export function shopMixture(params) {
+	return request(`/shop/mixture`, 'POST', 'application/json', params);
+}
 
 
 

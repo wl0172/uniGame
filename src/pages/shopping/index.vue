@@ -30,8 +30,7 @@ let wrapThing = battleInfo.value.backpack
 
 // 获取商品
 getShopMarket().then((res)=>{
-	console.log(res,'商店每日更新==========')
-	shopArr.value = res?.shop_items
+	shopArr.value = res?.shop_items || []
 })
 
 // 商店物品点击

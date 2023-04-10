@@ -1,0 +1,10 @@
+{
+  "EquipQualityWaste": "Waste",
+  "EquipQualityBlemish": "Blemish",
+  "EquipQualityStandard": "Standard",
+  "EquipQualityGood": "Good",
+  "EquipQualityExcellent": "Excellent",
+  "EquipQualityUncommon": "Uncommon",
+  "EquipQualityLegend": "Legend",
+  "EquipQualityEpic": "Epic"
+}

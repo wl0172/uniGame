@@ -6,6 +6,7 @@ import errorCns from '../../../config/dict/custom/error.cns.json';
 import monster from '../../../config/dict/monster.json';
 import goods from '../../../config/dict/goods.json';
 import map from '../../../config/dict/map.json';
+import mixture from '../../../config/dict/mixture.json';
 
 const goodsRefHasMp = () => {
 	let a = {}
@@ -21,7 +22,9 @@ const errorCnsRef = ref(errorCns)// 暂时不动
 
 const monsterRef = ref(monster)// 暂时不动
 const goodsRef = ref(goodsRefHasMp())
-const mapRef = ref(map)
+const mapRef = ref(map)// 地图
+const mixtureRef = ref(mixture)
+
 
 export {
 	effectCnsRef,// 攻击反馈 - key
@@ -30,5 +33,6 @@ export {
 	monsterRef,// 怪物属性
 	goodsRef,// 商店 - 商品
 	mapRef,// 地图
+	mixtureRef,// 锻造书
 	
 }
