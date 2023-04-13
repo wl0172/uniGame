@@ -24,6 +24,7 @@ export default (path = '', method = 'GET', contentType = 'application/json', dat
 				"Authorization": Authorization,
 				"Content-Type": contentType,
 				'Accept': contentType,
+				'ver': 10
 			},
 			url: port == 'web' ? '/api' + path : 'http://117.78.26.78:8080' + path,
 			method: method,

@@ -46,7 +46,7 @@ const handleGetUserInfo = () => {
 			// 玩家身上的装备
 			battleInfo.value.equipments = backpackSet(res.equipments)
 			// 地图下标
-			pageSwitch.value.index = res?.player?.local == 4 ? 0 : res?.player?.local
+			pageSwitch.value.index = res?.player?.local
 			// 如果有偶怪的信息
 			if(res?.fighter){
 				const getMon = monsterRef.value.find(item => item.id == res?.fighter?.index)

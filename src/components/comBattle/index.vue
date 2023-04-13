@@ -47,7 +47,7 @@ watch([pageSwitch.value], ([newValue1, oldValue1]) => {
 	txtArr.value.list.push({
 		liTxt: `来到了${pageArr.value.list[pageSwitch.value.index].name}`
 	})
-},{ 
+},{
 	deep: true,
 	// immediate: true
 })

@@ -18,9 +18,6 @@ for(let i of mapRefPageArr){
 const pageArr = ref({
 	list: mapRefPageArrCopy
 })
-console.log(pageArr.value, '===============')
-console.log(mapRefPageArr, '---------------')
-
 const pageSwitch = ref({
 	index: 1,
 })
