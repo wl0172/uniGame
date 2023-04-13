@@ -2,9 +2,11 @@
   "authReject": "账号或密码有误",
   "equipmentNotFound": "该装备已被脱下",
   "equipmentSlotHas": "该身体部分已经有装备",
+  "verNotFound": "版本缓存遗失，暂时无法提供服务",
   "goodsNotFound": "物品不存在",
   "goodsNotEnough": "物品数量不足",
   "goodsNotSell": "物品已经售罄",
+  "goodsSlotDiffer": "物品槽位不符合",
   "goodsTypeDiffer": "物品类型不合适",
   "hpLack": "生命不足",
   "hasBeenLocal": "已经达到该地",
@@ -22,5 +24,6 @@
   "thewLack": "体力不足",
   "unauthenticated": "用户登录已失效",
   "userNotHas": "用户未找到",
-  "uniqueMust": "用户名或邮箱已存在"
+  "uniqueMust": "用户名或邮箱已存在",
+  "verInvalid": "版本已过期"
 }

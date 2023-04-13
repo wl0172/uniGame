@@ -8,7 +8,6 @@
     "attack_min": 14,
     "hp": 150,
     "defence": 0,
-    "vision": 0,
     "nimble": 0,
     "flops": [
       {
@@ -28,7 +27,6 @@
     "attack_min": 22,
     "hp": 280,
     "defence": 2,
-    "vision": 0,
     "nimble": 0,
     "flops": [
       {
@@ -60,7 +58,6 @@
     "attack_min": 30,
     "hp": 240,
     "defence": 6,
-    "vision": 0,
     "nimble": 0,
     "flops": [
       {
@@ -98,7 +95,6 @@
     "attack_min": 45,
     "hp": 405,
     "defence": 3,
-    "vision": 0,
     "nimble": 0,
     "flops": [
       {
@@ -124,7 +120,6 @@
     "attack_min": 55,
     "hp": 500,
     "defence": 8,
-    "vision": 0,
     "nimble": 0,
     "flops": [
       {
@@ -150,7 +145,6 @@
     "attack_min": 30,
     "hp": 820,
     "defence": 12,
-    "vision": 0,
     "nimble": 0,
     "flops": [
       {
@@ -170,7 +164,6 @@
     "attack_min": 60,
     "hp": 625,
     "defence": 8,
-    "vision": 0,
     "nimble": 0,
     "flops": [
       {
@@ -196,7 +189,6 @@
     "attack_min": 50,
     "hp": 800,
     "defence": 18,
-    "vision": 0,
     "nimble": 0,
     "flops": [
       {
@@ -222,7 +214,6 @@
     "attack_min": 60,
     "hp": 880,
     "defence": 26,
-    "vision": 0,
     "nimble": 0,
     "flops": [
       {
@@ -254,7 +245,6 @@
     "attack_min": 55,
     "hp": 500,
     "defence": 8,
-    "vision": 0,
     "nimble": 0,
     "flops": [
       {
@@ -280,7 +270,6 @@
     "attack_min": 30,
     "hp": 820,
     "defence": 12,
-    "vision": 0,
     "nimble": 0,
     "flops": [
       {
@@ -318,7 +307,6 @@
     "attack_min": 2000,
     "hp": 60000,
     "defence": 500,
-    "vision": 0,
     "nimble": 0,
     "flops": []
   },
@@ -331,7 +319,6 @@
     "attack_min": 2000,
     "hp": 60000,
     "defence": 500,
-    "vision": 0,
     "nimble": 0,
     "flops": []
   },
@@ -344,7 +331,6 @@
     "attack_min": 2000,
     "hp": 60000,
     "defence": 500,
-    "vision": 0,
     "nimble": 0,
     "flops": []
   },
@@ -357,7 +343,6 @@
     "attack_min": 2000,
     "hp": 60000,
     "defence": 500,
-    "vision": 0,
     "nimble": 0,
     "flops": []
   },
@@ -370,7 +355,6 @@
     "attack_min": 2000,
     "hp": 60000,
     "defence": 500,
-    "vision": 0,
     "nimble": 0,
     "flops": []
   },
@@ -383,7 +367,6 @@
     "attack_min": 2000,
     "hp": 60000,
     "defence": 500,
-    "vision": 0,
     "nimble": 0,
     "flops": []
   },
@@ -396,7 +379,6 @@
     "attack_min": 2000,
     "hp": 60000,
     "defence": 500,
-    "vision": 0,
     "nimble": 0,
     "flops": []
   },
@@ -409,7 +391,6 @@
     "attack_min": 2000,
     "hp": 60000,
     "defence": 500,
-    "vision": 0,
     "nimble": 0,
     "flops": []
   },
@@ -422,7 +403,6 @@
     "attack_min": 2000,
     "hp": 60000,
     "defence": 500,
-    "vision": 0,
     "nimble": 0,
     "flops": []
   },
@@ -435,7 +415,6 @@
     "attack_min": 2000,
     "hp": 60000,
     "defence": 500,
-    "vision": 0,
     "nimble": 0,
     "flops": []
   },
@@ -448,7 +427,6 @@
     "attack_min": 2000,
     "hp": 60000,
     "defence": 500,
-    "vision": 0,
     "nimble": 0,
     "flops": []
   },
@@ -461,7 +439,6 @@
     "attack_min": 2000,
     "hp": 60000,
     "defence": 500,
-    "vision": 0,
     "nimble": 0,
     "flops": []
   }

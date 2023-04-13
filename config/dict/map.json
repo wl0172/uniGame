@@ -1,11 +1,4 @@
 [
-	{
-	  "id": 4,
-	  "name": "农场主镇",
-	  "level": 0,
-	  "linked": [1, 7, 9],
-	  "monsters": []
-	},
   {
     "id": 1,
     "name": "自家农场",
@@ -42,6 +35,13 @@
     }]
   },
   {
+    "id": 4,
+    "name": "农场主镇",
+    "level": 0,
+    "linked": [1, 7, 9],
+    "monsters": []
+  },
+  {
     "id": 5,
     "name": "胜蓝长堤",
     "level": 0,
@@ -49,18 +49,11 @@
     "monsters": [6, 7]
   },
   {
-    "id": 9,
+    "id": 6,
     "name": "黑瞎岛",
     "level": 0,
     "linked": [8, 5],
     "monsters": [8, 9, 14]
-  },
-  {
-    "id": 8,
-    "name": "虎山后山",
-    "level": 0,
-    "linked": [6, 7],
-    "monsters": [12, 13]
   },
   {
     "id": 7,
@@ -68,6 +61,13 @@
     "level": 0,
     "linked": [4, 8],
     "monsters": [10, 11]
+  },
+  {
+    "id": 8,
+    "name": "虎山后山",
+    "level": 0,
+    "linked": [6, 7],
+    "monsters": [12, 13]
   },
   {
     "id": 9,

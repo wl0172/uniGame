@@ -1,27 +1,26 @@
-import { ref, computed ,markRaw } from 'vue'
-// 配置
+import { ref ,markRaw } from 'vue'
 // 配置文件
 import { mapRef } from '@/state/config/index.js'
-/**
- * 场景 - 页面 - page
- */
 // 战斗场景
 import ComBattle from "@/components/comBattle/index.vue"
 // 背包
 import ComKnapsack from '@/components/comKnapsack/index.vue'
-
-
 // 广告 - 测试
 import ComAdvertisement from '@/components/comAdvertisement'
 
 // 所有的场景地址 - map - 地图切换等
 let mapRefPageArr = JSON.parse(JSON.stringify(mapRef.value))
+let mapRefPageArrCopy = {}
 for(let i of mapRefPageArr){
 	i.pageComponent = markRaw(ComBattle)
+	mapRefPageArrCopy[i.id] = i
 }
 const pageArr = ref({
-	list: mapRefPageArr
+	list: mapRefPageArrCopy
 })
+console.log(pageArr.value, '===============')
+console.log(mapRefPageArr, '---------------')
+
 const pageSwitch = ref({
 	index: 1,
 })

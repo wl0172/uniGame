@@ -13,10 +13,10 @@ const handleToNewMap = (item, index) => {
 		'local': item.id
 	}).then((res)=>{
 		if(res != null){
-			// pageSwitch.value.index = item.id == 4 ? 0 : item.id
-			// setTimeout(() => {
-			// 	scrollIndex.value.id = `id-${txtArr.value.list.length-1}`
-			// },50)
+			pageSwitch.value.index = item.id
+			setTimeout(() => {
+				scrollIndex.value.id = `id-${txtArr.value.list.length-1}`
+			},50)
 			uni.navigateBack({
 				delta: 1,
 			})
@@ -38,9 +38,7 @@ const handleToNewMap = (item, index) => {
 				<div class="conSceneListLi_title">
 					<div>
 						<text>{{ item.name }}</text>
-						<text 
-							style="color: #4bbda3;" 
-							v-if="pageSwitch.index == item.id || (pageSwitch.index == 0 && item.id == 4)">
+						<text style="color: #4bbda3;" v-if="pageSwitch.index == item.id">
 							 - 当前
 						</text>
 					</div>

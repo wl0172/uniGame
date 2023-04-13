@@ -56,7 +56,6 @@ const handleGetUserInfo = () => {
 			
 			// console.log(res, '接口玩家最新信息 ==========')
 			console.log(battleInfo.value, '玩家信息==========')
-			
 		})
 	}
 }
