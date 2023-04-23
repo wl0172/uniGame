@@ -1,5 +1,10 @@
 import request from "@/api/request.js"
 
+// 获取升级配置
+export function getUpgrade(params) {
+	return request(`/system/upgrade`, 'GET', 'application/json', params);
+}
+
 // 登录
 export function postLogin(params) {
 	return request(`/auth/login`, 'POST', 'application/json', params);

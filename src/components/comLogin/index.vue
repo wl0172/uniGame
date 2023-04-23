@@ -7,7 +7,7 @@ import {
 	watch,
 	watchEffect
 } from 'vue'
-import { postLogin, postRegister } from '@/api/index.js'
+import { postLogin, getUpgrade } from '@/api/index.js'
 import loginState from '@/state/loginRegister/index.js'
 import { useInfo, battleInfo } from '@/state/index.js'
 
@@ -27,24 +27,27 @@ const handleSignUp = () => {
 // 登录
 const handleLogin = () => {
 	if (sinupInfo.value.name && sinupInfo.value.password) {
-		postLogin(sinupInfo.value).then((res) => {
-			if(res.token){
-				uni.setStorageSync('token', res.token);
-				uni.setStorageSync('playerInfo', res.player);
-				useInfo.value.token = res?.token
-				battleInfo.value.player = res?.player ? res?.player : {},
-				isLoding.value.state = true
-				setTimeout(()=>{
-					uni.redirectTo({
-						url: "/pages/content/index",
-						success(){
-							isLoding.value.state = false
-						}
-					})
-				},1800)
-			}else{
-				isLoding.value.state = false
-			}
+		getUpgrade().then(ress => {
+			uni.setStorageSync('ver', ress.ver)
+			postLogin(sinupInfo.value).then((res) => {
+				if(res.token){
+					uni.setStorageSync('token', res.token);
+					uni.setStorageSync('playerInfo', res.player);
+					useInfo.value.token = res?.token
+					battleInfo.value.player = res?.player ? res?.player : {},
+					isLoding.value.state = true
+					setTimeout(()=>{
+						uni.redirectTo({
+							url: "/pages/content/index",
+							success(){
+								isLoding.value.state = false
+							}
+						})
+					},1800)
+				}else{
+					isLoding.value.state = false
+				}
+			})
 		})
 	} else if(sinupInfo.value.name == ''){
 		uni.showToast({
@@ -54,6 +57,7 @@ const handleLogin = () => {
 		})
 	}
 }
+
 </script>
 
 <template>

@@ -14,6 +14,7 @@ export default (path = '', method = 'GET', contentType = 'application/json', dat
 	// });
 		
 	const token = uni.getStorageSync("token");
+	const ver = uni.getStorageSync('ver') || 0
 	const Authorization = token ? `Bearer ${token}` : "";
 	
 	return new Promise((resolve, reject) => {
@@ -24,7 +25,7 @@ export default (path = '', method = 'GET', contentType = 'application/json', dat
 				"Authorization": Authorization,
 				"Content-Type": contentType,
 				'Accept': contentType,
-				'ver': 10
+				'ver': ver
 			},
 			url: port == 'web' ? '/api' + path : 'http://117.78.26.78:8080' + path,
 			method: method,
