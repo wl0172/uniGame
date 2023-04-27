@@ -50,7 +50,7 @@ const handleGetUserInfo = () => {
 			// 如果有偶怪的信息
 			if(res?.fighter){
 				const getMon = monsterRef.value.find(item => item.id == res?.fighter?.index)
-				const getMonsters = {...getMon,...res?.fighter}
+				const getMonsters = {...getMon,...res?.fighter,...{url: `../../static/monsters/${getMon.id}.jpg`}}
 				battleInfo.value.monster = getMonsters//res?.player
 			}
 			
@@ -149,7 +149,7 @@ const dropArticle = (res=[]) => {
 			let a = JSON.parse(JSON.stringify(goodsRef.value[i.sku]))
 			a.id = i.id
 			a.has = i.got
-			a.url = `../../static/image/${i.sku}.png`
+			a.url = `../../static/goods/${i.sku}.png`
 			b.push(a)
 		}
 		c.push({
@@ -239,7 +239,7 @@ const handleSeachItem = (txtArr, scrollIndex) => {
 			if(res){
 				uni.hideLoading()
 				const beforeMon = monsterRef.value.find(item => item.id == res.index)
-				const beforeMonster = {...beforeMon,...res}
+				const beforeMonster = {...beforeMon,...res,...{url: `../../static/monsters/${beforeMon.id}.jpg`}}
 				battleInfo.value.monster = beforeMonster
 				txtCopywriting(beforeMonster, txtArr, 0, scrollIndex)
 			}

@@ -13,7 +13,7 @@ let mixTxt = ref({})
 let txtValue = ref({})
 
 // 锻造书点击
-const handleMixTrue = (item,index) => {
+const handleMixTrue = (item, index) => {
 	mixTxt.value = item
 }
 // 包物品点击
@@ -52,6 +52,7 @@ const handleBack = () => {
 			<div class="forgeDiv_conter_book">
 				<div class="forgeDiv_conter_book_ui" v-for="(item,index) in mixtrueArr()" @click="handleMixTrue(item,index)">
 					{{ item.name }}
+					<image class="forgeDiv_conter_book_ui_img" :src="`../../static/goods/${item.sku}.png`" mode="" />
 				</div>
 			</div>
 			<!--  -->

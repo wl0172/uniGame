@@ -33,14 +33,11 @@ const handleArticle = (item,index) => {
 					@click="handleArticle(item,index)"
 					class="comBattleDiv_battle_2_list_li" 
 					v-for="(item,index) in wrapThing" :key="item">
-					
 					<image style="width: 100%;height: 100%;" :src="item.url" mode="" />
-					
-					<div class="comBattleDiv_battle_2_list_li_txt" style="top: 0;font-size: 24rpx;">
+					<!-- <div class="comBattleDiv_battle_2_list_li_txt" style="top: 0;font-size: 24rpx;">
 						<div>id={{item.id}}</div>
 						<div>{{item.name}}</div>
-					</div>
-	
+					</div> -->
 					<div class="comBattleDiv_battle_2_list_li_txt">{{ item.has }}</div>
 				</div>
 			</div>

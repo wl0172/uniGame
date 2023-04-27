@@ -52,7 +52,7 @@ const backpackSet = (backpackRes = []) => {
 	let a = []
 	for (let i of backpackRes) {
 		let b = JSON.parse(JSON.stringify(i))
-		b.url = `../../static/image/${i.sku}.png`
+		b.url = `../../static/goods/${i.sku}.png`
 		a.push({ ...b, ...goodsRef.value[i.sku] })
 	}
 	return a
@@ -62,7 +62,7 @@ const backpackSet = (backpackRes = []) => {
 const backpackItem = (shopArr) => {
 	let arr = []
 	for (let i of shopArr){
-		goodsRef.value[i].url = `../../static/image/${i}.png`
+		goodsRef.value[i].url = `../../static/goods/${i}.png`
 		arr.push(goodsRef.value[i])
 	}
 	return arr
@@ -75,7 +75,7 @@ const mixtrueArr = () => {
 	for(let i of mixtureRef.value){
 		for(let j of goodsArr){
 			if(i.sku == j.sku){
-				j.url = `../../static/image/${j.sku}.png`
+				j.url = `../../static/goods/${j.sku}.png`
 				arr.push({...i,...j})
 			}
 		}
@@ -89,7 +89,7 @@ const mixtrueArrFormula = (obj) => {
 	for(let i in obj){
 		for(let j of goodsArr){
 			if(i == j.sku){
-				j.url = `../../static/image/${j.sku}.png`
+				j.url = `../../static/goods/${j.sku}.png`
 				arr.push({
 					item: j,
 					index: obj[i]
